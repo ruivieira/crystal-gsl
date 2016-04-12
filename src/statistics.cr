@@ -4,6 +4,15 @@ require "./libgsl.cr"
 
 module Statistics
 
+  class DiscreteUniform
+
+    # Returns a random integer from #min to #max
+    def self.sample(min : Int, max : Int)
+      Random.new.rand(min..max)
+    end
+
+  end
+
   class Normal
     def initialize(@mean : Float64, @std : Float64)
     end
