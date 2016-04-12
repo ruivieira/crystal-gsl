@@ -4,6 +4,18 @@ require "./libgsl.cr"
 
 module Statistics
 
+  class Exponential
+
+    def self.sample(mu : Float64) : Float64
+      return LibGSL.gsl_ran_exponential($rng, mu)
+    end
+
+    def self.sample(x : Float64, mu : Float64) : Float64
+      return LibGSL.gsl_ran_exponential_pdf(x, mu)
+    end
+
+  end
+
   class DiscreteUniform
 
     # Returns a random integer from #min to #max

@@ -20,6 +20,15 @@ lib LibGSL
   fun gsl_ran_gamma(r : Gsl_rng*, a : Float64, b : Float64) : Float64
   fun gsl_ran_gamma_pdf(x : Float64, a : Float64, b : Float64) : Float64
 
+  # exponential distribution
+  fun gsl_ran_exponential(r : Gsl_rng*, mu : Float64) : Float64
+  fun gsl_ran_exponential_pdf(x : Float64, mu : Float64) : Float64
+
+  fun gsl_cdf_exponential_P(x : Float64, mu : Float64) : Float64
+  fun gsl_cdf_exponential_Q(x : Float64, mu : Float64) : Float64
+  fun gsl_cdf_exponential_Pinv(p : Float64, mu : Float64) : Float64
+  fun gsl_cdf_exponential_Qinv(q : Float64, mu : Float64) : Float64
+
   # matrices
 
   struct Gsl_matrix
