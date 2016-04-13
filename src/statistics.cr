@@ -4,6 +4,15 @@ require "./libgsl.cr"
 
 module Statistics
 
+  class DiscreteUniform
+
+    # Returns a random integer from #min to #max
+    def self.sample(min : Int, max : Int)
+      Random.new.rand(min..max)
+    end
+
+  end
+
   class Exponential
 
     def self.sample(mu : Float64) : Float64
@@ -12,15 +21,6 @@ module Statistics
 
     def self.sample(x : Float64, mu : Float64) : Float64
       return LibGSL.gsl_ran_exponential_pdf(x, mu)
-    end
-
-  end
-
-  class DiscreteUniform
-
-    # Returns a random integer from #min to #max
-    def self.sample(min : Int, max : Int)
-      Random.new.rand(min..max)
     end
 
   end
@@ -60,6 +60,22 @@ module Statistics
     def nextGaussian() : Float64
       self.nextGaussian(@mean, @std)
     end
+end
+
+class Poisson
+
+  def self.sample(mu : Float64) : UInt64
+    return LibGSL.gsl_ran_poisson($rng, mu)
+  end
+
+  def self.sample(n : Int, mu : Float64) : Array(UInt64)
+    return (0..n).map {|x| self.sample(mu)}
+  end
+
+  def self.pdf(k : UInt64, mu : Float64) : Float64
+    return LibGSL.gsl_ran_poisson_pdf(k, mu)
+  end
+
 end
 
 class MultivariateNormal

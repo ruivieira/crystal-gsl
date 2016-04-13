@@ -20,6 +20,16 @@ describe Statistics do
     end
   end
 
+  describe "Poisson" do
+
+    it "should have the correct mean" do
+      samples = Statistics::Poisson.sample(1000000, 2.3)
+      mean = Statistics.mean(samples.map {|sample| sample.to_f})
+      mean.should be_close(2.3, 1e-2)
+    end
+
+  end
+
   describe "Matrix" do
 
     it "should set a vector as a column" do

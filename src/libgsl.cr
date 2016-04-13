@@ -29,6 +29,12 @@ lib LibGSL
   fun gsl_cdf_exponential_Pinv(p : Float64, mu : Float64) : Float64
   fun gsl_cdf_exponential_Qinv(q : Float64, mu : Float64) : Float64
 
+  # Poisson distribution
+  fun gsl_ran_poisson(r : Gsl_rng*, mu : Float64) : UInt64
+  fun gsl_ran_poisson_pdf(k : UInt64, mu : Float64) : Float64
+  fun gsl_cdf_poisson_P(k : UInt64, mu : Float64) : Float64
+  fun gsl_cdf_poisson_Q(k : UInt64, mu : Float64) : Float64
+
   # matrices
 
   struct Gsl_matrix
