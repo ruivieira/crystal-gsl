@@ -1,4 +1,4 @@
-require "./base/matrices"
+require "./matrices"
 
 module Statistics
   class Vector
