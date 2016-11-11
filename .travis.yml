@@ -3,7 +3,7 @@ sudo: required
 crystal:
     - latest
 before_install:
-  - sudo apt-get install gsl-bin libgsl-dev -y
+  - sudo apt-get install gsl-bin libgsl0-dev -y
 install:
   - shards install
 script:
