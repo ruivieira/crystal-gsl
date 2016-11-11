@@ -1,2 +1,4 @@
 .crystal
 src/tests
+*.swp
+test*

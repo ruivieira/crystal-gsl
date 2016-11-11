@@ -131,5 +131,10 @@ module Statistics
       end
       return result
     end
+    
+    # alias to to_array
+    def to_a : Array(Float64)
+      self.to_array
+    end
   end
 end
