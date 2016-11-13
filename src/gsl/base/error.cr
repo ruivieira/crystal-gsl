@@ -1,0 +1,2 @@
+class LengthException < Exception
+end

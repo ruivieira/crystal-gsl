@@ -1,6 +1,7 @@
 require "math"
 require "random"
 require "./libgsl.cr"
+require "./error"
 
 module Statistics
   class Matrix
