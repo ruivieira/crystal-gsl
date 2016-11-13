@@ -50,7 +50,7 @@ Warning:
 ### Developing Depencies
 
 * Ruby & rake
-* crystal-icr
+* [crystal-icr](https://github.com/greyblake/crystal-icr) , > 0.2.10 // Install manually not by shard install
 
 
 ## Contributors

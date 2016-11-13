@@ -5,9 +5,4 @@ authors:
   - Rui Vieira <ruidevieira@googlemail.com>
   - Dylandy Chang <dylandy.chang@googlemail.com>
 
-dependencies:
-  icr:
-    github: greyblake/crystal-icr
-    branch: master
-
 license: MIT
