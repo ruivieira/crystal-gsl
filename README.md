@@ -12,7 +12,17 @@ dependencies:
   gsl:
     github: dylandy/crystal-gsl
 ```
+## System dependencies
 
+### Ubuntu < 16.04 
+
+* libgsl0-dev 
+* gsl-bin
+
+### Ubuntu >= 16.04
+
+* libgsl-dev
+* gsl-bin
 
 ## Usage
 
@@ -36,6 +46,12 @@ Warning:
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create a new Pull Request
+
+### Developing Depencies
+
+* Ruby & rake
+* crystal-icr
+
 
 ## Contributors
 
