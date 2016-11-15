@@ -24,6 +24,11 @@ dependencies:
 * libgsl-dev
 * gsl-bin
 
+### Fedora
+
+* gsl
+* gsl-devel
+
 ## Usage
 
 
