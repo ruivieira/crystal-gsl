@@ -17,10 +17,9 @@ module Statistics
       output.to_vector
     end
 
-    def proportion( n : Float64 | Int32 )
-      self.to_a.count( n.to_f ) / self.size.to_f
+    def proportion(n : Float64 | Int32)
+      self.to_a.count(n.to_f) / self.size.to_f
     end
-
   end
 end
 

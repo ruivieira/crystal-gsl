@@ -75,12 +75,12 @@ module Statistics
       self.to_a.sum
     end
 
-    def dot( n : Statistics::Vector )
+    def dot(n : Statistics::Vector)
       (self * n).sum
     end
 
     # same as dot function
-    def inner_product( n : Statistics::Vector )
+    def inner_product(n : Statistics::Vector)
       self.dot n
     end
   end
