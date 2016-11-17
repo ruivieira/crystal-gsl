@@ -70,5 +70,18 @@ module Statistics
         raise LengthException.new("Larger vector length is not the multiplication of shorter one.")
       end
     end
+
+    def sum
+      self.to_a.sum
+    end
+
+    def dot( n : Statistics::Vector )
+      (self * n).sum
+    end
+
+    # same as dot function
+    def inner_product( n : Statistics::Vector )
+      self.dot n
+    end
   end
 end
