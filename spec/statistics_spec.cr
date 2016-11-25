@@ -1,6 +1,22 @@
 require "./spec_helper"
 
 describe Statistics do
+  describe "DiscreteUniform" do
+    it "must be within the min and max" do
+      uniforms = (1..1000).map { |i| Statistics::DiscreteUniform.sample(0, 1) }
+      uniforms.all? { |x| x >= 0 && x <= 1 }.should eq true
+    end
+
+    it "has the expected number of samples" do
+      uniforms = Statistics::DiscreteUniform.sample(1000, 0, 1)
+      uniforms.size.should eq 1000
+    end
+
+    expect_raises(ArgumentError) do
+      Statistics::DiscreteUniform.sample(1, 0)
+    end
+  end
+
   describe "Normal" do
     it "has the expected number of samples" do
       normal = Statistics::Normal.new 0.0, 1.0

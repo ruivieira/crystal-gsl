@@ -6,7 +6,14 @@ module Statistics
   class DiscreteUniform
     # Returns a random integer from #min to #max
     def self.sample(min : Int, max : Int)
+      if max < min
+        raise ArgumentError.new("Maximum cannot be smaller than minimum")
+      end
       Random.new.rand(min..max)
+    end
+
+    def self.sample(n : Int, min : Int, max : Int)
+      (0...n).map { |i| DiscreteUniform.sample min, max }
     end
   end
 
