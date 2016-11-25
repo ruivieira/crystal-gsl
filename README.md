@@ -21,6 +21,8 @@ dependencies:
 require "gsl"
 ```
 
+Full documentation can be found at http://ruivieira.github.io/crystal-gsl/
+
 Warning:
 
 - Not fully test
