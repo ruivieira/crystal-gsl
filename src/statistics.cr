@@ -3,8 +3,17 @@ require "random"
 require "./libgsl.cr"
 
 module Statistics
-  class DiscreteUniform
-    # Returns a random integer from #min to #max
+  abstract class DiscreteDistribution
+  end
+
+  # A symmetric probability distribution whereby a finite number of values are
+  # equally likely to be observed: every one of *n* values has equal probability *1/n*.
+  class DiscreteUniform < DiscreteDistribution
+    # Returns a random integer from *min* to *max*
+    #
+    # ```
+    # DiscreteUniform.sample(0, 2) # => 1
+    # ```
     def self.sample(min : Int, max : Int)
       if max < min
         raise ArgumentError.new("Maximum cannot be smaller than minimum")
@@ -12,6 +21,11 @@ module Statistics
       Random.new.rand(min..max)
     end
 
+    # Returns an array of random integers from *min* to *max*
+    #
+    # ```
+    # DiscreteUniform.sample(4, 0, 2) # => [0, 2, 1, 1, 2]
+    # ```
     def self.sample(n : Int, min : Int, max : Int)
       (0...n).map { |i| DiscreteUniform.sample min, max }
     end
@@ -64,7 +78,7 @@ module Statistics
     end
   end
 
-  class Poisson
+  class Poisson < DiscreteDistribution
     def self.sample(mu : Float64) : UInt64
       return LibGSL.gsl_ran_poisson(GSL::RNG, mu)
     end
