@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::Poisson - github.com/ruivieira/crystal-gsl</title>
+  <title>Statistics::LinearRegression - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -60,7 +60,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
       <a href="../Statistics/LinearRegression.html">LinearRegression</a>
       
     </li>
@@ -80,7 +80,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
       <a href="../Statistics/Poisson.html">Poisson</a>
       
     </li>
@@ -102,12 +102,12 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Statistics::Poisson
+  <span class="kind">struct</span> Statistics::LinearRegression
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Poisson.html">Statistics::Poisson</a></li><li class="superclass"><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/LinearRegression.html">Statistics::LinearRegression</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -136,22 +136,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28mu%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(mu : Float64)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pdf%28k%3AUInt64%2Cmu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.pdf</strong>(k : UInt64, mu : Float64) : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample%28n%3AInt%2Cmu%3AFloat64%29%3AArray%28UInt64%29-class-method" class="signature"><strong>.sample</strong>(n : Int, mu : Float64) : Array(UInt64)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample%28mu%3AFloat64%29%3AUInt64-class-method" class="signature"><strong>.sample</strong>(mu : Float64) : UInt64</a>
+        <a href="#new%28intercept%3AFloat64%2Cx%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(intercept : Float64, x : Float64)</a>
         
       </li>
     
@@ -163,7 +148,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%3AInt-instance-method" class="signature"><strong>#sample</strong> : Int</a>
+        <a href="#intercept%3AFloat64-instance-method" class="signature"><strong>#intercept</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#x%3AFloat64-instance-method" class="signature"><strong>#x</strong> : Float64</a>
         
       </li>
     
@@ -176,15 +166,6 @@
 <div class="methods-inherited">
   
     
-
-  <h3>Instance methods inherited from class <code><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></code></h3>
-  
-  
-    <a href="../Statistics/DiscreteDistribution.html#sample%3AInt-instance-method" class="tooltip">
-      <span>sample : Int</span>
-    sample</a>
-    
-  
 
 
     
@@ -210,54 +191,12 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new&#40;mu:Float64&#41;-class-method">
+    <div class="entry-detail" id="new&#40;intercept:Float64,x:Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(mu : Float64)
+        def self.<strong>new</strong>(intercept : Float64, x : Float64)
 
-        <a class="method-permalink" href="#new%28mu%3AFloat64%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pdf&#40;k:UInt64,mu:Float64&#41;:Float64-class-method">
-      <div class="signature">
-        
-        def self.<strong>pdf</strong>(k : UInt64, mu : Float64) : Float64
-
-        <a class="method-permalink" href="#pdf%28k%3AUInt64%2Cmu%3AFloat64%29%3AFloat64-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample&#40;n:Int,mu:Float64&#41;:Array&#40;UInt64&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>sample</strong>(n : Int, mu : Float64) : Array(UInt64)
-
-        <a class="method-permalink" href="#sample%28n%3AInt%2Cmu%3AFloat64%29%3AArray%28UInt64%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample&#40;mu:Float64&#41;:UInt64-class-method">
-      <div class="signature">
-        
-        def self.<strong>sample</strong>(mu : Float64) : UInt64
-
-        <a class="method-permalink" href="#sample%28mu%3AFloat64%29%3AUInt64-class-method">#</a>
+        <a class="method-permalink" href="#new%28intercept%3AFloat64%2Cx%3AFloat64%29-class-method">#</a>
       </div>
       
       <br/>
@@ -271,12 +210,26 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="sample:Int-instance-method">
+    <div class="entry-detail" id="intercept:Float64-instance-method">
       <div class="signature">
         
-        def <strong>sample</strong> : Int
+        def <strong>intercept</strong> : Float64
 
-        <a class="method-permalink" href="#sample%3AInt-instance-method">#</a>
+        <a class="method-permalink" href="#intercept%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="x:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>x</strong> : Float64
+
+        <a class="method-permalink" href="#x%3AFloat64-instance-method">#</a>
       </div>
       
       <br/>

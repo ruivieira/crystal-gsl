@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="js/doc.js"></script>
-  <title>Gsl - github.com/ruivieira/crystal-gsl</title>
+  <title>GSL - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -20,13 +20,13 @@
 
   <ul>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
-      <a href="GSL.html">GSL</a>
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Gsl" data-name="gsl">
+      <a href="Gsl.html">Gsl</a>
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Gsl" data-name="gsl">
-      <a href="Gsl.html">Gsl</a>
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+      <a href="GSL.html">GSL</a>
       
     </li>
   
@@ -57,6 +57,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
       <a href="Statistics/Gamma.html">Gamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
+      <a href="Statistics/LinearRegression.html">LinearRegression</a>
       
     </li>
   
@@ -97,7 +102,7 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Gsl
+  <span class="kind">module</span> GSL
 
 </h1>
 
@@ -128,8 +133,8 @@
   
   <dl>
     
-      <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.0.1&quot;</span></code>
+      <dt class="entry-const" id="RNG">
+        <strong>RNG</strong> = <code><span class="t">LibGSL</span>.gsl_rng_alloc(<span class="t">LibGSL</span>.gsl_rng_env_setup)</code>
       </dt>
       
     
