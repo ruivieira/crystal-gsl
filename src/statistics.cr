@@ -200,7 +200,7 @@ module Statistics
     end
   end
 
-  def self.linreg(x : Array(Float64), y : Array(Float64))
+  def self.linreg(x : Array(Float64), y : Array(Float64)) : LinearRegression
     intercept = 0.0
     x_est = 0.0
     cov00 = 0.0
