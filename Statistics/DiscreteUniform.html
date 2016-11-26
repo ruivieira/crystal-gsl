@@ -136,6 +136,13 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#new%28min%3AInt64%2Cmax%3AInt64%29-class-method" class="signature"><strong>.new</strong>(min : Int64, max : Int64)</a>
+        
+          <div class="summary"><p>Create a new discrete uniform object with parameters <em>min</em> and <em>man</em></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#sample%28min%3AInt%2Cmax%3AInt%29-class-method" class="signature"><strong>.sample</strong>(min : Int, max : Int)</a>
         
           <div class="summary"><p>Returns a random integer from <em>min</em> to <em>max</em></p></div>
@@ -153,6 +160,18 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
 
 
 
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#sample%3AInt-instance-method" class="signature"><strong>#sample</strong> : Int</a>
+        
+          <div class="summary"><p>Returns a random integer from <em>min</em> to <em>max</em></p></div>
+        
+      </li>
+    
+  </ul>
+
 
 
 
@@ -160,6 +179,15 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
 <div class="methods-inherited">
   
     
+
+  <h3>Instance methods inherited from class <code><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></code></h3>
+  
+  
+    <a href="../Statistics/DiscreteDistribution.html#sample%3AInt-instance-method" class="tooltip">
+      <span>sample : Int</span>
+    sample</a>
+    
+  
 
 
     
@@ -184,6 +212,24 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
 
 
   <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;min:Int64,max:Int64&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(min : Int64, max : Int64)
+
+        <a class="method-permalink" href="#new%28min%3AInt64%2Cmax%3AInt64%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Create a new discrete uniform object with parameters <em>min</em> and <em>man</em></p>
+
+<pre><code>u <span class="o">=</span> <span class="t">DiscreteUniform</span>.<span class="k">new</span> <span class="n">0</span>, <span class="n">2</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="sample&#40;min:Int,max:Int&#41;-class-method">
       <div class="signature">
@@ -223,6 +269,28 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
   
 
 
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="sample:Int-instance-method">
+      <div class="signature">
+        
+        def <strong>sample</strong> : Int
+
+        <a class="method-permalink" href="#sample%3AInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns a random integer from <em>min</em> to <em>max</em></p>
+
+<pre><code>u <span class="o">=</span> <span class="t">DiscreteUniform</span>.<span class="k">new</span> <span class="n">0</span>, <span class="n">2</span>
+u.sample <span class="c"># &#61;&gt; 1</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
