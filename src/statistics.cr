@@ -4,11 +4,29 @@ require "./libgsl.cr"
 
 module Statistics
   abstract class DiscreteDistribution
+    abstract def sample : Int
   end
 
   # A symmetric probability distribution whereby a finite number of values are
   # equally likely to be observed: every one of *n* values has equal probability *1/n*.
   class DiscreteUniform < DiscreteDistribution
+    # Create a new discrete uniform object with parameters *min* and *man*
+    #
+    # ```
+    # u = DiscreteUniform.new 0, 2
+    # ```
+    def initialize(@min : Int64, @max : Int64)
+    end
+    # Returns a random integer from *min* to *max*
+    #
+    # ```
+    # u = DiscreteUniform.new 0, 2
+    # u.sample # => 1
+    # ```
+    def sample : Int
+      DiscreteUniform.sample(@min, @max)
+    end
+
     # Returns a random integer from *min* to *max*
     #
     # ```
@@ -79,6 +97,14 @@ module Statistics
   end
 
   class Poisson < DiscreteDistribution
+
+    def initialize(@mu : Float64)
+    end
+
+    def sample : Int
+      return Poisson.sample(@mu)
+    end
+
     def self.sample(mu : Float64) : UInt64
       return LibGSL.gsl_ran_poisson(GSL::RNG, mu)
     end
