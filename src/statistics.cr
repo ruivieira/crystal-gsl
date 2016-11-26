@@ -17,6 +17,7 @@ module Statistics
     # ```
     def initialize(@min : Int64, @max : Int64)
     end
+
     # Returns a random integer from *min* to *max*
     #
     # ```
@@ -97,7 +98,6 @@ module Statistics
   end
 
   class Poisson < DiscreteDistribution
-
     def initialize(@mu : Float64)
     end
 
@@ -191,5 +191,24 @@ module Statistics
   def self.normalise(data : Array(Float64)) : Array(Float64)
     sum = data.sum
     return data.map { |x| x / sum }
+  end
+
+  struct LinearRegression
+    getter intercept, x
+
+    def initialize(@intercept : Float64, @x : Float64)
+    end
+  end
+
+  def self.linreg(x : Array(Float64), y : Array(Float64))
+    intercept = 0.0
+    x_est = 0.0
+    cov00 = 0.0
+    cov01 = 0.0
+    cov11 = 0.0
+    sumsq = 0.0
+    LibGSL.gsl_fit_linear(x, 1, y, 1, x.size, pointerof(intercept),
+      pointerof(x_est), pointerof(cov00), pointerof(cov01), pointerof(cov11), pointerof(sumsq))
+    return LinearRegression.new intercept, x_est
   end
 end
