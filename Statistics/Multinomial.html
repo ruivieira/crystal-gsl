@@ -117,6 +117,12 @@
 
 
 
+  <h2>Overview</h2>
+
+  <p>For <em>n</em> independent trials each of which leads to a success for exactly one of <em>k</em> categories,
+with each category having a given fixed success probability, the multinomial distribution gives the
+probability of any particular combination of numbers of successes for the various categories.</p>
+
 
 
 
@@ -141,7 +147,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28UInt64%29-class-method" class="signature"><strong>.sample</strong>(probs : Array(Float64)) : Array(UInt64)</a>
+        <a href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28Int32%29-class-method" class="signature"><strong>.sample</strong>(probs : Array(Float64)) : Array(Int32)</a>
+        
+          <div class="summary"><p>Given an array of probabilities <em>probs</em>, one per category, return the indices of the sampled categories.</p></div>
         
       </li>
     
@@ -174,13 +182,19 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="sample&#40;probs:Array&#40;Float64&#41;&#41;:Array&#40;UInt64&#41;-class-method">
+    <div class="entry-detail" id="sample&#40;probs:Array&#40;Float64&#41;&#41;:Array&#40;Int32&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>sample</strong>(probs : Array(Float64)) : Array(UInt64)
+        def self.<strong>sample</strong>(probs : Array(Float64)) : Array(Int32)
 
-        <a class="method-permalink" href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28UInt64%29-class-method">#</a>
+        <a class="method-permalink" href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28Int32%29-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Given an array of probabilities <em>probs</em>, one per category, return the indices of the sampled categories.
+Note that the probabilities do not need to be normalised.</p>
+
+<pre><code>w <span class="o">=</span> <span class="t">Array</span>.<span class="k">new</span>(<span class="n">6</span>, <span class="n">1</span><span class="s">/6.0&#41;           # probabilities of a fair die
+Statistics::Multinomial.sample&#40;w&#41; # &#61;&gt; &#91;1, 0, 0, 1, 5, 4&#93;</code></pre></div>
       
       <br/>
       <div>
