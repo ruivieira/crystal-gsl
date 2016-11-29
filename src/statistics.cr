@@ -118,13 +118,34 @@ module Statistics
     end
   end
 
+  # For *n* independent trials each of which leads to a success for exactly one of *k* categories,
+  # with each category having a given fixed success probability, the multinomial distribution gives the
+  # probability of any particular combination of numbers of successes for the various categories.
   class Multinomial
-    def self.sample(probs : Array(Float64)) : Array(UInt64)
-      k = probs.size
-      x = Array(UInt64).new(k, 10.to_u64)
-      n = x.sum
-      LibGSL.gsl_ran_multinomial(GSL::RNG, k, n, probs, x)
-      return x
+    # Given an array of probabilities *probs*, one per category, return the indices of the sampled categories.
+    # Note that the probabilities do not need to be normalised.
+    #
+    # ```
+    # w = Array.new(6, 1/6.0)           # probabilities of a fair die
+    # Statistics::Multinomial.sample(w) # => [1, 0, 0, 1, 5, 4]
+    # ```
+    def self.sample(probs : Array(Float64)) : Array(Int32)
+      n = probs.size
+
+      probs = Statistics.normalise(probs)
+      q = Statistics.cumulative_sum(probs)
+      i = 0
+      index = Array(Int32).new(n, 0)
+      while i < n
+        s = Random.rand
+        j = 0
+        while q[j] < s
+          j += 1
+        end
+        index[i] = j
+        i += 1
+      end
+      return index
     end
   end
 
