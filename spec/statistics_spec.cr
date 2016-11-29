@@ -113,4 +113,12 @@ describe Statistics do
       v.to_array.size.should eq a.size
     end
   end
+
+  describe "Linear space" do
+    it "should return the correct size" do
+      items = 10
+      l = Statistics.linspace(1.0, 10.0, items)
+      l.size.should eq items
+    end
+  end
 end

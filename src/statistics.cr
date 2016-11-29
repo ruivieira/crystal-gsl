@@ -118,6 +118,16 @@ module Statistics
     end
   end
 
+  class Multinomial
+    def self.sample(probs : Array(Float64)) : Array(UInt64)
+      k = probs.size
+      x = Array(UInt64).new(k, 10.to_u64)
+      n = x.sum
+      LibGSL.gsl_ran_multinomial(GSL::RNG, k, n, probs, x)
+      return x
+    end
+  end
+
   class MultivariateNormal
     def self.sample(mean : Vector, cov : Matrix)
       work = cov.copy
@@ -210,5 +220,15 @@ module Statistics
     LibGSL.gsl_fit_linear(x, 1, y, 1, x.size, pointerof(intercept),
       pointerof(x_est), pointerof(cov00), pointerof(cov01), pointerof(cov11), pointerof(sumsq))
     return LinearRegression.new intercept, x_est
+  end
+
+  # returns an equally space interval starting from *s* and ending in *e* (inclusive)
+  #
+  # ```
+  # linspace(1.0, 10.0, 10) # => [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  # ```
+  def self.linspace(s : Float64, e : Float64, num : Int) : Array(Float64)
+    delta = (e - s)/(num - 1.0)
+    return Array.new(num) { |i| s + i * delta }
   end
 end

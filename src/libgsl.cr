@@ -34,6 +34,10 @@ lib LibGSL
   fun gsl_cdf_poisson_P(k : UInt64, mu : Float64) : Float64
   fun gsl_cdf_poisson_Q(k : UInt64, mu : Float64) : Float64
 
+  # Multinomial distribution
+  fun gsl_ran_multinomial(r : Gsl_rng*,
+                          k : LibC::SizeT, n : UInt64, p : Float64*, ns : UInt64*) : Void
+
   # matrices
 
   struct Gsl_matrix
@@ -104,7 +108,6 @@ lib LibGSL
 
   # Inference
   fun gsl_fit_linear(x : Float64*, xstride : LibC::SizeT, y : Float64*, ystride : LibC::SizeT, n : LibC::SizeT, c0 : Float64*, c1 : Float64*, cov00 : Float64*, cov01 : Float64*, cov11 : Float64*, sumsq : Float64*) : Int32
-
 end
 
 module GSL
