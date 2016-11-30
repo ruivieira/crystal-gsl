@@ -11,6 +11,38 @@ module Statistics
     abstract def sample : Float64
   end
 
+  # A distribution with parameters *n* and *p* which is the discrete probability
+  # distribution of the number of successes in a sequence of *n* independent yes/no experiments,
+  # each of which yields success with probability *p*
+  class Binomial < DiscreteDistribution
+    def initialize(@p : Float64, @n : UInt64)
+    end
+
+    # This function returns a random integer from the binomial distribution,
+    # the number of successes in *n* independent trials with probability *p*.
+    #
+    # ```
+    # Binomial.sample(0.5, 1) # => 1
+    # ```
+    def self.sample(p : Float64, n : UInt64) : UInt64
+      return LibGSL.gsl_ran_binomial(GSL::RNG, p, n)
+    end
+
+    # This function returns *number* random integers from the binomial distribution,
+    # the number of successes in *n* independent trials with probability *p*.
+    #
+    # ```
+    # Binomial.sample(3, 0.5, 1) # => [1, 1, 0]
+    # ```
+    def self.sample(number : Int, p : Float64, n : UInt64) : Array(UInt64)
+      (0...number).map { |x| Binomial.sample(p, n) }
+    end
+
+    def sample : Int
+      return Binomial.sample(@p, @n)
+    end
+  end
+
   # A symmetric probability distribution whereby a finite number of values are
   # equally likely to be observed: every one of *n* values has equal probability *1/n*.
   class DiscreteUniform < DiscreteDistribution

@@ -1,6 +1,18 @@
 require "./spec_helper"
 
 describe Statistics do
+  describe "Binomial" do
+    it "must return the corrent number of elements" do
+      samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
+      samples.size.should eq 100
+    end
+
+    it "must return samples within the number of trials" do
+      samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
+      samples.all? { |x| x == 0 || x == 1 }.should eq true
+    end
+  end
+
   describe "DiscreteUniform" do
     it "must be within the min and max" do
       uniforms = (1..1000).map { |i| Statistics::DiscreteUniform.sample(0, 1) }
