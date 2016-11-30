@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::Gamma - github.com/ruivieira/crystal-gsl</title>
+  <title>Statistics::Uniform - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -60,7 +60,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
       <a href="../Statistics/Gamma.html">Gamma</a>
       
     </li>
@@ -95,7 +95,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Uniform" data-name="statistics::uniform">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Uniform" data-name="statistics::uniform">
       <a href="../Statistics/Uniform.html">Uniform</a>
       
     </li>
@@ -117,15 +117,19 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Statistics::Gamma
+  <span class="kind">class</span> Statistics::Uniform
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Gamma.html">Statistics::Gamma</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Uniform.html">Statistics::Uniform</a></li><li class="superclass"><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>This class represents a random variate from the flat (uniform) distribution from <em>a</em> to <em>b</em>.</p>
 
 
 
@@ -151,27 +155,21 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28shape%3AFloat64%2Cscale%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(shape : Float64, scale : Float64)</a>
+        <a href="#new%28a%3AFloat64%2Cb%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(a : Float64, b : Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#next%28shape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.next</strong>(shape : Float64, scale : Float64) : Float64</a>
+        <a href="#sample%28a%3AFloat64%2Cb%3AFloat64%29-class-method" class="signature"><strong>.sample</strong>(a : Float64, b : Float64)</a>
+        
+          <div class="summary"><p>Returns a sample from x ~ U(a,b).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64</a>
+        <a href="#sample%28n%3AInt%2Ca%3AFloat64%2Cb%3AFloat64%29-class-method" class="signature"><strong>.sample</strong>(n : Int, a : Float64, b : Float64)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample%28shape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.sample</strong>(shape : Float64, scale : Float64) : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample%28n%3AInt32%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AArray%28Float64%29-class-method" class="signature"><strong>.sample</strong>(n : Int32, shape : Float64, scale : Float64) : Array(Float64)</a>
+          <div class="summary"><p>Returns samples from X ~ U(a,b).</p></div>
         
       </li>
     
@@ -183,22 +181,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#next%3AFloat64-instance-method" class="signature"><strong>#next</strong> : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pdf%28x%3AFloat64%29%3AFloat64-instance-method" class="signature"><strong>#pdf</strong>(x : Float64) : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#sample%3AFloat64-instance-method" class="signature"><strong>#sample</strong> : Float64</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sample%28n%3AInt32%29%3AArray%28Float64%29-instance-method" class="signature"><strong>#sample</strong>(n : Int32) : Array(Float64)</a>
+          <div class="summary"><p>Returns a sample from x ~ U(a,b).</p></div>
         
       </li>
     
@@ -209,6 +194,22 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></code></h3>
+  
+  
+    <a href="../Statistics/ContinuousDistribution.html#sample%3AFloat64-instance-method" class="tooltip">
+      <span>sample : Float64</span>
+    sample</a>
+    
+  
+
+
+    
+
+
   
     
 
@@ -229,12 +230,12 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new&#40;shape:Float64,scale:Float64&#41;-class-method">
+    <div class="entry-detail" id="new&#40;a:Float64,b:Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(shape : Float64, scale : Float64)
+        def self.<strong>new</strong>(a : Float64, b : Float64)
 
-        <a class="method-permalink" href="#new%28shape%3AFloat64%2Cscale%3AFloat64%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28a%3AFloat64%2Cb%3AFloat64%29-class-method">#</a>
       </div>
       
       <br/>
@@ -243,13 +244,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="next&#40;shape:Float64,scale:Float64&#41;:Float64-class-method">
+    <div class="entry-detail" id="sample&#40;a:Float64,b:Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>next</strong>(shape : Float64, scale : Float64) : Float64
+        def self.<strong>sample</strong>(a : Float64, b : Float64)
 
-        <a class="method-permalink" href="#next%28shape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#sample%28a%3AFloat64%2Cb%3AFloat64%29-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Returns a sample from x ~ U(a,b).</p>
+
+<pre><code><span class="t">Uniform</span>.sample(<span class="n">0.0</span>, <span class="n">1.0</span>) <span class="c"># &#61;&gt; 0.0124</span></code></pre></div>
       
       <br/>
       <div>
@@ -257,41 +262,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pdf&#40;x:Float64,shape:Float64,scale:Float64&#41;:Float64-class-method">
+    <div class="entry-detail" id="sample&#40;n:Int,a:Float64,b:Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64
+        def self.<strong>sample</strong>(n : Int, a : Float64, b : Float64)
 
-        <a class="method-permalink" href="#pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#sample%28n%3AInt%2Ca%3AFloat64%2Cb%3AFloat64%29-class-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample&#40;shape:Float64,scale:Float64&#41;:Float64-class-method">
-      <div class="signature">
-        
-        def self.<strong>sample</strong>(shape : Float64, scale : Float64) : Float64
+        <div class="doc"><p>Returns samples from X ~ U(a,b).</p>
 
-        <a class="method-permalink" href="#sample%28shape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample&#40;n:Int32,shape:Float64,scale:Float64&#41;:Array&#40;Float64&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>sample</strong>(n : Int32, shape : Float64, scale : Float64) : Array(Float64)
-
-        <a class="method-permalink" href="#sample%28n%3AInt32%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AArray%28Float64%29-class-method">#</a>
-      </div>
+<pre><code><span class="t">Uniform</span>.sample(<span class="n">5</span>, <span class="n">0.0</span>, <span class="n">1.0</span>) <span class="c"># &#61;&gt; &#91;0.0124, 0.2145, 0.9303, 0.8617, 0.4556&#93;</span></code></pre></div>
       
       <br/>
       <div>
@@ -304,34 +285,6 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="next:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>next</strong> : Float64
-
-        <a class="method-permalink" href="#next%3AFloat64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pdf&#40;x:Float64&#41;:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>pdf</strong>(x : Float64) : Float64
-
-        <a class="method-permalink" href="#pdf%28x%3AFloat64%29%3AFloat64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="sample:Float64-instance-method">
       <div class="signature">
         
@@ -340,19 +293,10 @@
         <a class="method-permalink" href="#sample%3AFloat64-instance-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sample&#40;n:Int32&#41;:Array&#40;Float64&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>sample</strong>(n : Int32) : Array(Float64)
+        <div class="doc"><p>Returns a sample from x ~ U(a,b).</p>
 
-        <a class="method-permalink" href="#sample%28n%3AInt32%29%3AArray%28Float64%29-instance-method">#</a>
-      </div>
+<pre><code>u <span class="o">=</span> <span class="t">Uniform</span>.<span class="k">new</span> <span class="n">0.0</span>, <span class="n">1.0</span>
+u.sample <span class="c"># &#61;&gt; 0.0124</span></code></pre></div>
       
       <br/>
       <div>
