@@ -23,7 +23,7 @@ require "gsl"
 
 Full documentation can be found at [here](https://ruivieira.github.io/crystal-gsl/).
 
-Examples can be found [here](https://ruivieira.github.io/gsl/crystal-gsl.html).
+Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/regressions/).
 
 Warning:
 
