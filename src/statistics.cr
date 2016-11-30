@@ -7,6 +7,10 @@ module Statistics
     abstract def sample : Int
   end
 
+  abstract class ContinuousDistribution
+    abstract def sample : Float64
+  end
+
   # A symmetric probability distribution whereby a finite number of values are
   # equally likely to be observed: every one of *n* values has equal probability *1/n*.
   class DiscreteUniform < DiscreteDistribution
@@ -222,6 +226,40 @@ module Statistics
   def self.normalise(data : Array(Float64)) : Array(Float64)
     sum = data.sum
     return data.map { |x| x / sum }
+  end
+
+  # This class represents a random variate from the flat (uniform) distribution from *a* to *b*.
+  class Uniform < ContinuousDistribution
+    def initialize(@a : Float64, @b : Float64)
+    end
+
+    # Returns a sample from x ~ U(a,b).
+    #
+    # ```
+    # u = Uniform.new 0.0, 1.0
+    # u.sample # => 0.0124
+    # ```
+    def sample : Float64
+      return LibGSL.gsl_ran_flat(GSL::RNG, @a, @b)
+    end
+
+    # Returns a sample from x ~ U(a,b).
+    #
+    # ```
+    # Uniform.sample(0.0, 1.0) # => 0.0124
+    # ```
+    def self.sample(a : Float64, b : Float64)
+      return LibGSL.gsl_ran_flat(GSL::RNG, a, b)
+    end
+
+    # Returns samples from X ~ U(a,b).
+    #
+    # ```
+    # Uniform.sample(5, 0.0, 1.0) # => [0.0124, 0.2145, 0.9303, 0.8617, 0.4556]
+    # ```
+    def self.sample(n : Int, a : Float64, b : Float64)
+      return (0...n).map { |i| LibGSL.gsl_ran_flat(GSL::RNG, a, b) }
+    end
   end
 
   struct LinearRegression

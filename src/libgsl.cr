@@ -38,6 +38,9 @@ lib LibGSL
   fun gsl_ran_multinomial(r : Gsl_rng*,
                           k : LibC::SizeT, n : UInt64, p : Float64*, ns : UInt64*) : Void
 
+  # Uniform distribution
+  fun gsl_ran_flat(r : Gsl_rng*, a : Float64, b : Float64) : Float64
+
   # matrices
 
   struct Gsl_matrix

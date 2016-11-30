@@ -42,6 +42,18 @@ describe Statistics do
     end
   end
 
+  describe "Uniform" do
+    it "should return an array of the correct dimension" do
+      xs = Statistics::Uniform.sample(100, 0.0, 1.0)
+      xs.size.should eq 100
+    end
+
+    it "should be within support" do
+      xs = Statistics::Uniform.sample(100, 0.0, 1.0)
+      xs.all? { |x| x > 0.0 && x < 1.0 }.should eq true
+    end
+  end
+
   describe "Matrix" do
     it "should set a vector as a column" do
       m = Statistics::Matrix.new 4, 4
