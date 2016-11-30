@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::DiscreteUniform - github.com/ruivieira/crystal-gsl</title>
+  <title>Statistics::Binomial - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
       
         <ul>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
       
     </li>
@@ -55,7 +55,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteUniform" data-name="statistics::discreteuniform">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteUniform" data-name="statistics::discreteuniform">
       <a href="../Statistics/DiscreteUniform.html">DiscreteUniform</a>
       
     </li>
@@ -122,20 +122,21 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Statistics::DiscreteUniform
+  <span class="kind">class</span> Statistics::Binomial
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/DiscreteUniform.html">Statistics::DiscreteUniform</a></li><li class="superclass"><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Binomial.html">Statistics::Binomial</a></li><li class="superclass"><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
 
   <h2>Overview</h2>
 
-  <p>A symmetric probability distribution whereby a finite number of values are
-equally likely to be observed: every one of <em>n</em> values has equal probability <em>1/n</em>.</p>
+  <p>A distribution with parameters <em>n</em> and <em>p</em> which is the discrete probability
+distribution of the number of successes in a sequence of <em>n</em> independent yes/no experiments,
+each of which yields success with probability <em>p</em></p>
 
 
 
@@ -161,23 +162,21 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28min%3AInt64%2Cmax%3AInt64%29-class-method" class="signature"><strong>.new</strong>(min : Int64, max : Int64)</a>
-        
-          <div class="summary"><p>Create a new discrete uniform object with parameters <em>min</em> and <em>man</em></p></div>
+        <a href="#new%28p%3AFloat64%2Cn%3AUInt64%29-class-method" class="signature"><strong>.new</strong>(p : Float64, n : UInt64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%28min%3AInt%2Cmax%3AInt%29-class-method" class="signature"><strong>.sample</strong>(min : Int, max : Int)</a>
+        <a href="#sample%28p%3AFloat64%2Cn%3AUInt64%29%3AUInt64-class-method" class="signature"><strong>.sample</strong>(p : Float64, n : UInt64) : UInt64</a>
         
-          <div class="summary"><p>Returns a random integer from <em>min</em> to <em>max</em></p></div>
+          <div class="summary"><p>This function returns a random integer from the binomial distribution, the number of successes in <em>n</em> independent trials with probability <em>p</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%28n%3AInt%2Cmin%3AInt%2Cmax%3AInt%29-class-method" class="signature"><strong>.sample</strong>(n : Int, min : Int, max : Int)</a>
+        <a href="#sample%28number%3AInt%2Cp%3AFloat64%2Cn%3AUInt64%29%3AArray%28UInt64%29-class-method" class="signature"><strong>.sample</strong>(number : Int, p : Float64, n : UInt64) : Array(UInt64)</a>
         
-          <div class="summary"><p>Returns an array of random integers from <em>min</em> to <em>max</em></p></div>
+          <div class="summary"><p>This function returns <em>number</em> random integers from the binomial distribution, the number of successes in <em>n</em> independent trials with probability <em>p</em>.</p></div>
         
       </li>
     
@@ -190,8 +189,6 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
     
       <li class="entry-summary">
         <a href="#sample%3AInt-instance-method" class="signature"><strong>#sample</strong> : Int</a>
-        
-          <div class="summary"><p>Returns a random integer from <em>min</em> to <em>max</em></p></div>
         
       </li>
     
@@ -238,17 +235,13 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new&#40;min:Int64,max:Int64&#41;-class-method">
+    <div class="entry-detail" id="new&#40;p:Float64,n:UInt64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(min : Int64, max : Int64)
+        def self.<strong>new</strong>(p : Float64, n : UInt64)
 
-        <a class="method-permalink" href="#new%28min%3AInt64%2Cmax%3AInt64%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28p%3AFloat64%2Cn%3AUInt64%29-class-method">#</a>
       </div>
-      
-        <div class="doc"><p>Create a new discrete uniform object with parameters <em>min</em> and <em>man</em></p>
-
-<pre><code>u <span class="o">=</span> <span class="t">DiscreteUniform</span>.<span class="k">new</span> <span class="n">0</span>, <span class="n">2</span></code></pre></div>
       
       <br/>
       <div>
@@ -256,17 +249,18 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
       </div>
     </div>
   
-    <div class="entry-detail" id="sample&#40;min:Int,max:Int&#41;-class-method">
+    <div class="entry-detail" id="sample&#40;p:Float64,n:UInt64&#41;:UInt64-class-method">
       <div class="signature">
         
-        def self.<strong>sample</strong>(min : Int, max : Int)
+        def self.<strong>sample</strong>(p : Float64, n : UInt64) : UInt64
 
-        <a class="method-permalink" href="#sample%28min%3AInt%2Cmax%3AInt%29-class-method">#</a>
+        <a class="method-permalink" href="#sample%28p%3AFloat64%2Cn%3AUInt64%29%3AUInt64-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns a random integer from <em>min</em> to <em>max</em></p>
+        <div class="doc"><p>This function returns a random integer from the binomial distribution,
+the number of successes in <em>n</em> independent trials with probability <em>p</em>.</p>
 
-<pre><code><span class="t">DiscreteUniform</span>.sample(<span class="n">0</span>, <span class="n">2</span>) <span class="c"># &#61;&gt; 1</span></code></pre></div>
+<pre><code><span class="t">Binomial</span>.sample(<span class="n">0.5</span>, <span class="n">1</span>) <span class="c"># &#61;&gt; 1</span></code></pre></div>
       
       <br/>
       <div>
@@ -274,17 +268,18 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
       </div>
     </div>
   
-    <div class="entry-detail" id="sample&#40;n:Int,min:Int,max:Int&#41;-class-method">
+    <div class="entry-detail" id="sample&#40;number:Int,p:Float64,n:UInt64&#41;:Array&#40;UInt64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>sample</strong>(n : Int, min : Int, max : Int)
+        def self.<strong>sample</strong>(number : Int, p : Float64, n : UInt64) : Array(UInt64)
 
-        <a class="method-permalink" href="#sample%28n%3AInt%2Cmin%3AInt%2Cmax%3AInt%29-class-method">#</a>
+        <a class="method-permalink" href="#sample%28number%3AInt%2Cp%3AFloat64%2Cn%3AUInt64%29%3AArray%28UInt64%29-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns an array of random integers from <em>min</em> to <em>max</em></p>
+        <div class="doc"><p>This function returns <em>number</em> random integers from the binomial distribution,
+the number of successes in <em>n</em> independent trials with probability <em>p</em>.</p>
 
-<pre><code><span class="t">DiscreteUniform</span>.sample(<span class="n">4</span>, <span class="n">0</span>, <span class="n">2</span>) <span class="c"># &#61;&gt; &#91;0, 2, 1, 1, 2&#93;</span></code></pre></div>
+<pre><code><span class="t">Binomial</span>.sample(<span class="n">3</span>, <span class="n">0.5</span>, <span class="n">1</span>) <span class="c"># &#61;&gt; &#91;1, 1, 0&#93;</span></code></pre></div>
       
       <br/>
       <div>
@@ -304,11 +299,6 @@ equally likely to be observed: every one of <em>n</em> values has equal probabil
 
         <a class="method-permalink" href="#sample%3AInt-instance-method">#</a>
       </div>
-      
-        <div class="doc"><p>Returns a random integer from <em>min</em> to <em>max</em></p>
-
-<pre><code>u <span class="o">=</span> <span class="t">DiscreteUniform</span>.<span class="k">new</span> <span class="n">0</span>, <span class="n">2</span>
-u.sample <span class="c"># &#61;&gt; 1</span></code></pre></div>
       
       <br/>
       <div>
