@@ -8,7 +8,7 @@ module Statistics
 
     # alias for frequencies
     def freqs
-      self.freuqencies
+      self.frequencies
     end
 
     def mode
