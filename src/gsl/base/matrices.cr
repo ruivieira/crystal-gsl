@@ -97,6 +97,10 @@ module Statistics
       @pointer = LibGSL.gsl_vector_calloc(@size)
     end
 
+    def inspect
+      "Statistics::Vector: #{self.to_array}"
+    end
+
     def initialize(a : Array(Float64))
       @size = a.size
       @pointer = LibGSL.gsl_vector_calloc(@size)
