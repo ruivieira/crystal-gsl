@@ -7,68 +7,52 @@ module Statistics
     end
 
     # alias of push function
-    def <<(n : Int32 | Float64)
+    def << (n : Int32 | Float64)
       self.push(n.to_f)
     end
 
-    def +(n : Int32 | Float64)
-      self.map { |x| x + n }.to_vector
+    def + (n : Int32 | Float64)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_add_constant(temp.pointer , n.to_f)
+      temp 
     end
 
-    def +(n : Statistics::Vector)
-      if self.validate(n)
-        [self.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a + b } }.to_vector
-      else
-        if self.size > n.size
-          self2 = self.to_a[0...n.size]
-          [self2.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a + b } }.concat(self.to_a[n.size..-1]).to_vector
-        else
-          n2 = n.to_a[0...self.size]
-          [self.to_a, n2.to_a].transpose.map { |x| x.reduce { |a, b| a + b } }.concat(n.to_a[self.size..-1]).to_vector
-        end
-      end
+    def + (n : Statistics::Vector)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_add(temp.pointer , n.pointer)
+      temp 
     end
 
-    def -(n : Int32 | Float64)
+    def - (n : Int32 | Float64)
       self.map { |x| x - n }.to_vector
     end
 
-    def -(n : Statistics::Vector)
-      if self.validate(n)
-        [self.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a - b } }.to_vector
-      else
-        if self.size > n.size
-          self2 = self.to_a[0...n.size]
-          [self2.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a - b } }.concat(self.to_a[n.size..-1]).to_vector
-        else
-          n2 = n.to_a[0...self.size]
-          [self.to_a, n2.to_a].transpose.map { |x| x.reduce { |a, b| a - b } }.concat(n.to_a[self.size..-1]).to_vector
-        end
-      end
+    def - (n : Statistics::Vector)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_sub(temp.pointer , n.pointer)
+      temp 
     end
 
-    def *(n : Int32 | Float64)
-      self.map { |x| x * n }.to_vector
+    def * (n : Int32 | Float64)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_scale(temp.pointer , n.to_f)
+      temp
     end
 
-    def *(n : Statistics::Vector)
-      if self.validate(n)
-        [self.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a * b } }.to_vector
-      else
-        raise LengthException.new("Larger vector length is not the multiplication of shorter one.")
-      end
+    def * (n : Statistics::Vector)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_mul(temp.pointer , n.pointer)
+      temp 
     end
 
-    def /(n : Int32 | Float64)
+    def / (n : Int32 | Float64)
       self.map { |x| x / n }.to_vector
     end
 
-    def /(n : Statistics::Vector)
-      if self.validate(n)
-        [self.to_a, n.to_a].transpose.map { |x| x.reduce { |a, b| a / b } }.to_vector
-      else
-        raise LengthException.new("Larger vector length is not the multiplication of shorter one.")
-      end
+    def / (n : Statistics::Vector)
+      temp = Statistics::Vector.new self.to_a
+      LibGSL.gsl_vector_div(temp.pointer , n.pointer)
+      temp 
     end
 
     def sum
