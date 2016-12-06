@@ -38,15 +38,6 @@ dependencies:
 ```crystal
 require "gsl"
 ```
-### Vector declaration
-
-turn a set of float array into vector 
-
-```crystal
-Statistics::Vector.new [1.0,2.0,3.0]
-# automatic force changed to float by using to_vector
-[1,2,3].to_vector
-```
 
 Full documentation can be found at [here](https://ruivieira.github.io/crystal-gsl/).
 
