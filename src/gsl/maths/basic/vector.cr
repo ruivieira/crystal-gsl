@@ -2,15 +2,6 @@ require "../../base/matrices"
 
 module Statistics
   class Vector
-    def push(n : Int32 | Float64)
-      self.to_a.push(n.to_f).to_vector
-    end
-
-    # alias of push function
-    def <<(n : Int32 | Float64)
-      self.push(n.to_f)
-    end
-
     def +(n : Int32 | Float64)
       temp = Statistics::Vector.new self.to_a
       LibGSL.gsl_vector_add_constant(temp.pointer, n.to_f)
