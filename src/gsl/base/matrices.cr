@@ -19,7 +19,7 @@ module Statistics
       @pointer.value.size2
     end
 
-    def shape 
+    def shape
       Tuple.new(@rows, @columns)
     end
 
