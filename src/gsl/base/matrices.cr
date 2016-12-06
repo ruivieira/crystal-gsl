@@ -19,6 +19,10 @@ module Statistics
       @pointer.value.size2
     end
 
+    def shape 
+      Tuple.new(@rows, @columns)
+    end
+
     def [](row : Int32, column : Int32) : Float64
       return LibGSL.gsl_matrix_get(@pointer, row, column)
     end
