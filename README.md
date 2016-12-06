@@ -13,7 +13,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   gsl:
-    github: dylandy/crystal-gsl
+    github: ruivieira/crystal-gsl
 ```
 ## System dependencies
 
@@ -53,7 +53,7 @@ Warning:
 
 ## Contributing
 
-1. Fork it ( https://github.com/dylandy/crystal-gsl/fork )
+1. Fork it ( https://github.com/ruivieira/crystal-gsl/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
