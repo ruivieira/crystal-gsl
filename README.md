@@ -1,5 +1,8 @@
 # statistics
 
+### Status
+[![Build Status](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)
+
 GNU Scientific Library (GSL) binding for Crystal
 
 ## Installation
