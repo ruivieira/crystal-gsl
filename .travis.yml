@@ -10,5 +10,3 @@ install:
 script:
   - crystal tool format --check
   - crystal build ./src/gsl.cr
-  - crystal ./spec/gsl_spec.cr
-
