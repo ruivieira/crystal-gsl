@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="js/doc.js"></script>
-  <title>GSL - github.com/ruivieira/crystal-gsl</title>
+  <title>Array(T) - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 
   <ul>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="Array.html">Array</a>
       
     </li>
@@ -30,7 +30,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
       <a href="GSL.html">GSL</a>
       
     </li>
@@ -132,17 +132,70 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> GSL
+  <span class="kind">class</span> Array(T)
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Array.html">Array(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>An Array is an ordered, integer-indexed collection of objects of type T.</p>
+
+<p>Array indexing starts at 0. A negative index is assumed to be
+relative to the end of the array: -1 indicates the last element,
+-2 is the next to last element, and so on.</p>
+
+<p>An Array can be created using the usual <code>new</code> method (several are provided), or with an array literal:</p>
+
+<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># &#61;&gt; &#91;&#93;</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array&#40;Int32&#41;</span>
+[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array&#40;Int32 | String | Char&#41;</span></code></pre>
+
+<p>An Array can have mixed types, meaning T will be a union of types, but these are determined
+when the array is created, either by specifying T or by using an array literal. In the latter
+case, T will be set to the union of the array literal elements' types.</p>
+
+<p>When creating an empty array you must always specify T:</p>
+
+<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array&#40;Int32&#41;</span>
+<span class="o">[]</span>          <span class="c"># syntax error</span></code></pre>
+
+<p>An Array is implemented using an internal buffer of some capacity
+and is reallocated when elements are pushed to it when more capacity
+is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dynamic_array" target="_blank">dynamic array</a>.</p>
+
+<p>You can use a special array literal syntax with other types too, as long as they define an argless
+<code>new</code> method and a <code><<</code> method. <code>Set</code> is one such type:</p>
+
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; &#91;1, 2, 3&#93;</span>
+set.<span class="k">class</span>          <span class="c"># &#61;&gt; Set&#40;Int32&#41;</span></code></pre>
+
+<p>The above is the same as this:</p>
+
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>(<span class="k">typeof</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>)).<span class="k">new</span>
+set <span class="o"><<</span> <span class="n">1</span>
+set <span class="o"><<</span> <span class="n">2</span>
+set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
 
 
 
 
-
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Comparable(<a href="Array.html">Array(T)</a>)</li>
+  
+    <li class="other-type">Enumerable(T)</li>
+  
+    <li class="other-type">Indexable(T)</li>
+  
+  </ul>
 
 
 
@@ -158,21 +211,19 @@
 
 
 
-  
-    <h2>Constant Summary</h2>
-  
-  <dl>
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
     
-      <dt class="entry-const" id="RNG">
-        <strong>RNG</strong> = <code><span class="t">LibGSL</span>.gsl_rng_alloc(<span class="t">LibGSL</span>.gsl_rng_env_setup)</code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#to_vector-instance-method" class="signature"><strong>#to_vector</strong></a>
+        
+      </li>
     
-  </dl>
-
-
-
-
+  </ul>
 
 
 
@@ -180,10 +231,69 @@
 
 <div class="methods-inherited">
   
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
 </div>
 
 
 
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="to_vector-instance-method">
+      <div class="signature">
+        
+        def <strong>to_vector</strong>
+
+        <a class="method-permalink" href="#to_vector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 

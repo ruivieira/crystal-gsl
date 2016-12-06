@@ -20,13 +20,23 @@
 
   <ul>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
-      <a href="GSL.html">GSL</a>
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
+      <a href="Array.html">Array</a>
       
     </li>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Gsl" data-name="gsl">
       <a href="Gsl.html">Gsl</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+      <a href="GSL.html">GSL</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/LengthException" data-name="lengthexception">
+      <a href="LengthException.html">LengthException</a>
       
     </li>
   
@@ -122,6 +132,10 @@
 <div id="main-content">
 <h1>statistics</h1>
 
+<h3>Status</h3>
+
+<p><a href="https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master" target="_blank"><img src="https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master" alt="Build Status"/></a></p>
+
 <p>GNU Scientific Library (GSL) binding for Crystal</p>
 
 <h2>Installation</h2>
@@ -131,6 +145,20 @@
 <pre><code class='language-yaml'>dependencies:
   gsl:
     github: ruivieira/crystal-gsl</code></pre>
+
+<h2>System dependencies</h2>
+
+<h3>Ubuntu &lt; 16.04 </h3>
+
+<ul><li>libgsl0-dev </li><li>gsl-bin</li></ul>
+
+<h3>Ubuntu >= 16.04</h3>
+
+<ul><li>libgsl-dev</li><li>gsl-bin</li></ul>
+
+<h3>Fedora</h3>
+
+<ul><li>gsl</li><li>gsl-devel</li></ul>
 
 <h2>Usage</h2>
 
@@ -148,9 +176,13 @@
 
 <ol><li>Fork it ( https://github.com/ruivieira/crystal-gsl/fork )</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
 
+<h3>Developing Depencies</h3>
+
+<ul><li>Ruby & rake</li><li><a href="https://github.com/greyblake/crystal-icr" target="_blank">crystal-icr</a> , > 0.2.10 // Install manually not by shard install</li></ul>
+
 <h2>Contributors</h2>
 
-<ul><li><a href="https://github.com/ruivieira" target="_blank">ruivieira</a> Rui Vieira - creator, maintainer</li><li><a href="https://github.com/dylandy" target="_blank">dylandy</a></li></ul>
+<ul><li><a href="https://github.com/ruivieira" target="_blank">ruivieira</a> Rui Vieira - creator, maintainer</li><li><a href="https://github.com/dylandy" target="_blank">dylandy</a> Dylandy Chang - developer, maintainer</li></ul>
 </div>
 </body>
 </html>
