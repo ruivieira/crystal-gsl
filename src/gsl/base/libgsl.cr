@@ -91,6 +91,11 @@ lib LibGSL
   fun gsl_vector_get(v : Gsl_vector*, i : LibC::SizeT) : Float64
   fun gsl_vector_set(v : Gsl_vector*, i : LibC::SizeT, x : Float64) : Void
   fun gsl_vector_add(a : Gsl_vector*, b : Gsl_vector*) : Int32
+  fun gsl_vector_sub(a : Gsl_vector*, b : Gsl_vector*) : Int32
+  fun gsl_vector_mul(a : Gsl_vector*, b : Gsl_vector*) : Int32
+  fun gsl_vector_div(a : Gsl_vector*, b : Gsl_vector*) : Int32
+  fun gsl_vector_scale(a : Gsl_vector*, b : LibC::Double) : Int32
+  fun gsl_vector_add_constant(a : Gsl_vector*, b : LibC::Double) : Int32
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t

@@ -1,6 +1,7 @@
 require "math"
 require "random"
 require "./libgsl.cr"
+require "./error"
 
 module Statistics
   class Matrix
@@ -16,6 +17,10 @@ module Statistics
 
     def ncols : Int32
       @pointer.value.size2
+    end
+
+    def shape
+      Tuple.new(@rows, @columns)
     end
 
     def [](row : Int32, column : Int32) : Float64
@@ -96,6 +101,10 @@ module Statistics
       @pointer = LibGSL.gsl_vector_calloc(@size)
     end
 
+    def inspect
+      "Statistics::Vector: #{self.to_array}"
+    end
+
     def initialize(a : Array(Float64))
       @size = a.size
       @pointer = LibGSL.gsl_vector_calloc(@size)
@@ -130,6 +139,11 @@ module Statistics
         result[i] = self[i]
       end
       return result
+    end
+
+    # alias to to_array
+    def to_a : Array(Float64)
+      self.to_array
     end
   end
 end

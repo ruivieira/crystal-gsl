@@ -1,5 +1,12 @@
 language: crystal
-
+sudo: required
+crystal:
+    - latest
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y gsl-bin libgsl0-dbg libgsl0-dev libgsl0ldbl
+install:
+  - shards install
+script:
+  - crystal tool format --check
+  - crystal build ./src/gsl.cr

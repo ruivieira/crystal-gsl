@@ -1,3 +1,5 @@
 .crystal
 src/tests
+*.swp
+test*
 doc
