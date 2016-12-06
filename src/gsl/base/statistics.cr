@@ -3,10 +3,88 @@ require "random"
 require "./libgsl.cr"
 
 module Statistics
-  class DiscreteUniform
-    # Returns a random integer from #min to #max
+  abstract class DiscreteDistribution
+    abstract def sample : Int
+  end
+
+  abstract class ContinuousDistribution
+    abstract def sample : Float64
+  end
+
+  # A distribution with parameters *n* and *p* which is the discrete probability
+  # distribution of the number of successes in a sequence of *n* independent yes/no experiments,
+  # each of which yields success with probability *p*
+
+  # TODO : Implement CDF methods
+  class Binomial < DiscreteDistribution
+    def initialize(@p : Float64, @n : UInt64)
+    end
+
+    # This function returns a random integer from the binomial distribution,
+    # the number of successes in *n* independent trials with probability *p*.
+    #
+    # ```
+    # Binomial.sample(0.5, 1) # => 1
+    # ```
+    def self.sample(p : Float64, n : UInt64) : UInt64
+      return LibGSL.gsl_ran_binomial(GSL::RNG, p, n)
+    end
+
+    # This function returns *number* random integers from the binomial distribution,
+    # the number of successes in *n* independent trials with probability *p*.
+    #
+    # ```
+    # Binomial.sample(3, 0.5, 1) # => [1, 1, 0]
+    # ```
+    def self.sample(number : Int, p : Float64, n : UInt64) : Array(UInt64)
+      (0...number).map { |x| Binomial.sample(p, n) }
+    end
+
+    def sample : Int
+      return Binomial.sample(@p, @n)
+    end
+  end
+
+  # A symmetric probability distribution whereby a finite number of values are
+  # equally likely to be observed: every one of *n* values has equal probability *1/n*.
+  class DiscreteUniform < DiscreteDistribution
+    # Create a new discrete uniform object with parameters *min* and *man*
+    #
+    # ```
+    # u = DiscreteUniform.new 0, 2
+    # ```
+    def initialize(@min : Int64, @max : Int64)
+    end
+
+    # Returns a random integer from *min* to *max*
+    #
+    # ```
+    # u = DiscreteUniform.new 0, 2
+    # u.sample # => 1
+    # ```
+    def sample : Int
+      DiscreteUniform.sample(@min, @max)
+    end
+
+    # Returns a random integer from *min* to *max*
+    #
+    # ```
+    # DiscreteUniform.sample(0, 2) # => 1
+    # ```
     def self.sample(min : Int, max : Int)
+      if max < min
+        raise ArgumentError.new("Maximum cannot be smaller than minimum")
+      end
       Random.new.rand(min..max)
+    end
+
+    # Returns an array of random integers from *min* to *max*
+    #
+    # ```
+    # DiscreteUniform.sample(4, 0, 2) # => [0, 2, 1, 1, 2]
+    # ```
+    def self.sample(n : Int, min : Int, max : Int)
+      (0...n).map { |i| DiscreteUniform.sample min, max }
     end
   end
 
@@ -57,7 +135,14 @@ module Statistics
     end
   end
 
-  class Poisson
+  class Poisson < DiscreteDistribution
+    def initialize(@mu : Float64)
+    end
+
+    def sample : Int
+      return Poisson.sample(@mu)
+    end
+
     def self.sample(mu : Float64) : UInt64
       return LibGSL.gsl_ran_poisson(GSL::RNG, mu)
     end
@@ -68,6 +153,37 @@ module Statistics
 
     def self.pdf(k : UInt64, mu : Float64) : Float64
       return LibGSL.gsl_ran_poisson_pdf(k, mu)
+    end
+  end
+
+  # For *n* independent trials each of which leads to a success for exactly one of *k* categories,
+  # with each category having a given fixed success probability, the multinomial distribution gives the
+  # probability of any particular combination of numbers of successes for the various categories.
+  class Multinomial
+    # Given an array of probabilities *probs*, one per category, return the indices of the sampled categories.
+    # Note that the probabilities do not need to be normalised.
+    #
+    # ```
+    # w = Array.new(6, 1/6.0)           # probabilities of a fair die
+    # Statistics::Multinomial.sample(w) # => [1, 0, 0, 1, 5, 4]
+    # ```
+    def self.sample(probs : Array(Float64)) : Array(Int32)
+      n = probs.size
+
+      probs = Statistics.normalise(probs)
+      q = Statistics.cumulative_sum(probs)
+      i = 0
+      index = Array(Int32).new(n, 0)
+      while i < n
+        s = Random.rand
+        j = 0
+        while q[j] < s
+          j += 1
+        end
+        index[i] = j
+        i += 1
+      end
+      return index
     end
   end
 
@@ -144,5 +260,68 @@ module Statistics
   def self.normalise(data : Array(Float64)) : Array(Float64)
     sum = data.sum
     return data.map { |x| x / sum }
+  end
+
+  # This class represents a random variate from the flat (uniform) distribution from *a* to *b*.
+  class Uniform < ContinuousDistribution
+    def initialize(@a : Float64, @b : Float64)
+    end
+
+    # Returns a sample from x ~ U(a,b).
+    #
+    # ```
+    # u = Uniform.new 0.0, 1.0
+    # u.sample # => 0.0124
+    # ```
+    def sample : Float64
+      return LibGSL.gsl_ran_flat(GSL::RNG, @a, @b)
+    end
+
+    # Returns a sample from x ~ U(a,b).
+    #
+    # ```
+    # Uniform.sample(0.0, 1.0) # => 0.0124
+    # ```
+    def self.sample(a : Float64, b : Float64)
+      return LibGSL.gsl_ran_flat(GSL::RNG, a, b)
+    end
+
+    # Returns samples from X ~ U(a,b).
+    #
+    # ```
+    # Uniform.sample(5, 0.0, 1.0) # => [0.0124, 0.2145, 0.9303, 0.8617, 0.4556]
+    # ```
+    def self.sample(n : Int, a : Float64, b : Float64)
+      return (0...n).map { |i| LibGSL.gsl_ran_flat(GSL::RNG, a, b) }
+    end
+  end
+
+  struct LinearRegression
+    getter intercept, x
+
+    def initialize(@intercept : Float64, @x : Float64)
+    end
+  end
+
+  def self.linreg(x : Array(Float64), y : Array(Float64)) : LinearRegression
+    intercept = 0.0
+    x_est = 0.0
+    cov00 = 0.0
+    cov01 = 0.0
+    cov11 = 0.0
+    sumsq = 0.0
+    LibGSL.gsl_fit_linear(x, 1, y, 1, x.size, pointerof(intercept),
+      pointerof(x_est), pointerof(cov00), pointerof(cov01), pointerof(cov11), pointerof(sumsq))
+    return LinearRegression.new intercept, x_est
+  end
+
+  # returns an equally space interval starting from *s* and ending in *e* (inclusive)
+  #
+  # ```
+  # linspace(1.0, 10.0, 10) # => [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+  # ```
+  def self.linspace(s : Float64, e : Float64, num : Int) : Array(Float64)
+    delta = (e - s)/(num - 1.0)
+    return Array.new(num) { |i| s + i * delta }
   end
 end

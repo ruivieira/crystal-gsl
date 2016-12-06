@@ -1,5 +1,8 @@
 # statistics
 
+### Status
+[![Build Status](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)
+
 GNU Scientific Library (GSL) binding for Crystal
 
 ## Installation
@@ -44,6 +47,10 @@ Statistics::Vector.new [1.0,2.0,3.0]
 # automatic force changed to float by using to_vector
 [1,2,3].to_vector
 ```
+
+Full documentation can be found at [here](https://ruivieira.github.io/crystal-gsl/).
+
+Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/regressions/).
 
 Warning:
 

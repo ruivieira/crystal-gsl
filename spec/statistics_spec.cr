@@ -1,6 +1,34 @@
 require "./spec_helper"
 
 describe Statistics do
+  describe "Binomial" do
+    it "must return the corrent number of elements" do
+      samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
+      samples.size.should eq 100
+    end
+
+    it "must return samples within the number of trials" do
+      samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
+      samples.all? { |x| x == 0 || x == 1 }.should eq true
+    end
+  end
+
+  describe "DiscreteUniform" do
+    it "must be within the min and max" do
+      uniforms = (1..1000).map { |i| Statistics::DiscreteUniform.sample(0, 1) }
+      uniforms.all? { |x| x >= 0 && x <= 1 }.should eq true
+    end
+
+    it "has the expected number of samples" do
+      uniforms = Statistics::DiscreteUniform.sample(1000, 0, 1)
+      uniforms.size.should eq 1000
+    end
+
+    expect_raises(ArgumentError) do
+      Statistics::DiscreteUniform.sample(1, 0)
+    end
+  end
+
   describe "Normal" do
     it "has the expected number of samples" do
       normal = Statistics::Normal.new 0.0, 1.0
@@ -23,6 +51,18 @@ describe Statistics do
       samples = Statistics::Poisson.sample(1000000, 2.3)
       mean = Statistics.mean(samples.map { |sample| sample.to_f })
       mean.should be_close(2.3, 1e-2)
+    end
+  end
+
+  describe "Uniform" do
+    it "should return an array of the correct dimension" do
+      xs = Statistics::Uniform.sample(100, 0.0, 1.0)
+      xs.size.should eq 100
+    end
+
+    it "should be within support" do
+      xs = Statistics::Uniform.sample(100, 0.0, 1.0)
+      xs.all? { |x| x > 0.0 && x < 1.0 }.should eq true
     end
   end
 
@@ -95,6 +135,14 @@ describe Statistics do
       v = Statistics::Vector.new a
 
       v.to_array.size.should eq a.size
+    end
+  end
+
+  describe "Linear space" do
+    it "should return the correct size" do
+      items = 10
+      l = Statistics.linspace(1.0, 10.0, items)
+      l.size.should eq items
     end
   end
 end

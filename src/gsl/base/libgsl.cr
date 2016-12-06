@@ -15,11 +15,17 @@ lib LibGSL
   fun gsl_ran_gaussian(r : Gsl_rng*, sigma : Float64) : Float64
   fun gsl_ran_gaussian_pdf(x : Float64, sigma : Float64) : Float64
 
-  # gamma distribution
+  # Binomial distribution
+  fun gsl_ran_binomial(r : Gsl_rng*, p : Float64, n : UInt64) : UInt64
+  fun gsl_ran_binomial_pdf(k : UInt64, p : Float64, n : UInt64) : Float64
+  fun gsl_cdf_binomial_P(k : UInt64, p : Float64, n : UInt64) : Float64
+  fun gsl_cdf_binomial_Q(k : UInt64, p : Float64, n : UInt64) : Float64
+
+  # Gamma distribution
   fun gsl_ran_gamma(r : Gsl_rng*, a : Float64, b : Float64) : Float64
   fun gsl_ran_gamma_pdf(x : Float64, a : Float64, b : Float64) : Float64
 
-  # exponential distribution
+  # Exponential distribution
   fun gsl_ran_exponential(r : Gsl_rng*, mu : Float64) : Float64
   fun gsl_ran_exponential_pdf(x : Float64, mu : Float64) : Float64
 
@@ -33,6 +39,13 @@ lib LibGSL
   fun gsl_ran_poisson_pdf(k : UInt64, mu : Float64) : Float64
   fun gsl_cdf_poisson_P(k : UInt64, mu : Float64) : Float64
   fun gsl_cdf_poisson_Q(k : UInt64, mu : Float64) : Float64
+
+  # Multinomial distribution
+  fun gsl_ran_multinomial(r : Gsl_rng*,
+                          k : LibC::SizeT, n : UInt64, p : Float64*, ns : UInt64*) : Void
+
+  # Uniform distribution
+  fun gsl_ran_flat(r : Gsl_rng*, a : Float64, b : Float64) : Float64
 
   # matrices
 
@@ -107,6 +120,9 @@ lib LibGSL
   fun gsl_blas_dgemv(trans : CBLAS_TRANSPOSE_t, alpha : Float64, a : Gsl_matrix*, x : Gsl_vector*, beta : Float64, y : Gsl_vector*)
   fun gsl_linalg_cholesky_decomp(a : Gsl_matrix*) : Int32
   fun gsl_blas_dtrmv(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, a : Gsl_matrix*, x : Gsl_vector*) : Int32
+
+  # Inference
+  fun gsl_fit_linear(x : Float64*, xstride : LibC::SizeT, y : Float64*, ystride : LibC::SizeT, n : LibC::SizeT, c0 : Float64*, c1 : Float64*, cov00 : Float64*, cov01 : Float64*, cov11 : Float64*, sumsq : Float64*) : Int32
 end
 
 module GSL
