@@ -45,6 +45,59 @@ module Statistics
     end
   end
 
+  # The chi-squared distribution arises in statistics.
+  # If Y_i are n independent Gaussian random variates with unit variance then the sum-of-squares,
+  #
+  # X_i = \sum_i Y_i^2
+  #
+  # has a chi-squared distribution with n degrees of freedom.
+  class ChiSquare < ContinuousDistribution
+    # Create a new Chi square distribution object with *nu* degrees of freedom
+    #
+    # ```
+    # chi = ChiSquare.new 5.0
+    # ```
+    def initialize(@nu : Float64)
+    end
+
+    # Returns a sample from the Chi square
+    #
+    # ```
+    # chi = ChiSquare.new 5.0
+    # chi.sample
+    # ```
+    def sample : Float64
+      return ChiSquare.sample @nu
+    end
+
+    # Returns a sample from the Chi square with the provided degrees of freedom *nu*
+    #
+    # ```
+    # chi = ChiSquare.sample 5.0
+    # ```
+    def self.sample(nu : Float64) : Float64
+      return LibGSL.gsl_ran_chisq(GSL::RNG, nu)
+    end
+
+    # Returns *n* samples from the Chi square with the provided degrees of freedom *nu*
+    #
+    # ```
+    # chi = ChiSquare.sample 10, 5.0
+    # ```
+    def self.sample(n : Int, nu : Float64) : Array(Float64)
+      return (0...n).map { |x| ChiSquare.sample nu }
+    end
+
+    # Returns the probability of *x* for a Chi square with *nu* degrees of freedom
+    #
+    # ```
+    # p = ChiSquare.pdf 0.4, 5
+    # ```
+    def self.pdf(x : Float64, nu : Float64) : Float64
+      return LibGSL.gsl_ran_chisq_pdf(x, nu)
+    end
+  end
+
   # A symmetric probability distribution whereby a finite number of values are
   # equally likely to be observed: every one of *n* values has equal probability *1/n*.
   class DiscreteUniform < DiscreteDistribution

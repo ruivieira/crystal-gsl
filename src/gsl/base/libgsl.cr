@@ -21,6 +21,14 @@ lib LibGSL
   fun gsl_cdf_binomial_P(k : UInt64, p : Float64, n : UInt64) : Float64
   fun gsl_cdf_binomial_Q(k : UInt64, p : Float64, n : UInt64) : Float64
 
+  # Chi square distribution
+  fun gsl_ran_chisq(r : Gsl_rng*, nu : Float64) : Float64
+  fun gsl_ran_chisq_pdf(x : Float64, nu : Float64) : Float64
+  fun gsl_cdf_chisq_P(x : Float64, nu : Float64) : Float64
+  fun gsl_cdf_chisq_Q(x : Float64, nu : Float64) : Float64
+  fun gsl_cdf_chisq_Pinv(p : Float64, nu : Float64) : Float64
+  fun gsl_cdf_chisq_Qinv(q : Float64, nu : Float64) : Float64
+
   # Gamma distribution
   fun gsl_ran_gamma(r : Gsl_rng*, a : Float64, b : Float64) : Float64
   fun gsl_ran_gamma_pdf(x : Float64, a : Float64, b : Float64) : Float64

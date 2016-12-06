@@ -2,7 +2,7 @@ require "./spec_helper"
 
 describe Statistics do
   describe "Binomial" do
-    it "must return the corrent number of elements" do
+    it "must return the correct number of elements" do
       samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
       samples.size.should eq 100
     end
@@ -10,6 +10,13 @@ describe Statistics do
     it "must return samples within the number of trials" do
       samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
       samples.all? { |x| x == 0 || x == 1 }.should eq true
+    end
+  end
+
+  describe "ChiSquare" do
+    it "must return the correct number of elements" do
+      samples = Statistics::ChiSquare.sample(100, 5.0)
+      samples.size.should eq 100
     end
   end
 
