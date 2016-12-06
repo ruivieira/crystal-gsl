@@ -14,6 +14,8 @@ module Statistics
   # A distribution with parameters *n* and *p* which is the discrete probability
   # distribution of the number of successes in a sequence of *n* independent yes/no experiments,
   # each of which yields success with probability *p*
+
+  # TODO : Implement CDF methods
   class Binomial < DiscreteDistribution
     def initialize(@p : Float64, @n : UInt64)
     end
