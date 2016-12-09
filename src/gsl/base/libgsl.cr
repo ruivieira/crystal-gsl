@@ -4,6 +4,9 @@ lib LibGSL
     name : UInt8*
   end
 
+  # # Structures
+
+  # RNG structure
   struct Gsl_rng
     type : Gsl_rng_type*
   end
@@ -55,7 +58,34 @@ lib LibGSL
   # Uniform distribution
   fun gsl_ran_flat(r : Gsl_rng*, a : Float64, b : Float64) : Float64
 
-  # matrices
+  # # histograms
+  # Histogram structure
+  struct Gsl_histogram
+    n : LibC::SizeT
+    range : Float64*
+    bin : Float64*
+  end
+
+  fun gsl_histogram_alloc(n : LibC::SizeT) : Gsl_histogram*
+  fun gsl_histogram_set_ranges(h : Gsl_histogram*, range : Float64*, size : LibC::SizeT) : Int64
+  fun gsl_histogram_set_ranges_uniform(h : Gsl_histogram*, xmin : Float64, xmax : Float64) : Int64
+  fun gsl_histogram_free(h : Gsl_histogram*) : Void
+
+  fun gsl_histogram_increment(h : Gsl_histogram*, x : Float64) : Int64
+  fun gsl_histogram_get(h : Gsl_histogram*, i : LibC::SizeT) : Float64
+  fun gsl_histogram_get_range(h : Gsl_histogram*, i : LibC::SizeT, lower : Float64*, upper : Float64*) : Int64
+
+  fun gsl_histogram_find(h : Gsl_histogram*, x : Float64, i : LibC::SizeT*) : Int32
+
+  fun gsl_histogram_max_val(h : Gsl_histogram*) : Float64
+  fun gsl_histogram_min_val(h : Gsl_histogram*) : Float64
+  fun gsl_histogram_max_bin(h : Gsl_histogram*) : LibC::SizeT
+  fun gsl_histogram_min_bin(h : Gsl_histogram*) : LibC::SizeT
+  fun gsl_histogram_mean(h : Gsl_histogram*) : Float64
+  fun gsl_histogram_sigma(h : Gsl_histogram*) : Float64
+  fun gsl_histogram_sum(h : Gsl_histogram*) : Float64
+
+  # # matrices
 
   struct Gsl_matrix
     size1 : Int32
