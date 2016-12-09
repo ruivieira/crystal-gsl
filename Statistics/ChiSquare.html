@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::Poisson - github.com/ruivieira/crystal-gsl</title>
+  <title>Statistics::ChiSquare - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -55,7 +55,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ChiSquare" data-name="statistics::chisquare">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/ChiSquare" data-name="statistics::chisquare">
       <a href="../Statistics/ChiSquare.html">ChiSquare</a>
       
     </li>
@@ -110,7 +110,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
       <a href="../Statistics/Poisson.html">Poisson</a>
       
     </li>
@@ -137,15 +137,24 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Statistics::Poisson
+  <span class="kind">class</span> Statistics::ChiSquare
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Poisson.html">Statistics::Poisson</a></li><li class="superclass"><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/ChiSquare.html">Statistics::ChiSquare</a></li><li class="superclass"><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
+
+  <h2>Overview</h2>
+
+  <p>The chi-squared distribution arises in statistics.
+If Y_i are n independent Gaussian random variates with unit variance then the sum-of-squares,</p>
+
+<p>X_i = \sum_i Y_i^2</p>
+
+<p>has a chi-squared distribution with n degrees of freedom.</p>
 
 
 
@@ -171,22 +180,30 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28mu%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(mu : Float64)</a>
+        <a href="#new%28nu%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(nu : Float64)</a>
+        
+          <div class="summary"><p>Create a new Chi square distribution object with <em>nu</em> degrees of freedom</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pdf%28k%3AUInt64%2Cmu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.pdf</strong>(k : UInt64, mu : Float64) : Float64</a>
+        <a href="#pdf%28x%3AFloat64%2Cnu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.pdf</strong>(x : Float64, nu : Float64) : Float64</a>
+        
+          <div class="summary"><p>Returns the probability of <em>x</em> for a Chi square with <em>nu</em> degrees of freedom</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%28n%3AInt%2Cmu%3AFloat64%29%3AArray%28UInt64%29-class-method" class="signature"><strong>.sample</strong>(n : Int, mu : Float64) : Array(UInt64)</a>
+        <a href="#sample%28n%3AInt%2Cnu%3AFloat64%29%3AArray%28Float64%29-class-method" class="signature"><strong>.sample</strong>(n : Int, nu : Float64) : Array(Float64)</a>
+        
+          <div class="summary"><p>Returns <em>n</em> samples from the Chi square with the provided degrees of freedom <em>nu</em></p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%28mu%3AFloat64%29%3AUInt64-class-method" class="signature"><strong>.sample</strong>(mu : Float64) : UInt64</a>
+        <a href="#sample%28nu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.sample</strong>(nu : Float64) : Float64</a>
+        
+          <div class="summary"><p>Returns a sample from the Chi square with the provided degrees of freedom <em>nu</em></p></div>
         
       </li>
     
@@ -198,7 +215,9 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%3AInt-instance-method" class="signature"><strong>#sample</strong> : Int</a>
+        <a href="#sample%3AFloat64-instance-method" class="signature"><strong>#sample</strong> : Float64</a>
+        
+          <div class="summary"><p>Returns a sample from the Chi square</p></div>
         
       </li>
     
@@ -212,11 +231,11 @@
   
     
 
-  <h3>Instance methods inherited from class <code><a href="../Statistics/DiscreteDistribution.html">Statistics::DiscreteDistribution</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></code></h3>
   
   
-    <a href="../Statistics/DiscreteDistribution.html#sample%3AInt-instance-method" class="tooltip">
-      <span>sample : Int</span>
+    <a href="../Statistics/ContinuousDistribution.html#sample%3AFloat64-instance-method" class="tooltip">
+      <span>sample : Float64</span>
     sample</a>
     
   
@@ -245,13 +264,17 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new&#40;mu:Float64&#41;-class-method">
+    <div class="entry-detail" id="new&#40;nu:Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(mu : Float64)
+        def self.<strong>new</strong>(nu : Float64)
 
-        <a class="method-permalink" href="#new%28mu%3AFloat64%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28nu%3AFloat64%29-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Create a new Chi square distribution object with <em>nu</em> degrees of freedom</p>
+
+<pre><code>chi <span class="o">=</span> <span class="t">ChiSquare</span>.<span class="k">new</span> <span class="n">5.0</span></code></pre></div>
       
       <br/>
       <div>
@@ -259,13 +282,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="pdf&#40;k:UInt64,mu:Float64&#41;:Float64-class-method">
+    <div class="entry-detail" id="pdf&#40;x:Float64,nu:Float64&#41;:Float64-class-method">
       <div class="signature">
         
-        def self.<strong>pdf</strong>(k : UInt64, mu : Float64) : Float64
+        def self.<strong>pdf</strong>(x : Float64, nu : Float64) : Float64
 
-        <a class="method-permalink" href="#pdf%28k%3AUInt64%2Cmu%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#pdf%28x%3AFloat64%2Cnu%3AFloat64%29%3AFloat64-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Returns the probability of <em>x</em> for a Chi square with <em>nu</em> degrees of freedom</p>
+
+<pre><code>p <span class="o">=</span> <span class="t">ChiSquare</span>.pdf <span class="n">0.4</span>, <span class="n">5</span></code></pre></div>
       
       <br/>
       <div>
@@ -273,13 +300,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="sample&#40;n:Int,mu:Float64&#41;:Array&#40;UInt64&#41;-class-method">
+    <div class="entry-detail" id="sample&#40;n:Int,nu:Float64&#41;:Array&#40;Float64&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>sample</strong>(n : Int, mu : Float64) : <a href="../Array.html">Array</a>(UInt64)
+        def self.<strong>sample</strong>(n : Int, nu : Float64) : <a href="../Array.html">Array</a>(Float64)
 
-        <a class="method-permalink" href="#sample%28n%3AInt%2Cmu%3AFloat64%29%3AArray%28UInt64%29-class-method">#</a>
+        <a class="method-permalink" href="#sample%28n%3AInt%2Cnu%3AFloat64%29%3AArray%28Float64%29-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Returns <em>n</em> samples from the Chi square with the provided degrees of freedom <em>nu</em></p>
+
+<pre><code>chi <span class="o">=</span> <span class="t">ChiSquare</span>.sample <span class="n">10</span>, <span class="n">5.0</span></code></pre></div>
       
       <br/>
       <div>
@@ -287,13 +318,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="sample&#40;mu:Float64&#41;:UInt64-class-method">
+    <div class="entry-detail" id="sample&#40;nu:Float64&#41;:Float64-class-method">
       <div class="signature">
         
-        def self.<strong>sample</strong>(mu : Float64) : UInt64
+        def self.<strong>sample</strong>(nu : Float64) : Float64
 
-        <a class="method-permalink" href="#sample%28mu%3AFloat64%29%3AUInt64-class-method">#</a>
+        <a class="method-permalink" href="#sample%28nu%3AFloat64%29%3AFloat64-class-method">#</a>
       </div>
+      
+        <div class="doc"><p>Returns a sample from the Chi square with the provided degrees of freedom <em>nu</em></p>
+
+<pre><code>chi <span class="o">=</span> <span class="t">ChiSquare</span>.sample <span class="n">5.0</span></code></pre></div>
       
       <br/>
       <div>
@@ -306,13 +341,18 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="sample:Int-instance-method">
+    <div class="entry-detail" id="sample:Float64-instance-method">
       <div class="signature">
         
-        def <strong>sample</strong> : Int
+        def <strong>sample</strong> : Float64
 
-        <a class="method-permalink" href="#sample%3AInt-instance-method">#</a>
+        <a class="method-permalink" href="#sample%3AFloat64-instance-method">#</a>
       </div>
+      
+        <div class="doc"><p>Returns a sample from the Chi square</p>
+
+<pre><code>chi <span class="o">=</span> <span class="t">ChiSquare</span>.<span class="k">new</span> <span class="n">5.0</span>
+chi.sample</code></pre></div>
       
       <br/>
       <div>
