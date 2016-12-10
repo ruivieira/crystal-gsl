@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::Vector - github.com/ruivieira/crystal-gsl</title>
+  <title>GSL::Vector - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -30,13 +30,23 @@
       
     </li>
   
-  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
       <a href="../GSL.html">GSL</a>
       
         <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+      <a href="../GSL/Matrix.html">Matrix</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Vector" data-name="gsl::vector">
+      <a href="../GSL/Vector.html">Vector</a>
       
     </li>
   
@@ -55,7 +65,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
+  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
       <a href="../Statistics.html">Statistics</a>
       
         <ul>
@@ -100,11 +110,6 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Matrix" data-name="statistics::matrix">
-      <a href="../Statistics/Matrix.html">Matrix</a>
-      
-    </li>
-  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Multinomial" data-name="statistics::multinomial">
       <a href="../Statistics/Multinomial.html">Multinomial</a>
       
@@ -130,11 +135,6 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Vector" data-name="statistics::vector">
-      <a href="../Statistics/Vector.html">Vector</a>
-      
-    </li>
-  
 </ul>
 
       
@@ -147,12 +147,12 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Statistics::Vector
+  <span class="kind">class</span> GSL::Vector
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Vector.html">Statistics::Vector</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/Vector.html">GSL::Vector</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -198,17 +198,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#*</strong>(n : GSL::Vector)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#%2A%28n%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#*</strong>(n : Int32 | Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#*</strong>(n : Statistics::Vector)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%2B%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#+</strong>(n : Statistics::Vector)</a>
+        <a href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#+</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -218,7 +218,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#-</strong>(n : Statistics::Vector)</a>
+        <a href="#-%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#-</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -233,7 +233,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#/</strong>(n : Statistics::Vector)</a>
+        <a href="#%2F%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#/</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -255,12 +255,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#concat%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#concat</strong>(n : Statistics::Vector)</a>
+        <a href="#concat%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#concat</strong>(n : GSL::Vector)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#dot%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#dot</strong>(n : Statistics::Vector)</a>
+        <a href="#dot%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#dot</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -302,7 +302,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#inner_product%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#inner_product</strong>(n : Statistics::Vector)</a>
+        <a href="#inner_product%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#inner_product</strong>(n : GSL::Vector)</a>
         
           <div class="summary"><p>same as dot function</p></div>
         
@@ -380,11 +380,6 @@
         
       </li>
     
-      <li class="entry-summary">
-        <a href="#validate%28n%3AStatistics%3A%3AVector%29-instance-method" class="signature"><strong>#validate</strong>(n : Statistics::Vector)</a>
-        
-      </li>
-    
   </ul>
 
 
@@ -445,6 +440,20 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="*&#40;n:GSL::Vector&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
+
+        <a class="method-permalink" href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="*&#40;n:Int32|Float64&#41;-instance-method">
       <div class="signature">
         
@@ -459,26 +468,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="&#43;&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>*</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>+</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#%2A%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#43;&#40;n:Statistics::Vector&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>+</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
-
-        <a class="method-permalink" href="#%2B%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -501,12 +496,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="-&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="-&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>-</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>-</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#-%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#-%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -543,12 +538,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="/&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="/&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>/</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>/</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#%2F%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#%2F%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -601,12 +596,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="concat&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="concat&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>concat</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>concat</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#concat%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#concat%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -615,12 +610,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="dot&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="dot&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>dot</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>dot</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#dot%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#dot%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -729,12 +724,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="inner_product&#40;n:Statistics::Vector&#41;-instance-method">
+    <div class="entry-detail" id="inner_product&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>inner_product</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
+        def <strong>inner_product</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#inner_product%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#inner_product%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>same as dot function</p></div>
@@ -935,20 +930,6 @@
         def <strong>to_s</strong> : String
 
         <a class="method-permalink" href="#to_s%3AString-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="validate&#40;n:Statistics::Vector&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>validate</strong>(n : <a href="../Statistics/Vector.html">Statistics::Vector</a>)
-
-        <a class="method-permalink" href="#validate%28n%3AStatistics%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
