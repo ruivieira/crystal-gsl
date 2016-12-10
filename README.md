@@ -34,16 +34,19 @@ dependencies:
 
 ## Usage
 
-
 ```crystal
 require "gsl"
 ```
 
+### Documentation
+
 Full documentation can be found at [here](https://ruivieira.github.io/crystal-gsl/).
+
+### Examples
 
 Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/regressions/).
 
-Warning:
+*Warning*:
 
 - Not fully test
 - Pre-release (API will break)
