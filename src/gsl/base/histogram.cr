@@ -2,6 +2,9 @@ require "./libgsl.cr"
 
 module GSL
   class Histogram
+    getter nbins
+
+    # TODO: case where data is empty
     def initialize(data : Array(Float), bins : Int32)
       @histogram = LibGSL.gsl_histogram_alloc bins
       @nbins = bins
