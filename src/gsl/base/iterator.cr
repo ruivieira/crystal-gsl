@@ -1,6 +1,4 @@
-require "./matrices"
-
-module Statistics
+module GSL
   class Vector
     def each(&block : Float64 -> _)
       self.to_a.each &block

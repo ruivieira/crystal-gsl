@@ -1,15 +1,13 @@
-require "../../base/matrices"
-
-module Statistics
+module GSL
   class Vector
     def +(n : Int32 | Float64)
-      temp = Statistics::Vector.new self.to_a
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_add_constant(temp.pointer, n.to_f)
       temp
     end
 
-    def +(n : Statistics::Vector)
-      temp = Statistics::Vector.new self.to_a
+    def +(n : GSL::Vector)
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_add(temp.pointer, n.pointer)
       temp
     end
@@ -18,20 +16,20 @@ module Statistics
       self.map { |x| x - n }.to_vector
     end
 
-    def -(n : Statistics::Vector)
-      temp = Statistics::Vector.new self.to_a
+    def -(n : GSL::Vector)
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_sub(temp.pointer, n.pointer)
       temp
     end
 
     def *(n : Int32 | Float64)
-      temp = Statistics::Vector.new self.to_a
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_scale(temp.pointer, n.to_f)
       temp
     end
 
-    def *(n : Statistics::Vector)
-      temp = Statistics::Vector.new self.to_a
+    def *(n : GSL::Vector)
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_mul(temp.pointer, n.pointer)
       temp
     end
@@ -40,8 +38,8 @@ module Statistics
       self.map { |x| x / n }.to_vector
     end
 
-    def /(n : Statistics::Vector)
-      temp = Statistics::Vector.new self.to_a
+    def /(n : GSL::Vector)
+      temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_div(temp.pointer, n.pointer)
       temp
     end
@@ -50,12 +48,12 @@ module Statistics
       self.to_a.sum
     end
 
-    def dot(n : Statistics::Vector)
+    def dot(n : GSL::Vector)
       (self * n).sum
     end
 
     # same as dot function
-    def inner_product(n : Statistics::Vector)
+    def inner_product(n : GSL::Vector)
       self.dot n
     end
   end
