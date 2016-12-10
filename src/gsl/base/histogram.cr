@@ -22,6 +22,10 @@ module GSL
       data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
     end
 
+    protected def getHistogram
+      return @histogram
+    end
+
     def bin(n : Int) : Float64
       return LibGSL.gsl_histogram_get(@histogram, n)
     end
@@ -79,6 +83,11 @@ module GSL
     # Negative bin values are included in the sum.
     def sum : Float64
       return LibGSL.gsl_histogram_sum @histogram
+    end
+
+    # This function returns *true* if the all of the individual bin ranges of the two histograms are identical, and *false* otherwise.
+    def equal_bins(h : Histogram) : Bool
+      return LibGSL.gsl_histogram_equal_bins_p(@histogram, h.getHistogram) == 1 ? true : false
     end
   end
 end

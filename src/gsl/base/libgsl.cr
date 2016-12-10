@@ -85,6 +85,8 @@ lib LibGSL
   fun gsl_histogram_sigma(h : Gsl_histogram*) : Float64
   fun gsl_histogram_sum(h : Gsl_histogram*) : Float64
 
+  fun gsl_histogram_equal_bins_p(h1 : Gsl_histogram*, h2 : Gsl_histogram*) : Int32
+
   # # matrices
 
   struct Gsl_matrix
