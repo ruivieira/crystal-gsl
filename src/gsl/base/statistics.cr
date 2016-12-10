@@ -1,7 +1,3 @@
-require "math"
-require "random"
-require "./libgsl.cr"
-
 module Statistics
   abstract class DiscreteDistribution
     abstract def sample : Int
