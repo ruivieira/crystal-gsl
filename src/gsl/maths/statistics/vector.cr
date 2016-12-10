@@ -1,6 +1,4 @@
-require "../../base/matrices"
-
-module Statistics
+module GSL
   class Vector
     def frequencies
       self.to_a.group_by { |x| x }.map { |num, arr| [num, arr.size] }.to_h
@@ -25,6 +23,6 @@ end
 
 class Array(T)
   def to_vector
-    Statistics::Vector.new self.map { |x| x.to_f }
+    GSL::Vector.new self.map { |x| x.to_f }
   end
 end
