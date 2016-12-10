@@ -6,6 +6,9 @@ module GSL
 
     # TODO: case where data is empty
     def initialize(data : Array(Float), bins : Int32)
+      if data.empty?
+        raise ArgumentError.new("Data must not be empty")
+      end
       @histogram = LibGSL.gsl_histogram_alloc bins
       @nbins = bins
       LibGSL.gsl_histogram_set_ranges_uniform @histogram, data.min, data.max

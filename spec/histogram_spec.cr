@@ -7,10 +7,8 @@ describe GSL do
       h.nbins.should eq 100
     end
 
-    it "bins must be empty for empty data" do
+    expect_raises(ArgumentError) do
       h = GSL::Histogram.new [] of Float64, 100
-      v = (0...100).map { |i| h.bin(i) }
-      v.all? { |x| x == 0.0 }.should eq true
     end
   end
 end
