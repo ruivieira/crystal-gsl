@@ -22,5 +22,24 @@ describe GSL do
       h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), [-10.0, -1.0, 2.0, 10.0, 1000.0]
       h1.equal_bins(h2).should eq false
     end
+
+    it "adding should not modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h2_original = h2.bin(50)
+      h3 = h1 + h2
+      h1.bin(50).should eq h1_original
+    end
+
+    it "adding should return correct value" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h3 = h1 + h2
+      sum = h1.bin(50) + h2.bin(50)
+      h3.bin(50).should eq sum
+    end
   end
 end

@@ -2,28 +2,35 @@ require "./libgsl.cr"
 
 module GSL
   class Histogram
-    getter nbins
-
     # TODO: case where data is empty
     def initialize(data : Array(Float), bins : Int32)
       if data.empty?
         raise ArgumentError.new("Data must not be empty")
       end
       @histogram = LibGSL.gsl_histogram_alloc bins
-      @nbins = bins
       LibGSL.gsl_histogram_set_ranges_uniform @histogram, data.min, data.max
       data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
     end
 
+    protected def initialize(@histogram : LibGSL::Gsl_histogram*)
+    end
+
     def initialize(data : Array(Float), bins : Array(Float))
-      @nbins = bins.size
-      @histogram = LibGSL.gsl_histogram_alloc @nbins
-      LibGSL.gsl_histogram_set_ranges(@histogram, bins, @nbins + 1)
+      @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
+      LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
       data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
+    end
+
+    def nbins
+      @histogram.value.n
     end
 
     protected def getHistogram
       return @histogram
+    end
+
+    protected def setHistogram(histogram : Gsl_histogram*)
+      @histogram = histogram
     end
 
     def bin(n : Int) : Float64
@@ -88,6 +95,19 @@ module GSL
     # This function returns *true* if the all of the individual bin ranges of the two histograms are identical, and *false* otherwise.
     def equal_bins(h : Histogram) : Bool
       return LibGSL.gsl_histogram_equal_bins_p(@histogram, h.getHistogram) == 1 ? true : false
+    end
+
+    # Returns an exact copy of this histogram
+    def clone : Histogram
+      return Histogram.new LibGSL.gsl_histogram_clone @histogram
+    end
+
+    # Add the values of histograms with identical bins.
+    # This is an immutable operation, it return a new Histogram without changing the originals
+    def +(h : Histogram) : Histogram
+      dest_hist = LibGSL.gsl_histogram_clone @histogram
+      LibGSL.gsl_histogram_add(dest_hist, h.getHistogram)
+      return Histogram.new dest_hist
     end
   end
 end
