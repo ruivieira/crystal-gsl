@@ -74,7 +74,7 @@ module GSL
     end
 
     # This function returns *true* if the all of the individual bin ranges of the two histograms are identical, and *false* otherwise.
-    def equal_bins(h : Histogram) : Bool
+    def equal_bins(h : AbstractHistogram) : Bool
       return LibGSL.gsl_histogram_equal_bins_p(@histogram, h.getHistogram) == 1 ? true : false
     end
 
@@ -106,7 +106,7 @@ module GSL
 
     # Add the values of histograms with identical bins.
     # This is an immutable operation, it return a new Histogram without changing the originals
-    def +(h : Histogram) : Histogram
+    def +(h : Histogram | MutableHistogram) : Histogram
       if !equal_bins(h)
         raise NonIdenticalHistograms.new("Histograms must have identical bins")
       end
@@ -117,7 +117,7 @@ module GSL
 
     # Subtract the values of histograms with identical bins.
     # This is an immutable operation, it return a new Histogram without changing the originals
-    def -(h : Histogram) : Histogram
+    def -(h : Histogram | MutableHistogram) : Histogram
       if !equal_bins(h)
         raise NonIdenticalHistograms.new("Histograms must have identical bins")
       end
@@ -128,7 +128,7 @@ module GSL
 
     # Multiply the values of histograms with identical bins.
     # This is an immutable operation, it return a new Histogram without changing the originals
-    def *(h : Histogram) : Histogram
+    def *(h : Histogram | MutableHistogram) : Histogram
       if !equal_bins(h)
         raise NonIdenticalHistograms.new("Histograms must have identical bins")
       end
@@ -139,7 +139,7 @@ module GSL
 
     # Multiply the values of histograms with identical bins.
     # This is an immutable operation, it return a new Histogram without changing the originals
-    def /(h : Histogram) : Histogram
+    def /(h : Histogram | MutableHistogram) : Histogram
       if !equal_bins(h)
         raise NonIdenticalHistograms.new("Histograms must have identical bins")
       end
@@ -166,6 +166,12 @@ module GSL
   end
 
   class MutableHistogram < AbstractHistogram
+    def initialize(data : Array(Float), bins : Array(Float))
+      @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
+      LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
+      data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
+    end
+
     def initialize(min : Float64, max : Float64, bins : Int32)
       @histogram = LibGSL.gsl_histogram_alloc bins
       LibGSL.gsl_histogram_set_ranges_uniform @histogram, min, max
@@ -186,11 +192,55 @@ module GSL
 
     # Add the values of histograms with identical bins.
     # This is an mutable operation, it return this instance with updated values.
-    def +(h : Histogram) : Histogram
+    def +(h : Histogram | MutableHistogram) : MutableHistogram
       if !equal_bins(h)
         raise NonIdenticalHistograms.new("Histograms must have identical bins")
       end
       LibGSL.gsl_histogram_add(@histogram, h.getHistogram)
+      return self
+    end
+
+    # Subtract the values of histograms with identical bins.
+    # This is an mutable operation, it return this instance with updated values.
+    def -(h : Histogram | MutableHistogram) : MutableHistogram
+      if !equal_bins(h)
+        raise NonIdenticalHistograms.new("Histograms must have identical bins")
+      end
+      LibGSL.gsl_histogram_sub(@histogram, h.getHistogram)
+      return self
+    end
+
+    # Multiply the values of histograms with identical bins.
+    # This is an mutable operation, it return this instance with updated values.
+    def *(h : Histogram | MutableHistogram) : MutableHistogram
+      if !equal_bins(h)
+        raise NonIdenticalHistograms.new("Histograms must have identical bins")
+      end
+      LibGSL.gsl_histogram_mul(@histogram, h.getHistogram)
+      return self
+    end
+
+    # Multiply the values of histograms with identical bins.
+    # This is an mutable operation, it return this instance with updated values.
+    def /(h : Histogram | MutableHistogram) : MutableHistogram
+      if !equal_bins(h)
+        raise NonIdenticalHistograms.new("Histograms must have identical bins")
+      end
+      LibGSL.gsl_histogram_div(@histogram, h.getHistogram)
+      return self
+    end
+
+    # This function multiplies the contents of the bins of them histogram by the constant *scale*.
+    # This is an mutable operation, it return this instance with updated values.
+    def *(scale : Float64) : MutableHistogram
+      LibGSL.gsl_histogram_scale(@histogram, scale)
+      return self
+    end
+
+    # This function shifts the contents of the bins of the histogram by the constant *offset*.
+    # This is an mutable operation, it return this instance with updated values.
+    def +(offset : Float64) : MutableHistogram
+      LibGSL.gsl_histogram_shift(@histogram, offset)
       return self
     end
   end

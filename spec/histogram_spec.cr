@@ -171,12 +171,57 @@ describe GSL do
     end
     it "adding should modify originals" do
       bins = Statistics.linspace(-10.0, 10.0, 100)
-      h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
-      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
       h1_original = h1.bin(50)
       h2_original = h2.bin(50)
-      h1 = h1 + h2
+      h1 + h2
       h1.bin(50).should eq h1_original + h2_original
+    end
+    it "subtracting should  modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h2_original = h2.bin(50)
+      h1 - h2
+      h1.bin(50).should eq h1_original - h2_original
+    end
+
+    it "multiplying should  modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h2_original = h2.bin(50)
+      h1 * h2
+      h1.bin(50).should eq h1_original * h2_original
+    end
+
+    it "dividing should  modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h2_original = h2.bin(50)
+      h1 / h2
+      h1.bin(50).should eq h1_original / h2_original
+    end
+
+    it "scaling should modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h1 * 2.0
+      h1.bin(50).should eq h1_original * 2.0
+    end
+
+    it "offset should  modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h1 + 2.0
+      h1.bin(50).should eq h1_original + 2.0
     end
   end
 end
