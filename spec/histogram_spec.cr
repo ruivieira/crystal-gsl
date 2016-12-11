@@ -159,5 +159,15 @@ describe GSL do
       }
       h.bin(b).should eq 100
     end
+    it "accumulate must set the correct values" do
+      bins = Statistics.linspace(-10.0, 10.0, 50)
+      h = GSL::MutableHistogram.new bins
+      # destination bin
+      b = h.find(5.0)
+      (0...100).each { |i|
+        h.accumulate x: 5.0, weight: 0.1
+      }
+      h.bin(b).should be_close(10.0, 1e-5)
+    end
   end
 end

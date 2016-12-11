@@ -72,6 +72,7 @@ lib LibGSL
   fun gsl_histogram_free(h : Gsl_histogram*) : Void
 
   fun gsl_histogram_increment(h : Gsl_histogram*, x : Float64) : Int64
+  fun gsl_histogram_accumulate(h : Gsl_histogram*, x : Float64, weight : Float64)
   fun gsl_histogram_get(h : Gsl_histogram*, i : LibC::SizeT) : Float64
   fun gsl_histogram_get_range(h : Gsl_histogram*, i : LibC::SizeT, lower : Float64*, upper : Float64*) : Int64
 

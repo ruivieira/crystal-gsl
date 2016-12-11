@@ -179,5 +179,9 @@ module GSL
     def increment(x : Float64)
       LibGSL.gsl_histogram_increment(@histogram, x)
     end
+
+    def accumulate(x : Float64, weight : Float64)
+      LibGSL.gsl_histogram_accumulate(@histogram, x, weight)
+    end
   end
 end
