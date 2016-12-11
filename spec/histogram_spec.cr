@@ -223,5 +223,13 @@ describe GSL do
       h1 + 2.0
       h1.bin(50).should eq h1_original + 2.0
     end
+
+    it "adding an immutable to a mutable histogram should return a mutable one" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::MutableHistogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h3 = h1 + h2
+      h3.should be_a GSL::MutableHistogram
+    end
   end
 end
