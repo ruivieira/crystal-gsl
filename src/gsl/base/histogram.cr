@@ -175,5 +175,9 @@ module GSL
       @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
       LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
     end
+
+    def increment(x : Float64)
+      LibGSL.gsl_histogram_increment(@histogram, x)
+    end
   end
 end

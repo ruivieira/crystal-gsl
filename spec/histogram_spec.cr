@@ -149,5 +149,15 @@ describe GSL do
       h = GSL::MutableHistogram.new bins
       h.nbins.should eq bins.size - 1
     end
+    it "increment must set the correct values" do
+      bins = Statistics.linspace(-10.0, 10.0, 50)
+      h = GSL::MutableHistogram.new bins
+      # destination bin
+      b = h.find(5.0)
+      (0...100).each { |i|
+        h.increment(5.0)
+      }
+      h.bin(b).should eq 100
+    end
   end
 end
