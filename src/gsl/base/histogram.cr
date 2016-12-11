@@ -155,6 +155,14 @@ module GSL
       LibGSL.gsl_histogram_scale(dest_hist, scale)
       return Histogram.new dest_hist
     end
+
+    # This function shifts the contents of the bins of the histogram by the constant *offset*.
+    # This is an immutable operation, it return a new Histogram without changing the originals
+    def +(offset : Float64) : Histogram
+      dest_hist = LibGSL.gsl_histogram_clone @histogram
+      LibGSL.gsl_histogram_shift(dest_hist, offset)
+      return Histogram.new dest_hist
+    end
   end
 
   class MutableHistogram < AbstractHistogram
