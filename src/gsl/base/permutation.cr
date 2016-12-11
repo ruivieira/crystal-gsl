@@ -15,5 +15,12 @@ module GSL
         @data[LibGSL.gsl_permutation_get(@permutation, i)]
       }
     end
+
+    def previous : Array(T)
+      LibGSL.gsl_permutation_prev(@permutation)
+      return (0...@n).map { |i|
+        @data[LibGSL.gsl_permutation_get(@permutation, i)]
+      }
+    end
   end
 end

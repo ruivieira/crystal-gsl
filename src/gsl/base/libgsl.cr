@@ -62,6 +62,7 @@ lib LibGSL
   fun gsl_permutation_valid(p : Gsl_permutation*) : UInt32
   fun gsl_permute(p : LibC::SizeT*, data : Float64*, stride : LibC::SizeT, n : LibC::SizeT) : Int32
   fun gsl_permutation_next(p : Gsl_permutation*) : Int32
+  fun gsl_permutation_prev(p : Gsl_permutation*) : Int32
 
   # Poisson distribution
   fun gsl_ran_poisson(r : Gsl_rng*, mu : Float64) : UInt64
