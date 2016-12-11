@@ -45,6 +45,23 @@ lib LibGSL
   fun gsl_cdf_exponential_Pinv(p : Float64, mu : Float64) : Float64
   fun gsl_cdf_exponential_Qinv(q : Float64, mu : Float64) : Float64
 
+  # Permutations
+
+  struct Gsl_permutation
+    size : LibC::SizeT
+    data : Float64*
+  end
+
+  fun gsl_permutation_alloc(n : LibC::SizeT) : Gsl_permutation*
+  fun gsl_permutation_calloc(n : LibC::SizeT) : Gsl_permutation*
+  fun gsl_permutation_init(p : Gsl_permutation*) : Void
+
+  fun gsl_permutation_get(p : Gsl_permutation*, i : LibC::SizeT) : LibC::SizeT
+  fun gsl_permutation_size(p : Gsl_permutation*) : LibC::SizeT
+  fun gsl_permutation_data(p : Gsl_permutation*) : LibC::SizeT*
+  fun gsl_permutation_valid(p : Gsl_permutation*) : UInt32
+  fun gsl_permute(p : LibC::SizeT*, data : Float64*, stride : LibC::SizeT, n : LibC::SizeT) : Int32
+
   # Poisson distribution
   fun gsl_ran_poisson(r : Gsl_rng*, mu : Float64) : UInt64
   fun gsl_ran_poisson_pdf(k : UInt64, mu : Float64) : Float64
