@@ -11,6 +11,12 @@ describe GSL do
       h = GSL::Histogram.new [] of Float64, 100
     end
 
+    expect_raises(NonIdenticalHistograms) do
+      h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), [-10.0, -1.0, 1.0, 10.0, 1000.0]
+      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), [-10.0, -1.0, 0.0, 10.0, 1000.0]
+      h3 = h1 + h2
+    end
+
     it "should return true for histogram with identical bins" do
       h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), [-10.0, -1.0, 0.0, 10.0, 1000.0]
       h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), [-10.0, -1.0, 0.0, 10.0, 1000.0]
