@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>GSL::AbstractHistogram - github.com/ruivieira/crystal-gsl</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
+      <a href="../Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Gsl" data-name="gsl">
+      <a href="../Gsl.html">Gsl</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+      <a href="../GSL.html">GSL</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/AbstractHistogram" data-name="gsl::abstracthistogram">
+      <a href="../GSL/AbstractHistogram.html">AbstractHistogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
+      <a href="../GSL/Histogram.html">Histogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+      <a href="../GSL/Matrix.html">Matrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/MutableHistogram" data-name="gsl::mutablehistogram">
+      <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Vector" data-name="gsl::vector">
+      <a href="../GSL/Vector.html">Vector</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/LengthException" data-name="lengthexception">
+      <a href="../LengthException.html">LengthException</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/NonIdenticalHistograms" data-name="nonidenticalhistograms">
+      <a href="../NonIdenticalHistograms.html">NonIdenticalHistograms</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Sorting" data-name="sorting">
+      <a href="../Sorting.html">Sorting</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
+      <a href="../Statistics.html">Statistics</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
+      <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ChiSquare" data-name="statistics::chisquare">
+      <a href="../Statistics/ChiSquare.html">ChiSquare</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ContinuousDistribution" data-name="statistics::continuousdistribution">
+      <a href="../Statistics/ContinuousDistribution.html">ContinuousDistribution</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteDistribution" data-name="statistics::discretedistribution">
+      <a href="../Statistics/DiscreteDistribution.html">DiscreteDistribution</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteUniform" data-name="statistics::discreteuniform">
+      <a href="../Statistics/DiscreteUniform.html">DiscreteUniform</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Exponential" data-name="statistics::exponential">
+      <a href="../Statistics/Exponential.html">Exponential</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
+      <a href="../Statistics/Gamma.html">Gamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
+      <a href="../Statistics/LinearRegression.html">LinearRegression</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Multinomial" data-name="statistics::multinomial">
+      <a href="../Statistics/Multinomial.html">Multinomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/MultivariateNormal" data-name="statistics::multivariatenormal">
+      <a href="../Statistics/MultivariateNormal.html">MultivariateNormal</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Normal" data-name="statistics::normal">
+      <a href="../Statistics/Normal.html">Normal</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
+      <a href="../Statistics/Poisson.html">Poisson</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Uniform" data-name="statistics::uniform">
+      <a href="../Statistics/Uniform.html">Uniform</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract class</span> GSL::AbstractHistogram
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/AbstractHistogram.html">GSL::AbstractHistogram</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Direct Known Subclasses</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../GSL/Histogram.html">GSL::Histogram</a></li>
+  
+    <li class="other-type"><a href="../GSL/MutableHistogram.html">GSL::MutableHistogram</a></li>
+  
+  </ul>
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#bin%28n%3AInt%29%3AFloat64-instance-method" class="signature"><strong>#bin</strong>(n : Int) : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clone%3AHistogram-instance-method" class="signature"><strong>#clone</strong> : Histogram</a>
+        
+          <div class="summary"><p>Returns an exact copy of this histogram</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#equal_bins%28h%3AAbstractHistogram%29%3ABool-instance-method" class="signature"><strong>#equal_bins</strong>(h : AbstractHistogram) : Bool</a>
+        
+          <div class="summary"><p>This function returns <em>true</em> if the all of the individual bin ranges of the two histograms are identical, and <em>false</em> otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#find%28x%3AFloat64%29%3AUInt64-instance-method" class="signature"><strong>#find</strong>(x : Float64) : UInt64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_bin%3AUInt64-instance-method" class="signature"><strong>#max_bin</strong> : UInt64</a>
+        
+          <div class="summary"><p>This function returns the index of the bin containing the maximum value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_val%3AFloat64-instance-method" class="signature"><strong>#max_val</strong> : Float64</a>
+        
+          <div class="summary"><p>This function returns the maximum value contained in the histogram bins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mean%3AFloat64-instance-method" class="signature"><strong>#mean</strong> : Float64</a>
+        
+          <div class="summary"><p>This function returns the mean of the histogrammed variable, where the histogram is regarded as a probability distribution.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min_bin%3AUInt64-instance-method" class="signature"><strong>#min_bin</strong> : UInt64</a>
+        
+          <div class="summary"><p>This function returns the index of the bin containing the minimum value.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min_val%3AFloat64-instance-method" class="signature"><strong>#min_val</strong> : Float64</a>
+        
+          <div class="summary"><p>This function returns the minimum value contained in the histogram bins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nbins-instance-method" class="signature"><strong>#nbins</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#range%28n%3AInt%29%3ATuple%28Float64%2CFloat64%29-instance-method" class="signature"><strong>#range</strong>(n : Int) : Tuple(Float64, Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sigma%3AFloat64-instance-method" class="signature"><strong>#sigma</strong> : Float64</a>
+        
+          <div class="summary"><p>This function returns the standard deviation of the histogrammed variable, where the histogram is regarded as a probability distribution.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sum%3AFloat64-instance-method" class="signature"><strong>#sum</strong> : Float64</a>
+        
+          <div class="summary"><p>This function returns the sum of all bin values.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="bin&#40;n:Int&#41;:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>bin</strong>(n : Int) : Float64
+
+        <a class="method-permalink" href="#bin%28n%3AInt%29%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clone:Histogram-instance-method">
+      <div class="signature">
+        
+        def <strong>clone</strong> : <a href="../GSL/Histogram.html">Histogram</a>
+
+        <a class="method-permalink" href="#clone%3AHistogram-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns an exact copy of this histogram</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="equal_bins&#40;h:AbstractHistogram&#41;:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>equal_bins</strong>(h : <a href="../GSL/AbstractHistogram.html">AbstractHistogram</a>) : Bool
+
+        <a class="method-permalink" href="#equal_bins%28h%3AAbstractHistogram%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns <em>true</em> if the all of the individual bin ranges of the two histograms are identical, and <em>false</em> otherwise.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="find&#40;x:Float64&#41;:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>find</strong>(x : Float64) : UInt64
+
+        <a class="method-permalink" href="#find%28x%3AFloat64%29%3AUInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_bin:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>max_bin</strong> : UInt64
+
+        <a class="method-permalink" href="#max_bin%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the index of the bin containing the maximum value.
+In the case where several bins contain the same maximum value the smallest index is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_val:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>max_val</strong> : Float64
+
+        <a class="method-permalink" href="#max_val%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the maximum value contained in the histogram bins.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mean:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>mean</strong> : Float64
+
+        <a class="method-permalink" href="#mean%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the mean of the histogrammed variable, where the histogram is regarded as a probability distribution.
+Negative bin values are ignored for the purposes of this calculation.
+The accuracy of the result is limited by the bin width.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min_bin:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>min_bin</strong> : UInt64
+
+        <a class="method-permalink" href="#min_bin%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the index of the bin containing the minimum value.
+In the case where several bins contain the same maximum value the smallest index is returned.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min_val:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>min_val</strong> : Float64
+
+        <a class="method-permalink" href="#min_val%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the minimum value contained in the histogram bins.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nbins-instance-method">
+      <div class="signature">
+        
+        def <strong>nbins</strong>
+
+        <a class="method-permalink" href="#nbins-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="range&#40;n:Int&#41;:Tuple&#40;Float64,Float64&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>range</strong>(n : Int) : Tuple(Float64, Float64)
+
+        <a class="method-permalink" href="#range%28n%3AInt%29%3ATuple%28Float64%2CFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sigma:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>sigma</strong> : Float64
+
+        <a class="method-permalink" href="#sigma%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the standard deviation of the histogrammed variable, where the histogram is regarded as a probability distribution.
+Negative bin values are ignored for the purposes of this calculation.
+The accuracy of the result is limited by the bin width.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sum:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>sum</strong> : Float64
+
+        <a class="method-permalink" href="#sum%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function returns the sum of all bin values.
+Negative bin values are included in the sum.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

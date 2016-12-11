@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>GSL::Histogram - github.com/ruivieira/crystal-gsl</title>
+  <title>GSL::MutableHistogram - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
@@ -50,7 +50,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/MutableHistogram" data-name="gsl::mutablehistogram">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/MutableHistogram" data-name="gsl::mutablehistogram">
       <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
       
     </li>
@@ -162,12 +162,12 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> GSL::Histogram
+  <span class="kind">class</span> GSL::MutableHistogram
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/Histogram.html">GSL::Histogram</a></li><li class="superclass"><a href="../GSL/AbstractHistogram.html">GSL::AbstractHistogram</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/MutableHistogram.html">GSL::MutableHistogram</a></li><li class="superclass"><a href="../GSL/AbstractHistogram.html">GSL::AbstractHistogram</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -196,19 +196,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#new%28min%3AFloat64%2Cmax%3AFloat64%2Cbins%3AInt32%29-class-method" class="signature"><strong>.new</strong>(min : Float64, max : Float64, bins : Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#new%28data%3AArray%28Float%29%2Cbins%3AArray%28Float%29%29-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Array(Float))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28data%3AArray%28Float%29%2Cbins%3AInt32%29-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Int32)</a>
-        
-          <div class="summary"><p><span class="flag orange">TODO</span>  case where data is empty</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28histogram%3A%3A%3APointer%28LibGSL%3A%3AGsl_histogram%29%29-class-method" class="signature"><strong>.new</strong>(histogram : ::Pointer(LibGSL::Gsl_histogram))</a>
+        <a href="#new%28bins%3AArray%28Float64%29%29-class-method" class="signature"><strong>.new</strong>(bins : Array(Float64))</a>
         
       </li>
     
@@ -220,44 +218,54 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28scale%3AFloat64%29%3AHistogram-instance-method" class="signature"><strong>#*</strong>(scale : Float64) : Histogram</a>
+        <a href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method" class="signature"><strong>#*</strong>(h : Histogram | MutableHistogram) : MutableHistogram</a>
+        
+          <div class="summary"><p>Multiply the values of histograms with identical bins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28scale%3AFloat64%29%3AMutableHistogram-instance-method" class="signature"><strong>#*</strong>(scale : Float64) : MutableHistogram</a>
         
           <div class="summary"><p>This function multiplies the contents of the bins of them histogram by the constant <em>scale</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#*</strong>(h : Histogram | MutableHistogram) : Histogram</a>
-        
-          <div class="summary"><p>Multiply the values of histograms with identical bins.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%2B%28offset%3AFloat64%29%3AHistogram-instance-method" class="signature"><strong>#+</strong>(offset : Float64) : Histogram</a>
-        
-          <div class="summary"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#+</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method" class="signature"><strong>#+</strong>(h : Histogram | MutableHistogram) : MutableHistogram</a>
         
           <div class="summary"><p>Add the values of histograms with identical bins.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#-</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#%2B%28offset%3AFloat64%29%3AMutableHistogram-instance-method" class="signature"><strong>#+</strong>(offset : Float64) : MutableHistogram</a>
+        
+          <div class="summary"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method" class="signature"><strong>#-</strong>(h : Histogram | MutableHistogram) : MutableHistogram</a>
         
           <div class="summary"><p>Subtract the values of histograms with identical bins.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#/</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method" class="signature"><strong>#/</strong>(h : Histogram | MutableHistogram) : MutableHistogram</a>
         
           <div class="summary"><p>Multiply the values of histograms with identical bins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#accumulate%28x%3AFloat64%2Cweight%3AFloat64%29-instance-method" class="signature"><strong>#accumulate</strong>(x : Float64, weight : Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#increment%28x%3AFloat64%29-instance-method" class="signature"><strong>#increment</strong>(x : Float64)</a>
         
       </li>
     
@@ -364,6 +372,20 @@
 
   <h2>Class Method Detail</h2>
   
+    <div class="entry-detail" id="new&#40;min:Float64,max:Float64,bins:Int32&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(min : Float64, max : Float64, bins : Int32)
+
+        <a class="method-permalink" href="#new%28min%3AFloat64%2Cmax%3AFloat64%2Cbins%3AInt32%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="new&#40;data:Array&#40;Float&#41;,bins:Array&#40;Float&#41;&#41;-class-method">
       <div class="signature">
         
@@ -378,28 +400,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="new&#40;data:Array&#40;Float&#41;,bins:Int32&#41;-class-method">
+    <div class="entry-detail" id="new&#40;bins:Array&#40;Float64&#41;&#41;-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(data : <a href="../Array.html">Array</a>(Float), bins : Int32)
+        def self.<strong>new</strong>(bins : <a href="../Array.html">Array</a>(Float64))
 
-        <a class="method-permalink" href="#new%28data%3AArray%28Float%29%2Cbins%3AInt32%29-class-method">#</a>
-      </div>
-      
-        <div class="doc"><p><span class="flag orange">TODO</span>  case where data is empty</p></div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new&#40;histogram:::Pointer&#40;LibGSL::Gsl_histogram&#41;&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(histogram : ::Pointer(LibGSL::Gsl_histogram))
-
-        <a class="method-permalink" href="#new%28histogram%3A%3A%3APointer%28LibGSL%3A%3AGsl_histogram%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28bins%3AArray%28Float64%29%29-class-method">#</a>
       </div>
       
       <br/>
@@ -413,16 +419,33 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="*&#40;scale:Float64&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="*&#40;h:Histogram|MutableHistogram&#41;:MutableHistogram-instance-method">
       <div class="signature">
         
-        def <strong>*</strong>(scale : Float64) : <a href="../GSL/Histogram.html">Histogram</a>
+        def <strong>*</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
 
-        <a class="method-permalink" href="#%2A%28scale%3AFloat64%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Multiply the values of histograms with identical bins.
+This is an mutable operation, it return this instance with updated values.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*&#40;scale:Float64&#41;:MutableHistogram-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(scale : Float64) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
+
+        <a class="method-permalink" href="#%2A%28scale%3AFloat64%29%3AMutableHistogram-instance-method">#</a>
       </div>
       
         <div class="doc"><p>This function multiplies the contents of the bins of them histogram by the constant <em>scale</em>.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+This is an mutable operation, it return this instance with updated values.</p></div>
       
       <br/>
       <div>
@@ -430,50 +453,16 @@ This is an immutable operation, it return a new Histogram without changing the o
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="&#43;&#40;h:Histogram|MutableHistogram&#41;:MutableHistogram-instance-method">
       <div class="signature">
         
-        def <strong>*</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
+        def <strong>+</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
 
-        <a class="method-permalink" href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>Multiply the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#43;&#40;offset:Float64&#41;:Histogram-instance-method">
-      <div class="signature">
-        
-        def <strong>+</strong>(offset : Float64) : <a href="../GSL/Histogram.html">Histogram</a>
-
-        <a class="method-permalink" href="#%2B%28offset%3AFloat64%29%3AHistogram-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#43;&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
-      <div class="signature">
-        
-        def <strong>+</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
-
-        <a class="method-permalink" href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Add the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+This is an mutable operation, it return this instance with updated values.</p></div>
       
       <br/>
       <div>
@@ -481,16 +470,33 @@ This is an immutable operation, it return a new Histogram without changing the o
       </div>
     </div>
   
-    <div class="entry-detail" id="-&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="&#43;&#40;offset:Float64&#41;:MutableHistogram-instance-method">
       <div class="signature">
         
-        def <strong>-</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
+        def <strong>+</strong>(offset : Float64) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
 
-        <a class="method-permalink" href="#-%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#%2B%28offset%3AFloat64%29%3AMutableHistogram-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.
+This is an mutable operation, it return this instance with updated values.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-&#40;h:Histogram|MutableHistogram&#41;:MutableHistogram-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
+
+        <a class="method-permalink" href="#-%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Subtract the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+This is an mutable operation, it return this instance with updated values.</p></div>
       
       <br/>
       <div>
@@ -498,16 +504,44 @@ This is an immutable operation, it return a new Histogram without changing the o
       </div>
     </div>
   
-    <div class="entry-detail" id="/&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="/&#40;h:Histogram|MutableHistogram&#41;:MutableHistogram-instance-method">
       <div class="signature">
         
-        def <strong>/</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
+        def <strong>/</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
 
-        <a class="method-permalink" href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AMutableHistogram-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Multiply the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+This is an mutable operation, it return this instance with updated values.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="accumulate&#40;x:Float64,weight:Float64&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>accumulate</strong>(x : Float64, weight : Float64)
+
+        <a class="method-permalink" href="#accumulate%28x%3AFloat64%2Cweight%3AFloat64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="increment&#40;x:Float64&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>increment</strong>(x : Float64)
+
+        <a class="method-permalink" href="#increment%28x%3AFloat64%29-instance-method">#</a>
+      </div>
       
       <br/>
       <div>
