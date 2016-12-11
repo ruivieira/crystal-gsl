@@ -1,26 +1,7 @@
 require "./libgsl.cr"
 
 module GSL
-  class Histogram
-    # TODO: case where data is empty
-    def initialize(data : Array(Float), bins : Int32)
-      if data.empty?
-        raise ArgumentError.new("Data must not be empty")
-      end
-      @histogram = LibGSL.gsl_histogram_alloc bins
-      LibGSL.gsl_histogram_set_ranges_uniform @histogram, data.min, data.max
-      data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
-    end
-
-    protected def initialize(@histogram : LibGSL::Gsl_histogram*)
-    end
-
-    def initialize(data : Array(Float), bins : Array(Float))
-      @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
-      LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
-      data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
-    end
-
+  abstract class AbstractHistogram
     def nbins
       @histogram.value.n
     end
@@ -101,6 +82,27 @@ module GSL
     def clone : Histogram
       return Histogram.new LibGSL.gsl_histogram_clone @histogram
     end
+  end
+
+  class Histogram < AbstractHistogram
+    def initialize(data : Array(Float), bins : Array(Float))
+      @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
+      LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
+      data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
+    end
+
+    protected def initialize(@histogram : LibGSL::Gsl_histogram*)
+    end
+
+    # TODO: case where data is empty
+    def initialize(data : Array(Float), bins : Int32)
+      if data.empty?
+        raise ArgumentError.new("Data must not be empty")
+      end
+      @histogram = LibGSL.gsl_histogram_alloc bins
+      LibGSL.gsl_histogram_set_ranges_uniform @histogram, data.min, data.max
+      data.each { |x| LibGSL.gsl_histogram_increment @histogram, x }
+    end
 
     # Add the values of histograms with identical bins.
     # This is an immutable operation, it return a new Histogram without changing the originals
@@ -108,6 +110,18 @@ module GSL
       dest_hist = LibGSL.gsl_histogram_clone @histogram
       LibGSL.gsl_histogram_add(dest_hist, h.getHistogram)
       return Histogram.new dest_hist
+    end
+  end
+
+  class MutableHistogram < AbstractHistogram
+    def initialize(min : Float64, max : Float64, bins : Int32)
+      @histogram = LibGSL.gsl_histogram_alloc bins
+      LibGSL.gsl_histogram_set_ranges_uniform @histogram, min, max
+    end
+
+    def initialize(bins : Array(Float64))
+      @histogram = LibGSL.gsl_histogram_alloc bins.size - 1
+      LibGSL.gsl_histogram_set_ranges(@histogram, bins, bins.size)
     end
   end
 end

@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 describe GSL do
-  describe "Allocation" do
+  describe "Immutable Histogram" do
     it "must return the correct number of bins" do
       h = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), 100
       h.nbins.should eq 100
@@ -40,6 +40,19 @@ describe GSL do
       h3 = h1 + h2
       sum = h1.bin(50) + h2.bin(50)
       h3.bin(50).should eq sum
+    end
+  end
+
+  describe "Mutable Histogram" do
+    it "must return the correct number of bins by extremes" do
+      bins = 100
+      h = GSL::MutableHistogram.new -5.0, 5.0, bins
+      h.nbins.should eq bins
+    end
+    it "must return the correct number of bins by ranges" do
+      bins = Statistics.linspace(-10.0, 10.0, 50)
+      h = GSL::MutableHistogram.new bins
+      h.nbins.should eq bins.size - 1
     end
   end
 end
