@@ -5,7 +5,7 @@
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="../js/doc.js"></script>
-  <title>Statistics::ContinuousDistribution - github.com/ruivieira/crystal-gsl</title>
+  <title>GSL::Permutation(T) - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
       
     </li>
   
-  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
       <a href="../GSL.html">GSL</a>
       
         <ul>
@@ -55,7 +55,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
       
     </li>
@@ -85,7 +85,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
+  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
       <a href="../Statistics.html">Statistics</a>
       
         <ul>
@@ -100,7 +100,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/ContinuousDistribution" data-name="statistics::continuousdistribution">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ContinuousDistribution" data-name="statistics::continuousdistribution">
       <a href="../Statistics/ContinuousDistribution.html">ContinuousDistribution</a>
       
     </li>
@@ -167,12 +167,12 @@
 <div id="main-content">
 <h1 class="type-name">
 
-  <span class="kind">abstract class</span> Statistics::ContinuousDistribution
+  <span class="kind">class</span> GSL::Permutation(T)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/Permutation.html">GSL::Permutation(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -181,18 +181,16 @@
 
 
 
-
-
-
-
-  <h2>Direct Known Subclasses</h2>
+  <h2>Included Modules</h2>
   <ul class="other-types-list">
   
-    <li class="other-type"><a href="../Statistics/ChiSquare.html">Statistics::ChiSquare</a></li>
-  
-    <li class="other-type"><a href="../Statistics/Uniform.html">Statistics::Uniform</a></li>
+    <li class="other-type">Iterator(<a href="../Array.html">Array(T)</a>)</li>
   
   </ul>
+
+
+
+
 
 
 
@@ -206,13 +204,33 @@
 
 
 
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28data%3AArray%28T%29%29-class-method" class="signature"><strong>.new</strong>(data : Array(T))</a>
+        
+      </li>
+    
+  </ul>
+
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%3AFloat64-instance-method" class="signature"><strong>#sample</strong> : Float64</a>
+        <a href="#next-instance-method" class="signature"><strong>#next</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#previous%3AArray%28T%29-instance-method" class="signature"><strong>#previous</strong> : Array(T)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rewind-instance-method" class="signature"><strong>#rewind</strong></a>
         
       </li>
     
@@ -238,19 +256,78 @@
 
 
   
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+  
 </div>
 
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="new&#40;data:Array&#40;T&#41;&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(data : <a href="../Array.html">Array</a>(T))
+
+        <a class="method-permalink" href="#new%28data%3AArray%28T%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="sample:Float64-instance-method">
+    <div class="entry-detail" id="next-instance-method">
       <div class="signature">
-        abstract 
-        def <strong>sample</strong> : Float64
+        
+        def <strong>next</strong>
 
-        <a class="method-permalink" href="#sample%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#next-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="previous:Array&#40;T&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>previous</strong> : <a href="../Array.html">Array</a>(T)
+
+        <a class="method-permalink" href="#previous%3AArray%28T%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rewind-instance-method">
+      <div class="signature">
+        
+        def <strong>rewind</strong>
+
+        <a class="method-permalink" href="#rewind-instance-method">#</a>
       </div>
       
       <br/>
