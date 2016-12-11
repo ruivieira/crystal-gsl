@@ -114,6 +114,17 @@ module GSL
       LibGSL.gsl_histogram_add(dest_hist, h.getHistogram)
       return Histogram.new dest_hist
     end
+
+    # Subtract the values of histograms with identical bins.
+    # This is an immutable operation, it return a new Histogram without changing the originals
+    def -(h : Histogram) : Histogram
+      if !equal_bins(h)
+        raise NonIdenticalHistograms.new("Histograms must have identical bins")
+      end
+      dest_hist = LibGSL.gsl_histogram_clone @histogram
+      LibGSL.gsl_histogram_sub(dest_hist, h.getHistogram)
+      return Histogram.new dest_hist
+    end
   end
 
   class MutableHistogram < AbstractHistogram
