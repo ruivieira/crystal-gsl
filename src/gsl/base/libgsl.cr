@@ -1,5 +1,39 @@
 @[Link("gsl")]
 lib LibGSL
+  # GSL codes
+  enum Code
+    GSL_SUCCESS  =  0
+    GSL_FAILURE  = -1
+    GSL_CONTINUE = -2 # iteration has not converged
+    GSL_EDOM     =  1 # input domain error, e.g sqrt(-1)
+    GSL_ERANGE   =  2 # output range error, e.g. exp(1e100)
+    GSL_EFAULT   =  3 # invalid pointer
+    GSL_EINVAL   =  4 # invalid argument supplied by user
+    GSL_EFAILED  =  5 # generic failure
+    GSL_EFACTOR  =  6 # factorization failed
+    GSL_ESANITY  =  7 # sanity check failed - shouldn't happen
+    GSL_ENOMEM   =  8 # malloc failed
+    GSL_EBADFUNC =  9 # problem with user-supplied function
+    GSL_ERUNAWAY = 10 # iterative process is out of control
+    GSL_EMAXITER = 11 # exceeded max number of iterations
+    GSL_EZERODIV = 12 # tried to divide by zero
+    GSL_EBADTOL  = 13 # user specified an invalid tolerance
+    GSL_ETOL     = 14 # failed to reach the specified tolerance
+    GSL_EUNDRFLW = 15 # underflow
+    GSL_EOVRFLW  = 16 # overflow
+    GSL_ELOSS    = 17 # loss of accuracy
+    GSL_EROUND   = 18 # failed because of roundoff error
+    GSL_EBADLEN  = 19 # matrix, vector lengths are not conformant
+    GSL_ENOTSQR  = 20 # matrix not square
+    GSL_ESING    = 21 # apparent singularity detected
+    GSL_EDIVERGE = 22 # integral or series is divergent
+    GSL_EUNSUP   = 23 # requested feature is not supported by the hardware
+    GSL_EUNIMPL  = 24 # requested feature not (yet) implemented
+    GSL_ECACHE   = 25 # cache table limit exceeded
+    GSL_ENOPROG  = 26 # iteration is not making progress towards solution
+    GSL_ENOPROGJ = 27 # jacobian evaluations are not improving the solution
+  end
+
   struct Gsl_rng_type
     name : UInt8*
   end
@@ -61,8 +95,8 @@ lib LibGSL
   fun gsl_permutation_data(p : Gsl_permutation*) : LibC::SizeT*
   fun gsl_permutation_valid(p : Gsl_permutation*) : UInt32
   fun gsl_permute(p : LibC::SizeT*, data : Float64*, stride : LibC::SizeT, n : LibC::SizeT) : Int32
-  fun gsl_permutation_next(p : Gsl_permutation*) : Int32
-  fun gsl_permutation_prev(p : Gsl_permutation*) : Int32
+  fun gsl_permutation_next(p : Gsl_permutation*) : UInt32
+  fun gsl_permutation_prev(p : Gsl_permutation*) : UInt32
 
   # Poisson distribution
   fun gsl_ran_poisson(r : Gsl_rng*, mu : Float64) : UInt64
