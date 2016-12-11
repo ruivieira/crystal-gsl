@@ -169,5 +169,14 @@ describe GSL do
       }
       h.bin(b).should be_close(10.0, 1e-5)
     end
+    it "adding should modify originals" do
+      bins = Statistics.linspace(-10.0, 10.0, 100)
+      h1 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h2 = GSL::Histogram.new Statistics::Normal.sample(1000, 0.0, 1.0), bins
+      h1_original = h1.bin(50)
+      h2_original = h2.bin(50)
+      h1 = h1 + h2
+      h1.bin(50).should eq h1_original + h2_original
+    end
   end
 end

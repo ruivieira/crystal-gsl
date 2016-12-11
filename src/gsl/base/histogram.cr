@@ -183,5 +183,15 @@ module GSL
     def accumulate(x : Float64, weight : Float64)
       LibGSL.gsl_histogram_accumulate(@histogram, x, weight)
     end
+
+    # Add the values of histograms with identical bins.
+    # This is an mutable operation, it return this instance with updated values.
+    def +(h : Histogram) : Histogram
+      if !equal_bins(h)
+        raise NonIdenticalHistograms.new("Histograms must have identical bins")
+      end
+      LibGSL.gsl_histogram_add(@histogram, h.getHistogram)
+      return self
+    end
   end
 end
