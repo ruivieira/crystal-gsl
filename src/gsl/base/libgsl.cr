@@ -49,7 +49,7 @@ lib LibGSL
 
   struct Gsl_permutation
     size : LibC::SizeT
-    data : Float64*
+    data : LibC::SizeT*
   end
 
   fun gsl_permutation_alloc(n : LibC::SizeT) : Gsl_permutation*
@@ -61,6 +61,7 @@ lib LibGSL
   fun gsl_permutation_data(p : Gsl_permutation*) : LibC::SizeT*
   fun gsl_permutation_valid(p : Gsl_permutation*) : UInt32
   fun gsl_permute(p : LibC::SizeT*, data : Float64*, stride : LibC::SizeT, n : LibC::SizeT) : Int32
+  fun gsl_permutation_next(p : Gsl_permutation*) : Int32
 
   # Poisson distribution
   fun gsl_ran_poisson(r : Gsl_rng*, mu : Float64) : UInt64
