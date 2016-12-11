@@ -147,6 +147,14 @@ module GSL
       LibGSL.gsl_histogram_div(dest_hist, h.getHistogram)
       return Histogram.new dest_hist
     end
+
+    # This function multiplies the contents of the bins of them histogram by the constant *scale*.
+    # This is an immutable operation, it return a new Histogram without changing the originals
+    def *(scale : Float64) : Histogram
+      dest_hist = LibGSL.gsl_histogram_clone @histogram
+      LibGSL.gsl_histogram_scale(dest_hist, scale)
+      return Histogram.new dest_hist
+    end
   end
 
   class MutableHistogram < AbstractHistogram

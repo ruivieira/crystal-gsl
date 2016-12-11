@@ -92,6 +92,7 @@ lib LibGSL
   fun gsl_histogram_sub(h1 : Gsl_histogram*, h2 : Gsl_histogram*)
   fun gsl_histogram_mul(h1 : Gsl_histogram*, h2 : Gsl_histogram*)
   fun gsl_histogram_div(h1 : Gsl_histogram*, h2 : Gsl_histogram*)
+  fun gsl_histogram_scale(h : Gsl_histogram*, scale : Float64)
 
   # # matrices
 
