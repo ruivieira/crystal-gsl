@@ -110,6 +110,7 @@ lib LibGSL
 
   # Uniform distribution
   fun gsl_ran_flat(r : Gsl_rng*, a : Float64, b : Float64) : Float64
+  fun gsl_ran_flat_pdf(x : Float64, a : Float64, b : Float64) : Float64
 
   # # histograms
   # Histogram structure
