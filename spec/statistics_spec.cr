@@ -2,7 +2,7 @@ require "./spec_helper"
 
 describe Statistics do
   describe "Binomial" do
-    it "must return the corrent number of elements" do
+    it "must return the correct number of elements" do
       samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
       samples.size.should eq 100
     end
@@ -10,6 +10,13 @@ describe Statistics do
     it "must return samples within the number of trials" do
       samples = Statistics::Binomial.sample(100, 0.5, 1_u64)
       samples.all? { |x| x == 0 || x == 1 }.should eq true
+    end
+  end
+
+  describe "ChiSquare" do
+    it "must return the correct number of elements" do
+      samples = Statistics::ChiSquare.sample(100, 5.0)
+      samples.size.should eq 100
     end
   end
 
@@ -68,8 +75,8 @@ describe Statistics do
 
   describe "Matrix" do
     it "should set a vector as a column" do
-      m = Statistics::Matrix.new 4, 4
-      v = Statistics::Vector.new 4
+      m = GSL::Matrix.new 4, 4
+      v = GSL::Vector.new 4
 
       m[0, 0] = 0.0
       m[0, 1] = 1.0
@@ -94,7 +101,7 @@ describe Statistics do
     end
 
     it "increment in-place" do
-      m = Statistics::Matrix.new 2, 2
+      m = GSL::Matrix.new 2, 2
       m[0, 0] = 5.0
 
       m[0, 0] = m[0, 0] + 5.0
@@ -103,7 +110,7 @@ describe Statistics do
     end
 
     it "increment in-place syntax sugar" do
-      m = Statistics::Matrix.new 2, 2
+      m = GSL::Matrix.new 2, 2
       m[0, 0] = 5.0
 
       m[0, 0] += 5.0
@@ -112,7 +119,7 @@ describe Statistics do
     end
 
     it "eye should have correct form" do
-      m = Statistics::Matrix.eye 3
+      m = GSL::Matrix.eye 3
       (0...3).each do |x|
         m[x, x].should eq 1.0
       end
@@ -122,7 +129,7 @@ describe Statistics do
   describe "Vector" do
     it "should initialize given an array" do
       a = [1.0, 2.0, 3.0, 4.0, 5.0]
-      v = Statistics::Vector.new a
+      v = GSL::Vector.new a
 
       v.size.should eq 5
       (0...v.size).each do |i|
@@ -132,7 +139,7 @@ describe Statistics do
 
     it "converted to array should keep dimensions" do
       a = [1.0, 2.0, 3.0, 4.0, 5.0]
-      v = Statistics::Vector.new a
+      v = GSL::Vector.new a
 
       v.to_array.size.should eq a.size
     end
