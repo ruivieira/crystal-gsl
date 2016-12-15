@@ -18,6 +18,21 @@ module GSL
     def proportion(n : Float64 | Int32)
       self.to_a.count(n.to_f) / self.size.to_f
     end
+
+    def ranked
+      output = [] of Float64
+      rank = self.sort.frequencies
+      rank.keys.each_with_index do |y, ind|
+        temp = [] of Int32
+        self.to_a.each_with_index do |x, index|
+          if y == x
+            temp << index + 1
+          end
+        end
+        output << temp.sum / rank.values[ind].to_f
+      end
+      output.to_vector
+    end
   end
 end
 
