@@ -152,4 +152,20 @@ describe Statistics do
       l.size.should eq items
     end
   end
+
+  describe "correlation" do
+    it "should perform pearson correlation" do
+      GSL::Stats.correlation([1, 2, 3, 4, 5].to_vector, [2, 3, 4, 99, 6].to_vector).round(2).should eq 0.39
+    end
+
+    it "should return the ranked vector" do
+      a = [4, 4, 2, 3, 5, 2, 1].to_vector
+      # floating point calculating problem therefore turn into array to compare
+      a.ranked.to_a.should eq (GSL::Vector.new [7.0, 4.5, 4.0, 1.5, 5.0]).to_a
+    end
+
+    it "should perform spearman correlation" do
+      GSL::Stats.spearman([1, 2, 3, 4, 5].to_vector, [2, 3, 4, 99, 6].to_vector).round(2).should eq 0.9
+    end
+  end
 end

@@ -171,6 +171,9 @@ lib LibGSL
 
   # Inference
   fun gsl_fit_linear(x : Float64*, xstride : LibC::SizeT, y : Float64*, ystride : LibC::SizeT, n : LibC::SizeT, c0 : Float64*, c1 : Float64*, cov00 : Float64*, cov01 : Float64*, cov11 : Float64*, sumsq : Float64*) : Int32
+
+  # Correlation
+  fun gsl_stats_correlation(x : Float64*, xstride : LibC::SizeT, y : Float64*, ystride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
 end
 
 module GSL
