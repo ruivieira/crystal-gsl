@@ -146,6 +146,7 @@ lib LibGSL
   fun gsl_vector_scale(a : Gsl_vector*, b : LibC::Double) : Int32
   fun gsl_vector_add_constant(a : Gsl_vector*, b : LibC::Double) : Int32
   fun gsl_vector_equal(a : Gsl_vector*, b : Gsl_vector*) : Int32
+  fun gsl_sort_vector(a : Gsl_vector*) : Void
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t

@@ -67,20 +67,20 @@ describe GSL::Vector do
   end
   describe "#first" do
     it "should return the first element of vector" do
-      length_four_vector.first.should eq 1.0 
+      length_four_vector.first.should eq 1.0
     end
   end
   describe "#last" do
     it "should return the last element of vector" do
-      length_four_vector.last.should eq 4.0 
+      length_four_vector.last.should eq 4.0
     end
   end
   describe "#to_array" do
     it "should return the data of this vector" do
-      length_four_vector.to_array.should eq [1.0,2.0,3.0,4.0]
+      length_four_vector.to_array.should eq [1.0, 2.0, 3.0, 4.0]
     end
     it "should return the data of this vector" do
-      length_four_vector.to_a.should eq [1.0,2.0,3.0,4.0]
+      length_four_vector.to_a.should eq [1.0, 2.0, 3.0, 4.0]
     end
   end
 end
