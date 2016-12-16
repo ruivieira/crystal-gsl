@@ -19,7 +19,7 @@ module GSL
     end
 
     def ==(n : GSL::Vector)
-      self.to_a == n.to_a
+      LibGSL.gsl_vector_equal(self.pointer, n.pointer) == 1 ? true : false
     end
 
     def size : Int32
