@@ -343,6 +343,10 @@ module Statistics
     def self.sample(n : Int, a : Float64, b : Float64)
       return (0...n).map { |i| LibGSL.gsl_ran_flat(GSL::RNG, a, b) }
     end
+
+    def self.pdf(x : Float64, a : Float64, b : Float64) : Float64
+      return LibGSL.gsl_ran_flat_pdf(x, a, b)
+    end
   end
 
   struct LinearRegression

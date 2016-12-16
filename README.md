@@ -1,4 +1,4 @@
-# statistics
+# crystal-gsl
 
 ### Status
 [![Build Status](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)](https://travis-ci.org/ruivieira/crystal-gsl.svg?branch=master)
@@ -44,7 +44,7 @@ Full documentation can be found at [here](https://ruivieira.github.io/crystal-gs
 
 ### Examples
 
-Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/regressions/).
+Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/).
 
 *Warning*:
 
