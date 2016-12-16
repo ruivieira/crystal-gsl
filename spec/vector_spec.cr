@@ -83,4 +83,31 @@ describe GSL::Vector do
       length_four_vector.to_a.should eq [1.0, 2.0, 3.0, 4.0]
     end
   end
+  describe "#push" do
+    it "should push data to the last of vector" do
+      (length_four_vector.push 5).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
+    end
+    it "should push data to the last of vector" do
+      (length_four_vector << 5).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
+    end
+  end
+  describe "#includes?" do
+    it "should return true if the data is in the vector" do
+      (length_four_vector.includes? 4).should eq true
+    end
+    it "should return true if the data is in the vector" do
+      (length_four_vector.includes? 4.0).should eq true
+    end
+    it "should return false if the data is not in the vector" do
+      (length_four_vector.includes? 5).should eq false
+    end
+    it "should return false if the data is not in the vector" do
+      (length_four_vector.includes? 5.0).should eq false
+    end
+  end
+  describe "#concat" do
+    it "should concatenate two vectors together" do
+      (length_four_vector.concat length_ten_vector).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+    end
+  end
 end
