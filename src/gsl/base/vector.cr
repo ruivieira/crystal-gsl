@@ -98,5 +98,45 @@ module GSL
     def last
       self[self.size - 1]
     end
+
+    def replace(n : GSL::Vector)
+      LibGSL.gsl_vector_memcpy(self.pointer, n.pointer)
+      self
+    end
+
+    def reverse
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_reverse(temp.pointer)
+      temp
+    end
+
+    def reverse!
+      LibGSL.gsl_vector_reverse(self.pointer)
+      self
+    end
+
+    def max
+      LibGSL.gsl_vector_max(self.pointer)
+    end
+
+    def min
+      LibGSL.gsl_vector_min(self.pointer)
+    end
+
+    def minmax
+      [self.min, self.max]
+    end
+
+    def max_index
+      LibGSL.gsl_vector_max_index(self.pointer)
+    end
+
+    def min_index
+      LibGSL.gsl_vector_min_index(self.pointer)
+    end
+
+    def minmax_index
+      [self.min_index, self.max_index]
+    end
   end
 end

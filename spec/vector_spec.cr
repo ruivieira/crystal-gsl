@@ -110,4 +110,49 @@ describe GSL::Vector do
       (length_four_vector.concat length_ten_vector).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
     end
   end
+  describe "#sort" do
+    it "should return the sorted vector" do
+      (GSL::Vector.new [4.0, 3.0, 2.0, 1.0]).sort.should eq length_four_vector
+    end
+  end
+  describe "#replace" do
+    it "should replace itself by the input vector" do
+      ((GSL::Vector.new [1.0, 2.0, 3.0, 4.0]).replace(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])).should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+    end
+  end
+  describe "#reverse" do
+    it "should return a reversed vector" do
+      length_four_vector.reverse.should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+    end
+  end
+  describe "#max" do
+    it "should return the maximum of vector" do
+      length_four_vector.max.should eq 4.0
+    end
+  end
+  describe "#min" do
+    it "should return the minimum of vector" do
+      length_four_vector.min.should eq 1.0
+    end
+  end
+  describe "#minmax" do
+    it "should return a array for minimun value and maximum value of vector" do
+      length_four_vector.minmax.should eq [1.0, 4.0]
+    end
+  end
+  describe "#max_index" do
+    it "should return the index of maximum value of vector" do
+      length_four_vector.max_index.should eq 3
+    end
+  end
+  describe "#min_index" do
+    it "should return the index of minimum value of vector" do
+      length_four_vector.min_index.should eq 0
+    end
+  end
+  describe "#minmax_index" do
+    it "should return a array for index of minimun value and maximum value of vector" do
+      length_four_vector.minmax_index.should eq [0, 3]
+    end
+  end
 end
