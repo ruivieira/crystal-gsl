@@ -18,6 +18,10 @@ module GSL
       end
     end
 
+    def ==(n : GSL::Vector)
+      self.to_a == n.to_a
+    end
+
     def size : Int32
       return @size
     end
@@ -73,11 +77,11 @@ module GSL
     end
 
     def head
-      ((0...5).map { |x| self[x] }).to_vector
+      self.size >= 5 ? ((0...5).map { |x| self[x] }).to_vector : self
     end
 
     def tail
-      ((self.size - 5...self.size).map { |x| self[x] }).to_vector
+      self.size >= 5 ? ((self.size - 5...self.size).map { |x| self[x] }).to_vector : self
     end
 
     def first
