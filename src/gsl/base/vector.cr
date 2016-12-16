@@ -98,5 +98,94 @@ module GSL
     def last
       self[self.size - 1]
     end
+
+    def replace(n : GSL::Vector)
+      LibGSL.gsl_vector_memcpy(self.pointer, n.pointer)
+      self
+    end
+
+    def reverse
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_reverse(temp.pointer)
+      temp
+    end
+
+    def reverse!
+      LibGSL.gsl_vector_reverse(self.pointer)
+      self
+    end
+
+    def max
+      LibGSL.gsl_vector_max(self.pointer)
+    end
+
+    def min
+      LibGSL.gsl_vector_min(self.pointer)
+    end
+
+    def minmax
+      [self.min, self.max]
+    end
+
+    def max_index
+      LibGSL.gsl_vector_max_index(self.pointer)
+    end
+
+    def min_index
+      LibGSL.gsl_vector_min_index(self.pointer)
+    end
+
+    def minmax_index
+      [self.min_index, self.max_index]
+    end
+
+    def empty?
+      LibGSL.gsl_vector_isnull(self.pointer) == 1 ? true : false
+    end
+
+    def pos?
+      LibGSL.gsl_vector_ispos(self.pointer) == 1 ? true : false
+    end
+
+    def neg?
+      LibGSL.gsl_vector_isneg(self.pointer) == 1 ? true : false
+    end
+
+    def has_neg?
+      LibGSL.gsl_vector_isnonneg(self.pointer) == 1 ? false : true
+    end
+
+    def set_zero
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_zero(temp.pointer)
+      temp
+    end
+
+    def set_zero!
+      LibGSL.gsl_vector_set_zero(self.pointer)
+      self
+    end
+
+    def set_all(n : Int32 | Float64)
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_all(temp.pointer, n.to_f)
+      temp
+    end
+
+    def set_all!(n : Int32 | Float64)
+      LibGSL.gsl_vector_set_all(self.pointer, n.to_f)
+      self
+    end
+
+    def set_bias(n : Int32)
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_basis(temp.pointer, n)
+      temp
+    end
+
+    def set_bias!(n : Int32)
+      LibGSL.gsl_vector_set_basis(self.pointer, n)
+      self
+    end
   end
 end

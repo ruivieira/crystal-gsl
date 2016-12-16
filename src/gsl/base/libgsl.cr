@@ -193,14 +193,27 @@ lib LibGSL
   fun gsl_vector_calloc(n : LibC::SizeT) : Gsl_vector*
   fun gsl_vector_get(v : Gsl_vector*, i : LibC::SizeT) : Float64
   fun gsl_vector_set(v : Gsl_vector*, i : LibC::SizeT, x : Float64) : Void
-  fun gsl_vector_add(a : Gsl_vector*, b : Gsl_vector*) : Int32
-  fun gsl_vector_sub(a : Gsl_vector*, b : Gsl_vector*) : Int32
-  fun gsl_vector_mul(a : Gsl_vector*, b : Gsl_vector*) : Int32
-  fun gsl_vector_div(a : Gsl_vector*, b : Gsl_vector*) : Int32
-  fun gsl_vector_scale(a : Gsl_vector*, b : LibC::Double) : Int32
-  fun gsl_vector_add_constant(a : Gsl_vector*, b : LibC::Double) : Int32
+  fun gsl_vector_add(a : Gsl_vector*, b : Gsl_vector*) : Code
+  fun gsl_vector_sub(a : Gsl_vector*, b : Gsl_vector*) : Code
+  fun gsl_vector_mul(a : Gsl_vector*, b : Gsl_vector*) : Code
+  fun gsl_vector_div(a : Gsl_vector*, b : Gsl_vector*) : Code
+  fun gsl_vector_scale(a : Gsl_vector*, b : LibC::Double) : Code
+  fun gsl_vector_add_constant(a : Gsl_vector*, b : LibC::Double) : Code
   fun gsl_vector_equal(a : Gsl_vector*, b : Gsl_vector*) : Int32
   fun gsl_sort_vector(a : Gsl_vector*) : Void
+  fun gsl_vector_memcpy(a : Gsl_vector*, b : Gsl_vector*) : Code
+  fun gsl_vector_reverse(a : Gsl_vector*) : Code
+  fun gsl_vector_max(a : Gsl_vector*) : Float64
+  fun gsl_vector_min(a : Gsl_vector*) : Float64
+  fun gsl_vector_max_index(a : Gsl_vector*) : LibC::SizeT
+  fun gsl_vector_min_index(a : Gsl_vector*) : LibC::SizeT
+  fun gsl_vector_isnull(a : Gsl_vector*) : Int32
+  fun gsl_vector_ispos(a : Gsl_vector*) : Int32
+  fun gsl_vector_isneg(a : Gsl_vector*) : Int32
+  fun gsl_vector_isnonneg(a : Gsl_vector*) : Int32
+  fun gsl_vector_set_zero(a : Gsl_vector*) : Void
+  fun gsl_vector_set_all(a : Gsl_vector*, b : LibC::Double) : Void
+  fun gsl_vector_set_basis(a : Gsl_vector*, b : LibC::SizeT) : Void
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t
