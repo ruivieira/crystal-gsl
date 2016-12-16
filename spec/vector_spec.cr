@@ -110,4 +110,96 @@ describe GSL::Vector do
       (length_four_vector.concat length_ten_vector).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
     end
   end
+  describe "#sort" do
+    it "should return the sorted vector" do
+      (GSL::Vector.new [4.0, 3.0, 2.0, 1.0]).sort.should eq length_four_vector
+    end
+  end
+  describe "#replace" do
+    it "should replace itself by the input vector" do
+      ((GSL::Vector.new [1.0, 2.0, 3.0, 4.0]).replace(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])).should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+    end
+  end
+  describe "#reverse" do
+    it "should return a reversed vector" do
+      length_four_vector.reverse.should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+    end
+  end
+  describe "#max" do
+    it "should return the maximum of vector" do
+      length_four_vector.max.should eq 4.0
+    end
+  end
+  describe "#min" do
+    it "should return the minimum of vector" do
+      length_four_vector.min.should eq 1.0
+    end
+  end
+  describe "#minmax" do
+    it "should return a array for minimun value and maximum value of vector" do
+      length_four_vector.minmax.should eq [1.0, 4.0]
+    end
+  end
+  describe "#max_index" do
+    it "should return the index of maximum value of vector" do
+      length_four_vector.max_index.should eq 3
+    end
+  end
+  describe "#min_index" do
+    it "should return the index of minimum value of vector" do
+      length_four_vector.min_index.should eq 0
+    end
+  end
+  describe "#minmax_index" do
+    it "should return a array for index of minimun value and maximum value of vector" do
+      length_four_vector.minmax_index.should eq [0, 3]
+    end
+  end
+  describe "#empty?" do
+    it "should return true if all the elements are zero" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).empty?.should eq true
+    end
+    it "should return false if some the elements are not zero" do
+      length_four_vector.empty?.should eq false
+    end
+  end
+  describe "#pos?" do
+    it "should return true if all the elements are positive" do
+      length_four_vector.pos?.should eq true
+    end
+    it "should return false if some the elements are not positive" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).pos?.should eq false
+    end
+  end
+  describe "#neg?" do
+    it "should return true if all the elements are negtive" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).neg?.should eq true
+    end
+    it "should return false if some the elements are not negtive" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).neg?.should eq false
+    end
+  end
+  describe "#has_neg?" do
+    it "should return true if some the elements are negtive" do
+      (GSL::Vector.new [0.0, 0.0, -1.0]).has_neg?.should eq true
+    end
+    it "should return false if all the elements are not negtive" do
+      length_four_vector.has_neg?.should eq false
+    end
+  end
+  describe "#set_zero" do
+    it "should set all the values of this vector to zero" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_zero.should eq (GSL::Vector.new [0.0, 0.0, 0.0])
+    end
+  end
+  describe "#set_all" do
+    it "should set all the values of this vector to sepecific value" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_all(5).should eq (GSL::Vector.new [5.0, 5.0, 5.0])
+    end
+  end
+  describe "#set_bias" do
+    it "should set all the values to zero except the chosen indexto one" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_bias(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
+    end
+  end
 end
