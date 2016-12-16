@@ -18,6 +18,10 @@ module GSL
       end
     end
 
+    def ==(n : GSL::Vector)
+      LibGSL.gsl_vector_equal(self.pointer, n.pointer) == 1 ? true : false
+    end
+
     def size : Int32
       return @size
     end
@@ -65,7 +69,14 @@ module GSL
     end
 
     def sort
-      self.to_a.sort.to_vector
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_sort_vector(temp.pointer)
+      temp
+    end
+
+    def sort!
+      LibGSL.gsl_sort_vector(self.pointer)
+      self
     end
 
     def concat(n : GSL::Vector)
@@ -73,11 +84,11 @@ module GSL
     end
 
     def head
-      ((0...5).map { |x| self[x] }).to_vector
+      self.size >= 5 ? ((0...5).map { |x| self[x] }).to_vector : self
     end
 
     def tail
-      ((self.size - 5...self.size).map { |x| self[x] }).to_vector
+      self.size >= 5 ? ((self.size - 5...self.size).map { |x| self[x] }).to_vector : self
     end
 
     def first
