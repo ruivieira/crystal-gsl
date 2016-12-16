@@ -154,5 +154,38 @@ module GSL
     def has_neg?
       LibGSL.gsl_vector_isnonneg(self.pointer) == 1 ? false : true
     end
+
+    def set_zero
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_zero(temp.pointer)
+      temp
+    end
+
+    def set_zero!
+      LibGSL.gsl_vector_set_zero(self.pointer)
+      self
+    end
+
+    def set_all(n : Int32 | Float64)
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_all(temp.pointer, n.to_f)
+      temp
+    end
+
+    def set_all!(n : Int32 | Float64)
+      LibGSL.gsl_vector_set_all(self.pointer, n.to_f)
+      self
+    end
+
+    def set_bias(n : Int32)
+      temp = GSL::Vector.new self.to_a
+      LibGSL.gsl_vector_set_basis(temp.pointer, n)
+      temp
+    end
+
+    def set_bias!(n : Int32)
+      LibGSL.gsl_vector_set_basis(self.pointer, n)
+      self
+    end
   end
 end

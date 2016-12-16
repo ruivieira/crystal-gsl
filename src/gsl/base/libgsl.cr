@@ -211,6 +211,9 @@ lib LibGSL
   fun gsl_vector_ispos(a : Gsl_vector*) : Int32
   fun gsl_vector_isneg(a : Gsl_vector*) : Int32
   fun gsl_vector_isnonneg(a : Gsl_vector*) : Int32
+  fun gsl_vector_set_zero(a : Gsl_vector*) : Void
+  fun gsl_vector_set_all(a : Gsl_vector*, b : LibC::Double) : Void
+  fun gsl_vector_set_basis(a : Gsl_vector*, b : LibC::SizeT) : Void
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t

@@ -187,4 +187,19 @@ describe GSL::Vector do
       length_four_vector.has_neg?.should eq false
     end
   end
+  describe "#set_zero" do
+    it "should set all the values of this vector to zero" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_zero.should eq (GSL::Vector.new [0.0, 0.0, 0.0])
+    end
+  end
+  describe "#set_all" do
+    it "should set all the values of this vector to sepecific value" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_all(5).should eq (GSL::Vector.new [5.0, 5.0, 5.0])
+    end
+  end
+  describe "#set_bias" do
+    it "should set all the values to zero except the chosen indexto one" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_bias(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
+    end
+  end
 end
