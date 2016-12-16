@@ -207,6 +207,10 @@ lib LibGSL
   fun gsl_vector_min(a : Gsl_vector*) : Float64
   fun gsl_vector_max_index(a : Gsl_vector*) : LibC::SizeT
   fun gsl_vector_min_index(a : Gsl_vector*) : LibC::SizeT
+  fun gsl_vector_isnull(a : Gsl_vector*) : Int32
+  fun gsl_vector_ispos(a : Gsl_vector*) : Int32
+  fun gsl_vector_isneg(a : Gsl_vector*) : Int32
+  fun gsl_vector_isnonneg(a : Gsl_vector*) : Int32
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t

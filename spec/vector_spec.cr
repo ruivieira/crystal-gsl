@@ -155,4 +155,36 @@ describe GSL::Vector do
       length_four_vector.minmax_index.should eq [0, 3]
     end
   end
+  describe "#empty?" do
+    it "should return true if all the elements are zero" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).empty?.should eq true
+    end
+    it "should return false if some the elements are not zero" do
+      length_four_vector.empty?.should eq false
+    end
+  end
+  describe "#pos?" do
+    it "should return true if all the elements are positive" do
+      length_four_vector.pos?.should eq true
+    end
+    it "should return false if some the elements are not positive" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).pos?.should eq false
+    end
+  end
+  describe "#neg?" do
+    it "should return true if all the elements are negtive" do
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).neg?.should eq true
+    end
+    it "should return false if some the elements are not negtive" do
+      (GSL::Vector.new [0.0, 0.0, 0.0]).neg?.should eq false
+    end
+  end
+  describe "#has_neg?" do
+    it "should return true if some the elements are negtive" do
+      (GSL::Vector.new [0.0, 0.0, -1.0]).has_neg?.should eq true
+    end
+    it "should return false if all the elements are not negtive" do
+      length_four_vector.has_neg?.should eq false
+    end
+  end
 end

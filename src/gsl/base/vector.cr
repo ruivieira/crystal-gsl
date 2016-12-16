@@ -138,5 +138,21 @@ module GSL
     def minmax_index
       [self.min_index, self.max_index]
     end
+
+    def empty?
+      LibGSL.gsl_vector_isnull(self.pointer) == 1 ? true : false
+    end
+
+    def pos?
+      LibGSL.gsl_vector_ispos(self.pointer) == 1 ? true : false
+    end
+
+    def neg?
+      LibGSL.gsl_vector_isneg(self.pointer) == 1 ? true : false
+    end
+
+    def has_neg?
+      LibGSL.gsl_vector_isnonneg(self.pointer) == 1 ? false : true
+    end
   end
 end
