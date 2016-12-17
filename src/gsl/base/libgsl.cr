@@ -162,7 +162,7 @@ lib LibGSL
   end
 
   struct Gsl_block
-    size : Int32
+    size : LibC::SizeT
     data : LibC::Double*
   end
 
