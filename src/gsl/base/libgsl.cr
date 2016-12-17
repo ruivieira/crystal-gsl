@@ -153,8 +153,8 @@ lib LibGSL
   # # matrices
 
   struct Gsl_matrix
-    size1 : Int32
-    size2 : Int32
+    size1 : LibC::SizeT
+    size2 : LibC::SizeT
     tda : LibC::SizeT
     data : LibC::Double*
     block : Gsl_block*

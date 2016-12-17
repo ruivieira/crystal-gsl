@@ -6,11 +6,11 @@ module GSL
       @pointer = LibGSL.gsl_matrix_calloc(@rows, @columns)
     end
 
-    def nrows : Int32
+    def nrows : LibC::SizeT
       @pointer.value.size1
     end
 
-    def ncols : Int32
+    def ncols : LibC::SizeT
       @pointer.value.size2
     end
 
