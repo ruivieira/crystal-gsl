@@ -193,6 +193,7 @@ lib LibGSL
   fun gsl_matrix_ispos(m : Gsl_matrix*) : Int32
   fun gsl_matrix_isneg(m : Gsl_matrix*) : Int32
   fun gsl_matrix_isnonneg(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_equal(m : Gsl_matrix*, n : Gsl_matrix*) : Int32
 
   # vectors
 

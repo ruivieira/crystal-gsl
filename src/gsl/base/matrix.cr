@@ -22,6 +22,10 @@ module GSL
       self.map_rows { |x| x.inspect }.join("\n")
     end
 
+    def ==(m : GSL::Matrix)
+      LibGSL.gsl_matrix_equal(self.pointer, m.pointer) == 1 ? true : false
+    end
+
     def [](row : Symbol | Int32, column : Symbol | Int32) : Float64 | Vector
       if row == :all
         return self.column(column)
