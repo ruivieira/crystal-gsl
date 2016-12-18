@@ -141,5 +141,21 @@ module GSL
       LibGSL.gsl_matrix_min_index(self.pointer, pointerof(row), pointerof(column))
       [row, column]
     end
+
+    def empty?
+      LibGSL.gsl_matrix_isnull(self.pointer) == 1 ? true : false
+    end
+
+    def pos?
+      LibGSL.gsl_matrix_ispos(self.pointer) == 1 ? true : false
+    end
+
+    def neg?
+      LibGSL.gsl_matrix_isneg(self.pointer) == 1 ? true : false
+    end
+
+    def has_neg?
+      LibGSL.gsl_matrix_isnonneg(self.pointer) == 1 ? false : true
+    end
   end
 end

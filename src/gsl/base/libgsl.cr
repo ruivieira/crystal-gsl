@@ -189,6 +189,10 @@ lib LibGSL
   fun gsl_matrix_min(m : Gsl_matrix*) : Float64
   fun gsl_matrix_max_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
   fun gsl_matrix_min_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
+  fun gsl_matrix_isnull(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_ispos(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_isneg(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_isnonneg(m : Gsl_matrix*) : Int32
 
   # vectors
 
