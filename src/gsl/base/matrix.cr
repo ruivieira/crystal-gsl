@@ -18,6 +18,10 @@ module GSL
       Tuple.new(@rows, @columns)
     end
 
+    def inspect
+      self.map_rows { |x| x.inspect }.join("\n")
+    end
+
     def [](row : Symbol | Int32, column : Symbol | Int32) : Float64 | Vector
       if row == :all
         return self.column(column)
@@ -101,6 +105,21 @@ module GSL
 
     def self.free(m : Matrix)
       LibGSL.gsl_matrix_free(m.pointer)
+    end
+
+    def set_all(n : Float64 | Int32)
+      LibGSL.gsl_matrix_set_all(self.pointer, n.to_f)
+      self
+    end
+
+    def set_zero
+      LibGSL.gsl_matrix_set_zero(self.pointer)
+      self
+    end
+
+    def set_identity
+      LibGSL.gsl_matrix_set_identity(self.pointer)
+      self
     end
   end
 end

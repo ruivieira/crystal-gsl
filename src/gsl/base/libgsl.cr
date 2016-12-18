@@ -169,13 +169,13 @@ lib LibGSL
   fun gsl_matrix_calloc(n1 : LibC::SizeT, n2 : LibC::SizeT) : Gsl_matrix*
   fun gsl_matrix_get(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT) : Float64
   fun gsl_matrix_set(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT, x : Float64) : Void
-
+  fun gsl_matrix_set_all(m : Gsl_matrix*, x : Float64) : Void
   fun gsl_matrix_get_row(v : Gsl_vector*, m : Gsl_matrix*, i : Int32) : Int32
   fun gsl_matrix_set_row(m : Gsl_matrix*, i : Int32, v : Gsl_vector*) : Int32
-
+  fun gsl_matrix_set_zero(m : Gsl_matrix*) : Void
   fun gsl_matrix_get_col(v : Gsl_vector*, m : Gsl_matrix*, j : Int32) : Int32
   fun gsl_matrix_set_col(m : Gsl_matrix*, j : Int32, v : Gsl_vector*) : Int32
-
+  fun gsl_matrix_set_identity(m : Gsl_matrix*) : Void
   fun gsl_matrix_transpose(m : Gsl_matrix*) : Int32
   fun gsl_matrix_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : Int32
   fun gsl_matrix_free(m : Gsl_matrix*) : Void
