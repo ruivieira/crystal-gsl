@@ -1,13 +1,13 @@
 module GSL
   class Vector
     def +(n : Int32 | Float64)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_add_constant(temp.pointer, n.to_f)
       temp
     end
 
     def +(n : GSL::Vector)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_add(temp.pointer, n.pointer)
       temp
     end
@@ -17,19 +17,19 @@ module GSL
     end
 
     def -(n : GSL::Vector)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_sub(temp.pointer, n.pointer)
       temp
     end
 
     def *(n : Int32 | Float64)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_scale(temp.pointer, n.to_f)
       temp
     end
 
     def *(n : GSL::Vector)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_mul(temp.pointer, n.pointer)
       temp
     end
@@ -39,7 +39,7 @@ module GSL
     end
 
     def /(n : GSL::Vector)
-      temp = GSL::Vector.new self.to_a
+      temp = self.copy
       LibGSL.gsl_vector_div(temp.pointer, n.pointer)
       temp
     end

@@ -115,5 +115,31 @@ module GSL
       LibGSL.gsl_matrix_set_identity(self.pointer)
       self
     end
+
+    def max
+      LibGSL.gsl_matrix_max(self.pointer)
+    end
+
+    def min
+      LibGSL.gsl_matrix_min(self.pointer)
+    end
+
+    def minmax
+      [LibGSL.gsl_matrix_min(self.pointer), LibGSL.gsl_matrix_max(self.pointer)]
+    end
+
+    def max_index
+      row : LibC::SizeT = 0_u64
+      column : LibC::SizeT = 0_u64
+      LibGSL.gsl_matrix_max_index(self.pointer, pointerof(row), pointerof(column))
+      [row, column]
+    end
+
+    def min_index
+      row : LibC::SizeT = 0_u64
+      column : LibC::SizeT = 0_u64
+      LibGSL.gsl_matrix_min_index(self.pointer, pointerof(row), pointerof(column))
+      [row, column]
+    end
   end
 end

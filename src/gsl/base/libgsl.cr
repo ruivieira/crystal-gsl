@@ -185,6 +185,10 @@ lib LibGSL
   fun gsl_matrix_div_elements(m : Gsl_matrix*, n : Gsl_matrix*) : Code
   fun gsl_matrix_scale(m : Gsl_matrix*, n : Float64) : Code
   fun gsl_matrix_add_constant(m : Gsl_matrix*, n : Float64) : Code
+  fun gsl_matrix_max(m : Gsl_matrix*) : Float64
+  fun gsl_matrix_min(m : Gsl_matrix*) : Float64
+  fun gsl_matrix_max_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
+  fun gsl_matrix_min_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
 
   # vectors
 
