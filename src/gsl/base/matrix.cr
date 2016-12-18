@@ -161,5 +161,13 @@ module GSL
     def has_neg?
       LibGSL.gsl_matrix_isnonneg(self.pointer) == 1 ? false : true
     end
+
+    def head
+      self.nrows >= 5 ? puts (0...5).map { |x| self[x, :all].inspect }.join("\n") : puts self.inspect
+    end
+
+    def tail
+      self.nrows >= 5 ? puts ((self.nrows - 5).to_i...self.nrows.to_i).map { |x| self[x, :all].inspect }.join("\n") : puts self.inspect
+    end
   end
 end
