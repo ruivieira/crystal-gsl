@@ -56,15 +56,15 @@ module GSL
       return result
     end
 
-    def []=(row : Symbol | Int32, column : Symbol | Int32, x : Int32)
+    def []=(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)
       if row == :all
-        (0...@rows).each { |n| LibGSL.gsl_matrix_set(@pointer, n, column.to_i, x.to_i) }
+        (0...@rows).each { |n| LibGSL.gsl_matrix_set(@pointer, n, column.to_i, x) }
         self[:all, column]
       elsif column == :all
-        (0...@columns).each { |n| LibGSL.gsl_matrix_set(@pointer, row.to_i, n, x.to_i) }
+        (0...@columns).each { |n| LibGSL.gsl_matrix_set(@pointer, row.to_i, n, x) }
         self[row, :all]
       else
-        LibGSL.gsl_matrix_set(@pointer, row.to_i, column.to_i, x.to_i)
+        LibGSL.gsl_matrix_set(@pointer, row.to_i, column.to_i, x)
         self[row, column]
       end
     end
