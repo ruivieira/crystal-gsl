@@ -229,6 +229,7 @@ lib LibGSL
   fun gsl_vector_set_zero(a : Gsl_vector*) : Void
   fun gsl_vector_set_all(a : Gsl_vector*, b : LibC::Double) : Void
   fun gsl_vector_set_basis(a : Gsl_vector*, b : LibC::SizeT) : Void
+  fun gsl_blas_ddot(a : Gsl_vector*, b : Gsl_vector*, result : Float64*) : Int32
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t

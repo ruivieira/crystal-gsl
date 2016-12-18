@@ -49,7 +49,9 @@ module GSL
     end
 
     def dot(n : GSL::Vector)
-      (self * n).sum
+      result = 0.0
+      LibGSL.gsl_blas_ddot(self.pointer, n.pointer, pointerof(result))
+      result
     end
 
     # same as dot function
