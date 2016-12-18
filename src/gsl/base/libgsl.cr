@@ -177,6 +177,7 @@ lib LibGSL
   fun gsl_matrix_set_col(m : Gsl_matrix*, j : Int32, v : Gsl_vector*) : Int32
   fun gsl_matrix_set_identity(m : Gsl_matrix*) : Void
   fun gsl_matrix_transpose(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_transpose_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : Code
   fun gsl_matrix_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : Int32
   fun gsl_matrix_free(m : Gsl_matrix*) : Void
   fun gsl_matrix_add(m : Gsl_matrix*, n : Gsl_matrix*) : Code

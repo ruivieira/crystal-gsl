@@ -30,14 +30,10 @@ module GSL
       temp
     end
 
-    def inner_product(v : Vector) : Vector
+    def *(v : Vector) : Vector
       result = Vector.new self.nrows.to_i
       LibGSL.gsl_blas_dgemv(LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, 1.0, @pointer, v.getPointer, 1.0, result.getPointer)
       return result
-    end
-
-    def dot(v : Vector) : Vector
-      self.inner_product
     end
 
     def *(n : Int32 | Float64)
@@ -59,8 +55,8 @@ module GSL
     end
 
     def t : Matrix
-      transpose = self.copy
-      LibGSL.gsl_matrix_transpose(transpose.pointer)
+      transpose = GSL::Matrix.new self.shape[1].to_i, self.shape[0].to_i
+      LibGSL.gsl_matrix_transpose_memcpy(transpose.pointer, self.pointer)
       return transpose
     end
   end
