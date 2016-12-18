@@ -89,12 +89,6 @@ module GSL
       return Matrix.new @rows, @columns
     end
 
-    def t : Matrix
-      transpose = self.copy
-      LibGSL.gsl_matrix_transpose(transpose.pointer)
-      return transpose
-    end
-
     def self.eye(size : Int32) : Matrix
       matrix = Matrix.new size, size
       (0...size).each do |i|
