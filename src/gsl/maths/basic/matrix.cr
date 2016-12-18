@@ -30,6 +30,16 @@ module GSL
       temp
     end
 
+    def inner_product(v : Vector) : Vector
+      result = Vector.new self.nrows.to_i
+      LibGSL.gsl_blas_dgemv(LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, 1.0, @pointer, v.getPointer, 1.0, result.getPointer)
+      return result
+    end
+
+    def dot(v : Vector) : Vector
+      self.inner_product
+    end
+
     def *(n : Int32 | Float64)
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, n.to_f)
