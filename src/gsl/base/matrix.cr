@@ -75,11 +75,9 @@ module GSL
 
     def []=(row : Symbol | Int32, column : Symbol | Int32, x : Vector)
       if row == :all
-        x = x.to_a
         (0...@rows).each { |n| LibGSL.gsl_matrix_set(@pointer, n, column.to_i, x[n]) }
         self[:all, column]
       elsif column == :all
-        x = x.to_a
         (0...@columns).each { |n| LibGSL.gsl_matrix_set(@pointer, row.to_i, n, x[n]) }
         self[row, :all]
       end
