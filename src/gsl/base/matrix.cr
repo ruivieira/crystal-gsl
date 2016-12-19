@@ -26,14 +26,18 @@ module GSL
       LibGSL.gsl_matrix_equal(self.pointer, m.pointer) == 1 ? true : false
     end
 
-    def [](row : Symbol | Int32, column : Symbol | Int32) : Float64 | Vector
+    def [](row : Symbol | Int32, column : Symbol | Int32) : Vector
       if row == :all
         return self.column(column)
       elsif column == :all
         return self.row(row)
       else
-        return LibGSL.gsl_matrix_get(@pointer, row.to_i, column.to_i)
+        return GSL::Vector.new [0.0]
       end
+    end
+
+    def [](row : Int32, column : Int32) : Float64
+      return LibGSL.gsl_matrix_get(@pointer, row.to_i, column.to_i)
     end
 
     def set_row(r : Int32, v : Vector) : Int32
@@ -64,8 +68,20 @@ module GSL
         (0...@columns).each { |n| LibGSL.gsl_matrix_set(@pointer, row.to_i, n, x) }
         self[row, :all]
       else
-        LibGSL.gsl_matrix_set(@pointer, row.to_i, column.to_i, x)
+        LibGSL.gsl_matrix_set(@pointer, row.to_i, column.to_i, x.to_f)
         self[row, column]
+      end
+    end
+
+    def []=(row : Symbol | Int32, column : Symbol | Int32, x : Vector)
+      if row == :all
+        x = x.to_a
+        (0...@rows).each { |n| LibGSL.gsl_matrix_set(@pointer, n, column.to_i, x[n]) }
+        self[:all, column]
+      elsif column == :all
+        x = x.to_a
+        (0...@columns).each { |n| LibGSL.gsl_matrix_set(@pointer, row.to_i, n, x[n]) }
+        self[row, :all]
       end
     end
 
