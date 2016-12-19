@@ -153,8 +153,8 @@ lib LibGSL
   # # matrices
 
   struct Gsl_matrix
-    size1 : Int32
-    size2 : Int32
+    size1 : LibC::SizeT
+    size2 : LibC::SizeT
     tda : LibC::SizeT
     data : LibC::Double*
     block : Gsl_block*
@@ -162,23 +162,39 @@ lib LibGSL
   end
 
   struct Gsl_block
-    size : Int32
+    size : LibC::SizeT
     data : LibC::Double*
   end
 
   fun gsl_matrix_calloc(n1 : LibC::SizeT, n2 : LibC::SizeT) : Gsl_matrix*
   fun gsl_matrix_get(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT) : Float64
   fun gsl_matrix_set(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT, x : Float64) : Void
-
+  fun gsl_matrix_set_all(m : Gsl_matrix*, x : Float64) : Void
   fun gsl_matrix_get_row(v : Gsl_vector*, m : Gsl_matrix*, i : Int32) : Int32
   fun gsl_matrix_set_row(m : Gsl_matrix*, i : Int32, v : Gsl_vector*) : Int32
-
+  fun gsl_matrix_set_zero(m : Gsl_matrix*) : Void
   fun gsl_matrix_get_col(v : Gsl_vector*, m : Gsl_matrix*, j : Int32) : Int32
   fun gsl_matrix_set_col(m : Gsl_matrix*, j : Int32, v : Gsl_vector*) : Int32
-
+  fun gsl_matrix_set_identity(m : Gsl_matrix*) : Void
   fun gsl_matrix_transpose(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_transpose_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : Code
   fun gsl_matrix_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : Int32
   fun gsl_matrix_free(m : Gsl_matrix*) : Void
+  fun gsl_matrix_add(m : Gsl_matrix*, n : Gsl_matrix*) : Code
+  fun gsl_matrix_sub(m : Gsl_matrix*, n : Gsl_matrix*) : Code
+  fun gsl_matrix_mul_elements(m : Gsl_matrix*, n : Gsl_matrix*) : Code
+  fun gsl_matrix_div_elements(m : Gsl_matrix*, n : Gsl_matrix*) : Code
+  fun gsl_matrix_scale(m : Gsl_matrix*, n : Float64) : Code
+  fun gsl_matrix_add_constant(m : Gsl_matrix*, n : Float64) : Code
+  fun gsl_matrix_max(m : Gsl_matrix*) : Float64
+  fun gsl_matrix_min(m : Gsl_matrix*) : Float64
+  fun gsl_matrix_max_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
+  fun gsl_matrix_min_index(m : Gsl_matrix*, imin : LibC::SizeT*, jmax : LibC::SizeT*) : Void
+  fun gsl_matrix_isnull(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_ispos(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_isneg(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_isnonneg(m : Gsl_matrix*) : Int32
+  fun gsl_matrix_equal(m : Gsl_matrix*, n : Gsl_matrix*) : Int32
 
   # vectors
 
@@ -214,6 +230,7 @@ lib LibGSL
   fun gsl_vector_set_zero(a : Gsl_vector*) : Void
   fun gsl_vector_set_all(a : Gsl_vector*, b : LibC::Double) : Void
   fun gsl_vector_set_basis(a : Gsl_vector*, b : LibC::SizeT) : Void
+  fun gsl_blas_ddot(a : Gsl_vector*, b : Gsl_vector*, result : Float64*) : Int32
 
   # matrix - vector multiplication
   enum CBLAS_TRANSPOSE_t
