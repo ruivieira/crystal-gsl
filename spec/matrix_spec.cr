@@ -126,4 +126,68 @@ describe GSL::Matrix do
       temp.has_neg?.should eq true
     end
   end
+  describe "#t" do
+    it "should return the transpose of a matrix" do
+      temp = [[1, 2, 3], [2, 3, 4]].to_matrix
+      temp.t.should eq ([[1, 2], [2, 3], [3, 4]].to_matrix)
+    end
+  end
+  describe "#+" do
+    it "should return the addition of two matrice" do
+      temp = test_matrix.copy
+      temp.set_all 1
+      temp2 = test_matrix.copy
+      temp2.set_all 2
+      (temp + temp2).should eq ((GSL::Matrix.new 5, 5).set_all 3)
+    end
+    it "should return the addition of one matrix and an integer" do
+      temp = test_matrix.copy
+      (temp + 1).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+    end
+    it "should return the addition of one matrix and an float" do
+      temp = test_matrix.copy
+      (temp + 1.0).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+    end
+  end
+  describe "#-" do
+    it "should return the substraction of two matrice" do
+      temp = test_matrix.copy
+      temp.set_all 1
+      temp2 = test_matrix.copy
+      temp2.set_all 2
+      (temp2 - temp).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+    end
+    it "should return the substraction of one matrix and an integer" do
+      temp = test_matrix.copy
+      (temp - 1).should eq ((GSL::Matrix.new 5, 5).set_all -1)
+    end
+    it "should return the substraction of one matrix and an float" do
+      temp = test_matrix.copy
+      (temp - 1.0).should eq ((GSL::Matrix.new 5, 5).set_all -1)
+    end
+  end
+  describe "#*" do
+    it "should return the multiplication of two matrice with same dimension" do
+      temp = test_matrix.copy
+      temp.set_all 1
+      temp2 = test_matrix.copy
+      temp2.set_all 2
+      (temp2 * temp).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+    end
+    it "should return the multiplication of two matrice with different dimension" do
+      temp = [[1, 2, 3], [2, 3, 4]].to_matrix
+      temp2 = [[2, 2], [3, 3], [4, 4]].to_matrix
+      (temp * temp2).should eq ([[20, 20], [29, 29]].to_matrix)
+    end
+    it "should return the scale of one matrix and an integer" do
+      temp = test_matrix.copy
+      temp.set_all 5
+      (temp * 2).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+    end
+    it "should return the scale of one matrix and an float" do
+      temp = test_matrix.copy
+      temp.set_all 5
+      (temp * 2.0).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+    end
+  end
 end

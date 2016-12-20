@@ -1,4 +1,6 @@
 @[Link("gsl")]
+@[Link("cblas")]
+
 lib LibGSL
   # GSL codes
   enum Code
@@ -252,6 +254,7 @@ lib LibGSL
   # Linear algebra
 
   fun gsl_blas_dgemv(trans : CBLAS_TRANSPOSE_t, alpha : Float64, a : Gsl_matrix*, x : Gsl_vector*, beta : Float64, y : Gsl_vector*)
+  fun gsl_blas_dgemm(trans_a : CBLAS_TRANSPOSE_t, trans_b : CBLAS_TRANSPOSE_t, alpha : Float64, a : Gsl_matrix*, b : Gsl_matrix*, beta : Float64, c : Gsl_matrix*) : Code
   fun gsl_linalg_cholesky_decomp(a : Gsl_matrix*) : Int32
   fun gsl_blas_dtrmv(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, a : Gsl_matrix*, x : Gsl_vector*) : Int32
 

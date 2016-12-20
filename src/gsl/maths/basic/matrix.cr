@@ -25,8 +25,10 @@ module GSL
     end
 
     def *(n : GSL::Matrix)
-      temp = self.copy
-      LibGSL.gsl_matrix_mul_elements(temp.pointer, n.pointer)
+      temp_row = self.shape[0]
+      temp_column = n.shape[1]
+      temp = GSL::Matrix.new temp_row, temp_column
+      LibGSL.gsl_blas_dgemm(LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, 1.0, self.pointer, n.pointer, 0.0, temp.pointer)
       temp
     end
 
