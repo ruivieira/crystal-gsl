@@ -44,22 +44,36 @@ module GSL
       temp
     end
 
-    def /(n : GSL::Matrix)
-      temp = self.copy
-      LibGSL.gsl_matrix_div_elements(temp.pointer, n.pointer)
-      temp
-    end
-
     def /(n : Int32 | Float64)
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, 1/(n.to_f))
       temp
     end
 
-    def t : Matrix
+    def transpose : Matrix
       transpose = GSL::Matrix.new self.shape[1].to_i, self.shape[0].to_i
       LibGSL.gsl_matrix_transpose_memcpy(transpose.pointer, self.pointer)
       return transpose
+    end
+
+    # alias to transpose
+    def t : Matrix
+      self.transpose
+    end
+
+    def inverse : Matrix
+      temp = self.copy
+      p = GSL::Permutation.new Array.new(self.shape[0], 0)
+      inverse = GSL::Matrix.new self.shape[0], self.shape[1]
+      sig = 0
+      LibGSL.gsl_linalg_LU_decomp(temp.pointer, p.@permutation, pointerof(sig))
+      LibGSL.gsl_linalg_LU_invert(temp.pointer, p.@permutation, inverse.pointer)
+      inverse
+    end
+
+    # alias to inverse
+    def i : Matrix
+      self.inverse
     end
   end
 end

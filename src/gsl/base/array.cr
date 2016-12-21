@@ -9,7 +9,7 @@ class Array(T)
     temp = GSL::Matrix.new row, column
     self.each_with_index do |x, ind|
       x.each_with_index do |y, index|
-        temp[ind, index] = y.to_i
+        temp[ind, index] = y.to_f
       end
     end
     temp

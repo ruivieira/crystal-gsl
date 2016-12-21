@@ -175,8 +175,16 @@ describe GSL::Matrix do
       (temp2 * temp).should eq ((GSL::Matrix.new 5, 5).set_all 10)
     end
     it "should return the multiplication of two matrice with different dimension" do
-      temp = [[1, 2, 3], [2, 3, 4]].to_matrix
-      temp2 = [[2, 2], [3, 3], [4, 4]].to_matrix
+      temp = [
+        [1, 2, 3],
+        [2, 3, 4],
+      ].to_matrix
+      temp2 = [
+        [2, 2],
+        [3, 3],
+        [4, 4],
+      ].to_matrix
+
       (temp * temp2).should eq ([[20, 20], [29, 29]].to_matrix)
     end
     it "should return the scale of one matrix and an integer" do
@@ -188,6 +196,21 @@ describe GSL::Matrix do
       temp = test_matrix.copy
       temp.set_all 5
       (temp * 2.0).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+    end
+  end
+  pending "#inverse" do
+    it "should return the inverse of the input matrix" do
+      tester = [
+        [1.0, 0.6, 0.0],
+        [0.0, 1.5, 1.0],
+        [0.0, 1.0, 1.0],
+      ].to_matrix
+      target = [
+        [1.0, -1.2, 1.2],
+        [0.0, 2.0, -2.0],
+        [0.0, -2.0, 3.0],
+      ].to_matrix
+      tester.inverse.should eq target
     end
   end
 end
