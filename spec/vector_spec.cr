@@ -199,7 +199,7 @@ describe GSL::Vector do
   end
   describe "#set_bias" do
     it "should set all the values to zero except the chosen indexto one" do
-      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_bias(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_basis(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
     end
   end
 end
