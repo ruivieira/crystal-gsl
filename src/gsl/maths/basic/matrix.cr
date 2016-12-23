@@ -1,30 +1,30 @@
 module GSL
   class Matrix
-    def +(n : GSL::Matrix)
+    def +(n : GSL::Matrix) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_add(temp.pointer, n.pointer)
       temp
     end
 
-    def +(n : Int32 | Float64)
+    def +(n : Int32 | Float64) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_add_constant(temp.pointer, n.to_f)
       temp
     end
 
-    def -(n : GSL::Matrix)
+    def -(n : GSL::Matrix) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_sub(temp.pointer, n.pointer)
       temp
     end
 
-    def -(n : Int32 | Float64)
+    def -(n : Int32 | Float64) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_add_constant(temp.pointer, -(n.to_f))
       temp
     end
 
-    def *(n : GSL::Matrix)
+    def *(n : GSL::Matrix) : Matrix
       temp_row = self.shape[0]
       temp_column = n.shape[1]
       temp = GSL::Matrix.new temp_row, temp_column
@@ -38,13 +38,13 @@ module GSL
       return result
     end
 
-    def *(n : Int32 | Float64)
+    def *(n : Int32 | Float64) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, n.to_f)
       temp
     end
 
-    def /(n : Int32 | Float64)
+    def /(n : Int32 | Float64) : Matrix
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, 1/(n.to_f))
       temp
