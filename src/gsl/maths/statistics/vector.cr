@@ -35,9 +35,3 @@ module GSL
     end
   end
 end
-
-class Array(T)
-  def to_vector
-    GSL::Vector.new self.map { |x| x.to_f }
-  end
-end
