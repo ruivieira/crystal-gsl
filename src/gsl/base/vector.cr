@@ -168,6 +168,12 @@ module GSL
       self
     end
 
+    def copy
+      temp = GSL::Vector.new self.size
+      LibGSL.gsl_vector_memcpy(temp.pointer, self.pointer)
+      temp
+    end
+
     # return a new vector with reversed elements of current vector
     #
     # ```
@@ -176,7 +182,7 @@ module GSL
     # a => GSL::Vector [1.0,2.0,3.0]
     # ```
 
-    def reverse : Vector
+    def reverse
       temp = GSL::Vector.new self.to_a
       LibGSL.gsl_vector_reverse(temp.pointer)
       temp
