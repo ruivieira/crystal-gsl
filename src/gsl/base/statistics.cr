@@ -296,6 +296,32 @@ module Statistics
     end
   end
 
+  # Class representing an inverse-gamma distribution
+  class InverseGamma < ContinuousDistribution
+    def initialize(@shape : Float64, @scale : Float64)
+    end
+
+    def pdf(x : Float64) : Float64
+      return InverseGamma.pdf(x, @shape, @scale)
+    end
+
+    def self.pdf(x : Float64, shape : Float64, scale : Float64) : Float64
+      return Math.exp(InverseGamma.log_pdf(x, shape, scale))
+    end
+
+    def log_pdf(x : Float64) : Float64
+        return InverseGamma.log_pdf(x, @shape, @scale)
+    end
+
+    def self.log_pdf(x : Float64, shape : Float64, scale : Float64)
+      return shape * Math.log(scale) - GSL.lgamma(shape) + -(shape+1) * Math.log(x) + -scale/x
+    end
+
+    def sample : Float64
+      return 1.0 / Gamma.next(@shape, @scale)
+    end
+  end
+
   def self.mean(data : Array(Float64)) : Float64
     return data.sum / data.size
   end

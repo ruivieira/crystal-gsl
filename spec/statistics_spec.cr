@@ -73,6 +73,20 @@ describe Statistics do
     end
   end
 
+  describe "InverseGamma" do
+    it "should return the correct pdf" do
+      pdf = Statistics::InverseGamma.pdf(10.0, 2.0, 2.0)
+      pdf.should eq 0.0032749230123119252
+    end
+
+    it "should return the correct log-pdf" do
+      pdf = Statistics::InverseGamma.log_pdf(10.0, 2.0, 2.0)
+      pdf.should eq -5.7214609178622471
+    end
+
+
+  end
+
   describe "Matrix" do
     it "should set a vector as a column" do
       m = GSL::Matrix.new 4, 4
