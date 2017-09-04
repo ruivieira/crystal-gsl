@@ -83,8 +83,6 @@ describe Statistics do
       pdf = Statistics::InverseGamma.log_pdf(10.0, 2.0, 2.0)
       pdf.should eq -5.7214609178622471
     end
-
-
   end
 
   describe "Matrix" do

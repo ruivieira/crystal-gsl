@@ -6,6 +6,5 @@ describe GSL do
       x = GSL.lgamma(0.1)
       x.should eq 2.2527126517342047
     end
-
   end
 end

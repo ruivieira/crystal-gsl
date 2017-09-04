@@ -310,11 +310,11 @@ module Statistics
     end
 
     def log_pdf(x : Float64) : Float64
-        return InverseGamma.log_pdf(x, @shape, @scale)
+      return InverseGamma.log_pdf(x, @shape, @scale)
     end
 
     def self.log_pdf(x : Float64, shape : Float64, scale : Float64)
-      return shape * Math.log(scale) - GSL.lgamma(shape) + -(shape+1) * Math.log(x) + -scale/x
+      return shape * Math.log(scale) - GSL.lgamma(shape) + -(shape + 1) * Math.log(x) + -scale/x
     end
 
     def sample : Float64

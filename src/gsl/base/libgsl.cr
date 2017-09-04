@@ -267,11 +267,10 @@ lib LibGSL
   # Correlation
   fun gsl_stats_correlation(x : Float64*, xstride : LibC::SizeT, y : Float64*, ystride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
 
-    # Special functions
+  # Special functions
 
-    fun gsl_sf_lngamma(x: Float64) : LibC::Double
-
-  end
+  fun gsl_sf_lngamma(x : Float64) : LibC::Double
+end
 
 module GSL
   RNG = LibGSL.gsl_rng_alloc(LibGSL.gsl_rng_env_setup)
