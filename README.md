@@ -52,6 +52,26 @@ Examples can be found [here](https://ruivieira.github.io/projects/crystal-gsl/).
 - Pre-release (API will break)
 - Not fit for production
 
+## Status
+
+Implementation list:
+
+ - Statistical
+   - Distributions
+     - Binomial
+     - Chi-square
+     - Uniform
+     - Exponential
+     - Gaussian (univariate and multivariate)
+     - Poisson
+     - Multinomial
+     - Gamma
+
+ - Vectors
+ - Matrices
+ - Histograms
+ - Permutations
+
 
 
 ## Contributing
