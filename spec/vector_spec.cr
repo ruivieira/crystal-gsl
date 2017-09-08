@@ -202,4 +202,9 @@ describe GSL::Vector do
       (GSL::Vector.new [-1.0, -1.0, -1.0]).set_basis(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
     end
   end
+  describe "#mean" do
+    it "should return the correct mean" do
+      (GSL::Vector.new [0.0, -5.0, 7.3]).mean.should eq 0.76666666666666661
+    end
+  end
 end

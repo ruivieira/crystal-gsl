@@ -403,5 +403,15 @@ module GSL
       LibGSL.gsl_vector_set_basis(self.pointer, n)
       self
     end
+
+    # calculate the mean of the vector's elements
+    #
+    # ```
+    # a = [0.0, -5.0, 7.3].to_vector.mean
+    # a => 0.76666666666666661
+    # ```
+    def mean : Float64
+      return Statistics.mean(self.to_a)
+    end
   end
 end
