@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
@@ -57,6 +57,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Stats" data-name="gsl::stats">
+      <a href="../GSL/Stats.html">Stats</a>
       
     </li>
   
@@ -122,6 +127,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
       <a href="../Statistics/Gamma.html">Gamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/InverseGamma" data-name="statistics::inversegamma">
+      <a href="../Statistics/InverseGamma.html">InverseGamma</a>
       
     </li>
   
@@ -218,17 +228,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#*</strong>(n : GSL::Vector)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#%2A%28n%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#*</strong>(n : Int32 | Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#+</strong>(n : GSL::Vector)</a>
+        <a href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#*</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -238,7 +243,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#-</strong>(n : GSL::Vector)</a>
+        <a href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#+</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -248,7 +253,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28n%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#/</strong>(n : Int32 | Float64)</a>
+        <a href="#-%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#-</strong>(n : GSL::Vector)</a>
         
       </li>
     
@@ -258,9 +263,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%3C%3C%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#<<</strong>(n : Float64 | Int32)</a>
+        <a href="#%2F%28n%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#/</strong>(n : Int32 | Float64)</a>
         
-          <div class="summary"><p>alias of push methods</p></div>
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3C%3C%28n%3AFloat64%7CInt32%29%3AVector-instance-method" class="signature"><strong>#<<</strong>(n : Float64 | Int32) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28n%3AGSL%3A%3AVector%29%3ABool-instance-method" class="signature"><strong>#==</strong>(n : GSL::Vector) : Bool</a>
         
       </li>
     
@@ -270,12 +283,19 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3D%28i%2Cx%29-instance-method" class="signature"><strong>#[]=</strong>(i, x)</a>
+        <a href="#%5B%5D%3D%28i%2Cx%29%3AFloat64-instance-method" class="signature"><strong>#[]=</strong>(i, x) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#concat%28n%3AGSL%3A%3AVector%29-instance-method" class="signature"><strong>#concat</strong>(n : GSL::Vector)</a>
+        <a href="#concat%28n%3AGSL%3A%3AVector%29%3AVector-instance-method" class="signature"><strong>#concat</strong>(n : GSL::Vector) : Vector</a>
+        
+          <div class="summary"><p>concatinate two different vector and return a new vector</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy-instance-method" class="signature"><strong>#copy</strong></a>
         
       </li>
     
@@ -290,7 +310,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#first-instance-method" class="signature"><strong>#first</strong></a>
+        <a href="#empty%3F%3ABool-instance-method" class="signature"><strong>#empty?</strong> : Bool</a>
+        
+          <div class="summary"><p>return true if current vector's elements are all 0</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first%3AFloat64-instance-method" class="signature"><strong>#first</strong> : Float64</a>
         
       </li>
     
@@ -312,12 +339,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#head-instance-method" class="signature"><strong>#head</strong></a>
+        <a href="#has_neg%3F%3ABool-instance-method" class="signature"><strong>#has_neg?</strong> : Bool</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#includes%3F%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#includes?</strong>(n : Float64 | Int32)</a>
+        <a href="#head%3AVector-instance-method" class="signature"><strong>#head</strong> : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#includes%3F%28n%3AFloat64%7CInt32%29%3ABool-instance-method" class="signature"><strong>#includes?</strong>(n : Float64 | Int32) : Bool</a>
         
       </li>
     
@@ -334,7 +366,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#last-instance-method" class="signature"><strong>#last</strong></a>
+        <a href="#last%3AFloat64-instance-method" class="signature"><strong>#last</strong> : Float64</a>
         
       </li>
     
@@ -344,7 +376,55 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#max%3AFloat64-instance-method" class="signature"><strong>#max</strong> : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_index%3AUInt64-instance-method" class="signature"><strong>#max_index</strong> : UInt64</a>
+        
+          <div class="summary"><p>return the index of maximum value of current vector note: if there are multiple same maximum value then only return the first one.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mean%3AFloat64-instance-method" class="signature"><strong>#mean</strong> : Float64</a>
+        
+          <div class="summary"><p>calculate the mean of the vector's elements</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min%3AFloat64-instance-method" class="signature"><strong>#min</strong> : Float64</a>
+        
+          <div class="summary"><p>return the minimum value of current vector note: if there are multiple same minimum value then only return once</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min_index%3AUInt64-instance-method" class="signature"><strong>#min_index</strong> : UInt64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minmax%3AArray%28Float64%29-instance-method" class="signature"><strong>#minmax</strong> : Array(Float64)</a>
+        
+          <div class="summary"><p>return the minimum and maximun values of current vector</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minmax_index%3AArray%28UInt64%29-instance-method" class="signature"><strong>#minmax_index</strong> : Array(UInt64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#mode-instance-method" class="signature"><strong>#mode</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#neg%3F%3ABool-instance-method" class="signature"><strong>#neg?</strong> : Bool</a>
         
       </li>
     
@@ -354,12 +434,67 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#pos%3F%3ABool-instance-method" class="signature"><strong>#pos?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#proportion%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#proportion</strong>(n : Float64 | Int32)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#push%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#push</strong>(n : Float64 | Int32)</a>
+        <a href="#push%28n%3AFloat64%7CInt32%29%3AVector-instance-method" class="signature"><strong>#push</strong>(n : Float64 | Int32) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ranked-instance-method" class="signature"><strong>#ranked</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace%28n%3AGSL%3A%3AVector%29%3AVector-instance-method" class="signature"><strong>#replace</strong>(n : GSL::Vector) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse-instance-method" class="signature"><strong>#reverse</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse%21%3AVector-instance-method" class="signature"><strong>#reverse!</strong> : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_all%28n%3AInt32%7CFloat64%29%3AVector-instance-method" class="signature"><strong>#set_all</strong>(n : Int32 | Float64) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_all%21%28n%3AInt32%7CFloat64%29%3AVector-instance-method" class="signature"><strong>#set_all!</strong>(n : Int32 | Float64) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_basis%28n%3AInt32%29%3AVector-instance-method" class="signature"><strong>#set_basis</strong>(n : Int32) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_basis%21%28n%3AInt32%29%3AVector-instance-method" class="signature"><strong>#set_basis!</strong>(n : Int32) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_zero%3AVector-instance-method" class="signature"><strong>#set_zero</strong> : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_zero%21%3AVector-instance-method" class="signature"><strong>#set_zero!</strong> : Vector</a>
         
       </li>
     
@@ -369,7 +504,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#sort-instance-method" class="signature"><strong>#sort</strong></a>
+        <a href="#sort%3AVector-instance-method" class="signature"><strong>#sort</strong> : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sort%21%3AVector-instance-method" class="signature"><strong>#sort!</strong> : Vector</a>
+        
+          <div class="summary"><p>change current vector in ascending order</p></div>
         
       </li>
     
@@ -379,7 +521,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#tail-instance-method" class="signature"><strong>#tail</strong></a>
+        <a href="#tail%3AVector-instance-method" class="signature"><strong>#tail</strong> : Vector</a>
         
       </li>
     
@@ -460,20 +602,6 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="*&#40;n:GSL::Vector&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>*</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
-
-        <a class="method-permalink" href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="*&#40;n:Int32|Float64&#41;-instance-method">
       <div class="signature">
         
@@ -488,12 +616,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;n:GSL::Vector&#41;-instance-method">
+    <div class="entry-detail" id="*&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>+</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
+        def <strong>*</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#%2A%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -516,12 +644,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="-&#40;n:GSL::Vector&#41;-instance-method">
+    <div class="entry-detail" id="&#43;&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>-</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
+        def <strong>+</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#-%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#%2B%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -544,12 +672,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="/&#40;n:Int32|Float64&#41;-instance-method">
+    <div class="entry-detail" id="-&#40;n:GSL::Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>/</strong>(n : Int32 | Float64)
+        def <strong>-</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
 
-        <a class="method-permalink" href="#%2F%28n%3AInt32%7CFloat64%29-instance-method">#</a>
+        <a class="method-permalink" href="#-%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -572,15 +700,41 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="&lt;&lt;&#40;n:Float64|Int32&#41;-instance-method">
+    <div class="entry-detail" id="/&#40;n:Int32|Float64&#41;-instance-method">
       <div class="signature">
         
-        def <strong><<</strong>(n : Float64 | Int32)
+        def <strong>/</strong>(n : Int32 | Float64)
 
-        <a class="method-permalink" href="#%3C%3C%28n%3AFloat64%7CInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#%2F%28n%3AInt32%7CFloat64%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>alias of push methods</p></div>
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&lt;&lt;&#40;n:Float64|Int32&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong><<</strong>(n : Float64 | Int32) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#%3C%3C%28n%3AFloat64%7CInt32%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&#61;&#61;&#40;n:GSL::Vector&#41;:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>) : Bool
+
+        <a class="method-permalink" href="#%3D%3D%28n%3AGSL%3A%3AVector%29%3ABool-instance-method">#</a>
+      </div>
       
       <br/>
       <div>
@@ -602,12 +756,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;&#61;&#40;i,x&#41;-instance-method">
+    <div class="entry-detail" id="&#91;&#93;&#61;&#40;i,x&#41;:Float64-instance-method">
       <div class="signature">
         
-        def <strong>[]=</strong>(i, x)
+        def <strong>[]=</strong>(i, x) : Float64
 
-        <a class="method-permalink" href="#%5B%5D%3D%28i%2Cx%29-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28i%2Cx%29%3AFloat64-instance-method">#</a>
       </div>
       
       <br/>
@@ -616,12 +770,32 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="concat&#40;n:GSL::Vector&#41;-instance-method">
+    <div class="entry-detail" id="concat&#40;n:GSL::Vector&#41;:Vector-instance-method">
       <div class="signature">
         
-        def <strong>concat</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>)
+        def <strong>concat</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>) : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#concat%28n%3AGSL%3A%3AVector%29-instance-method">#</a>
+        <a class="method-permalink" href="#concat%28n%3AGSL%3A%3AVector%29%3AVector-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>concatinate two different vector and return a new vector</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>].to_vector
+b <span class="o">=</span> [<span class="n">2</span>,<span class="n">3</span>,<span class="n">4</span>].to_vector
+a.concat b => <span class="t">GSL</span><span class="t">::</span><span class="t">Vector</span>: [<span class="n">1.0</span>,<span class="n">2.0</span>,<span class="n">3.0</span>,<span class="n">2.0</span>,<span class="n">3.0</span>,<span class="n">4.0</span>]</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy-instance-method">
+      <div class="signature">
+        
+        def <strong>copy</strong>
+
+        <a class="method-permalink" href="#copy-instance-method">#</a>
       </div>
       
       <br/>
@@ -658,12 +832,33 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="first-instance-method">
+    <div class="entry-detail" id="empty?:Bool-instance-method">
       <div class="signature">
         
-        def <strong>first</strong>
+        def <strong>empty?</strong> : Bool
 
-        <a class="method-permalink" href="#first-instance-method">#</a>
+        <a class="method-permalink" href="#empty%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>return true if current vector's elements are all 0</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">0</span>,<span class="n">0</span>,<span class="n">0</span>].to_vector
+b <span class="o">=</span> [<span class="n">1</span>,<span class="n">0</span>,<span class="n">0</span>].to_vector
+a.empty? => <span class="n">true</span>
+b.empty? => <span class="n">false</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>first</strong> : Float64
+
+        <a class="method-permalink" href="#first%3AFloat64-instance-method">#</a>
       </div>
       
       <br/>
@@ -716,12 +911,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="head-instance-method">
+    <div class="entry-detail" id="has_neg?:Bool-instance-method">
       <div class="signature">
         
-        def <strong>head</strong>
+        def <strong>has_neg?</strong> : Bool
 
-        <a class="method-permalink" href="#head-instance-method">#</a>
+        <a class="method-permalink" href="#has_neg%3F%3ABool-instance-method">#</a>
       </div>
       
       <br/>
@@ -730,12 +925,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="includes?&#40;n:Float64|Int32&#41;-instance-method">
+    <div class="entry-detail" id="head:Vector-instance-method">
       <div class="signature">
         
-        def <strong>includes?</strong>(n : Float64 | Int32)
+        def <strong>head</strong> : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#includes%3F%28n%3AFloat64%7CInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#head%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="includes?&#40;n:Float64|Int32&#41;:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>includes?</strong>(n : Float64 | Int32) : Bool
+
+        <a class="method-permalink" href="#includes%3F%28n%3AFloat64%7CInt32%29%3ABool-instance-method">#</a>
       </div>
       
       <br/>
@@ -774,12 +983,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="last-instance-method">
+    <div class="entry-detail" id="last:Float64-instance-method">
       <div class="signature">
         
-        def <strong>last</strong>
+        def <strong>last</strong> : Float64
 
-        <a class="method-permalink" href="#last-instance-method">#</a>
+        <a class="method-permalink" href="#last%3AFloat64-instance-method">#</a>
       </div>
       
       <br/>
@@ -802,12 +1011,148 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="max:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>max</strong> : Float64
+
+        <a class="method-permalink" href="#max%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_index:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>max_index</strong> : UInt64
+
+        <a class="method-permalink" href="#max_index%3AUInt64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>return the index of maximum value of current vector
+note: if there are multiple same maximum value then only return the first one.</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>].to_vector
+a.max_index => <span class="n">2</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mean:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>mean</strong> : Float64
+
+        <a class="method-permalink" href="#mean%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>calculate the mean of the vector's elements</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">0.0</span>, <span class="n">-5.0</span>, <span class="n">7.3</span>].to_vector.mean
+a => <span class="n">0.76666666666666661</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min:Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>min</strong> : Float64
+
+        <a class="method-permalink" href="#min%3AFloat64-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>return the minimum value of current vector
+note: if there are multiple same minimum value then only return once</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>].to_vector
+a.min => <span class="n">1.0</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min_index:UInt64-instance-method">
+      <div class="signature">
+        
+        def <strong>min_index</strong> : UInt64
+
+        <a class="method-permalink" href="#min_index%3AUInt64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minmax:Array&#40;Float64&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>minmax</strong> : <a href="../Array.html">Array</a>(Float64)
+
+        <a class="method-permalink" href="#minmax%3AArray%28Float64%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>return the minimum and maximun values of current vector</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>].to_vector
+min, max <span class="o">=</span> a.minmax
+min => <span class="n">1.0</span>
+max => <span class="n">3.0</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minmax_index:Array&#40;UInt64&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>minmax_index</strong> : <a href="../Array.html">Array</a>(UInt64)
+
+        <a class="method-permalink" href="#minmax_index%3AArray%28UInt64%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="mode-instance-method">
       <div class="signature">
         
         def <strong>mode</strong>
 
         <a class="method-permalink" href="#mode-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="neg?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>neg?</strong> : Bool
+
+        <a class="method-permalink" href="#neg%3F%3ABool-instance-method">#</a>
       </div>
       
       <br/>
@@ -830,6 +1175,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="pos?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>pos?</strong> : Bool
+
+        <a class="method-permalink" href="#pos%3F%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="proportion&#40;n:Float64|Int32&#41;-instance-method">
       <div class="signature">
         
@@ -844,12 +1203,152 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="push&#40;n:Float64|Int32&#41;-instance-method">
+    <div class="entry-detail" id="push&#40;n:Float64|Int32&#41;:Vector-instance-method">
       <div class="signature">
         
-        def <strong>push</strong>(n : Float64 | Int32)
+        def <strong>push</strong>(n : Float64 | Int32) : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#push%28n%3AFloat64%7CInt32%29-instance-method">#</a>
+        <a class="method-permalink" href="#push%28n%3AFloat64%7CInt32%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ranked-instance-method">
+      <div class="signature">
+        
+        def <strong>ranked</strong>
+
+        <a class="method-permalink" href="#ranked-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace&#40;n:GSL::Vector&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>replace</strong>(n : <a href="../GSL/Vector.html">GSL::Vector</a>) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#replace%28n%3AGSL%3A%3AVector%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse-instance-method">
+      <div class="signature">
+        
+        def <strong>reverse</strong>
+
+        <a class="method-permalink" href="#reverse-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse&#33;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>reverse!</strong> : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#reverse%21%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_all&#40;n:Int32|Float64&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_all</strong>(n : Int32 | Float64) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_all%28n%3AInt32%7CFloat64%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_all&#33;&#40;n:Int32|Float64&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_all!</strong>(n : Int32 | Float64) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_all%21%28n%3AInt32%7CFloat64%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_basis&#40;n:Int32&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_basis</strong>(n : Int32) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_basis%28n%3AInt32%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_basis&#33;&#40;n:Int32&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_basis!</strong>(n : Int32) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_basis%21%28n%3AInt32%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_zero:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_zero</strong> : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_zero%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_zero&#33;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>set_zero!</strong> : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#set_zero%21%3AVector-instance-method">#</a>
       </div>
       
       <br/>
@@ -872,13 +1371,33 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="sort-instance-method">
+    <div class="entry-detail" id="sort:Vector-instance-method">
       <div class="signature">
         
-        def <strong>sort</strong>
+        def <strong>sort</strong> : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#sort-instance-method">#</a>
+        <a class="method-permalink" href="#sort%3AVector-instance-method">#</a>
       </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sort&#33;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>sort!</strong> : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#sort%21%3AVector-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>change current vector in ascending order</p>
+
+<pre><code>a <span class="o">=</span> [<span class="n">2</span>,<span class="n">5</span>,<span class="n">3</span>,<span class="n">7</span>,<span class="n">1</span>].to_vector
+a.sort! => <span class="t">GSL</span><span class="t">::</span><span class="t">Vector</span>: [<span class="n">1.0</span>,<span class="n">2.0</span>,<span class="n">3.0</span>,<span class="n">5.0</span>,<span class="n">7.0</span>]
+a => <span class="t">GSL</span><span class="t">::</span><span class="t">Vector</span>: [<span class="n">1.0</span>,<span class="n">2.0</span>,<span class="n">3.0</span>,<span class="n">5.0</span>,<span class="n">7.0</span>]</code></pre></div>
       
       <br/>
       <div>
@@ -900,12 +1419,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="tail-instance-method">
+    <div class="entry-detail" id="tail:Vector-instance-method">
       <div class="signature">
         
-        def <strong>tail</strong>
+        def <strong>tail</strong> : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#tail-instance-method">#</a>
+        <a class="method-permalink" href="#tail%3AVector-instance-method">#</a>
       </div>
       
       <br/>

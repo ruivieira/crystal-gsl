@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
@@ -57,6 +57,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Stats" data-name="gsl::stats">
+      <a href="GSL/Stats.html">Stats</a>
       
     </li>
   
@@ -125,6 +130,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/InverseGamma" data-name="statistics::inversegamma">
+      <a href="Statistics/InverseGamma.html">InverseGamma</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
       <a href="Statistics/LinearRegression.html">LinearRegression</a>
       
@@ -179,19 +189,19 @@
 
   <h2>Overview</h2>
 
-  <p>An Array is an ordered, integer-indexed collection of objects of type T.</p>
+  <p>An <code><a href="Array.html">Array</a></code> is an ordered, integer-indexed collection of objects of type T.</p>
 
 <p>Array indexing starts at 0. A negative index is assumed to be
 relative to the end of the array: -1 indicates the last element,
 -2 is the next to last element, and so on.</p>
 
-<p>An Array can be created using the usual <code>new</code> method (several are provided), or with an array literal:</p>
+<p>An <code><a href="Array.html">Array</a></code> can be created using the usual <code>new</code> method (several are provided), or with an array literal:</p>
 
 <pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># &#61;&gt; &#91;&#93;</span>
 [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array&#40;Int32&#41;</span>
 [<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array&#40;Int32 | String | Char&#41;</span></code></pre>
 
-<p>An Array can have mixed types, meaning T will be a union of types, but these are determined
+<p>An <code><a href="Array.html">Array</a></code> can have mixed types, meaning T will be a union of types, but these are determined
 when the array is created, either by specifying T or by using an array literal. In the latter
 case, T will be set to the union of the array literal elements' types.</p>
 
@@ -200,14 +210,14 @@ case, T will be set to the union of the array literal elements' types.</p>
 <pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array&#40;Int32&#41;</span>
 <span class="o">[]</span>          <span class="c"># syntax error</span></code></pre>
 
-<p>An Array is implemented using an internal buffer of some capacity
+<p>An <code><a href="Array.html">Array</a></code> is implemented using an internal buffer of some capacity
 and is reallocated when elements are pushed to it when more capacity
 is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dynamic_array" target="_blank">dynamic array</a>.</p>
 
 <p>You can use a special array literal syntax with other types too, as long as they define an argless
 <code>new</code> method and a <code><<</code> method. <code>Set</code> is one such type:</p>
 
-<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; &#91;1, 2, 3&#93;</span>
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; Set&#123;1, 2, 3&#125;</span>
 set.<span class="k">class</span>          <span class="c"># &#61;&gt; Set&#40;Int32&#41;</span></code></pre>
 
 <p>The above is the same as this:</p>
@@ -225,8 +235,6 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
   <ul class="other-types-list">
   
     <li class="other-type">Comparable(<a href="Array.html">Array(T)</a>)</li>
-  
-    <li class="other-type">Enumerable(T)</li>
   
     <li class="other-type">Indexable(T)</li>
   
@@ -252,6 +260,11 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#to_matrix-instance-method" class="signature"><strong>#to_matrix</strong></a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#to_vector-instance-method" class="signature"><strong>#to_vector</strong></a>
@@ -314,6 +327,20 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
 
   <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="to_matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>to_matrix</strong>
+
+        <a class="method-permalink" href="#to_matrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="to_vector-instance-method">
       <div class="signature">

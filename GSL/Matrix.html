@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
@@ -57,6 +57,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Stats" data-name="gsl::stats">
+      <a href="../GSL/Stats.html">Stats</a>
       
     </li>
   
@@ -122,6 +127,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
       <a href="../Statistics/Gamma.html">Gamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/InverseGamma" data-name="statistics::inversegamma">
+      <a href="../Statistics/InverseGamma.html">InverseGamma</a>
       
     </li>
   
@@ -223,7 +233,52 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#%2A%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#*</strong>(n : GSL::Matrix) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#%2A%28v%3AVector%29%3AVector-instance-method" class="signature"><strong>#*</strong>(v : Vector) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2A%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#*</strong>(n : Int32 | Float64) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#+</strong>(n : Int32 | Float64) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2B%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#+</strong>(n : GSL::Matrix) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#-</strong>(n : Int32 | Float64) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#-</strong>(n : GSL::Matrix) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%2F%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#/</strong>(n : Int32 | Float64) : Matrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28m%3AGSL%3A%3AMatrix%29-instance-method" class="signature"><strong>#==</strong>(m : GSL::Matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%29%3AVector-instance-method" class="signature"><strong>#[]</strong>(row : Symbol | Int32, column : Symbol | Int32) : Vector</a>
         
       </li>
     
@@ -233,12 +288,17 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#%5B%5D%3D%28row%2Ccolumn%2Cx%29-instance-method" class="signature"><strong>#[]=</strong>(row, column, x)</a>
+        <a href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#column%28c%3AInt32%29%3AVector-instance-method" class="signature"><strong>#column</strong>(c : Int32) : Vector</a>
+        <a href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AVector%29-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Vector)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column%28c%3AInt32%7CSymbol%29%3AVector-instance-method" class="signature"><strong>#column</strong>(c : Int32 | Symbol) : Vector</a>
         
       </li>
     
@@ -248,7 +308,49 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#each_columns%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#each_columns</strong>(&block : Vector -> _)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_rows%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#each_rows</strong>(&block : Vector -> _)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#get%28row%2Ccolumn%29%3AFloat64-instance-method" class="signature"><strong>#get</strong>(row, column) : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_neg%3F-instance-method" class="signature"><strong>#has_neg?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#head-instance-method" class="signature"><strong>#head</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#i%3AMatrix-instance-method" class="signature"><strong>#i</strong> : Matrix</a>
+        
+          <div class="summary"><p>alias to inverse</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inspect-instance-method" class="signature"><strong>#inspect</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse%3AMatrix-instance-method" class="signature"><strong>#inverse</strong> : Matrix</a>
         
       </li>
     
@@ -258,12 +360,52 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#ncols%3AInt32-instance-method" class="signature"><strong>#ncols</strong> : Int32</a>
+        <a href="#map_columns%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#map_columns</strong>(&block : Vector -> _)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#nrows%3AInt32-instance-method" class="signature"><strong>#nrows</strong> : Int32</a>
+        <a href="#map_rows%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#map_rows</strong>(&block : Vector -> _)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max-instance-method" class="signature"><strong>#max</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_index-instance-method" class="signature"><strong>#max_index</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min-instance-method" class="signature"><strong>#min</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min_index-instance-method" class="signature"><strong>#min_index</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minmax-instance-method" class="signature"><strong>#minmax</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ncols%3ALibC%3A%3ASizeT-instance-method" class="signature"><strong>#ncols</strong> : LibC::SizeT</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#neg%3F-instance-method" class="signature"><strong>#neg?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nrows%3ALibC%3A%3ASizeT-instance-method" class="signature"><strong>#nrows</strong> : LibC::SizeT</a>
         
       </li>
     
@@ -273,7 +415,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#row%28r%3AInt32%29%3AVector-instance-method" class="signature"><strong>#row</strong>(r : Int32) : Vector</a>
+        <a href="#pos%3F-instance-method" class="signature"><strong>#pos?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row%28r%3AInt32%7CSymbol%29%3AVector-instance-method" class="signature"><strong>#row</strong>(r : Int32 | Symbol) : Vector</a>
         
       </li>
     
@@ -283,12 +430,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#set_all%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#set_all</strong>(n : Float64 | Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#set_col%28c%3AInt32%2Cv%3AVector%29%3AInt32-instance-method" class="signature"><strong>#set_col</strong>(c : Int32, v : Vector) : Int32</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#set_identity-instance-method" class="signature"><strong>#set_identity</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#set_row%28r%3AInt32%2Cv%3AVector%29%3AInt32-instance-method" class="signature"><strong>#set_row</strong>(r : Int32, v : Vector) : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_zero-instance-method" class="signature"><strong>#set_zero</strong></a>
         
       </li>
     
@@ -299,6 +461,18 @@
     
       <li class="entry-summary">
         <a href="#t%3AMatrix-instance-method" class="signature"><strong>#t</strong> : Matrix</a>
+        
+          <div class="summary"><p>alias to transpose</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tail-instance-method" class="signature"><strong>#tail</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transpose%3AMatrix-instance-method" class="signature"><strong>#transpose</strong> : Matrix</a>
         
       </li>
     
@@ -376,12 +550,138 @@
 
   <h2>Instance Method Detail</h2>
   
+    <div class="entry-detail" id="*&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#%2A%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="*&#40;v:Vector&#41;:Vector-instance-method">
       <div class="signature">
         
         def <strong>*</strong>(v : <a href="../GSL/Vector.html">Vector</a>) : <a href="../GSL/Vector.html">Vector</a>
 
         <a class="method-permalink" href="#%2A%28v%3AVector%29%3AVector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*&#40;n:Int32|Float64&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#%2A%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&#43;&#40;n:Int32|Float64&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#%2B%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&#43;&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#%2B%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-&#40;n:Int32|Float64&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#-%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#-%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/&#40;n:Int32|Float64&#41;:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#%2F%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&#61;&#61;&#40;m:GSL::Matrix&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(m : <a href="../GSL/Matrix.html">GSL::Matrix</a>)
+
+        <a class="method-permalink" href="#%3D%3D%28m%3AGSL%3A%3AMatrix%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="&#91;&#93;&#40;row:Symbol|Int32,column:Symbol|Int32&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(row : Symbol | Int32, column : Symbol | Int32) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#%5B%5D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%29%3AVector-instance-method">#</a>
       </div>
       
       <br/>
@@ -404,12 +704,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;&#61;&#40;row,column,x&#41;-instance-method">
+    <div class="entry-detail" id="&#91;&#93;&#61;&#40;row:Symbol|Int32,column:Symbol|Int32,x:Int32|Float64&#41;-instance-method">
       <div class="signature">
         
-        def <strong>[]=</strong>(row, column, x)
+        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)
 
-        <a class="method-permalink" href="#%5B%5D%3D%28row%2Ccolumn%2Cx%29-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AInt32%7CFloat64%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -418,12 +718,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="column&#40;c:Int32&#41;:Vector-instance-method">
+    <div class="entry-detail" id="&#91;&#93;&#61;&#40;row:Symbol|Int32,column:Symbol|Int32,x:Vector&#41;-instance-method">
       <div class="signature">
         
-        def <strong>column</strong>(c : Int32) : <a href="../GSL/Vector.html">Vector</a>
+        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : <a href="../GSL/Vector.html">Vector</a>)
 
-        <a class="method-permalink" href="#column%28c%3AInt32%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AVector%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column&#40;c:Int32|Symbol&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>column</strong>(c : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#column%28c%3AInt32%7CSymbol%29%3AVector-instance-method">#</a>
       </div>
       
       <br/>
@@ -446,12 +760,126 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="each_columns&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>each_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
+
+        <a class="method-permalink" href="#each_columns%28%26block%3AVector-%3E_%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_rows&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>each_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
+
+        <a class="method-permalink" href="#each_rows%28%26block%3AVector-%3E_%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty?-instance-method">
+      <div class="signature">
+        
+        def <strong>empty?</strong>
+
+        <a class="method-permalink" href="#empty%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="get&#40;row,column&#41;:Float64-instance-method">
       <div class="signature">
         
         def <strong>get</strong>(row, column) : Float64
 
         <a class="method-permalink" href="#get%28row%2Ccolumn%29%3AFloat64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_neg?-instance-method">
+      <div class="signature">
+        
+        def <strong>has_neg?</strong>
+
+        <a class="method-permalink" href="#has_neg%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="head-instance-method">
+      <div class="signature">
+        
+        def <strong>head</strong>
+
+        <a class="method-permalink" href="#head-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="i:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>i</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#i%3AMatrix-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>alias to inverse</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inspect-instance-method">
+      <div class="signature">
+        
+        def <strong>inspect</strong>
+
+        <a class="method-permalink" href="#inspect-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>inverse</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#inverse%3AMatrix-instance-method">#</a>
       </div>
       
       <br/>
@@ -474,12 +902,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="ncols:Int32-instance-method">
+    <div class="entry-detail" id="map_columns&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
       <div class="signature">
         
-        def <strong>ncols</strong> : Int32
+        def <strong>map_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
 
-        <a class="method-permalink" href="#ncols%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#map_columns%28%26block%3AVector-%3E_%29-instance-method">#</a>
       </div>
       
       <br/>
@@ -488,12 +916,124 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="nrows:Int32-instance-method">
+    <div class="entry-detail" id="map_rows&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
       <div class="signature">
         
-        def <strong>nrows</strong> : Int32
+        def <strong>map_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
 
-        <a class="method-permalink" href="#nrows%3AInt32-instance-method">#</a>
+        <a class="method-permalink" href="#map_rows%28%26block%3AVector-%3E_%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max-instance-method">
+      <div class="signature">
+        
+        def <strong>max</strong>
+
+        <a class="method-permalink" href="#max-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_index-instance-method">
+      <div class="signature">
+        
+        def <strong>max_index</strong>
+
+        <a class="method-permalink" href="#max_index-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min-instance-method">
+      <div class="signature">
+        
+        def <strong>min</strong>
+
+        <a class="method-permalink" href="#min-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min_index-instance-method">
+      <div class="signature">
+        
+        def <strong>min_index</strong>
+
+        <a class="method-permalink" href="#min_index-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minmax-instance-method">
+      <div class="signature">
+        
+        def <strong>minmax</strong>
+
+        <a class="method-permalink" href="#minmax-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ncols:LibC::SizeT-instance-method">
+      <div class="signature">
+        
+        def <strong>ncols</strong> : LibC::SizeT
+
+        <a class="method-permalink" href="#ncols%3ALibC%3A%3ASizeT-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="neg?-instance-method">
+      <div class="signature">
+        
+        def <strong>neg?</strong>
+
+        <a class="method-permalink" href="#neg%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nrows:LibC::SizeT-instance-method">
+      <div class="signature">
+        
+        def <strong>nrows</strong> : LibC::SizeT
+
+        <a class="method-permalink" href="#nrows%3ALibC%3A%3ASizeT-instance-method">#</a>
       </div>
       
       <br/>
@@ -516,12 +1056,26 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="row&#40;r:Int32&#41;:Vector-instance-method">
+    <div class="entry-detail" id="pos?-instance-method">
       <div class="signature">
         
-        def <strong>row</strong>(r : Int32) : <a href="../GSL/Vector.html">Vector</a>
+        def <strong>pos?</strong>
 
-        <a class="method-permalink" href="#row%28r%3AInt32%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#pos%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row&#40;r:Int32|Symbol&#41;:Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong>(r : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#row%28r%3AInt32%7CSymbol%29%3AVector-instance-method">#</a>
       </div>
       
       <br/>
@@ -544,6 +1098,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="set_all&#40;n:Float64|Int32&#41;-instance-method">
+      <div class="signature">
+        
+        def <strong>set_all</strong>(n : Float64 | Int32)
+
+        <a class="method-permalink" href="#set_all%28n%3AFloat64%7CInt32%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="set_col&#40;c:Int32,v:Vector&#41;:Int32-instance-method">
       <div class="signature">
         
@@ -558,12 +1126,40 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="set_identity-instance-method">
+      <div class="signature">
+        
+        def <strong>set_identity</strong>
+
+        <a class="method-permalink" href="#set_identity-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="set_row&#40;r:Int32,v:Vector&#41;:Int32-instance-method">
       <div class="signature">
         
         def <strong>set_row</strong>(r : Int32, v : <a href="../GSL/Vector.html">Vector</a>) : Int32
 
         <a class="method-permalink" href="#set_row%28r%3AInt32%2Cv%3AVector%29%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_zero-instance-method">
+      <div class="signature">
+        
+        def <strong>set_zero</strong>
+
+        <a class="method-permalink" href="#set_zero-instance-method">#</a>
       </div>
       
       <br/>
@@ -592,6 +1188,36 @@
         def <strong>t</strong> : <a href="../GSL/Matrix.html">Matrix</a>
 
         <a class="method-permalink" href="#t%3AMatrix-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>alias to transpose</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tail-instance-method">
+      <div class="signature">
+        
+        def <strong>tail</strong>
+
+        <a class="method-permalink" href="#tail-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="transpose:Matrix-instance-method">
+      <div class="signature">
+        
+        def <strong>transpose</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+
+        <a class="method-permalink" href="#transpose%3AMatrix-instance-method">#</a>
       </div>
       
       <br/>
