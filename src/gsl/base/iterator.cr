@@ -1,3 +1,5 @@
+require "./matrix.cr"
+
 module GSL
   class Vector
     def each(&block : Float64 -> _)
@@ -10,7 +12,7 @@ module GSL
     end
   end
 
-  class Matrix
+  class Matrix(T)
     def each_rows(&block : Vector -> _)
       (0...self.nrows).map { |x| self.row(x) }.each &block
       self

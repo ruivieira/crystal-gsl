@@ -1,33 +1,35 @@
+require "../../../gsl/base/matrix.cr"
+
 module GSL
-  class Matrix
-    def +(n : GSL::Matrix) : Matrix
+  class DenseMatrix < Matrix(self)
+    def +(n : DenseMatrix) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_add(temp.pointer, n.pointer)
       temp
     end
 
-    def +(n : Int32 | Float64) : Matrix
+    def +(n : Int32 | Float64) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_add_constant(temp.pointer, n.to_f)
       temp
     end
 
-    def -(n : GSL::Matrix) : Matrix
+    def -(n : GSL::DenseMatrix) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_sub(temp.pointer, n.pointer)
       temp
     end
 
-    def -(n : Int32 | Float64) : Matrix
+    def -(n : Int32 | Float64) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_add_constant(temp.pointer, -(n.to_f))
       temp
     end
 
-    def *(n : GSL::Matrix) : Matrix
+    def *(n : GSL::DenseMatrix) : DenseMatrix
       temp_row = self.shape[0]
       temp_column = n.shape[1]
-      temp = GSL::Matrix.new temp_row, temp_column
+      temp = GSL::DenseMatrix.new temp_row, temp_column
       LibGSL.gsl_blas_dgemm(LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, LibGSL::CBLAS_TRANSPOSE_t::CblasNoTrans, 1.0, self.pointer, n.pointer, 0.0, temp.pointer)
       temp
     end
@@ -38,33 +40,32 @@ module GSL
       return result
     end
 
-    def *(n : Int32 | Float64) : Matrix
+    def *(n : Int32 | Float64) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, n.to_f)
       temp
     end
 
-    def /(n : Int32 | Float64) : Matrix
+    def /(n : Int32 | Float64) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_scale(temp.pointer, 1/(n.to_f))
       temp
     end
 
-    def transpose : Matrix
-      transpose = GSL::Matrix.new self.shape[1].to_i, self.shape[0].to_i
+    def transpose : DenseMatrix
+      transpose = GSL::DenseMatrix.new self.shape[1].to_i, self.shape[0].to_i
       LibGSL.gsl_matrix_transpose_memcpy(transpose.pointer, self.pointer)
       return transpose
     end
 
-    # alias to transpose
-    def t : Matrix
-      self.transpose
+    def t : DenseMatrix
+      return self.transpose
     end
 
-    def inverse : Matrix
+    def inverse : DenseMatrix
       temp = self.copy
       p = GSL::Permutation.new Array.new(self.shape[0], 0)
-      inverse = GSL::Matrix.new self.shape[0], self.shape[1]
+      inverse = GSL::DenseMatrix.new self.shape[0], self.shape[1]
       sig = 0
       LibGSL.gsl_linalg_LU_decomp(temp.pointer, p.@permutation, pointerof(sig))
       LibGSL.gsl_linalg_LU_invert(temp.pointer, p.@permutation, inverse.pointer)
@@ -72,8 +73,26 @@ module GSL
     end
 
     # alias to inverse
-    def i : Matrix
+    def i : DenseMatrix
       self.inverse
+    end
+  end
+
+  class SparseMatrix < Matrix(self)
+    def transpose : SparseMatrix
+      transpose = SparseMatrix.new self.shape[1].to_i, self.shape[0].to_i
+      LibGSL.gsl_spmatrix_transpose_memcpy(transpose.pointer, self.pointer)
+      return transpose
+    end
+
+    def t : SparseMatrix
+      return self.transpose
+    end
+
+    def *(n : Int32 | Float64) : SparseMatrix
+      temp = self.copy
+      LibGSL.gsl_spmatrix_scale(temp.pointer, n.to_f)
+      temp
     end
   end
 end

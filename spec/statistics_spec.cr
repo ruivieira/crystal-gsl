@@ -87,7 +87,7 @@ describe Statistics do
 
   describe "Matrix" do
     it "should set a vector as a column" do
-      m = GSL::Matrix.new 4, 4
+      m = GSL::DenseMatrix.new 4, 4
       v = GSL::Vector.new 4
 
       m[0, 0] = 0.0
@@ -113,7 +113,7 @@ describe Statistics do
     end
 
     it "increment in-place" do
-      m = GSL::Matrix.new 2, 2
+      m = GSL::DenseMatrix.new 2, 2
       m[0, 0] = 5.0
 
       m[0, 0] = m[0, 0] + 5.0
@@ -122,7 +122,7 @@ describe Statistics do
     end
 
     it "increment in-place syntax sugar" do
-      m = GSL::Matrix.new 2, 2
+      m = GSL::DenseMatrix.new 2, 2
       m[0, 0] = 5.0
 
       m[0, 0] += 5.0
@@ -131,7 +131,7 @@ describe Statistics do
     end
 
     it "eye should have correct form" do
-      m = GSL::Matrix.eye 3
+      m = GSL::DenseMatrix.eye 3
       (0...3).each do |x|
         m[x, x].should eq 1.0
       end
