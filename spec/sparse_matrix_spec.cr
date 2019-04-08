@@ -59,5 +59,4 @@ describe GSL::SparseMatrix do
       temp.non_zero.should eq 2
     end
   end
-
 end

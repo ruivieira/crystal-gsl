@@ -94,7 +94,5 @@ module GSL
       LibGSL.gsl_spmatrix_scale(temp.pointer, n.to_f)
       temp
     end
-
-
   end
 end
