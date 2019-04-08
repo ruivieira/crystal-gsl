@@ -4,7 +4,7 @@ crystal:
     - latest
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y gsl-bin libgsl-dbg libgsl-dev libatlas-base-dev
+  - sudo apt-get install -y gsl-bin libgsl0-dbg libgsl0-dev libgsl0ldbl libatlas-base-dev
 install:
   - shards install
 script:
