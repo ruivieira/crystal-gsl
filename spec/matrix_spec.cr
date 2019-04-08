@@ -1,8 +1,8 @@
 require "./spec_helper"
 
-test_matrix = GSL::Matrix.new 5, 5
+test_matrix = GSL::DenseMatrix.new 5, 5
 
-describe GSL::Matrix do
+describe GSL::DenseMatrix do
   describe "#nrows" do
     it "should return the number of rows of a matrix" do
       test_matrix.nrows.should eq 5
@@ -31,7 +31,7 @@ describe GSL::Matrix do
   end
   describe "#set_all" do
     it "should set all the values in matrix to input value" do
-      temp = GSL::Matrix.new 5, 5
+      temp = GSL::DenseMatrix.new 5, 5
       (0...test_matrix.nrows).each { |x| (0...test_matrix.ncols).each { |y| temp[x, y] = 5 } }
       tmp = test_matrix.copy
       (tmp.set_all 5).should eq temp
@@ -39,7 +39,7 @@ describe GSL::Matrix do
   end
   describe "#set_zero" do
     it "should set all the values in matrix to zero" do
-      temp = GSL::Matrix.new 5, 5
+      temp = GSL::DenseMatrix.new 5, 5
       test_matrix[0, 0] = 10
       test_matrix.set_zero.should eq temp
     end
@@ -47,7 +47,7 @@ describe GSL::Matrix do
   describe "#set_identity" do
     it "should set the diagonal value to zero" do
       temp = test_matrix.copy
-      tmp = GSL::Matrix.new 5, 5
+      tmp = GSL::DenseMatrix.new 5, 5
       (0...tmp.nrows).each { |x| tmp[x, x] = 1 }
       temp.set_identity.should eq tmp
     end
@@ -138,15 +138,15 @@ describe GSL::Matrix do
       temp.set_all 1
       temp2 = test_matrix.copy
       temp2.set_all 2
-      (temp + temp2).should eq ((GSL::Matrix.new 5, 5).set_all 3)
+      (temp + temp2).should eq ((GSL::DenseMatrix.new 5, 5).set_all 3)
     end
     it "should return the addition of one matrix and an integer" do
       temp = test_matrix.copy
-      (temp + 1).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+      (temp + 1).should eq ((GSL::DenseMatrix.new 5, 5).set_all 1)
     end
     it "should return the addition of one matrix and an float" do
       temp = test_matrix.copy
-      (temp + 1.0).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+      (temp + 1.0).should eq ((GSL::DenseMatrix.new 5, 5).set_all 1)
     end
   end
   describe "#-" do
@@ -155,15 +155,15 @@ describe GSL::Matrix do
       temp.set_all 1
       temp2 = test_matrix.copy
       temp2.set_all 2
-      (temp2 - temp).should eq ((GSL::Matrix.new 5, 5).set_all 1)
+      (temp2 - temp).should eq ((GSL::DenseMatrix.new 5, 5).set_all 1)
     end
     it "should return the substraction of one matrix and an integer" do
       temp = test_matrix.copy
-      (temp - 1).should eq ((GSL::Matrix.new 5, 5).set_all -1)
+      (temp - 1).should eq ((GSL::DenseMatrix.new 5, 5).set_all -1)
     end
     it "should return the substraction of one matrix and an float" do
       temp = test_matrix.copy
-      (temp - 1.0).should eq ((GSL::Matrix.new 5, 5).set_all -1)
+      (temp - 1.0).should eq ((GSL::DenseMatrix.new 5, 5).set_all -1)
     end
   end
   describe "#*" do
@@ -172,7 +172,7 @@ describe GSL::Matrix do
       temp.set_all 1
       temp2 = test_matrix.copy
       temp2.set_all 2
-      (temp2 * temp).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+      (temp2 * temp).should eq ((GSL::DenseMatrix.new 5, 5).set_all 10)
     end
     it "should return the multiplication of two matrice with different dimension" do
       temp = [
@@ -190,12 +190,16 @@ describe GSL::Matrix do
     it "should return the scale of one matrix and an integer" do
       temp = test_matrix.copy
       temp.set_all 5
-      (temp * 2).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+      (temp * 2).should eq ((GSL::DenseMatrix.new 5, 5).set_all 10)
     end
     it "should return the scale of one matrix and an float" do
       temp = test_matrix.copy
       temp.set_all 5
-      (temp * 2.0).should eq ((GSL::Matrix.new 5, 5).set_all 10)
+      (temp * 2.0).should eq ((GSL::DenseMatrix.new 5, 5).set_all 10)
+    end
+    it "should return a matrix with the same dimensions" do
+      temp = test_matrix.like
+      temp.shape.should eq({5, 5})
     end
   end
   pending "#inverse" do

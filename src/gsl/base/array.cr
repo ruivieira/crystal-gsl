@@ -6,7 +6,7 @@ class Array(T)
   def to_matrix
     row = self.size
     column = self.first.size
-    temp = GSL::Matrix.new row, column
+    temp = GSL::DenseMatrix.new row, column
     self.each_with_index do |x, ind|
       x.each_with_index do |y, index|
         temp[ind, index] = y.to_f

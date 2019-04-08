@@ -198,6 +198,35 @@ lib LibGSL
   fun gsl_matrix_isnonneg(m : Gsl_matrix*) : Int32
   fun gsl_matrix_equal(m : Gsl_matrix*, n : Gsl_matrix*) : Int32
 
+  # sparse matrices
+  struct Gsl_spmatrix
+    size1 : LibC::SizeT
+    size2 : LibC::SizeT
+    tda : LibC::SizeT
+    data : LibC::Double*
+    nzmax : LibC::SizeT
+    nz : LibC::SizeT
+    tree_data : Gsl_spmatrix_tree*
+    sptype : LibC::SizeT
+  end
+
+  # Binary tree data structure for storing sparse matrix elements
+  # in triplet format. This is used for efficiently detecting
+  # duplicates and element retrieval via gsl_spmatrix_get
+  struct Gsl_spmatrix_tree
+    tree : Void*       # tree structure
+    node_array : Void* # preallocated array of tree nodes
+    n : LibC::SizeT    # number of tree nodes in use (<= nzmax)
+  end
+
+  fun gsl_spmatrix_alloc(n1 : LibC::SizeT, n2 : LibC::SizeT) : Gsl_spmatrix*
+  fun gsl_spmatrix_get(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : Float64
+  fun gsl_spmatrix_set(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT, x : Float64) : Void
+  fun gsl_spmatrix_set_zero(m : Gsl_spmatrix*) : Void
+  fun gsl_spmatrix_equal(a : Gsl_spmatrix*, b : Gsl_spmatrix*) : Int32
+  fun gsl_spmatrix_memcpy(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : Int32
+  fun gsl_spmatrix_transpose_memcpy(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : Int32
+
   # vectors
 
   struct Gsl_vector
