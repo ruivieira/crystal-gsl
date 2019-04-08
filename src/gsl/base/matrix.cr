@@ -272,5 +272,9 @@ module GSL
       LibGSL.gsl_spmatrix_memcpy(result.pointer, @pointer)
       return result
     end
+
+    def non_zero : Int32
+      LibGSL.gsl_spmatrix_nnz(@pointer)
+    end
   end
 end

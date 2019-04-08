@@ -42,4 +42,22 @@ describe GSL::SparseMatrix do
       temp.set_zero.should eq test_matrix
     end
   end
+  describe "#*" do
+    it "should return the scaling of two matrices" do
+      temp = test_matrix.like
+      temp[0, 0] = 7.0
+      result = test_matrix.like
+      result[0, 0] = 14.0
+      (temp * 2.0).should eq result
+    end
+  end
+  describe "#non_zero" do
+    it "should count all non-zero entries" do
+      temp = GSL::SparseMatrix.new ROWS, COLS
+      temp[0, 0] = 10
+      temp[1, 1] = 5.0
+      temp.non_zero.should eq 2
+    end
+  end
+
 end

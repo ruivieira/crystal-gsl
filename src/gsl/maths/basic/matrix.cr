@@ -2,7 +2,7 @@ require "../../../gsl/base/matrix.cr"
 
 module GSL
   class DenseMatrix < Matrix(self)
-    def +(n : GSL::DenseMatrix) : DenseMatrix
+    def +(n : DenseMatrix) : DenseMatrix
       temp = self.copy
       LibGSL.gsl_matrix_add(temp.pointer, n.pointer)
       temp
@@ -80,7 +80,7 @@ module GSL
 
   class SparseMatrix < Matrix(self)
     def transpose : SparseMatrix
-      transpose = GSL::SparseMatrix.new self.shape[1].to_i, self.shape[0].to_i
+      transpose = SparseMatrix.new self.shape[1].to_i, self.shape[0].to_i
       LibGSL.gsl_spmatrix_transpose_memcpy(transpose.pointer, self.pointer)
       return transpose
     end
@@ -88,5 +88,13 @@ module GSL
     def t : SparseMatrix
       return self.transpose
     end
+
+    def *(n : Int32 | Float64) : SparseMatrix
+      temp = self.copy
+      LibGSL.gsl_spmatrix_scale(temp.pointer, n.to_f)
+      temp
+    end
+
+
   end
 end
