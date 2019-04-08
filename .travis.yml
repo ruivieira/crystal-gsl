@@ -9,5 +9,5 @@ install:
   - shards install
 script:
   - crystal tool format --check
-  - crystal build ./src/gsl.cr
+  - crystal build --link-flags "-lgsl -lcblas -lgslcblas -lm -lpcre -lm -lgc -lpthread -levent -ldl -L/usr/lib -L/usr/local/lib" ./src/gsl.cr
   - crystal spec
