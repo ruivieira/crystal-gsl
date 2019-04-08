@@ -69,6 +69,7 @@ Implementation list:
 
  - Vectors
  - Matrices
+   - Sparse and dense matrices
  - Histograms
  - Permutations
 
