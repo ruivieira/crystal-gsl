@@ -10,4 +10,4 @@ install:
 script:
   - crystal tool format --check
   - crystal build --link-flags "-lgsl -lcblas -lgslcblas -lm -lpcre -lm -lgc -lpthread -levent -ldl -L/usr/lib -L/usr/local/lib" ./src/gsl.cr
-  - crystal spec
+  - crystal spec -D "-lgsl -lcblas -lgslcblas -lm -lpcre -lm -lgc -lpthread -levent  -ldl -L/usr/lib -L/usr/local/lib" -s --release
