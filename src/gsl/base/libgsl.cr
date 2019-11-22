@@ -81,6 +81,14 @@ lib LibGSL
   fun gsl_cdf_exponential_Pinv(p : Float64, mu : Float64) : Float64
   fun gsl_cdf_exponential_Qinv(q : Float64, mu : Float64) : Float64
 
+  # Cauchy distribution
+  fun gsl_ran_cauchy(r : Gsl_rng*, a : Float64) : Float64
+  fun gsl_ran_cauchy_pdf(x : Float64, a : Float64) : Float64
+  fun gsl_cdf_cauchy_P(x : Float64, a : Float64) : Float64
+  fun gsl_cdf_cauchy_Q(x : Float64, a : Float64) : Float64
+  fun gsl_cdf_cauchy_Pinv(p : Float64, a : Float64) : Float64
+  fun gsl_cdf_cauchy_Qinv(q : Float64, a : Float64) : Float64
+
   # Permutations
 
   struct Gsl_permutation
