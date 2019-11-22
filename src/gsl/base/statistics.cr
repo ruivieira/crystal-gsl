@@ -147,7 +147,7 @@ module Statistics
     end
   end
 
-  class Cauchy
+  class Cauchy < ContinuousDistribution
     def initialize(@a : Float64)
     end
 
@@ -157,6 +157,10 @@ module Statistics
 
     def sample(n : Int32) : Array(Float64)
       return Array.new (n) { sample }
+    end
+
+    def pdf(x : Float64) : Float64
+      return LibGSL.gsl_ran_cauchy_pdf(x, @a) 
     end
 
     def self.sample(a : Float64) : Float64
