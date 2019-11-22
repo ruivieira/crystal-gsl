@@ -85,6 +85,15 @@ describe Statistics do
     end
   end
 
+  describe "Cauchy" do
+    it "has the expected number of samples" do
+      cauchy = Statistics::Cauchy.new 1.0
+      n = 100
+      samples = cauchy.sample(n)
+      samples.size.should eq n
+    end
+  end
+
   describe "Matrix" do
     it "should set a vector as a column" do
       m = GSL::DenseMatrix.new 4, 4

@@ -148,12 +148,23 @@ module Statistics
   end
 
   class Cauchy
+    def initialize(@a : Float64)
+    end
+
+    def sample : Float64
+      return Cauchy.sample(@a)
+    end
+
+    def sample(n : Int32) : Array(Float64)
+      return Array.new (n) { sample }
+    end
+
     def self.sample(a : Float64) : Float64
       return LibGSL.gsl_ran_cauchy(GSL::RNG, a) 
     end
 
-    def self.sample(x : Float64, a : Float64) : Float64
-      return LibGSL.gsl_ran_cauchy_pdf(x, a)
+    def self.sample(n : Int32, a : Float64) : Array(Float64)
+      return Array.new (n) { self.sample(a) }
     end
   end
 
