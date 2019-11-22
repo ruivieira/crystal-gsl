@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
   <title>GSL::Histogram - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="../GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> GSL::Histogram
@@ -202,28 +235,30 @@
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L87" target="_blank">
+        gsl/base/histogram.cr
+      </a>
+    
+    <br/>
+  
 
 
 
 
 
-  <h2>Class Method Summary</h2>
+  <h2>Constructors</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28data%3AArray%28Float%29%2Cbins%3AArray%28Float%29%29-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Array(Float))</a>
+        <a href="#new(data:Array(Float),bins:Array(Float))-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Array(Float))</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28data%3AArray%28Float%29%2Cbins%3AInt32%29-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Int32)</a>
+        <a href="#new(data:Array(Float),bins:Int32)-class-method" class="signature"><strong>.new</strong>(data : Array(Float), bins : Int32)</a>
         
           <div class="summary"><p><span class="flag orange">TODO</span>  case where data is empty</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new%28histogram%3A%3A%3APointer%28LibGSL%3A%3AGsl_histogram%29%29-class-method" class="signature"><strong>.new</strong>(histogram : ::Pointer(LibGSL::Gsl_histogram))</a>
         
       </li>
     
@@ -231,46 +266,48 @@
 
 
 
+
+
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28scale%3AFloat64%29%3AHistogram-instance-method" class="signature"><strong>#*</strong>(scale : Float64) : Histogram</a>
+        <a href="#*(scale:Float64):Histogram-instance-method" class="signature"><strong>#*</strong>(scale : Float64) : Histogram</a>
         
           <div class="summary"><p>This function multiplies the contents of the bins of them histogram by the constant <em>scale</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#*</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#*(h:Histogram%7CMutableHistogram):Histogram-instance-method" class="signature"><strong>#*</strong>(h : Histogram | MutableHistogram) : Histogram</a>
         
           <div class="summary"><p>Multiply the values of histograms with identical bins.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28offset%3AFloat64%29%3AHistogram-instance-method" class="signature"><strong>#+</strong>(offset : Float64) : Histogram</a>
+        <a href="#+(offset:Float64):Histogram-instance-method" class="signature"><strong>#+</strong>(offset : Float64) : Histogram</a>
         
           <div class="summary"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#+</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#+(h:Histogram%7CMutableHistogram):Histogram-instance-method" class="signature"><strong>#+</strong>(h : Histogram | MutableHistogram) : Histogram</a>
         
           <div class="summary"><p>Add the values of histograms with identical bins.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#-</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#-(h:Histogram%7CMutableHistogram):Histogram-instance-method" class="signature"><strong>#-</strong>(h : Histogram | MutableHistogram) : Histogram</a>
         
           <div class="summary"><p>Subtract the values of histograms with identical bins.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method" class="signature"><strong>#/</strong>(h : Histogram | MutableHistogram) : Histogram</a>
+        <a href="#/(h:Histogram%7CMutableHistogram):Histogram-instance-method" class="signature"><strong>#/</strong>(h : Histogram | MutableHistogram) : Histogram</a>
         
           <div class="summary"><p>Multiply the values of histograms with identical bins.</p></div>
         
@@ -289,47 +326,47 @@
   <h3>Instance methods inherited from class <code><a href="../GSL/AbstractHistogram.html">GSL::AbstractHistogram</a></code></h3>
   
   
-    <a href="../GSL/AbstractHistogram.html#bin%28n%3AInt%29%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#bin(n:Int):Float64-instance-method" class="tooltip">
       <span>bin(n : Int) : Float64</span>
     bin</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#clone%3AHistogram-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#clone:Histogram-instance-method" class="tooltip">
       <span>clone : Histogram</span>
     clone</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#equal_bins%28h%3AAbstractHistogram%29%3ABool-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#equal_bins(h:AbstractHistogram):Bool-instance-method" class="tooltip">
       <span>equal_bins(h : AbstractHistogram) : Bool</span>
     equal_bins</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#find%28x%3AFloat64%29%3AUInt64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#find(x:Float64):UInt64-instance-method" class="tooltip">
       <span>find(x : Float64) : UInt64</span>
     find</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#max_bin%3AUInt64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#max_bin:UInt64-instance-method" class="tooltip">
       <span>max_bin : UInt64</span>
     max_bin</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#max_val%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#max_val:Float64-instance-method" class="tooltip">
       <span>max_val : Float64</span>
     max_val</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#mean%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#mean:Float64-instance-method" class="tooltip">
       <span>mean : Float64</span>
     mean</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#min_bin%3AUInt64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#min_bin:UInt64-instance-method" class="tooltip">
       <span>min_bin : UInt64</span>
     min_bin</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#min_val%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#min_val:Float64-instance-method" class="tooltip">
       <span>min_val : Float64</span>
     min_val</a>, 
     
@@ -339,17 +376,17 @@
     nbins</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#range%28n%3AInt%29%3ATuple%28Float64%2CFloat64%29-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#range(n:Int):Tuple(Float64,Float64)-instance-method" class="tooltip">
       <span>range(n : Int) : Tuple(Float64, Float64)</span>
     range</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#sigma%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#sigma:Float64-instance-method" class="tooltip">
       <span>sigma : Float64</span>
     sigma</a>, 
     
   
-    <a href="../GSL/AbstractHistogram.html#sum%3AFloat64-instance-method" class="tooltip">
+    <a href="../GSL/AbstractHistogram.html#sum:Float64-instance-method" class="tooltip">
       <span>sum : Float64</span>
     sum</a>
     
@@ -359,6 +396,9 @@
     
 
 
+    
+
+
   
     
 
@@ -366,7 +406,13 @@
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -377,155 +423,180 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new&#40;data:Array&#40;Float&#41;,bins:Array&#40;Float&#41;&#41;-class-method">
+    <div class="entry-detail" id="new(data:Array(Float),bins:Array(Float))-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(data : <a href="../Array.html">Array</a>(Float), bins : <a href="../Array.html">Array</a>(Float))
 
-        <a class="method-permalink" href="#new%28data%3AArray%28Float%29%2Cbins%3AArray%28Float%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new(data:Array(Float),bins:Array(Float))-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L88" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="new&#40;data:Array&#40;Float&#41;,bins:Int32&#41;-class-method">
+    <div class="entry-detail" id="new(data:Array(Float),bins:Int32)-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(data : <a href="../Array.html">Array</a>(Float), bins : Int32)
 
-        <a class="method-permalink" href="#new%28data%3AArray%28Float%29%2Cbins%3AInt32%29-class-method">#</a>
+        <a class="method-permalink" href="#new(data:Array(Float),bins:Int32)-class-method">#</a>
       </div>
       
-        <div class="doc"><p><span class="flag orange">TODO</span>  case where data is empty</p></div>
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  case where data is empty</p>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L98" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="new&#40;histogram:::Pointer&#40;LibGSL::Gsl_histogram&#41;&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(histogram : ::Pointer(LibGSL::Gsl_histogram))
 
-        <a class="method-permalink" href="#new%28histogram%3A%3A%3APointer%28LibGSL%3A%3AGsl_histogram%29%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
+
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="*&#40;scale:Float64&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="*(scale:Float64):Histogram-instance-method">
       <div class="signature">
         
         def <strong>*</strong>(scale : Float64) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#%2A%28scale%3AFloat64%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#*(scale:Float64):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>This function multiplies the contents of the bins of them histogram by the constant <em>scale</em>.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>This function multiplies the contents of the bins of them histogram by the constant <em>scale</em>.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L153" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="*(h:Histogram|MutableHistogram):Histogram-instance-method">
       <div class="signature">
         
         def <strong>*</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#%2A%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#*(h:Histogram%7CMutableHistogram):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Multiply the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>Multiply the values of histograms with identical bins.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L131" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;offset:Float64&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="+(offset:Float64):Histogram-instance-method">
       <div class="signature">
         
         def <strong>+</strong>(offset : Float64) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#%2B%28offset%3AFloat64%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#+(offset:Float64):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>This function shifts the contents of the bins of the histogram by the constant <em>offset</em>.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L161" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="+(h:Histogram|MutableHistogram):Histogram-instance-method">
       <div class="signature">
         
         def <strong>+</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#%2B%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#+(h:Histogram%7CMutableHistogram):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Add the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>Add the values of histograms with identical bins.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L109" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="-&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="-(h:Histogram|MutableHistogram):Histogram-instance-method">
       <div class="signature">
         
         def <strong>-</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#-%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#-(h:Histogram%7CMutableHistogram):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Subtract the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>Subtract the values of histograms with identical bins.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="/&#40;h:Histogram|MutableHistogram&#41;:Histogram-instance-method">
+    <div class="entry-detail" id="/(h:Histogram|MutableHistogram):Histogram-instance-method">
       <div class="signature">
         
         def <strong>/</strong>(h : <a href="../GSL/Histogram.html">Histogram</a> | <a href="../GSL/MutableHistogram.html">MutableHistogram</a>) : <a href="../GSL/Histogram.html">Histogram</a>
 
-        <a class="method-permalink" href="#%2F%28h%3AHistogram%7CMutableHistogram%29%3AHistogram-instance-method">#</a>
+        <a class="method-permalink" href="#/(h:Histogram%7CMutableHistogram):Histogram-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Multiply the values of histograms with identical bins.
-This is an immutable operation, it return a new Histogram without changing the originals</p></div>
+        <div class="doc">
+          
+          <p>Multiply the values of histograms with identical bins.
+This is an immutable operation, it return a new Histogram without changing the originals</p>
+        </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/histogram.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>

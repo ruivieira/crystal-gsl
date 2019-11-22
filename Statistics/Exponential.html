@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
   <title>Statistics::Exponential - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="../GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> Statistics::Exponential
@@ -202,6 +235,15 @@
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L140" target="_blank">
+        gsl/base/statistics.cr
+      </a>
+    
+    <br/>
+  
+
+
 
 
 
@@ -211,12 +253,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%28x%3AFloat64%2Cmu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.sample</strong>(x : Float64, mu : Float64) : Float64</a>
+        <a href="#sample(x:Float64,mu:Float64):Float64-class-method" class="signature"><strong>.sample</strong>(x : Float64, mu : Float64) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%28mu%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.sample</strong>(mu : Float64) : Float64</a>
+        <a href="#sample(mu:Float64):Float64-class-method" class="signature"><strong>.sample</strong>(mu : Float64) : Float64</a>
         
       </li>
     
@@ -236,7 +278,13 @@
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -247,32 +295,38 @@
 </div>
 
 
+
+
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="sample&#40;x:Float64,mu:Float64&#41;:Float64-class-method">
+    <div class="entry-detail" id="sample(x:Float64,mu:Float64):Float64-class-method">
       <div class="signature">
         
         def self.<strong>sample</strong>(x : Float64, mu : Float64) : Float64
 
-        <a class="method-permalink" href="#sample%28x%3AFloat64%2Cmu%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#sample(x:Float64,mu:Float64):Float64-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sample&#40;mu:Float64&#41;:Float64-class-method">
+    <div class="entry-detail" id="sample(mu:Float64):Float64-class-method">
       <div class="signature">
         
         def self.<strong>sample</strong>(mu : Float64) : Float64
 
-        <a class="method-permalink" href="#sample%28mu%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#sample(mu:Float64):Float64-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L141" target="_blank">View source</a>]
         
       </div>
     </div>

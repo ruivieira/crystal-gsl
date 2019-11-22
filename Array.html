@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>Array(T) - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> Array(T)
@@ -197,9 +230,9 @@ relative to the end of the array: -1 indicates the last element,
 
 <p>An <code><a href="Array.html">Array</a></code> can be created using the usual <code>new</code> method (several are provided), or with an array literal:</p>
 
-<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># &#61;&gt; &#91;&#93;</span>
-[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array&#40;Int32&#41;</span>
-[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">'x'</span>] <span class="c"># Array&#40;Int32 | String | Char&#41;</span></code></pre>
+<pre><code><span class="t">Array</span>(<span class="t">Int32</span>).<span class="k">new</span>  <span class="c"># =&gt; []</span>
+[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]         <span class="c"># Array(Int32)</span>
+[<span class="n">1</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">&#39;x&#39;</span>] <span class="c"># Array(Int32 | String | Char)</span></code></pre>
 
 <p>An <code><a href="Array.html">Array</a></code> can have mixed types, meaning T will be a union of types, but these are determined
 when the array is created, either by specifying T or by using an array literal. In the latter
@@ -207,7 +240,7 @@ case, T will be set to the union of the array literal elements' types.</p>
 
 <p>When creating an empty array you must always specify T:</p>
 
-<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array&#40;Int32&#41;</span>
+<pre><code><span class="o">[]</span> <span class="k">of</span> <span class="t">Int32</span> <span class="c"># same as Array(Int32)</span>
 <span class="o">[]</span>          <span class="c"># syntax error</span></code></pre>
 
 <p>An <code><a href="Array.html">Array</a></code> is implemented using an internal buffer of some capacity
@@ -217,15 +250,15 @@ is needed. This is normally known as a <a href="http://en.wikipedia.org/wiki/Dyn
 <p>You can use a special array literal syntax with other types too, as long as they define an argless
 <code>new</code> method and a <code><<</code> method. <code>Set</code> is one such type:</p>
 
-<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># &#61;&gt; Set&#123;1, 2, 3&#125;</span>
-set.<span class="k">class</span>          <span class="c"># &#61;&gt; Set&#40;Int32&#41;</span></code></pre>
+<pre><code>set <span class="o">=</span> <span class="t">Set</span>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>} <span class="c"># =&gt; Set{1, 2, 3}</span>
+set.<span class="k">class</span>          <span class="c"># =&gt; Set(Int32)</span></code></pre>
 
 <p>The above is the same as this:</p>
 
 <pre><code>set <span class="o">=</span> <span class="t">Set</span>(<span class="k">typeof</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>)).<span class="k">new</span>
-set <span class="o"><<</span> <span class="n">1</span>
-set <span class="o"><<</span> <span class="n">2</span>
-set <span class="o"><<</span> <span class="n">3</span></code></pre>
+set <span class="o">&lt;&lt;</span> <span class="n">1</span>
+set <span class="o">&lt;&lt;</span> <span class="n">2</span>
+set <span class="o">&lt;&lt;</span> <span class="n">3</span></code></pre>
 
 
 
@@ -251,6 +284,15 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/array.cr#L1" target="_blank">
+        gsl/base/array.cr
+      </a>
+    
+    <br/>
+  
+
+
 
 
 
@@ -285,10 +327,6 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
-  
-    
-
-
     
 
 
@@ -296,10 +334,6 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
-    
-
-
-  
     
 
 
@@ -313,7 +347,33 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
     
 
 
+    
+
+
   
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
     
 
 
@@ -322,6 +382,8 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
 
   
 </div>
+
+
 
 
 
@@ -339,6 +401,8 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/array.cr#L6" target="_blank">View source</a>]
+        
       </div>
     </div>
   
@@ -352,6 +416,8 @@ set <span class="o"><<</span> <span class="n">3</span></code></pre>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/array.cr#L2" target="_blank">View source</a>]
         
       </div>
     </div>

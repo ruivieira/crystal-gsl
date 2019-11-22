@@ -14,7 +14,7 @@
 </script>
 
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <title>Statistics::LinearRegression - github.com/ruivieira/crystal-gsl</title>
+  <title>Statistics::Cauchy - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
@@ -126,7 +126,7 @@
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
       <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
@@ -166,7 +166,7 @@
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
       <a href="../Statistics/LinearRegression.html">LinearRegression</a>
       
     </li>
@@ -210,12 +210,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Statistics::LinearRegression
+  <span class="kind">class</span> Statistics::Cauchy
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/LinearRegression.html">Statistics::LinearRegression</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Statistics/Cauchy.html">Statistics::Cauchy</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -236,7 +236,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L388" target="_blank">
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L150" target="_blank">
         gsl/base/statistics.cr
       </a>
     
@@ -247,34 +247,24 @@
 
 
 
-  <h2>Constructors</h2>
+
+
+  <h2>Class Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(intercept:Float64,x:Float64)-class-method" class="signature"><strong>.new</strong>(intercept : Float64, x : Float64)</a>
+        <a href="#sample(x:Float64,a:Float64):Float64-class-method" class="signature"><strong>.sample</strong>(x : Float64, a : Float64) : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample(a:Float64):Float64-class-method" class="signature"><strong>.sample</strong>(a : Float64) : Float64</a>
         
       </li>
     
   </ul>
 
 
-
-
-
-  <h2>Instance Method Summary</h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#intercept:Float64-instance-method" class="signature"><strong>#intercept</strong> : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#x:Float64-instance-method" class="signature"><strong>#x</strong> : Float64</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -302,76 +292,47 @@
 
 
   
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
 
-  <h2>Constructor Detail</h2>
+
+
+  <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="new(intercept:Float64,x:Float64)-class-method">
+    <div class="entry-detail" id="sample(x:Float64,a:Float64):Float64-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(intercept : Float64, x : Float64)
+        def self.<strong>sample</strong>(x : Float64, a : Float64) : Float64
 
-        <a class="method-permalink" href="#new(intercept:Float64,x:Float64)-class-method">#</a>
+        <a class="method-permalink" href="#sample(x:Float64,a:Float64):Float64-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L391" target="_blank">View source</a>]
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L155" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample(a:Float64):Float64-class-method">
+      <div class="signature">
+        
+        def self.<strong>sample</strong>(a : Float64) : Float64
+
+        <a class="method-permalink" href="#sample(a:Float64):Float64-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
-
-
-
-  <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="intercept:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>intercept</strong> : Float64
-
-        <a class="method-permalink" href="#intercept:Float64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L389" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="x:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>x</strong> : Float64
-
-        <a class="method-permalink" href="#x:Float64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L389" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 

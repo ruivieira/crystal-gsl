@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
   <title>Statistics::InverseGamma - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="../GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> Statistics::InverseGamma
@@ -206,8 +239,27 @@
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L310" target="_blank">
+        gsl/base/statistics.cr
+      </a>
+    
+    <br/>
+  
 
 
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(shape:Float64,scale:Float64)-class-method" class="signature"><strong>.new</strong>(shape : Float64, scale : Float64)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -215,17 +267,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#log_pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29-class-method" class="signature"><strong>.log_pdf</strong>(x : Float64, shape : Float64, scale : Float64)</a>
+        <a href="#log_pdf(x:Float64,shape:Float64,scale:Float64)-class-method" class="signature"><strong>.log_pdf</strong>(x : Float64, shape : Float64, scale : Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28shape%3AFloat64%2Cscale%3AFloat64%29-class-method" class="signature"><strong>.new</strong>(shape : Float64, scale : Float64)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method" class="signature"><strong>.pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64</a>
+        <a href="#pdf(x:Float64,shape:Float64,scale:Float64):Float64-class-method" class="signature"><strong>.pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64</a>
         
       </li>
     
@@ -237,17 +284,17 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#log_pdf%28x%3AFloat64%29%3AFloat64-instance-method" class="signature"><strong>#log_pdf</strong>(x : Float64) : Float64</a>
+        <a href="#log_pdf(x:Float64):Float64-instance-method" class="signature"><strong>#log_pdf</strong>(x : Float64) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#pdf%28x%3AFloat64%29%3AFloat64-instance-method" class="signature"><strong>#pdf</strong>(x : Float64) : Float64</a>
+        <a href="#pdf(x:Float64):Float64-instance-method" class="signature"><strong>#pdf</strong>(x : Float64) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sample%3AFloat64-instance-method" class="signature"><strong>#sample</strong> : Float64</a>
+        <a href="#sample:Float64-instance-method" class="signature"><strong>#sample</strong> : Float64</a>
         
       </li>
     
@@ -264,7 +311,7 @@
   <h3>Instance methods inherited from class <code><a href="../Statistics/ContinuousDistribution.html">Statistics::ContinuousDistribution</a></code></h3>
   
   
-    <a href="../Statistics/ContinuousDistribution.html#sample%3AFloat64-instance-method" class="tooltip">
+    <a href="../Statistics/ContinuousDistribution.html#sample:Float64-instance-method" class="tooltip">
       <span>sample : Float64</span>
     sample</a>
     
@@ -274,6 +321,9 @@
     
 
 
+    
+
+
   
     
 
@@ -281,7 +331,13 @@
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -292,46 +348,57 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
+  <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="log_pdf&#40;x:Float64,shape:Float64,scale:Float64&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>log_pdf</strong>(x : Float64, shape : Float64, scale : Float64)
-
-        <a class="method-permalink" href="#log_pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new&#40;shape:Float64,scale:Float64&#41;-class-method">
+    <div class="entry-detail" id="new(shape:Float64,scale:Float64)-class-method">
       <div class="signature">
         
         def self.<strong>new</strong>(shape : Float64, scale : Float64)
 
-        <a class="method-permalink" href="#new%28shape%3AFloat64%2Cscale%3AFloat64%29-class-method">#</a>
+        <a class="method-permalink" href="#new(shape:Float64,scale:Float64)-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L311" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="pdf&#40;x:Float64,shape:Float64,scale:Float64&#41;:Float64-class-method">
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="log_pdf(x:Float64,shape:Float64,scale:Float64)-class-method">
       <div class="signature">
         
-        def self.<strong>pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64
+        def self.<strong>log_pdf</strong>(x : Float64, shape : Float64, scale : Float64)
 
-        <a class="method-permalink" href="#pdf%28x%3AFloat64%2Cshape%3AFloat64%2Cscale%3AFloat64%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#log_pdf(x:Float64,shape:Float64,scale:Float64)-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L326" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pdf(x:Float64,shape:Float64,scale:Float64):Float64-class-method">
+      <div class="signature">
+        
+        def self.<strong>pdf</strong>(x : Float64, shape : Float64, scale : Float64) : Float64
+
+        <a class="method-permalink" href="#pdf(x:Float64,shape:Float64,scale:Float64):Float64-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L318" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -341,30 +408,34 @@
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="log_pdf&#40;x:Float64&#41;:Float64-instance-method">
+    <div class="entry-detail" id="log_pdf(x:Float64):Float64-instance-method">
       <div class="signature">
         
         def <strong>log_pdf</strong>(x : Float64) : Float64
 
-        <a class="method-permalink" href="#log_pdf%28x%3AFloat64%29%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#log_pdf(x:Float64):Float64-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L322" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="pdf&#40;x:Float64&#41;:Float64-instance-method">
+    <div class="entry-detail" id="pdf(x:Float64):Float64-instance-method">
       <div class="signature">
         
         def <strong>pdf</strong>(x : Float64) : Float64
 
-        <a class="method-permalink" href="#pdf%28x%3AFloat64%29%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#pdf(x:Float64):Float64-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L314" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -374,11 +445,13 @@
         
         def <strong>sample</strong> : Float64
 
-        <a class="method-permalink" href="#sample%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#sample:Float64-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L330" target="_blank">View source</a>]
         
       </div>
     </div>

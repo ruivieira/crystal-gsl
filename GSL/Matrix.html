@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
-  <title>GSL::Matrix - github.com/ruivieira/crystal-gsl</title>
+  <title>GSL::Matrix(T) - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="../GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,17 +203,19 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> GSL::Matrix
+  <span class="kind">abstract class</span> GSL::Matrix(T)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/Matrix.html">GSL::Matrix</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/Matrix.html">GSL::Matrix(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -194,6 +227,15 @@
 
 
 
+
+  <h2>Direct Known Subclasses</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../GSL/DenseMatrix.html">GSL::DenseMatrix</a></li>
+  
+    <li class="other-type"><a href="../GSL/SparseMatrix.html">GSL::SparseMatrix</a></li>
+  
+  </ul>
 
 
 
@@ -202,30 +244,26 @@
 
   <h2>Defined in:</h2>
   
-
-
-
-
-
-  <h2>Class Method Summary</h2>
-  <ul class="list-summary">
     
-      <li class="entry-summary">
-        <a href="#eye%28size%3AInt32%29%3AMatrix-class-method" class="signature"><strong>.eye</strong>(size : Int32) : Matrix</a>
-        
-      </li>
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L2" target="_blank">
+        gsl/base/matrix.cr
+      </a>
     
-      <li class="entry-summary">
-        <a href="#free%28m%3AMatrix%29-class-method" class="signature"><strong>.free</strong>(m : Matrix)</a>
-        
-      </li>
+    <br/>
+  
     
-      <li class="entry-summary">
-        <a href="#new%28rows%3AInt32%2Ccolumns%3AInt32%29-class-method" class="signature"><strong>.new</strong>(rows : Int32, columns : Int32)</a>
-        
-      </li>
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/iterator.cr#L15" target="_blank">
+        gsl/base/iterator.cr
+      </a>
     
-  </ul>
+    <br/>
+  
+
+
+
+
+
+
 
 
 
@@ -233,219 +271,89 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#%2A%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#*</strong>(n : GSL::Matrix) : Matrix</a>
+        <a href="#==(m:T)-instance-method" class="signature"><strong>#==</strong>(m : T)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28v%3AVector%29%3AVector-instance-method" class="signature"><strong>#*</strong>(v : Vector) : Vector</a>
+        <a href="#[](row:Int32,column:Int32):Float64-instance-method" class="signature"><strong>#[]</strong>(row : Int32, column : Int32) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2A%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#*</strong>(n : Int32 | Float64) : Matrix</a>
+        <a href="#[](row:Symbol%7CInt32,column:Symbol%7CInt32):Vector-instance-method" class="signature"><strong>#[]</strong>(row : Symbol | Int32, column : Symbol | Int32) : Vector</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#+</strong>(n : Int32 | Float64) : Matrix</a>
+        <a href="#column(c:Int32%7CSymbol):Vector-instance-method" class="signature"><strong>#column</strong>(c : Int32 | Symbol) : Vector</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2B%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#+</strong>(n : GSL::Matrix) : Matrix</a>
+        <a href="#copy:T-instance-method" class="signature"><strong>#copy</strong> : T</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#-</strong>(n : Int32 | Float64) : Matrix</a>
+        <a href="#each_columns(&block:Vector-%3EUNDERSCORE)-instance-method" class="signature"><strong>#each_columns</strong>(&block : Vector -> UNDERSCORE)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#-%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method" class="signature"><strong>#-</strong>(n : GSL::Matrix) : Matrix</a>
+        <a href="#each_rows(&block:Vector-%3EUNDERSCORE)-instance-method" class="signature"><strong>#each_rows</strong>(&block : Vector -> UNDERSCORE)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method" class="signature"><strong>#/</strong>(n : Int32 | Float64) : Matrix</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%3D%3D%28m%3AGSL%3A%3AMatrix%29-instance-method" class="signature"><strong>#==</strong>(m : GSL::Matrix)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%29%3AVector-instance-method" class="signature"><strong>#[]</strong>(row : Symbol | Int32, column : Symbol | Int32) : Vector</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%28row%3AInt32%2Ccolumn%3AInt32%29%3AFloat64-instance-method" class="signature"><strong>#[]</strong>(row : Int32, column : Int32) : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AInt32%7CFloat64%29-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AVector%29-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Vector)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#column%28c%3AInt32%7CSymbol%29%3AVector-instance-method" class="signature"><strong>#column</strong>(c : Int32 | Symbol) : Vector</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#copy%3AMatrix-instance-method" class="signature"><strong>#copy</strong> : Matrix</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#each_columns%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#each_columns</strong>(&block : Vector -> _)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#each_rows%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#each_rows</strong>(&block : Vector -> _)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#empty%3F-instance-method" class="signature"><strong>#empty?</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#get%28row%2Ccolumn%29%3AFloat64-instance-method" class="signature"><strong>#get</strong>(row, column) : Float64</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#has_neg%3F-instance-method" class="signature"><strong>#has_neg?</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#head-instance-method" class="signature"><strong>#head</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#i%3AMatrix-instance-method" class="signature"><strong>#i</strong> : Matrix</a>
-        
-          <div class="summary"><p>alias to inverse</p></div>
+        <a href="#get(row,column):Float64-instance-method" class="signature"><strong>#get</strong>(row, column) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#inspect-instance-method" class="signature"><strong>#inspect</strong></a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#inverse%3AMatrix-instance-method" class="signature"><strong>#inverse</strong> : Matrix</a>
+          <div class="summary"><p>Returns a <code>String</code> representation of this object suitable to be embedded inside other expressions, sometimes providing more information about this object.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#like%3AMatrix-instance-method" class="signature"><strong>#like</strong> : Matrix</a>
+        <a href="#like:T-instance-method" class="signature"><strong>#like</strong> : T</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#map_columns%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#map_columns</strong>(&block : Vector -> _)</a>
+        <a href="#map_columns(&block:Vector-%3EUNDERSCORE)-instance-method" class="signature"><strong>#map_columns</strong>(&block : Vector -> UNDERSCORE)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#map_rows%28%26block%3AVector-%3E_%29-instance-method" class="signature"><strong>#map_rows</strong>(&block : Vector -> _)</a>
+        <a href="#map_rows(&block:Vector-%3EUNDERSCORE)-instance-method" class="signature"><strong>#map_rows</strong>(&block : Vector -> UNDERSCORE)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max-instance-method" class="signature"><strong>#max</strong></a>
+        <a href="#ncols:LibC::SizeT-instance-method" class="signature"><strong>#ncols</strong> : LibC::SizeT</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#max_index-instance-method" class="signature"><strong>#max_index</strong></a>
+        <a href="#nrows:LibC::SizeT-instance-method" class="signature"><strong>#nrows</strong> : LibC::SizeT</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#min-instance-method" class="signature"><strong>#min</strong></a>
+        <a href="#pointer-instance-method" class="signature"><strong>#pointer</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#min_index-instance-method" class="signature"><strong>#min_index</strong></a>
+        <a href="#row(r:Int32%7CSymbol):Vector-instance-method" class="signature"><strong>#row</strong>(r : Int32 | Symbol) : Vector</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#minmax-instance-method" class="signature"><strong>#minmax</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ncols%3ALibC%3A%3ASizeT-instance-method" class="signature"><strong>#ncols</strong> : LibC::SizeT</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#neg%3F-instance-method" class="signature"><strong>#neg?</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#nrows%3ALibC%3A%3ASizeT-instance-method" class="signature"><strong>#nrows</strong> : LibC::SizeT</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pointer%3APointer%28LibGSL%3A%3AGsl_matrix%29-instance-method" class="signature"><strong>#pointer</strong> : Pointer(LibGSL::Gsl_matrix)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pos%3F-instance-method" class="signature"><strong>#pos?</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#row%28r%3AInt32%7CSymbol%29%3AVector-instance-method" class="signature"><strong>#row</strong>(r : Int32 | Symbol) : Vector</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#set%28row%2Ccolumn%2Cx%29-instance-method" class="signature"><strong>#set</strong>(row, column, x)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#set_all%28n%3AFloat64%7CInt32%29-instance-method" class="signature"><strong>#set_all</strong>(n : Float64 | Int32)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#set_col%28c%3AInt32%2Cv%3AVector%29%3AInt32-instance-method" class="signature"><strong>#set_col</strong>(c : Int32, v : Vector) : Int32</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#set_identity-instance-method" class="signature"><strong>#set_identity</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#set_row%28r%3AInt32%2Cv%3AVector%29%3AInt32-instance-method" class="signature"><strong>#set_row</strong>(r : Int32, v : Vector) : Int32</a>
+        <a href="#set(row,column,x)-instance-method" class="signature"><strong>#set</strong>(row, column, x)</a>
         
       </li>
     
@@ -460,19 +368,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#t%3AMatrix-instance-method" class="signature"><strong>#t</strong> : Matrix</a>
+        <a href="#t:T-instance-method" class="signature"><strong>#t</strong> : T</a>
         
           <div class="summary"><p>alias to transpose</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#tail-instance-method" class="signature"><strong>#tail</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#transpose%3AMatrix-instance-method" class="signature"><strong>#transpose</strong> : Matrix</a>
+        <a href="#transpose:T-instance-method" class="signature"><strong>#transpose</strong> : T</a>
         
       </li>
     
@@ -490,7 +393,13 @@
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -501,361 +410,136 @@
 </div>
 
 
-  <h2>Class Method Detail</h2>
-  
-    <div class="entry-detail" id="eye&#40;size:Int32&#41;:Matrix-class-method">
-      <div class="signature">
-        
-        def self.<strong>eye</strong>(size : Int32) : <a href="../GSL/Matrix.html">Matrix</a>
 
-        <a class="method-permalink" href="#eye%28size%3AInt32%29%3AMatrix-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="free&#40;m:Matrix&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>free</strong>(m : <a href="../GSL/Matrix.html">Matrix</a>)
-
-        <a class="method-permalink" href="#free%28m%3AMatrix%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="new&#40;rows:Int32,columns:Int32&#41;-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(rows : Int32, columns : Int32)
-
-        <a class="method-permalink" href="#new%28rows%3AInt32%2Ccolumns%3AInt32%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="*&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
+    <div class="entry-detail" id="==(m:T)-instance-method">
       <div class="signature">
-        
-        def <strong>*</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
+        abstract 
+        def <strong>==</strong>(m : T)
 
-        <a class="method-permalink" href="#%2A%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
+        <a class="method-permalink" href="#==(m:T)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L27" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="*&#40;v:Vector&#41;:Vector-instance-method">
+    <div class="entry-detail" id="[](row:Int32,column:Int32):Float64-instance-method">
       <div class="signature">
-        
-        def <strong>*</strong>(v : <a href="../GSL/Vector.html">Vector</a>) : <a href="../GSL/Vector.html">Vector</a>
+        abstract 
+        def <strong>[]</strong>(row : Int32, column : Int32) : Float64
 
-        <a class="method-permalink" href="#%2A%28v%3AVector%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#[](row:Int32,column:Int32):Float64-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="*&#40;n:Int32|Float64&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>*</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#%2A%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="&#43;&#40;n:Int32|Float64&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>+</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#%2B%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#43;&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>+</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#%2B%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="-&#40;n:Int32|Float64&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>-</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#-%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="-&#40;n:GSL::Matrix&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>-</strong>(n : <a href="../GSL/Matrix.html">GSL::Matrix</a>) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#-%28n%3AGSL%3A%3AMatrix%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="/&#40;n:Int32|Float64&#41;:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>/</strong>(n : Int32 | Float64) : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#%2F%28n%3AInt32%7CFloat64%29%3AMatrix-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#61;&#61;&#40;m:GSL::Matrix&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>==</strong>(m : <a href="../GSL/Matrix.html">GSL::Matrix</a>)
-
-        <a class="method-permalink" href="#%3D%3D%28m%3AGSL%3A%3AMatrix%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#91;&#93;&#40;row:Symbol|Int32,column:Symbol|Int32&#41;:Vector-instance-method">
+    <div class="entry-detail" id="[](row:Symbol|Int32,column:Symbol|Int32):Vector-instance-method">
       <div class="signature">
         
         def <strong>[]</strong>(row : Symbol | Int32, column : Symbol | Int32) : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#%5B%5D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#[](row:Symbol%7CInt32,column:Symbol%7CInt32):Vector-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#91;&#93;&#40;row:Int32,column:Int32&#41;:Float64-instance-method">
-      <div class="signature">
-        
-        def <strong>[]</strong>(row : Int32, column : Int32) : Float64
-
-        <a class="method-permalink" href="#%5B%5D%28row%3AInt32%2Ccolumn%3AInt32%29%3AFloat64-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="&#91;&#93;&#61;&#40;row:Symbol|Int32,column:Symbol|Int32,x:Int32|Float64&#41;-instance-method">
+    <div class="entry-detail" id="column(c:Int32|Symbol):Vector-instance-method">
       <div class="signature">
-        
-        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)
-
-        <a class="method-permalink" href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AInt32%7CFloat64%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="&#91;&#93;&#61;&#40;row:Symbol|Int32,column:Symbol|Int32,x:Vector&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : <a href="../GSL/Vector.html">Vector</a>)
-
-        <a class="method-permalink" href="#%5B%5D%3D%28row%3ASymbol%7CInt32%2Ccolumn%3ASymbol%7CInt32%2Cx%3AVector%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="column&#40;c:Int32|Symbol&#41;:Vector-instance-method">
-      <div class="signature">
-        
+        abstract 
         def <strong>column</strong>(c : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#column%28c%3AInt32%7CSymbol%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#column(c:Int32%7CSymbol):Vector-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L30" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="copy:Matrix-instance-method">
+    <div class="entry-detail" id="copy:T-instance-method">
       <div class="signature">
-        
-        def <strong>copy</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+        abstract 
+        def <strong>copy</strong> : T
 
-        <a class="method-permalink" href="#copy%3AMatrix-instance-method">#</a>
+        <a class="method-permalink" href="#copy:T-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L34" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="each_columns&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
+    <div class="entry-detail" id="each_columns(&amp;block:Vector-&gt;UNDERSCORE)-instance-method">
       <div class="signature">
         
-        def <strong>each_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
+        def <strong>each_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> UNDERSCORE)
 
-        <a class="method-permalink" href="#each_columns%28%26block%3AVector-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#each_columns(&block:Vector-%3EUNDERSCORE)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/iterator.cr#L21" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="each_rows&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
+    <div class="entry-detail" id="each_rows(&amp;block:Vector-&gt;UNDERSCORE)-instance-method">
       <div class="signature">
         
-        def <strong>each_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
+        def <strong>each_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> UNDERSCORE)
 
-        <a class="method-permalink" href="#each_rows%28%26block%3AVector-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#each_rows(&block:Vector-%3EUNDERSCORE)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="empty?-instance-method">
-      <div class="signature">
-        
-        def <strong>empty?</strong>
-
-        <a class="method-permalink" href="#empty%3F-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/iterator.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="get&#40;row,column&#41;:Float64-instance-method">
+    <div class="entry-detail" id="get(row,column):Float64-instance-method">
       <div class="signature">
-        
+        abstract 
         def <strong>get</strong>(row, column) : Float64
 
-        <a class="method-permalink" href="#get%28row%2Ccolumn%29%3AFloat64-instance-method">#</a>
+        <a class="method-permalink" href="#get(row,column):Float64-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="has_neg?-instance-method">
-      <div class="signature">
-        
-        def <strong>has_neg?</strong>
-
-        <a class="method-permalink" href="#has_neg%3F-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="head-instance-method">
-      <div class="signature">
-        
-        def <strong>head</strong>
-
-        <a class="method-permalink" href="#head-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="i:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>i</strong> : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#i%3AMatrix-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>alias to inverse</p></div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -868,134 +552,98 @@
         <a class="method-permalink" href="#inspect-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class Object
+            </div>
+          
+          <p>Returns a <code>String</code> representation of this object suitable
+to be embedded inside other expressions, sometimes providing
+more information about this object.</p>
+
+<p><code><a href="../GSL/Matrix.html#inspect-instance-method">#inspect</a></code> (and <code>#inspect(io)</code>) are the methods used when
+you invoke <code>#to_s</code> or <code><a href="../GSL/Matrix.html#inspect-instance-method">#inspect</a></code> on an object that holds
+other objects and wants to show them. For example when you
+invoke <code>Array#to_s</code>, <code><a href="../GSL/Matrix.html#inspect-instance-method">#inspect</a></code> will be invoked on each element:</p>
+
+<pre><code>ary <span class="o">=</span> [<span class="s">&quot;one&quot;</span>, <span class="s">&quot;two&quot;</span>, <span class="s">&quot;three, etc.&quot;</span>]
+ary.inspect <span class="c"># =&gt; [&quot;one&quot;, &quot;two&quot;, &quot;three, etc.&quot;]</span></code></pre>
+
+<p>Note that if Array invoked <code>#to_s</code> on each of the elements
+above, the output would have been this:</p>
+
+<pre><code>ary <span class="o">=</span> [<span class="s">&quot;one&quot;</span>, <span class="s">&quot;two&quot;</span>, <span class="s">&quot;three, etc.&quot;</span>]
+<span class="c"># If inspect invoked to_s on each element...</span>
+ary.inspect <span class="c"># =&gt; [one, two, three, etc.]</span></code></pre>
+
+<p>Note that it's not clear how many elements the array has,
+or which are they, because <code>#to_s</code> doesn't guarantee that
+the string representation is clearly delimited (in the case
+of <code>String</code> the quotes are not shown).</p>
+
+<p>Also note that sometimes the output of <code><a href="../GSL/Matrix.html#inspect-instance-method">#inspect</a></code> will look
+like a Crystal expression that will compile, but this isn't
+always the case, nor is it necessary. Notably, <code>Reference#inspect</code>
+and <code>Struct#inspect</code> return values that don't compile.</p>
+
+<p>Classes must usually <strong>not</strong> override this method. Instead,
+they must override <code>inspect(io)</code>, which must append to the
+given <code>IO</code> object.</p>
+        </div>
+      
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="inverse:Matrix-instance-method">
+    <div class="entry-detail" id="like:T-instance-method">
       <div class="signature">
-        
-        def <strong>inverse</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+        abstract 
+        def <strong>like</strong> : T
 
-        <a class="method-permalink" href="#inverse%3AMatrix-instance-method">#</a>
+        <a class="method-permalink" href="#like:T-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L42" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="like:Matrix-instance-method">
+    <div class="entry-detail" id="map_columns(&amp;block:Vector-&gt;UNDERSCORE)-instance-method">
       <div class="signature">
         
-        def <strong>like</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+        def <strong>map_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> UNDERSCORE)
 
-        <a class="method-permalink" href="#like%3AMatrix-instance-method">#</a>
+        <a class="method-permalink" href="#map_columns(&block:Vector-%3EUNDERSCORE)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/iterator.cr#L30" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="map_columns&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
+    <div class="entry-detail" id="map_rows(&amp;block:Vector-&gt;UNDERSCORE)-instance-method">
       <div class="signature">
         
-        def <strong>map_columns</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
+        def <strong>map_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> UNDERSCORE)
 
-        <a class="method-permalink" href="#map_columns%28%26block%3AVector-%3E_%29-instance-method">#</a>
+        <a class="method-permalink" href="#map_rows(&block:Vector-%3EUNDERSCORE)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="map_rows&#40;&amp;block:Vector-&gt;_&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>map_rows</strong>(&block : <a href="../GSL/Vector.html">Vector</a> -> _)
-
-        <a class="method-permalink" href="#map_rows%28%26block%3AVector-%3E_%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="max-instance-method">
-      <div class="signature">
-        
-        def <strong>max</strong>
-
-        <a class="method-permalink" href="#max-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="max_index-instance-method">
-      <div class="signature">
-        
-        def <strong>max_index</strong>
-
-        <a class="method-permalink" href="#max_index-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="min-instance-method">
-      <div class="signature">
-        
-        def <strong>min</strong>
-
-        <a class="method-permalink" href="#min-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="min_index-instance-method">
-      <div class="signature">
-        
-        def <strong>min_index</strong>
-
-        <a class="method-permalink" href="#min_index-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="minmax-instance-method">
-      <div class="signature">
-        
-        def <strong>minmax</strong>
-
-        <a class="method-permalink" href="#minmax-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/iterator.cr#L26" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1005,25 +653,13 @@
         
         def <strong>ncols</strong> : LibC::SizeT
 
-        <a class="method-permalink" href="#ncols%3ALibC%3A%3ASizeT-instance-method">#</a>
+        <a class="method-permalink" href="#ncols:LibC::SizeT-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="neg?-instance-method">
-      <div class="signature">
-        
-        def <strong>neg?</strong>
-
-        <a class="method-permalink" href="#neg%3F-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1033,130 +669,68 @@
         
         def <strong>nrows</strong> : LibC::SizeT
 
-        <a class="method-permalink" href="#nrows%3ALibC%3A%3ASizeT-instance-method">#</a>
+        <a class="method-permalink" href="#nrows:LibC::SizeT-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L5" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="pointer:Pointer&#40;LibGSL::Gsl_matrix&#41;-instance-method">
+    <div class="entry-detail" id="pointer-instance-method">
       <div class="signature">
         
-        def <strong>pointer</strong> : Pointer(LibGSL::Gsl_matrix)
+        def <strong>pointer</strong>
 
-        <a class="method-permalink" href="#pointer%3APointer%28LibGSL%3A%3AGsl_matrix%29-instance-method">#</a>
+        <a class="method-permalink" href="#pointer-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pos?-instance-method">
-      <div class="signature">
-        
-        def <strong>pos?</strong>
-
-        <a class="method-permalink" href="#pos%3F-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="row&#40;r:Int32|Symbol&#41;:Vector-instance-method">
+    <div class="entry-detail" id="row(r:Int32|Symbol):Vector-instance-method">
       <div class="signature">
-        
+        abstract 
         def <strong>row</strong>(r : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
 
-        <a class="method-permalink" href="#row%28r%3AInt32%7CSymbol%29%3AVector-instance-method">#</a>
+        <a class="method-permalink" href="#row(r:Int32%7CSymbol):Vector-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L29" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="set&#40;row,column,x&#41;-instance-method">
+    <div class="entry-detail" id="set(row,column,x)-instance-method">
       <div class="signature">
-        
+        abstract 
         def <strong>set</strong>(row, column, x)
 
-        <a class="method-permalink" href="#set%28row%2Ccolumn%2Cx%29-instance-method">#</a>
+        <a class="method-permalink" href="#set(row,column,x)-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="set_all&#40;n:Float64|Int32&#41;-instance-method">
-      <div class="signature">
-        
-        def <strong>set_all</strong>(n : Float64 | Int32)
-
-        <a class="method-permalink" href="#set_all%28n%3AFloat64%7CInt32%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="set_col&#40;c:Int32,v:Vector&#41;:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>set_col</strong>(c : Int32, v : <a href="../GSL/Vector.html">Vector</a>) : Int32
-
-        <a class="method-permalink" href="#set_col%28c%3AInt32%2Cv%3AVector%29%3AInt32-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="set_identity-instance-method">
-      <div class="signature">
-        
-        def <strong>set_identity</strong>
-
-        <a class="method-permalink" href="#set_identity-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="set_row&#40;r:Int32,v:Vector&#41;:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>set_row</strong>(r : Int32, v : <a href="../GSL/Vector.html">Vector</a>) : Int32
-
-        <a class="method-permalink" href="#set_row%28r%3AInt32%2Cv%3AVector%29%3AInt32-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
     <div class="entry-detail" id="set_zero-instance-method">
       <div class="signature">
-        
+        abstract 
         def <strong>set_zero</strong>
 
         <a class="method-permalink" href="#set_zero-instance-method">#</a>
@@ -1164,6 +738,8 @@
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1179,49 +755,44 @@
       <br/>
       <div>
         
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="t:Matrix-instance-method">
-      <div class="signature">
-        
-        def <strong>t</strong> : <a href="../GSL/Matrix.html">Matrix</a>
-
-        <a class="method-permalink" href="#t%3AMatrix-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>alias to transpose</p></div>
-      
-      <br/>
-      <div>
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L13" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="tail-instance-method">
+    <div class="entry-detail" id="t:T-instance-method">
       <div class="signature">
-        
-        def <strong>tail</strong>
+        abstract 
+        def <strong>t</strong> : T
 
-        <a class="method-permalink" href="#tail-instance-method">#</a>
+        <a class="method-permalink" href="#t:T-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>alias to transpose</p>
+        </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="transpose:Matrix-instance-method">
+    <div class="entry-detail" id="transpose:T-instance-method">
       <div class="signature">
-        
-        def <strong>transpose</strong> : <a href="../GSL/Matrix.html">Matrix</a>
+        abstract 
+        def <strong>transpose</strong> : T
 
-        <a class="method-permalink" href="#transpose%3AMatrix-instance-method">#</a>
+        <a class="method-permalink" href="#transpose:T-instance-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>

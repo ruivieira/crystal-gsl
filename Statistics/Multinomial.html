@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/doc.js"></script>
   <title>Statistics::Multinomial - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="../index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="../Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="../GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="../GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -97,6 +123,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">class</span> Statistics::Multinomial
@@ -208,6 +241,15 @@ probability of any particular combination of numbers of successes for the variou
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L221" target="_blank">
+        gsl/base/statistics.cr
+      </a>
+    
+    <br/>
+  
+
+
 
 
 
@@ -217,7 +259,7 @@ probability of any particular combination of numbers of successes for the variou
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28Int32%29-class-method" class="signature"><strong>.sample</strong>(probs : Array(Float64)) : Array(Int32)</a>
+        <a href="#sample(probs:Array(Float64)):Array(Int32)-class-method" class="signature"><strong>.sample</strong>(probs : Array(Float64)) : Array(Int32)</a>
         
           <div class="summary"><p>Given an array of probabilities <em>probs</em>, one per category, return the indices of the sampled categories.</p></div>
         
@@ -239,7 +281,13 @@ probability of any particular combination of numbers of successes for the variou
     
 
 
+    
+
+
   
+    
+
+
     
 
 
@@ -250,24 +298,31 @@ probability of any particular combination of numbers of successes for the variou
 </div>
 
 
+
+
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="sample&#40;probs:Array&#40;Float64&#41;&#41;:Array&#40;Int32&#41;-class-method">
+    <div class="entry-detail" id="sample(probs:Array(Float64)):Array(Int32)-class-method">
       <div class="signature">
         
         def self.<strong>sample</strong>(probs : <a href="../Array.html">Array</a>(Float64)) : <a href="../Array.html">Array</a>(Int32)
 
-        <a class="method-permalink" href="#sample%28probs%3AArray%28Float64%29%29%3AArray%28Int32%29-class-method">#</a>
+        <a class="method-permalink" href="#sample(probs:Array(Float64)):Array(Int32)-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Given an array of probabilities <em>probs</em>, one per category, return the indices of the sampled categories.
+        <div class="doc">
+          
+          <p>Given an array of probabilities <em>probs</em>, one per category, return the indices of the sampled categories.
 Note that the probabilities do not need to be normalised.</p>
 
-<pre><code>w <span class="o">=</span> <span class="t">Array</span>.<span class="k">new</span>(<span class="n">6</span>, <span class="n">1</span><span class="s">/6.0&#41;           # probabilities of a fair die
-Statistics::Multinomial.sample&#40;w&#41; # &#61;&gt; &#91;1, 0, 0, 1, 5, 4&#93;</code></pre></div>
+<pre><code>w <span class="o">=</span> <span class="t">Array</span>.<span class="k">new</span>(<span class="n">6</span>, <span class="n">1</span><span class="s">/6.0)           # probabilities of a fair die
+Statistics::Multinomial.sample(w) # =&gt; [1, 0, 0, 1, 5, 4]</code></pre>
+        </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L229" target="_blank">View source</a>]
         
       </div>
     </div>

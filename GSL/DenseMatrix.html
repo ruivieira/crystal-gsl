@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
+  <title>GSL::DenseMatrix - github.com/ruivieira/crystal-gsl</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
+      <a href="../Array.html">Array</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Gsl" data-name="gsl">
+      <a href="../Gsl.html">Gsl</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/GSL" data-name="gsl">
+      <a href="../GSL.html">GSL</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/AbstractHistogram" data-name="gsl::abstracthistogram">
+      <a href="../GSL/AbstractHistogram.html">AbstractHistogram</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
+      <a href="../GSL/Histogram.html">Histogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
+      <a href="../GSL/Matrix.html">Matrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/MutableHistogram" data-name="gsl::mutablehistogram">
+      <a href="../GSL/MutableHistogram.html">MutableHistogram</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
+      <a href="../GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="../GSL/SparseMatrix.html">SparseMatrix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Stats" data-name="gsl::stats">
+      <a href="../GSL/Stats.html">Stats</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Vector" data-name="gsl::vector">
+      <a href="../GSL/Vector.html">Vector</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/LengthException" data-name="lengthexception">
+      <a href="../LengthException.html">LengthException</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/NonIdenticalHistograms" data-name="nonidenticalhistograms">
+      <a href="../NonIdenticalHistograms.html">NonIdenticalHistograms</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Sorting" data-name="sorting">
+      <a href="../Sorting.html">Sorting</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
+      <a href="../Statistics.html">Statistics</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
+      <a href="../Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="../Statistics/Cauchy.html">Cauchy</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ChiSquare" data-name="statistics::chisquare">
+      <a href="../Statistics/ChiSquare.html">ChiSquare</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/ContinuousDistribution" data-name="statistics::continuousdistribution">
+      <a href="../Statistics/ContinuousDistribution.html">ContinuousDistribution</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteDistribution" data-name="statistics::discretedistribution">
+      <a href="../Statistics/DiscreteDistribution.html">DiscreteDistribution</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/DiscreteUniform" data-name="statistics::discreteuniform">
+      <a href="../Statistics/DiscreteUniform.html">DiscreteUniform</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Exponential" data-name="statistics::exponential">
+      <a href="../Statistics/Exponential.html">Exponential</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Gamma" data-name="statistics::gamma">
+      <a href="../Statistics/Gamma.html">Gamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/InverseGamma" data-name="statistics::inversegamma">
+      <a href="../Statistics/InverseGamma.html">InverseGamma</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/LinearRegression" data-name="statistics::linearregression">
+      <a href="../Statistics/LinearRegression.html">LinearRegression</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Multinomial" data-name="statistics::multinomial">
+      <a href="../Statistics/Multinomial.html">Multinomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/MultivariateNormal" data-name="statistics::multivariatenormal">
+      <a href="../Statistics/MultivariateNormal.html">MultivariateNormal</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Normal" data-name="statistics::normal">
+      <a href="../Statistics/Normal.html">Normal</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Poisson" data-name="statistics::poisson">
+      <a href="../Statistics/Poisson.html">Poisson</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Uniform" data-name="statistics::uniform">
+      <a href="../Statistics/Uniform.html">Uniform</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> GSL::DenseMatrix
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../GSL/DenseMatrix.html">GSL::DenseMatrix</a></li><li class="superclass"><a href="../GSL/Matrix.html">GSL::Matrix</a>(<a href="../GSL.html">GSL</a>)</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L49" target="_blank">
+        gsl/base/matrix.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L4" target="_blank">
+        gsl/maths/basic/matrix.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#eye(size:Int32):DenseMatrix-class-method" class="signature"><strong>.eye</strong>(size : Int32) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(rows:Int32,columns:Int32)-class-method" class="signature"><strong>.new</strong>(rows : Int32, columns : Int32)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#free(m:DenseMatrix)-class-method" class="signature"><strong>.free</strong>(m : DenseMatrix)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#*(v:Vector):Vector-instance-method" class="signature"><strong>#*</strong>(v : Vector) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#*(n:GSL::DenseMatrix):DenseMatrix-instance-method" class="signature"><strong>#*</strong>(n : GSL::DenseMatrix) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#*(n:Int32%7CFloat64):DenseMatrix-instance-method" class="signature"><strong>#*</strong>(n : Int32 | Float64) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#+(n:DenseMatrix):DenseMatrix-instance-method" class="signature"><strong>#+</strong>(n : DenseMatrix) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#+(n:Int32%7CFloat64):DenseMatrix-instance-method" class="signature"><strong>#+</strong>(n : Int32 | Float64) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-(n:Int32%7CFloat64):DenseMatrix-instance-method" class="signature"><strong>#-</strong>(n : Int32 | Float64) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#-(n:GSL::DenseMatrix):DenseMatrix-instance-method" class="signature"><strong>#-</strong>(n : GSL::DenseMatrix) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#/(n:Int32%7CFloat64):DenseMatrix-instance-method" class="signature"><strong>#/</strong>(n : Int32 | Float64) : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#==(m:GSL::DenseMatrix)-instance-method" class="signature"><strong>#==</strong>(m : GSL::DenseMatrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#[](row:Int32,column:Int32):Float64-instance-method" class="signature"><strong>#[]</strong>(row : Int32, column : Int32) : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#[]=(row:Symbol%7CInt32,column:Symbol%7CInt32,x:Int32%7CFloat64)-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#[]=(row:Symbol%7CInt32,column:Symbol%7CInt32,x:Vector)-instance-method" class="signature"><strong>#[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Vector)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#column(c:Int32%7CSymbol):Vector-instance-method" class="signature"><strong>#column</strong>(c : Int32 | Symbol) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#copy:DenseMatrix-instance-method" class="signature"><strong>#copy</strong> : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#empty?-instance-method" class="signature"><strong>#empty?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(row,column):Float64-instance-method" class="signature"><strong>#get</strong>(row, column) : Float64</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#has_neg?-instance-method" class="signature"><strong>#has_neg?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#head-instance-method" class="signature"><strong>#head</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#i:DenseMatrix-instance-method" class="signature"><strong>#i</strong> : DenseMatrix</a>
+        
+          <div class="summary"><p>alias to inverse</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse:DenseMatrix-instance-method" class="signature"><strong>#inverse</strong> : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#like:DenseMatrix-instance-method" class="signature"><strong>#like</strong> : DenseMatrix</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max-instance-method" class="signature"><strong>#max</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#max_index-instance-method" class="signature"><strong>#max_index</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min-instance-method" class="signature"><strong>#min</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#min_index-instance-method" class="signature"><strong>#min_index</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#minmax-instance-method" class="signature"><strong>#minmax</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#neg?-instance-method" class="signature"><strong>#neg?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pointer:Pointer(LibGSL::Gsl_matrix)-instance-method" class="signature"><strong>#pointer</strong> : Pointer(LibGSL::Gsl_matrix)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pos?-instance-method" class="signature"><strong>#pos?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#row(r:Int32%7CSymbol):Vector-instance-method" class="signature"><strong>#row</strong>(r : Int32 | Symbol) : Vector</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set(row,column,x)-instance-method" class="signature"><strong>#set</strong>(row, column, x)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_all(n:Float64%7CInt32)-instance-method" class="signature"><strong>#set_all</strong>(n : Float64 | Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_col(c:Int32,v:Vector):Int32-instance-method" class="signature"><strong>#set_col</strong>(c : Int32, v : Vector) : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_identity-instance-method" class="signature"><strong>#set_identity</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_row(r:Int32,v:Vector):Int32-instance-method" class="signature"><strong>#set_row</strong>(r : Int32, v : Vector) : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_zero-instance-method" class="signature"><strong>#set_zero</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#t:DenseMatrix-instance-method" class="signature"><strong>#t</strong> : DenseMatrix</a>
+        
+          <div class="summary"><p>alias to transpose</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tail-instance-method" class="signature"><strong>#tail</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#transpose:DenseMatrix-instance-method" class="signature"><strong>#transpose</strong> : DenseMatrix</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../GSL/Matrix.html">GSL::Matrix</a>(<a href="../GSL.html">GSL</a>)</code></h3>
+  
+  
+    <a href="../GSL/Matrix.html#==(m:T)-instance-method" class="tooltip">
+      <span>==(m : T)</span>
+    ==</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#[](row:Int32,column:Int32):Float64-instance-method" class="tooltip">
+      <span>[](row : Int32, column : Int32) : Float64<br/>[](row : Symbol | Int32, column : Symbol | Int32) : Vector</span>
+    []</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#column(c:Int32%7CSymbol):Vector-instance-method" class="tooltip">
+      <span>column(c : Int32 | Symbol) : Vector</span>
+    column</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#copy:T-instance-method" class="tooltip">
+      <span>copy : T</span>
+    copy</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#each_columns(&block:Vector-%3EUNDERSCORE)-instance-method" class="tooltip">
+      <span>each_columns(&block : Vector -> UNDERSCORE)</span>
+    each_columns</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#each_rows(&block:Vector-%3EUNDERSCORE)-instance-method" class="tooltip">
+      <span>each_rows(&block : Vector -> UNDERSCORE)</span>
+    each_rows</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#get(row,column):Float64-instance-method" class="tooltip">
+      <span>get(row, column) : Float64</span>
+    get</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#inspect-instance-method" class="tooltip">
+      <span>inspect</span>
+    inspect</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#like:T-instance-method" class="tooltip">
+      <span>like : T</span>
+    like</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#map_columns(&block:Vector-%3EUNDERSCORE)-instance-method" class="tooltip">
+      <span>map_columns(&block : Vector -> UNDERSCORE)</span>
+    map_columns</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#map_rows(&block:Vector-%3EUNDERSCORE)-instance-method" class="tooltip">
+      <span>map_rows(&block : Vector -> UNDERSCORE)</span>
+    map_rows</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#ncols:LibC::SizeT-instance-method" class="tooltip">
+      <span>ncols : LibC::SizeT</span>
+    ncols</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#nrows:LibC::SizeT-instance-method" class="tooltip">
+      <span>nrows : LibC::SizeT</span>
+    nrows</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#pointer-instance-method" class="tooltip">
+      <span>pointer</span>
+    pointer</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#row(r:Int32%7CSymbol):Vector-instance-method" class="tooltip">
+      <span>row(r : Int32 | Symbol) : Vector</span>
+    row</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#set(row,column,x)-instance-method" class="tooltip">
+      <span>set(row, column, x)</span>
+    set</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#set_zero-instance-method" class="tooltip">
+      <span>set_zero</span>
+    set_zero</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#shape-instance-method" class="tooltip">
+      <span>shape</span>
+    shape</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#t:T-instance-method" class="tooltip">
+      <span>t : T</span>
+    t</a>, 
+    
+  
+    <a href="../GSL/Matrix.html#transpose:T-instance-method" class="tooltip">
+      <span>transpose : T</span>
+    transpose</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="eye(size:Int32):DenseMatrix-class-method">
+      <div class="signature">
+        
+        def self.<strong>eye</strong>(size : Int32) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#eye(size:Int32):DenseMatrix-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(rows:Int32,columns:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(rows : Int32, columns : Int32)
+
+        <a class="method-permalink" href="#new(rows:Int32,columns:Int32)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="free(m:DenseMatrix)-class-method">
+      <div class="signature">
+        
+        def self.<strong>free</strong>(m : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>)
+
+        <a class="method-permalink" href="#free(m:DenseMatrix)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L139" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="*(v:Vector):Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(v : <a href="../GSL/Vector.html">Vector</a>) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#*(v:Vector):Vector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(n:GSL::DenseMatrix):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(n : <a href="../GSL/DenseMatrix.html">GSL::DenseMatrix</a>) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#*(n:GSL::DenseMatrix):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="*(n:Int32|Float64):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(n : Int32 | Float64) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#*(n:Int32%7CFloat64):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(n:DenseMatrix):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(n : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#+(n:DenseMatrix):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="+(n:Int32|Float64):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>+</strong>(n : Int32 | Float64) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#+(n:Int32%7CFloat64):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(n:Int32|Float64):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(n : Int32 | Float64) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#-(n:Int32%7CFloat64):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="-(n:GSL::DenseMatrix):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>-</strong>(n : <a href="../GSL/DenseMatrix.html">GSL::DenseMatrix</a>) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#-(n:GSL::DenseMatrix):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="/(n:Int32|Float64):DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>/</strong>(n : Int32 | Float64) : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#/(n:Int32%7CFloat64):DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L49" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="==(m:GSL::DenseMatrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(m : <a href="../GSL/DenseMatrix.html">GSL::DenseMatrix</a>)
+
+        <a class="method-permalink" href="#==(m:GSL::DenseMatrix)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[](row:Int32,column:Int32):Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>[]</strong>(row : Int32, column : Int32) : Float64
+
+        <a class="method-permalink" href="#[](row:Int32,column:Int32):Float64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(row:Symbol|Int32,column:Symbol|Int32,x:Int32|Float64)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : Int32 | Float64)
+
+        <a class="method-permalink" href="#[]=(row:Symbol%7CInt32,column:Symbol%7CInt32,x:Int32%7CFloat64)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]=(row:Symbol|Int32,column:Symbol|Int32,x:Vector)-instance-method">
+      <div class="signature">
+        
+        def <strong>[]=</strong>(row : Symbol | Int32, column : Symbol | Int32, x : <a href="../GSL/Vector.html">Vector</a>)
+
+        <a class="method-permalink" href="#[]=(row:Symbol%7CInt32,column:Symbol%7CInt32,x:Vector)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="column(c:Int32|Symbol):Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>column</strong>(c : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#column(c:Int32%7CSymbol):Vector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="copy:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>copy</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#copy:DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="empty?-instance-method">
+      <div class="signature">
+        
+        def <strong>empty?</strong>
+
+        <a class="method-permalink" href="#empty?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L184" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(row,column):Float64-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(row, column) : Float64
+
+        <a class="method-permalink" href="#get(row,column):Float64-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="has_neg?-instance-method">
+      <div class="signature">
+        
+        def <strong>has_neg?</strong>
+
+        <a class="method-permalink" href="#has_neg?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L196" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="head-instance-method">
+      <div class="signature">
+        
+        def <strong>head</strong>
+
+        <a class="method-permalink" href="#head-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L200" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="i:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>i</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#i:DenseMatrix-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>alias to inverse</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>inverse</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#inverse:DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="like:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>like</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#like:DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L121" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max-instance-method">
+      <div class="signature">
+        
+        def <strong>max</strong>
+
+        <a class="method-permalink" href="#max-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L158" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="max_index-instance-method">
+      <div class="signature">
+        
+        def <strong>max_index</strong>
+
+        <a class="method-permalink" href="#max_index-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L170" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min-instance-method">
+      <div class="signature">
+        
+        def <strong>min</strong>
+
+        <a class="method-permalink" href="#min-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L162" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="min_index-instance-method">
+      <div class="signature">
+        
+        def <strong>min_index</strong>
+
+        <a class="method-permalink" href="#min_index-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L177" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="minmax-instance-method">
+      <div class="signature">
+        
+        def <strong>minmax</strong>
+
+        <a class="method-permalink" href="#minmax-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L166" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="neg?-instance-method">
+      <div class="signature">
+        
+        def <strong>neg?</strong>
+
+        <a class="method-permalink" href="#neg?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L192" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pointer:Pointer(LibGSL::Gsl_matrix)-instance-method">
+      <div class="signature">
+        
+        def <strong>pointer</strong> : Pointer(LibGSL::Gsl_matrix)
+
+        <a class="method-permalink" href="#pointer:Pointer(LibGSL::Gsl_matrix)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pos?-instance-method">
+      <div class="signature">
+        
+        def <strong>pos?</strong>
+
+        <a class="method-permalink" href="#pos?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L188" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="row(r:Int32|Symbol):Vector-instance-method">
+      <div class="signature">
+        
+        def <strong>row</strong>(r : Int32 | Symbol) : <a href="../GSL/Vector.html">Vector</a>
+
+        <a class="method-permalink" href="#row(r:Int32%7CSymbol):Vector-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set(row,column,x)-instance-method">
+      <div class="signature">
+        
+        def <strong>set</strong>(row, column, x)
+
+        <a class="method-permalink" href="#set(row,column,x)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L107" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_all(n:Float64|Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_all</strong>(n : Float64 | Int32)
+
+        <a class="method-permalink" href="#set_all(n:Float64%7CInt32)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L143" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_col(c:Int32,v:Vector):Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>set_col</strong>(c : Int32, v : <a href="../GSL/Vector.html">Vector</a>) : Int32
+
+        <a class="method-permalink" href="#set_col(c:Int32,v:Vector):Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_identity-instance-method">
+      <div class="signature">
+        
+        def <strong>set_identity</strong>
+
+        <a class="method-permalink" href="#set_identity-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L153" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_row(r:Int32,v:Vector):Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>set_row</strong>(r : Int32, v : <a href="../GSL/Vector.html">Vector</a>) : Int32
+
+        <a class="method-permalink" href="#set_row(r:Int32,v:Vector):Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_zero-instance-method">
+      <div class="signature">
+        
+        def <strong>set_zero</strong>
+
+        <a class="method-permalink" href="#set_zero-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L148" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="t:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>t</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#t:DenseMatrix-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+            <div class="doc-inherited">
+              Description copied from class <a href="../GSL/Matrix.html">GSL::Matrix</a>(<a href="../GSL.html">GSL</a>)
+            </div>
+          
+          <p>alias to transpose</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L61" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tail-instance-method">
+      <div class="signature">
+        
+        def <strong>tail</strong>
+
+        <a class="method-permalink" href="#tail-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/matrix.cr#L204" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="transpose:DenseMatrix-instance-method">
+      <div class="signature">
+        
+        def <strong>transpose</strong> : <a href="../GSL/DenseMatrix.html">DenseMatrix</a>
+
+        <a class="method-permalink" href="#transpose:DenseMatrix-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/maths/basic/matrix.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

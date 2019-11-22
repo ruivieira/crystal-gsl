@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.30.1">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/ruivieira/crystal-gsl">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>Statistics - github.com/ruivieira/crystal-gsl</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Array" data-name="array(t)">
       <a href="Array.html">Array</a>
@@ -40,12 +56,17 @@
       
     </li>
   
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/DenseMatrix" data-name="gsl::densematrix">
+      <a href="GSL/DenseMatrix.html">DenseMatrix</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Histogram" data-name="gsl::histogram">
       <a href="GSL/Histogram.html">Histogram</a>
       
     </li>
   
-  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix">
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Matrix" data-name="gsl::matrix(t)">
       <a href="GSL/Matrix.html">Matrix</a>
       
     </li>
@@ -57,6 +78,11 @@
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/Permutation" data-name="gsl::permutation(t)">
       <a href="GSL/Permutation.html">Permutation</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/GSL/SparseMatrix" data-name="gsl::sparsematrix">
+      <a href="GSL/SparseMatrix.html">SparseMatrix</a>
       
     </li>
   
@@ -90,13 +116,18 @@
       
     </li>
   
-  <li class="parent current" data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
+  <li class="parent open current" data-id="github.com/ruivieira/crystal-gsl/Statistics" data-name="statistics">
       <a href="Statistics.html">Statistics</a>
       
         <ul>
   
   <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Binomial" data-name="statistics::binomial">
       <a href="Statistics/Binomial.html">Binomial</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/ruivieira/crystal-gsl/Statistics/Cauchy" data-name="statistics::cauchy">
+      <a href="Statistics/Cauchy.html">Cauchy</a>
       
     </li>
   
@@ -172,9 +203,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1 class="type-name">
 
   <span class="kind">module</span> Statistics
@@ -200,6 +233,15 @@
 
   <h2>Defined in:</h2>
   
+    
+      <a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L1" target="_blank">
+        gsl/base/statistics.cr
+      </a>
+    
+    <br/>
+  
+
+
 
 
 
@@ -209,29 +251,29 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#cumulative_sum%28data%3AArray%28Float64%29%29%3AArray%28Float64%29-class-method" class="signature"><strong>.cumulative_sum</strong>(data : Array(Float64)) : Array(Float64)</a>
+        <a href="#cumulative_sum(data:Array(Float64)):Array(Float64)-class-method" class="signature"><strong>.cumulative_sum</strong>(data : Array(Float64)) : Array(Float64)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#linreg%28x%3AArray%28Float64%29%2Cy%3AArray%28Float64%29%29%3ALinearRegression-class-method" class="signature"><strong>.linreg</strong>(x : Array(Float64), y : Array(Float64)) : LinearRegression</a>
+        <a href="#linreg(x:Array(Float64),y:Array(Float64)):LinearRegression-class-method" class="signature"><strong>.linreg</strong>(x : Array(Float64), y : Array(Float64)) : LinearRegression</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#linspace%28s%3AFloat64%2Ce%3AFloat64%2Cnum%3AInt%29%3AArray%28Float64%29-class-method" class="signature"><strong>.linspace</strong>(s : Float64, e : Float64, num : Int) : Array(Float64)</a>
+        <a href="#linspace(s:Float64,e:Float64,num:Int):Array(Float64)-class-method" class="signature"><strong>.linspace</strong>(s : Float64, e : Float64, num : Int) : Array(Float64)</a>
         
           <div class="summary"><p>returns an equally space interval starting from <em>s</em> and ending in <em>e</em> (inclusive)</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#mean%28data%3AArray%28Float64%29%29%3AFloat64-class-method" class="signature"><strong>.mean</strong>(data : Array(Float64)) : Float64</a>
+        <a href="#mean(data:Array(Float64)):Float64-class-method" class="signature"><strong>.mean</strong>(data : Array(Float64)) : Float64</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#normalise%28data%3AArray%28Float64%29%29%3AArray%28Float64%29-class-method" class="signature"><strong>.normalise</strong>(data : Array(Float64)) : Array(Float64)</a>
+        <a href="#normalise(data:Array(Float64)):Array(Float64)-class-method" class="signature"><strong>.normalise</strong>(data : Array(Float64)) : Array(Float64)</a>
         
       </li>
     
@@ -248,78 +290,93 @@
 </div>
 
 
+
+
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="cumulative_sum&#40;data:Array&#40;Float64&#41;&#41;:Array&#40;Float64&#41;-class-method">
+    <div class="entry-detail" id="cumulative_sum(data:Array(Float64)):Array(Float64)-class-method">
       <div class="signature">
         
         def self.<strong>cumulative_sum</strong>(data : <a href="Array.html">Array</a>(Float64)) : <a href="Array.html">Array</a>(Float64)
 
-        <a class="method-permalink" href="#cumulative_sum%28data%3AArray%28Float64%29%29%3AArray%28Float64%29-class-method">#</a>
+        <a class="method-permalink" href="#cumulative_sum(data:Array(Float64)):Array(Float64)-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L339" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="linreg&#40;x:Array&#40;Float64&#41;,y:Array&#40;Float64&#41;&#41;:LinearRegression-class-method">
+    <div class="entry-detail" id="linreg(x:Array(Float64),y:Array(Float64)):LinearRegression-class-method">
       <div class="signature">
         
         def self.<strong>linreg</strong>(x : <a href="Array.html">Array</a>(Float64), y : <a href="Array.html">Array</a>(Float64)) : <a href="Statistics/LinearRegression.html">LinearRegression</a>
 
-        <a class="method-permalink" href="#linreg%28x%3AArray%28Float64%29%2Cy%3AArray%28Float64%29%29%3ALinearRegression-class-method">#</a>
+        <a class="method-permalink" href="#linreg(x:Array(Float64),y:Array(Float64)):LinearRegression-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L395" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="linspace&#40;s:Float64,e:Float64,num:Int&#41;:Array&#40;Float64&#41;-class-method">
+    <div class="entry-detail" id="linspace(s:Float64,e:Float64,num:Int):Array(Float64)-class-method">
       <div class="signature">
         
         def self.<strong>linspace</strong>(s : Float64, e : Float64, num : Int) : <a href="Array.html">Array</a>(Float64)
 
-        <a class="method-permalink" href="#linspace%28s%3AFloat64%2Ce%3AFloat64%2Cnum%3AInt%29%3AArray%28Float64%29-class-method">#</a>
+        <a class="method-permalink" href="#linspace(s:Float64,e:Float64,num:Int):Array(Float64)-class-method">#</a>
       </div>
       
-        <div class="doc"><p>returns an equally space interval starting from <em>s</em> and ending in <em>e</em> (inclusive)</p>
+        <div class="doc">
+          
+          <p>returns an equally space interval starting from <em>s</em> and ending in <em>e</em> (inclusive)</p>
 
-<pre><code>linspace(<span class="n">1.0</span>, <span class="n">10.0</span>, <span class="n">10</span>) <span class="c"># &#61;&gt; &#91;1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0&#93;</span></code></pre></div>
+<pre><code>linspace(<span class="n">1.0</span>, <span class="n">10.0</span>, <span class="n">10</span>) <span class="c"># =&gt; [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]</span></code></pre>
+        </div>
       
       <br/>
       <div>
         
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L412" target="_blank">View source</a>]
+        
       </div>
     </div>
   
-    <div class="entry-detail" id="mean&#40;data:Array&#40;Float64&#41;&#41;:Float64-class-method">
+    <div class="entry-detail" id="mean(data:Array(Float64)):Float64-class-method">
       <div class="signature">
         
         def self.<strong>mean</strong>(data : <a href="Array.html">Array</a>(Float64)) : Float64
 
-        <a class="method-permalink" href="#mean%28data%3AArray%28Float64%29%29%3AFloat64-class-method">#</a>
+        <a class="method-permalink" href="#mean(data:Array(Float64)):Float64-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L335" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="normalise&#40;data:Array&#40;Float64&#41;&#41;:Array&#40;Float64&#41;-class-method">
+    <div class="entry-detail" id="normalise(data:Array(Float64)):Array(Float64)-class-method">
       <div class="signature">
         
         def self.<strong>normalise</strong>(data : <a href="Array.html">Array</a>(Float64)) : <a href="Array.html">Array</a>(Float64)
 
-        <a class="method-permalink" href="#normalise%28data%3AArray%28Float64%29%29%3AArray%28Float64%29-class-method">#</a>
+        <a class="method-permalink" href="#normalise(data:Array(Float64)):Array(Float64)-class-method">#</a>
       </div>
       
       <br/>
       <div>
+        
+          [<a href="https://github.com/ruivieira/crystal-gsl/blob/927678ad58520030d30fb8a6d9d1a397731de2a8/src/gsl/base/statistics.cr#L345" target="_blank">View source</a>]
         
       </div>
     </div>
