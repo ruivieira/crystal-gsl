@@ -13,6 +13,8 @@ jobs:
         with:
           crystal: 1.0.0
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get install libcblas-dev libgsl-dev
       - run: shards install
       - run: crystal spec
       - run: crystal tool format && git diff --exit-code
