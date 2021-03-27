@@ -7,12 +7,12 @@ on:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: oprypin/install-crystal@v1
-      with:
-        crystal: 1.0.0
-    - uses: actions/checkout@v2
-    - run: shards install
-    - run: crystal spec
-    - run: crystal tool format && git diff --exit-code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: oprypin/install-crystal@v1
+        with:
+          crystal: 1.0.0
+      - uses: actions/checkout@v2
+      - run: shards install
+      - run: crystal spec
+      - run: crystal tool format && git diff --exit-code
