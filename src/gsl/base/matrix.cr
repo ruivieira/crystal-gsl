@@ -140,6 +140,10 @@ module GSL
       LibGSL.gsl_matrix_free(m.pointer)
     end
 
+    def finalize
+      LibGSL.gsl_matrix_free(@pointer)
+    end
+
     def set_all(n : Float64 | Int32)
       LibGSL.gsl_matrix_set_all(@pointer, n.to_f)
       self
@@ -275,6 +279,10 @@ module GSL
 
     def non_zero : Int32
       LibGSL.gsl_spmatrix_nnz(@pointer)
+    end
+
+    def finalize
+      LibGSL.gsl_spmatrix_free(@pointer)
     end
   end
 end
