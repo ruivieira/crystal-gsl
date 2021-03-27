@@ -12,7 +12,7 @@ module GSL
     end
   end
 
-  class Matrix(T)
+  class Matrix
     def each_rows(&block : Vector -> _)
       (0...self.nrows).map { |x| self.row(x) }.each &block
       self
