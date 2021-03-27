@@ -160,11 +160,11 @@ module Statistics
     end
 
     def pdf(x : Float64) : Float64
-      return LibGSL.gsl_ran_cauchy_pdf(x, @a) 
+      return LibGSL.gsl_ran_cauchy_pdf(x, @a)
     end
 
     def self.sample(a : Float64) : Float64
-      return LibGSL.gsl_ran_cauchy(GSL::RNG, a) 
+      return LibGSL.gsl_ran_cauchy(GSL::RNG, a)
     end
 
     def self.sample(n : Int32, a : Float64) : Array(Float64)
