@@ -229,6 +229,7 @@ lib LibGSL
 
   fun gsl_spmatrix_alloc(n1 : LibC::SizeT, n2 : LibC::SizeT) : Gsl_spmatrix*
   fun gsl_spmatrix_alloc_nzmax(n1 : LibC::SizeT, n2 : LibC::SizeT, nzmax : LibC::SizeT, sptype : LibC::SizeT) : Gsl_spmatrix*
+  fun gsl_spmatrix_free(m : Gsl_spmatrix*) : Void
   fun gsl_spmatrix_get(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : Float64
   fun gsl_spmatrix_set(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT, x : Float64) : Void
   fun gsl_spmatrix_set_zero(m : Gsl_spmatrix*) : Void
