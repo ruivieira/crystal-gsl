@@ -4,3 +4,6 @@ src/tests
 test*
 doc
 target
+gsl
+!gsl/
+gsl.dwarf

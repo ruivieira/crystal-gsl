@@ -1,5 +1,5 @@
 module GSL
-  abstract class Matrix(T)
+  abstract class Matrix
     getter pointer
 
     def nrows : LibC::SizeT
@@ -24,14 +24,14 @@ module GSL
       end
     end
 
-    abstract def ==(m : T)
+    abstract def ==(m : Matrix)
 
     abstract def row(r : Int32 | Symbol) : Vector
     abstract def column(c : Int32 | Symbol) : Vector
     abstract def get(row, column) : Float64
     abstract def set(row, column, x)
     abstract def set_zero
-    abstract def copy : T
+    abstract def copy : Matrix
 
     abstract def [](row : Int32, column : Int32) : Float64
 
@@ -39,14 +39,14 @@ module GSL
       self.map_rows { |x| x.inspect }.join("\n")
     end
 
-    abstract def like : T
-    abstract def transpose : T
+    abstract def like : Matrix
+    abstract def transpose : Matrix
 
     # alias to transpose
-    abstract def t : T
+    abstract def t : Matrix
   end
 
-  class DenseMatrix < Matrix(self)
+  class DenseMatrix < Matrix
     getter pointer
 
     def initialize(@rows : Int32, @columns : Int32)
@@ -122,7 +122,7 @@ module GSL
       return DenseMatrix.new @rows, @columns
     end
 
-    def copy : DenseMatrix
+    def copy : GSL::DenseMatrix
       result = DenseMatrix.new @rows, @columns
       LibGSL.gsl_matrix_memcpy(result.pointer, @pointer)
       return result
@@ -206,7 +206,7 @@ module GSL
     end
   end
 
-  class SparseMatrix < Matrix(self)
+  class SparseMatrix < Matrix
     getter pointer
 
     def initialize(@rows : Int32, @columns : Int32)
