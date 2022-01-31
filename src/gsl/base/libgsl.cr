@@ -2515,11 +2515,11 @@ lib LibGSL
   fun gsl_blas_scasum(x : Gsl_vector_complex_float*) : LibC::Float
   fun gsl_blas_dznrm2(x : Gsl_vector_complex*) : LibC::Double
   fun gsl_blas_dzasum(x : Gsl_vector_complex*) : LibC::Double
-  fun gsl_blas_isamax(x : Gsl_vector_float*) : CblasIndexT
-  alias CblasIndexT = LibC::SizeT
-  fun gsl_blas_idamax(x : Gsl_vector*) : CblasIndexT
-  fun gsl_blas_icamax(x : Gsl_vector_complex_float*) : CblasIndexT
-  fun gsl_blas_izamax(x : Gsl_vector_complex*) : CblasIndexT
+  fun gsl_blas_isamax(x : Gsl_vector_float*) : CBLAS_INDEX_t
+  alias CBLAS_INDEX_t = LibC::SizeT
+  fun gsl_blas_idamax(x : Gsl_vector*) : CBLAS_INDEX_t
+  fun gsl_blas_icamax(x : Gsl_vector_complex_float*) : CBLAS_INDEX_t
+  fun gsl_blas_izamax(x : Gsl_vector_complex*) : CBLAS_INDEX_t
   fun gsl_blas_sswap(x : Gsl_vector_float*, y : Gsl_vector_float*) : LibC::Int
   fun gsl_blas_scopy(x : Gsl_vector_float*, y : Gsl_vector_float*) : LibC::Int
   fun gsl_blas_saxpy(alpha : LibC::Float, x : Gsl_vector_float*, y : Gsl_vector_float*) : LibC::Int
@@ -2591,37 +2591,37 @@ lib LibGSL
   fun gsl_blas_zher(uplo : CBLAS_UPLO_t, alpha : LibC::Double, x : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_zher2(uplo : CBLAS_UPLO_t, alpha : Gsl_complex, x : Gsl_vector_complex*, y : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_sgemm(trans_a : CBLAS_TRANSPOSE_t, trans_b : CBLAS_TRANSPOSE_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*, beta : LibC::Float, c : Gsl_matrix_float*) : LibC::Int
-  fun gsl_blas_ssymm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*, beta : LibC::Float, c : Gsl_matrix_float*) : LibC::Int
-  enum CblasSideT
+  fun gsl_blas_ssymm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*, beta : LibC::Float, c : Gsl_matrix_float*) : LibC::Int
+  enum CBLAS_SIDE_t
     CblasLeft  = 141
     CblasRight = 142
   end
   fun gsl_blas_ssyrk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Float, a : Gsl_matrix_float*, beta : LibC::Float, c : Gsl_matrix_float*) : LibC::Int
   fun gsl_blas_ssyr2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*, beta : LibC::Float, c : Gsl_matrix_float*) : LibC::Int
-  fun gsl_blas_strmm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
-  fun gsl_blas_strsm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
+  fun gsl_blas_strmm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
+  fun gsl_blas_strsm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Float, a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
   fun gsl_blas_dgemm(trans_a : CBLAS_TRANSPOSE_t, trans_b : CBLAS_TRANSPOSE_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*, beta : LibC::Double, c : Gsl_matrix*) : LibC::Int
-  fun gsl_blas_dsymm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*, beta : LibC::Double, c : Gsl_matrix*) : LibC::Int
+  fun gsl_blas_dsymm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*, beta : LibC::Double, c : Gsl_matrix*) : LibC::Int
   fun gsl_blas_dsyrk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Double, a : Gsl_matrix*, beta : LibC::Double, c : Gsl_matrix*) : LibC::Int
   fun gsl_blas_dsyr2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*, beta : LibC::Double, c : Gsl_matrix*) : LibC::Int
-  fun gsl_blas_dtrmm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
-  fun gsl_blas_dtrsm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
+  fun gsl_blas_dtrmm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
+  fun gsl_blas_dtrsm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : LibC::Double, a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
   fun gsl_blas_cgemm(trans_a : CBLAS_TRANSPOSE_t, trans_b : CBLAS_TRANSPOSE_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_blas_csymm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_blas_csymm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_blas_csyrk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_blas_csyr2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_blas_ctrmm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_blas_ctrsm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_blas_ctrmm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_blas_ctrsm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_blas_zgemm(trans_a : CBLAS_TRANSPOSE_t, trans_b : CBLAS_TRANSPOSE_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_blas_zsymm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_blas_zsymm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_zsyrk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_zsyr2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_blas_ztrmm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_blas_ztrsm(side : CblasSideT, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_blas_chemm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_blas_ztrmm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_blas_ztrsm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, trans_a : CBLAS_TRANSPOSE_t, diag : CBLAS_DIAG_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_blas_chemm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : Gsl_complex_float, c : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_blas_cherk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Float, a : Gsl_matrix_complex_float*, beta : LibC::Float, c : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_blas_cher2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex_float, a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*, beta : LibC::Float, c : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_blas_zhemm(side : CblasSideT, uplo : CBLAS_UPLO_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_blas_zhemm(side : CBLAS_SIDE_t, uplo : CBLAS_UPLO_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : Gsl_complex, c : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_zherk(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : LibC::Double, a : Gsl_matrix_complex*, beta : LibC::Double, c : Gsl_matrix_complex*) : LibC::Int
   fun gsl_blas_zher2k(uplo : CBLAS_UPLO_t, trans : CBLAS_TRANSPOSE_t, alpha : Gsl_complex, a : Gsl_matrix_complex*, b : Gsl_matrix_complex*, beta : LibC::Double, c : Gsl_matrix_complex*) : LibC::Int
   fun gsl_log1p(x : LibC::Double) : LibC::Double
@@ -2809,9 +2809,9 @@ lib LibGSL
   fun gsl_cheb_eval_err(cs : Gsl_cheb_series*, x : LibC::Double, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
   fun gsl_cheb_eval_n(cs : Gsl_cheb_series*, order : LibC::SizeT, x : LibC::Double) : LibC::Double
   fun gsl_cheb_eval_n_err(cs : Gsl_cheb_series*, order : LibC::SizeT, x : LibC::Double, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
-  fun gsl_cheb_eval_mode(cs : Gsl_cheb_series*, x : LibC::Double, mode : ModeT) : LibC::Double
-  alias ModeT = LibC::UInt
-  fun gsl_cheb_eval_mode_e(cs : Gsl_cheb_series*, x : LibC::Double, mode : ModeT, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
+  fun gsl_cheb_eval_mode(cs : Gsl_cheb_series*, x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  alias Gsl_mode_t = LibC::UInt
+  fun gsl_cheb_eval_mode_e(cs : Gsl_cheb_series*, x : LibC::Double, mode : Gsl_mode_t, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
   fun gsl_cheb_calc_deriv(deriv : Gsl_cheb_series*, cs : Gsl_cheb_series*) : LibC::Int
   fun gsl_cheb_calc_integ(integ : Gsl_cheb_series*, cs : Gsl_cheb_series*) : LibC::Int
 
@@ -2900,8 +2900,6 @@ lib LibGSL
   fun gsl_deriv_central(f : Gsl_function*, x : LibC::Double, h : LibC::Double, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
   fun gsl_deriv_backward(f : Gsl_function*, x : LibC::Double, h : LibC::Double, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
   fun gsl_deriv_forward(f : Gsl_function*, x : LibC::Double, h : LibC::Double, result : LibC::Double*, abserr : LibC::Double*) : LibC::Int
-  FftForward  = -1
-  FftBackward =  1
   fun gsl_dft_complex_float_forward(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, result : LibC::Float*) : LibC::Int
   fun gsl_dft_complex_float_backward(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, result : LibC::Float*) : LibC::Int
   fun gsl_dft_complex_float_inverse(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, result : LibC::Float*) : LibC::Int
@@ -3127,15 +3125,15 @@ lib LibGSL
   fun gsl_schur_solve_equation_z(ca : LibC::Double, a : Gsl_matrix*, z : Gsl_complex*, d1 : LibC::Double, d2 : LibC::Double, b : Gsl_vector_complex*, x : Gsl_vector_complex*, s : LibC::Double*, xnorm : LibC::Double*, smin : LibC::Double) : LibC::Int
   fun gsl_eigen_jacobi(matrix : Gsl_matrix*, eval : Gsl_vector*, evec : Gsl_matrix*, max_rot : LibC::UInt, nrot : LibC::UInt*) : LibC::Int
   fun gsl_eigen_invert_jacobi(matrix : Gsl_matrix*, ainv : Gsl_matrix*, max_rot : LibC::UInt) : LibC::Int
-  fun gsl_fft_complex_float_radix2_forward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  alias ComplexPackedArrayFloat = LibC::Float*
-  fun gsl_fft_complex_float_radix2_backward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_float_radix2_inverse(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_float_radix2_transform(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
-  fun gsl_fft_complex_float_radix2_dif_forward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_float_radix2_dif_backward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_float_radix2_dif_inverse(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_float_radix2_dif_transform(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_float_radix2_forward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  alias Gsl_complex_packed_array_float = LibC::Float*
+  fun gsl_fft_complex_float_radix2_backward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_float_radix2_inverse(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_float_radix2_transform(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_float_radix2_dif_forward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_float_radix2_dif_backward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_float_radix2_dif_inverse(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_float_radix2_dif_transform(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
   fun gsl_fft_complex_wavetable_float_alloc(n : LibC::SizeT) : Gsl_fft_complex_wavetable_float*
 
   struct Gsl_fft_complex_wavetable_float
@@ -3156,19 +3154,19 @@ lib LibGSL
 
   fun gsl_fft_complex_workspace_float_free(workspace : Gsl_fft_complex_workspace_float*)
   fun gsl_fft_complex_float_memcpy(dest : Gsl_fft_complex_wavetable_float*, src : Gsl_fft_complex_wavetable_float*) : LibC::Int
-  fun gsl_fft_complex_float_forward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
-  fun gsl_fft_complex_float_backward(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
-  fun gsl_fft_complex_float_inverse(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
-  fun gsl_fft_complex_float_transform(data : ComplexPackedArrayFloat, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*, sign : Gsl_fft_direction) : LibC::Int
-  fun gsl_fft_complex_radix2_forward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  alias ComplexPackedArray = LibC::Double*
-  fun gsl_fft_complex_radix2_backward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_radix2_inverse(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_radix2_transform(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
-  fun gsl_fft_complex_radix2_dif_forward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_radix2_dif_backward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_radix2_dif_inverse(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
-  fun gsl_fft_complex_radix2_dif_transform(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_float_forward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
+  fun gsl_fft_complex_float_backward(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
+  fun gsl_fft_complex_float_inverse(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*) : LibC::Int
+  fun gsl_fft_complex_float_transform(data : Gsl_complex_packed_array_float, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable_float*, work : Gsl_fft_complex_workspace_float*, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_radix2_forward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  alias Gsl_complex_packed_array = LibC::Double*
+  fun gsl_fft_complex_radix2_backward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_radix2_inverse(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_radix2_transform(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_radix2_dif_forward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_radix2_dif_backward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_radix2_dif_inverse(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+  fun gsl_fft_complex_radix2_dif_transform(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, sign : Gsl_fft_direction) : LibC::Int
   fun gsl_fft_complex_wavetable_alloc(n : LibC::SizeT) : Gsl_fft_complex_wavetable*
 
   struct Gsl_fft_complex_wavetable
@@ -3189,10 +3187,10 @@ lib LibGSL
 
   fun gsl_fft_complex_workspace_free(workspace : Gsl_fft_complex_workspace*)
   fun gsl_fft_complex_memcpy(dest : Gsl_fft_complex_wavetable*, src : Gsl_fft_complex_wavetable*) : LibC::Int
-  fun gsl_fft_complex_forward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
-  fun gsl_fft_complex_backward(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
-  fun gsl_fft_complex_inverse(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
-  fun gsl_fft_complex_transform(data : ComplexPackedArray, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*, sign : Gsl_fft_direction) : LibC::Int
+  fun gsl_fft_complex_forward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
+  fun gsl_fft_complex_backward(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
+  fun gsl_fft_complex_inverse(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*) : LibC::Int
+  fun gsl_fft_complex_transform(data : Gsl_complex_packed_array, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_complex_wavetable*, work : Gsl_fft_complex_workspace*, sign : Gsl_fft_direction) : LibC::Int
   fun gsl_fft_real_float_radix2_transform(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
   fun gsl_fft_real_wavetable_float_alloc(n : LibC::SizeT) : Gsl_fft_real_wavetable_float*
 
@@ -3311,9 +3309,9 @@ lib LibGSL
   fun gsl_permutation_linear_cycles(p : Gsl_permutation*) : LibC::SizeT
   fun gsl_permutation_canonical_cycles(q : Gsl_permutation*) : LibC::SizeT
   fun gsl_permutation_get(p : Gsl_permutation*, i : LibC::SizeT) : LibC::SizeT
-  fun gsl_heapsort(array : Void*, count : LibC::SizeT, size : LibC::SizeT, compare : ComparisonFnT)
-  alias ComparisonFnT = (Void*, Void* -> LibC::Int)
-  fun gsl_heapsort_index(p : LibC::SizeT*, array : Void*, count : LibC::SizeT, size : LibC::SizeT, compare : ComparisonFnT) : LibC::Int
+  fun gsl_heapsort(array : Void*, count : LibC::SizeT, size : LibC::SizeT, compare : Gsl_comparison_fn_t)
+  alias Gsl_comparison_fn_t = (Void*, Void* -> LibC::Int)
+  fun gsl_heapsort_index(p : LibC::SizeT*, array : Void*, count : LibC::SizeT, size : LibC::SizeT, compare : Gsl_comparison_fn_t) : LibC::Int
   fun gsl_histogram2d_alloc(nx : LibC::SizeT, ny : LibC::SizeT) : Gsl_histogram2d*
 
   struct Gsl_histogram2d
@@ -3699,7 +3697,7 @@ lib LibGSL
     GSL_LINALG_MOD_TRANSPOSE = 1
     GSL_LINALG_MOD_CONJUGATE = 2
   end
-  fun gsl_linalg_exponential_ss(a : Gsl_matrix*, e_a : Gsl_matrix*, mode : ModeT) : LibC::Int
+  fun gsl_linalg_exponential_ss(a : Gsl_matrix*, e_a : Gsl_matrix*, mode : Gsl_mode_t) : LibC::Int
   fun gsl_linalg_householder_transform(v : Gsl_vector*) : LibC::Double
   fun gsl_linalg_complex_householder_transform(v : Gsl_vector_complex*) : Gsl_complex
   fun gsl_linalg_householder_hm(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
@@ -4576,27 +4574,27 @@ lib LibGSL
   fun gsl_multimin_fdfminimizer_gradient(s : Gsl_multimin_fdfminimizer*) : Gsl_vector*
   fun gsl_multimin_fdfminimizer_minimum(s : Gsl_multimin_fdfminimizer*) : LibC::Double
 
-  struct MultirootFunction
+  struct Gsl_multiroot_function
     f : (Gsl_vector*, Void*, Gsl_vector* -> LibC::Int)
     n : LibC::SizeT
     params : Void*
   end
 
-  fun gsl_multiroot_fdjacobian(f : MultirootFunction*, x : Gsl_vector*, f : Gsl_vector*, epsrel : LibC::Double, jacobian : Gsl_matrix*) : LibC::Int
+  fun gsl_multiroot_fdjacobian(f : Gsl_multiroot_function*, x : Gsl_vector*, f : Gsl_vector*, epsrel : LibC::Double, jacobian : Gsl_matrix*) : LibC::Int
   fun gsl_multiroot_fsolver_alloc(t : Gsl_multiroot_fsolver_type*, n : LibC::SizeT) : Gsl_multiroot_fsolver*
 
   struct Gsl_multiroot_fsolver_type
     name : LibC::Char*
     size : LibC::SizeT
     alloc : (Void*, LibC::SizeT -> LibC::Int)
-    set : (Void*, MultirootFunction*, Gsl_vector*, Gsl_vector*, Gsl_vector* -> LibC::Int)
-    iterate : (Void*, MultirootFunction*, Gsl_vector*, Gsl_vector*, Gsl_vector* -> LibC::Int)
+    set : (Void*, Gsl_multiroot_function*, Gsl_vector*, Gsl_vector*, Gsl_vector* -> LibC::Int)
+    iterate : (Void*, Gsl_multiroot_function*, Gsl_vector*, Gsl_vector*, Gsl_vector* -> LibC::Int)
     free : (Void* -> Void)
   end
 
   struct Gsl_multiroot_fsolver
     type : Gsl_multiroot_fsolver_type*
-    function : MultirootFunction*
+    function : Gsl_multiroot_function*
     x : Gsl_vector*
     f : Gsl_vector*
     dx : Gsl_vector*
@@ -4604,7 +4602,7 @@ lib LibGSL
   end
 
   fun gsl_multiroot_fsolver_free(s : Gsl_multiroot_fsolver*)
-  fun gsl_multiroot_fsolver_set(s : Gsl_multiroot_fsolver*, f : MultirootFunction*, x : Gsl_vector*) : LibC::Int
+  fun gsl_multiroot_fsolver_set(s : Gsl_multiroot_fsolver*, f : Gsl_multiroot_function*, x : Gsl_vector*) : LibC::Int
   fun gsl_multiroot_fsolver_iterate(s : Gsl_multiroot_fsolver*) : LibC::Int
   fun gsl_multiroot_fsolver_name(s : Gsl_multiroot_fsolver*) : LibC::Char*
   fun gsl_multiroot_fsolver_root(s : Gsl_multiroot_fsolver*) : Gsl_vector*
@@ -4650,30 +4648,29 @@ lib LibGSL
   fun gsl_multiroot_test_delta(dx : Gsl_vector*, x : Gsl_vector*, epsabs : LibC::Double, epsrel : LibC::Double) : LibC::Int
   fun gsl_multiroot_test_residual(f : Gsl_vector*, epsabs : LibC::Double) : LibC::Int
 
-  struct Gsl_multiset_struct
+  struct Gsl_multiset
     n : LibC::SizeT
     k : LibC::SizeT
     data : LibC::SizeT*
   end
 
-  fun gsl_multiset_alloc(n : LibC::SizeT, k : LibC::SizeT) : Multiset*
-  type Multiset = Gsl_multiset_struct
-  fun gsl_multiset_calloc(n : LibC::SizeT, k : LibC::SizeT) : Multiset*
-  fun gsl_multiset_init_first(c : Multiset*)
-  fun gsl_multiset_init_last(c : Multiset*)
-  fun gsl_multiset_free(c : Multiset*)
-  fun gsl_multiset_memcpy(dest : Multiset*, src : Multiset*) : LibC::Int
-  fun gsl_multiset_fread(stream : File*, c : Multiset*) : LibC::Int
-  fun gsl_multiset_fwrite(stream : File*, c : Multiset*) : LibC::Int
-  fun gsl_multiset_fscanf(stream : File*, c : Multiset*) : LibC::Int
-  fun gsl_multiset_fprintf(stream : File*, c : Multiset*, format : LibC::Char*) : LibC::Int
-  fun gsl_multiset_n(c : Multiset*) : LibC::SizeT
-  fun gsl_multiset_k(c : Multiset*) : LibC::SizeT
-  fun gsl_multiset_data(c : Multiset*) : LibC::SizeT*
-  fun gsl_multiset_valid(c : Multiset*) : LibC::Int
-  fun gsl_multiset_next(c : Multiset*) : LibC::Int
-  fun gsl_multiset_prev(c : Multiset*) : LibC::Int
-  fun gsl_multiset_get(c : Multiset*, i : LibC::SizeT) : LibC::SizeT
+  fun gsl_multiset_alloc(n : LibC::SizeT, k : LibC::SizeT) : Gsl_multiset*
+  fun gsl_multiset_calloc(n : LibC::SizeT, k : LibC::SizeT) : Gsl_multiset*
+  fun gsl_multiset_init_first(c : Gsl_multiset*)
+  fun gsl_multiset_init_last(c : Gsl_multiset*)
+  fun gsl_multiset_free(c : Gsl_multiset*)
+  fun gsl_multiset_memcpy(dest : Gsl_multiset*, src : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_fread(stream : File*, c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_fwrite(stream : File*, c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_fscanf(stream : File*, c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_fprintf(stream : File*, c : Gsl_multiset*, format : LibC::Char*) : LibC::Int
+  fun gsl_multiset_n(c : Gsl_multiset*) : LibC::SizeT
+  fun gsl_multiset_k(c : Gsl_multiset*) : LibC::SizeT
+  fun gsl_multiset_data(c : Gsl_multiset*) : LibC::SizeT*
+  fun gsl_multiset_valid(c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_next(c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_prev(c : Gsl_multiset*) : LibC::Int
+  fun gsl_multiset_get(c : Gsl_multiset*, i : LibC::SizeT) : LibC::SizeT
   fun gsl_ntuple_open(filename : LibC::Char*, ntuple_data : Void*, size : LibC::SizeT) : Gsl_ntuple*
 
   struct Gsl_ntuple
@@ -4961,8 +4958,8 @@ lib LibGSL
   end
 
   fun gsl_poly_complex_workspace_free(w : Gsl_poly_complex_workspace*)
-  fun gsl_poly_complex_solve(a : LibC::Double*, n : LibC::SizeT, w : Gsl_poly_complex_workspace*, z : ComplexPackedPtr) : LibC::Int
-  alias ComplexPackedPtr = LibC::Double*
+  fun gsl_poly_complex_solve(a : LibC::Double*, n : LibC::SizeT, w : Gsl_poly_complex_workspace*, z : Gsl_complex_packed_ptr) : LibC::Int
+  alias Gsl_complex_packed_ptr = LibC::Double*
 
   struct Gsl_qrng_type
     name : LibC::Char*
@@ -5199,22 +5196,22 @@ lib LibGSL
   end
 
   fun gsl_sf_result_smash_e(re : Gsl_sf_result_e10*, r : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Ai_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Ai(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Bi_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Bi(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Ai_scaled_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Ai_scaled(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Bi_scaled_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Bi_scaled(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Ai_deriv_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Ai_deriv(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Bi_deriv_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Bi_deriv(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Ai_deriv_scaled_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Ai_deriv_scaled(x : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_airy_Bi_deriv_scaled_e(x : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_airy_Bi_deriv_scaled(x : LibC::Double, mode : ModeT) : LibC::Double
+  fun gsl_sf_airy_Ai_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Ai(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Bi_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Bi(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Ai_scaled_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Ai_scaled(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Bi_scaled_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Bi_scaled(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Ai_deriv_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Ai_deriv(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Bi_deriv_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Bi_deriv(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Ai_deriv_scaled_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Ai_deriv_scaled(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_airy_Bi_deriv_scaled_e(x : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_airy_Bi_deriv_scaled(x : LibC::Double, mode : Gsl_mode_t) : LibC::Double
   fun gsl_sf_airy_zero_Ai_e(s : LibC::UInt, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_airy_zero_Ai(s : LibC::UInt) : LibC::Double
   fun gsl_sf_airy_zero_Bi_e(s : LibC::UInt, result : Gsl_sf_result*) : LibC::Int
@@ -5306,7 +5303,7 @@ lib LibGSL
   fun gsl_sf_bessel_Jnu(nu : LibC::Double, x : LibC::Double) : LibC::Double
   fun gsl_sf_bessel_Ynu_e(nu : LibC::Double, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_bessel_Ynu(nu : LibC::Double, x : LibC::Double) : LibC::Double
-  fun gsl_sf_bessel_sequence_Jnu_e(nu : LibC::Double, mode : ModeT, size : LibC::SizeT, v : LibC::Double*) : LibC::Int
+  fun gsl_sf_bessel_sequence_Jnu_e(nu : LibC::Double, mode : Gsl_mode_t, size : LibC::SizeT, v : LibC::Double*) : LibC::Int
   fun gsl_sf_bessel_Inu_scaled_e(nu : LibC::Double, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_bessel_Inu_scaled(nu : LibC::Double, x : LibC::Double) : LibC::Double
   fun gsl_sf_bessel_Inu_e(nu : LibC::Double, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
@@ -5369,30 +5366,30 @@ lib LibGSL
   fun gsl_sf_multiply_e(x : LibC::Double, y : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_multiply(x : LibC::Double, y : LibC::Double) : LibC::Double
   fun gsl_sf_multiply_err_e(x : LibC::Double, dx : LibC::Double, y : LibC::Double, dy : LibC::Double, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_Kcomp_e(k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_Kcomp(k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_Ecomp_e(k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_Ecomp(k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_Pcomp_e(k : LibC::Double, n : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_Pcomp(k : LibC::Double, n : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_Dcomp_e(k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_Dcomp(k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_F_e(phi : LibC::Double, k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_F(phi : LibC::Double, k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_E_e(phi : LibC::Double, k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_E(phi : LibC::Double, k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_P_e(phi : LibC::Double, k : LibC::Double, n : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_P(phi : LibC::Double, k : LibC::Double, n : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_D_e(phi : LibC::Double, k : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_D(phi : LibC::Double, k : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_RC_e(x : LibC::Double, y : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_RC(x : LibC::Double, y : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_RD_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_RD(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_RF_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_RF(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : ModeT) : LibC::Double
-  fun gsl_sf_ellint_RJ_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, p : LibC::Double, mode : ModeT, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_ellint_RJ(x : LibC::Double, y : LibC::Double, z : LibC::Double, p : LibC::Double, mode : ModeT) : LibC::Double
+  fun gsl_sf_ellint_Kcomp_e(k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_Kcomp(k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_Ecomp_e(k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_Ecomp(k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_Pcomp_e(k : LibC::Double, n : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_Pcomp(k : LibC::Double, n : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_Dcomp_e(k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_Dcomp(k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_F_e(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_F(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_E_e(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_E(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_P_e(phi : LibC::Double, k : LibC::Double, n : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_P(phi : LibC::Double, k : LibC::Double, n : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_D_e(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_D(phi : LibC::Double, k : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_RC_e(x : LibC::Double, y : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_RC(x : LibC::Double, y : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_RD_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_RD(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_RF_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_RF(x : LibC::Double, y : LibC::Double, z : LibC::Double, mode : Gsl_mode_t) : LibC::Double
+  fun gsl_sf_ellint_RJ_e(x : LibC::Double, y : LibC::Double, z : LibC::Double, p : LibC::Double, mode : Gsl_mode_t, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_ellint_RJ(x : LibC::Double, y : LibC::Double, z : LibC::Double, p : LibC::Double, mode : Gsl_mode_t) : LibC::Double
   fun gsl_sf_elljac_e(u : LibC::Double, m : LibC::Double, sn : LibC::Double*, cn : LibC::Double*, dn : LibC::Double*) : LibC::Int
   fun gsl_sf_erfc_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_erfc(x : LibC::Double) : LibC::Double
@@ -5769,14 +5766,14 @@ lib LibGSL
   fun gsl_sf_eta_int(n : LibC::Int) : LibC::Double
   fun gsl_sf_eta_e(s : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_eta(s : LibC::Double) : LibC::Double
-  fun gsl_siman_solve(r : Gsl_rng*, x0_p : Void*, ef : SimanEfuncT, take_step : SimanStepT, distance : SimanMetricT, print_position : SimanPrintT, copyfunc : SimanCopyT, copy_constructor : SimanCopyConstructT, destructor : SimanDestroyT, element_size : LibC::SizeT, params : Gsl_siman_params_t)
-  alias SimanEfuncT = (Void* -> LibC::Double)
-  alias SimanStepT = (Gsl_rng*, Void*, LibC::Double -> Void)
-  alias SimanMetricT = (Void*, Void* -> LibC::Double)
-  alias SimanPrintT = (Void* -> Void)
-  alias SimanCopyT = (Void*, Void* -> Void)
-  alias SimanCopyConstructT = (Void* -> Void*)
-  alias SimanDestroyT = (Void* -> Void)
+  fun gsl_siman_solve(r : Gsl_rng*, x0_p : Void*, ef : Gsl_siman_efunc_t, take_step : Gsl_siman_step_t, distance : Gsl_siman_metric_t, print_position : Gsl_siman_print_t, copyfunc : Gsl_siman_copy_t, copy_constructor : Gsl_siman_copy_construct_t, destructor : Gsl_siman_destroy_t, element_size : LibC::SizeT, params : Gsl_siman_params_t)
+  alias Gsl_siman_efunc_t = (Void* -> LibC::Double)
+  alias Gsl_siman_step_t = (Gsl_rng*, Void*, LibC::Double -> Void)
+  alias Gsl_siman_metric_t = (Void*, Void* -> LibC::Double)
+  alias Gsl_siman_print_t = (Void* -> Void)
+  alias Gsl_siman_copy_t = (Void*, Void* -> Void)
+  alias Gsl_siman_copy_construct_t = (Void* -> Void*)
+  alias Gsl_siman_destroy_t = (Void* -> Void)
 
   struct Gsl_siman_params_t
     n_tries : LibC::Int
@@ -5788,7 +5785,7 @@ lib LibGSL
     t_min : LibC::Double
   end
 
-  fun gsl_siman_solve_many(r : Gsl_rng*, x0_p : Void*, ef : SimanEfuncT, take_step : SimanStepT, distance : SimanMetricT, print_position : SimanPrintT, element_size : LibC::SizeT, params : Gsl_siman_params_t)
+  fun gsl_siman_solve_many(r : Gsl_rng*, x0_p : Void*, ef : Gsl_siman_efunc_t, take_step : Gsl_siman_step_t, distance : Gsl_siman_metric_t, print_position : Gsl_siman_print_t, element_size : LibC::SizeT, params : Gsl_siman_params_t)
   fun gsl_sort_char(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT)
   fun gsl_sort2_char(data1 : LibC::Char*, stride1 : LibC::SizeT, data2 : LibC::Char*, stride2 : LibC::SizeT, n : LibC::SizeT)
   fun gsl_sort_char_index(p : LibC::SizeT*, data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT)
