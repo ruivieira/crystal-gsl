@@ -107,4 +107,21 @@ module GSL::Integration
     code = LibGSL::Code.new(LibGSL.gsl_integration_qawc(pointerof(f), a, b, c, epsabs, epsrel, limit, @@workspace, out result, out abserr))
     return result, abserr
   end
+
+  @@cquad_workspace = Pointer(LibGSL::Gsl_integration_cquad_workspace).null
+  @@cquad_workspace_size = 0
+
+  def self.cquad(function : Proc(Float64, Float64), a : Float64, b : Float64, *, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, limit = 1000)
+    if limit > @@cquad_workspace_size
+      LibGSL.gsl_integration_cquad_workspace_free(@@cquad_workspace) unless @@cquad_workspace.null?
+      @@cquad_workspace = LibGSL.gsl_integration_cquad_workspace_alloc(limit)
+      @@cquad_workspace_size = limit
+    end
+    f = GSL.wrap_function(function)
+    if epsabs.zero? && epsrel.zero?
+      epsabs = 1e-9
+    end
+    code = LibGSL::Code.new(LibGSL.gsl_integration_cquad(pointerof(f), a, b, epsabs, epsrel, @@cquad_workspace, out result, out abserr, out neval))
+    return result, abserr, neval
+  end
 end

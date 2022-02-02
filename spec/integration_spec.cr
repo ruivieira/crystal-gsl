@@ -74,4 +74,18 @@ describe GSL::Integration do
       pp! result, eps
     end
   end
+
+  describe "cquad algorithm" do
+    it "integrates simple function" do
+      f = ->(x : Float64) { Math.sin(x) }
+      result, eps, count = GSL::Integration.cquad(f, 0.0, Math::PI/2)
+      result.should be_close 1.0, 1e-9
+    end
+
+    it "integrates function with singularities" do
+      f = ->(x : Float64) { 1.0/Math.sqrt((2 - x).abs) }
+      result, eps, count = GSL::Integration.cquad(f, 1, 3)
+      result.should be_close 4.0, 1e-6
+    end
+  end
 end
