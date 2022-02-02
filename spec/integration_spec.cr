@@ -39,5 +39,11 @@ describe GSL::Integration do
       result, eps = GSL::Integration.qags(f, 1.0, 2.0)
       result.should be_close 2.0, 1e-9
     end
+
+    it "integrates function with known singularity points" do
+      f = ->(x : Float64) { 1.0/Math.sqrt((2 - x).abs) }
+      result, eps = GSL::Integration.qagp(f, [1.0, 2.0, 3.0])
+      result.should be_close 4.0, 1e-9
+    end
   end
 end
