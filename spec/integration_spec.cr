@@ -45,5 +45,23 @@ describe GSL::Integration do
       result, eps = GSL::Integration.qagp(f, [1.0, 2.0, 3.0])
       result.should be_close 4.0, 1e-9
     end
+
+    it "integrates function on semi-infinite interval" do
+      # f = ->(x : Float64) { Math.exp(-x**2) }
+      f = ->(x : Float64) { 1.0 / (x**2 + 1) }
+      result, eps = GSL::Integration.qags(f, -Float64::INFINITY, Float64::INFINITY)
+      result.should be_close Math::PI, 1e-9
+
+      result, eps = GSL::Integration.qags(f, 0, Float64::INFINITY)
+      result.should be_close Math::PI/2, 1e-9
+
+      result, eps = GSL::Integration.qags(f, -Float64::INFINITY, 0)
+      result.should be_close Math::PI/2, 1e-9
+
+      expect_raises(ArgumentError) { GSL::Integration.qags(f, -Float64::INFINITY, -Float64::INFINITY) }
+      expect_raises(ArgumentError) { GSL::Integration.qags(f, Float64::INFINITY, -Float64::INFINITY) }
+      expect_raises(ArgumentError) { GSL::Integration.qags(f, Float64::INFINITY, 0.0) }
+      expect_raises(ArgumentError) { GSL::Integration.qags(f, 0.0, -Float64::INFINITY) }
+    end
   end
 end

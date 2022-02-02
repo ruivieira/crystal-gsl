@@ -64,7 +64,19 @@ module GSL::Integration
     if epsabs.zero? && epsrel.zero?
       epsabs = 1e-9
     end
-    code = LibGSL::Code.new(LibGSL.gsl_integration_qags(pointerof(f), a, b, epsabs, epsrel, limit, @@workspace, out result, out abserr))
+    result = uninitialized Float64
+    abserr = uninitialized Float64
+    if a.finite? && b.finite?
+      code = LibGSL::Code.new(LibGSL.gsl_integration_qags(pointerof(f), a, b, epsabs, epsrel, limit, @@workspace, pointerof(result), pointerof(abserr)))
+    elsif a.finite? && b > 0
+      code = LibGSL::Code.new(LibGSL.gsl_integration_qagiu(pointerof(f), a, epsabs, epsrel, limit, @@workspace, pointerof(result), pointerof(abserr)))
+    elsif b.finite? && a < 0
+      code = LibGSL::Code.new(LibGSL.gsl_integration_qagil(pointerof(f), b, epsabs, epsrel, limit, @@workspace, pointerof(result), pointerof(abserr)))
+    elsif a < 0 && b > 0
+      code = LibGSL::Code.new(LibGSL.gsl_integration_qagi(pointerof(f), epsabs, epsrel, limit, @@workspace, pointerof(result), pointerof(abserr)))
+    else
+      raise ArgumentError.new("integration incorrect bounds: #{a}, #{b}")
+    end
     return result, abserr
   end
 
