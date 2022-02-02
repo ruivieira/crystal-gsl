@@ -88,4 +88,9 @@ describe GSL::Integration do
       result.should be_close 4.0, 1e-6
     end
   end
+
+  it "has high-level routine to integrate" do
+    r = GSL::Integration.integrate(0.0, Math::PI) { |x| Math.sin(x) }
+    r.should be_close 2.0, 1e-9
+  end
 end

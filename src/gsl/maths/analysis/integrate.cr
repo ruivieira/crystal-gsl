@@ -124,4 +124,45 @@ module GSL::Integration
     code = LibGSL::Code.new(LibGSL.gsl_integration_cquad(pointerof(f), a, b, epsabs, epsrel, @@cquad_workspace, out result, out abserr, out neval))
     return result, abserr, neval
   end
+
+  enum Algorithm
+    QNG
+    QAG_GAUSS15
+    QAG_GAUSS21
+    QAG_GAUSS31
+    QAG_GAUSS41
+    QAG_GAUSS51
+    QAG_GAUSS61
+    QAGS
+    CQUAD
+    # Romberg
+  end
+
+  def self.integrate(function : Proc(Float64, Float64), a : Float64, b : Float64, *, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, limit = 1000, algorithm : Algorithm = Algorithm::CQUAD)
+    algorithm = Algorithm::QAGS if a.infinite? || b.infinite?
+    case algorithm
+    in .qng?
+      return qng(function, a, b, epsabs: epsabs, epsrel: epsrel)[0]
+    in .qag_gauss15?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS15)[0]
+    in .qag_gauss21?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS21)[0]
+    in .qag_gauss31?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS31)[0]
+    in .qag_gauss41?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS41)[0]
+    in .qag_gauss51?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS51)[0]
+    in .qag_gauss61?
+      return qag(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, key: QAGKey::GSL_INTEG_GAUSS61)[0]
+    in .qags?
+      return qags(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit)[0]
+    in .cquad?
+      return cquad(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit)[0]
+    end
+  end
+
+  def self.integrate(a : Float64, b : Float64, *, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, limit = 1000, algorithm : Algorithm = Algorithm::CQUAD, &function : Proc(Float64, Float64))
+    integrate(function, a, b, epsabs: epsabs, epsrel: epsrel, limit: limit, algorithm: algorithm)
+  end
 end
