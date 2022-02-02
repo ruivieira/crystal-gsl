@@ -33,5 +33,11 @@ describe GSL::Integration do
       result, eps = GSL::Integration.qag(f, 0.0, 10001*Math::PI)
       result.should be_close 2.0, 1e-9
     end
+
+    it "integrates function with singularity on a bound" do
+      f = ->(x : Float64) { 1.0/Math.sqrt(2 - x) }
+      result, eps = GSL::Integration.qags(f, 1.0, 2.0)
+      result.should be_close 2.0, 1e-9
+    end
   end
 end

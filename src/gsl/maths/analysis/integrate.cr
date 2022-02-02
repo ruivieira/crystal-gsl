@@ -53,4 +53,18 @@ module GSL::Integration
     code = LibGSL::Code.new(LibGSL.gsl_integration_qag(pointerof(f), a, b, epsabs, epsrel, limit, key.to_i, @@workspace, out result, out abserr))
     return result, abserr
   end
+
+  def self.qags(function : Proc(Float64, Float64), a : Float64, b : Float64, *, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, limit = 1000)
+    if limit > @@workspace_size
+      LibGSL.gsl_integration_workspace_free(@@workspace) unless @@workspace.null?
+      @@workspace = LibGSL.gsl_integration_workspace_alloc(limit)
+      @@workspace_size = limit
+    end
+    f = GSL.wrap_function(function)
+    if epsabs.zero? && epsrel.zero?
+      epsabs = 1e-9
+    end
+    code = LibGSL::Code.new(LibGSL.gsl_integration_qags(pointerof(f), a, b, epsabs, epsrel, limit, @@workspace, out result, out abserr))
+    return result, abserr
+  end
 end
