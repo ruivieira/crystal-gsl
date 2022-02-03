@@ -6,12 +6,6 @@ module GSL::ODE
       return 0
     end
 
-    @@same_jacobian : (LibC::Double, LibC::Double*, LibC::Double*, LibC::Double*, Void* -> LibC::Int) = ->(t : LibC::Double, y : LibC::Double*, dfdt : LibC::Double*, dfdy : LibC::Double*, data : Void*) do
-      sys = data.as(System)
-      sys.jacobian(t, y.to_slice(sys.size), dfdt.to_slice(sys.size), dfdy.to_slice(sys.size*sys.size))
-      return 0
-    end
-
     @raw : LibGSL::Gsl_odeiv2_system
 
     def to_unsafe
@@ -19,7 +13,6 @@ module GSL::ODE
     end
 
     abstract def function(t : LibC::Double, y : Slice(LibC::Double), dydt : Slice(LibC::Double))
-    abstract def jacobian(t : LibC::Double, y : Slice(LibC::Double), dfdt : Slice(LibC::Double), dfdy : Slice(LibC::Double))
 
     def size
       @raw.dimension
@@ -27,9 +20,23 @@ module GSL::ODE
 
     def initialize(size : Int32)
       @raw = uninitialized LibGSL::Gsl_odeiv2_system
-      @raw.dimension = n
+      @raw.dimension = size
       @raw.params = self.as(Void*)
       @raw.function = @@same_function
+    end
+  end
+
+  abstract class JacobianSystem < System
+    @@same_jacobian : (LibC::Double, LibC::Double*, LibC::Double*, LibC::Double*, Void* -> LibC::Int) = ->(t : LibC::Double, y : LibC::Double*, dfdt : LibC::Double*, dfdy : LibC::Double*, data : Void*) do
+      sys = data.as(JacobianSystem)
+      sys.jacobian(t, y.to_slice(sys.size), dfdt.to_slice(sys.size), dfdy.to_slice(sys.size*sys.size))
+      return 0
+    end
+
+    abstract def jacobian(t : LibC::Double, y : Slice(LibC::Double), dfdt : Slice(LibC::Double), dfdy : Slice(LibC::Double))
+
+    def initialize(size)
+      super(size)
       @raw.jacobian = @@same_jacobian
     end
   end
@@ -46,32 +53,36 @@ module GSL::ODE
     BSIMP
     MSADAMS
     MSBDF
-  end
 
-  private def self.step_type(algorithm : Algorithm)
-    case algorithm
-    in .rk2?
-      LibGSL.gsl_odeiv2_step_rk2
-    in .rk4?
-      LibGSL.gsl_odeiv2_step_rk4
-    in .rkf45?
-      LibGSL.gsl_odeiv2_step_rkf45
-    in .rkck?
-      LibGSL.gsl_odeiv2_step_rkck
-    in .rk8pd?
-      LibGSL.gsl_odeiv2_step_rk8pd
-    in .rk2imp?
-      LibGSL.gsl_odeiv2_step_rk2imp
-    in .rk4imp?
-      LibGSL.gsl_odeiv2_step_rk4imp
-    in .bsimp?
-      LibGSL.gsl_odeiv2_step_bsimp
-    in .rk1imp?
-      LibGSL.gsl_odeiv2_step_rk1imp
-    in .msadams?
-      LibGSL.gsl_odeiv2_step_msadams
-    in .msbdf?
-      LibGSL.gsl_odeiv2_step_msbdf
+    def require_jacobian?
+      rk1_imp? || rk2_imp? || rk4_imp? || bsimp? || msbdf?
+    end
+
+    def to_unsafe
+      case self
+      in .rk2?
+        LibGSL.gsl_odeiv2_step_rk2
+      in .rk4?
+        LibGSL.gsl_odeiv2_step_rk4
+      in .rkf45?
+        LibGSL.gsl_odeiv2_step_rkf45
+      in .rkck?
+        LibGSL.gsl_odeiv2_step_rkck
+      in .rk8_pd?
+        LibGSL.gsl_odeiv2_step_rk8pd
+      in .rk1_imp?
+        LibGSL.gsl_odeiv2_step_rk1imp
+      in .rk2_imp?
+        LibGSL.gsl_odeiv2_step_rk2imp
+      in .rk4_imp?
+        LibGSL.gsl_odeiv2_step_rk4imp
+      in .bsimp?
+        LibGSL.gsl_odeiv2_step_bsimp
+      in .msadams?
+        LibGSL.gsl_odeiv2_step_msadams
+      in .msbdf?
+        LibGSL.gsl_odeiv2_step_msbdf
+      end
     end
   end
 
@@ -87,7 +98,7 @@ module GSL::ODE
 
     def free
       # to prevent second free (e.g. during finalize)
-      return if @raw == Pointer(LibGSL::Gsl_odeiv2_driver).null?
+      return if @raw.null?
       LibGSL.gsl_odeiv2_driver_free(@raw)
       @raw = Pointer(LibGSL::Gsl_odeiv2_driver).null
     end
@@ -120,24 +131,43 @@ module GSL::ODE
 
     property initial_step : Float64
 
-    def initialize(@system, @initial_step, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, step_algo : Algorithm = Algorithm::RKF45, a_y : Float64 = 0.0, a_dydt : Float64 = 1.0, scale_abs : Array(Float64)? = nil)
-      if scales
+    def initialize(@system, @initial_step, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, step_algo : Algorithm? = nil, a_y : Float64 = 0.0, a_dydt : Float64 = 1.0, scale_abs : Array(Float64)? = nil)
+      p "a"
+      unless step_algo
+        step_algo = @system.is_a?(JacobianSystem) ? Algorithm::MSBDF : Algorithm::MSADAMS
+      end
+      p "b"
+      raise ArgumentError.new("Algorithm #{step_algo} requires JacobianSystem") if step_algo.require_jacobian? && !@system.is_a?(JacobianSystem)
+      p "c"
+      if scale_abs
+        p "d"
         raise ArgumentError.new("Scales size should match dimension of system") if scale_abs.size != @system.size
-        @raw = gsl_odeiv2_driver_alloc_scaled_new(
+        p "e"
+        @raw = LibGSL.gsl_odeiv2_driver_alloc_scaled_new(
           @system.to_unsafe,
-          step_type(step_algo),
+          step_algo.to_unsafe,
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt,
-          scales.to_unsafe)
+          scale_abs.to_unsafe)
+        p "f"
       else
-        @raw = gsl_odeiv2_driver_alloc_standard_new(
+        p "g"
+        pp! @system.to_unsafe,
+          step_algo.to_unsafe,
+          initial_step,
+          epsabs, epsrel,
+          a_y, a_dydt
+
+        @raw = LibGSL.gsl_odeiv2_driver_alloc_standard_new(
           @system.to_unsafe,
-          step_type(step_algo),
+          step_algo.to_unsafe,
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt)
+        p "h"
       end
+      p "i"
       @state = Slice(Float64).new(@system.size)
     end
 
@@ -214,7 +244,7 @@ module GSL::ODE
 
     def evolve(y_initial, t0, t1)
       states = Array(Slice(Float64)).new
-      times = Array(Slice(Float64)).new
+      times = Array(Float64).new
       @system.size.times do |i|
         @state[i] = y_initial[i]
       end
