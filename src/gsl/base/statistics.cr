@@ -13,7 +13,7 @@ module Statistics
 
   # TODO : Implement CDF methods
   class Binomial < DiscreteDistribution
-    def initialize(@p : Float64, @n : UInt64)
+    def initialize(@p : Float64, @n : UInt32)
     end
 
     # This function returns a random integer from the binomial distribution,
@@ -22,7 +22,7 @@ module Statistics
     # ```
     # Binomial.sample(0.5, 1) # => 1
     # ```
-    def self.sample(p : Float64, n : UInt64) : UInt64
+    def self.sample(p : Float64, n : UInt32) : UInt32
       return LibGSL.gsl_ran_binomial(GSL::RNG, p, n)
     end
 
@@ -32,7 +32,7 @@ module Statistics
     # ```
     # Binomial.sample(3, 0.5, 1) # => [1, 1, 0]
     # ```
-    def self.sample(number : Int, p : Float64, n : UInt64) : Array(UInt64)
+    def self.sample(number : Int, p : Float64, n : UInt32) : Array(UInt32)
       (0...number).map { |x| Binomial.sample(p, n) }
     end
 
@@ -217,11 +217,11 @@ module Statistics
       return Poisson.sample(@mu)
     end
 
-    def self.sample(mu : Float64) : UInt64
+    def self.sample(mu : Float64) : UInt32
       return LibGSL.gsl_ran_poisson(GSL::RNG, mu)
     end
 
-    def self.sample(n : Int, mu : Float64) : Array(UInt64)
+    def self.sample(n : Int, mu : Float64) : Array(UInt32)
       return (0..n).map { |x| self.sample(mu) }
     end
 

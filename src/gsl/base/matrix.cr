@@ -24,7 +24,7 @@ module GSL
       end
     end
 
-    abstract def ==(m : Matrix)
+    # abstract def ==(m : Matrix)
 
     abstract def row(r : Int32 | Symbol) : Vector
     abstract def column(c : Int32 | Symbol) : Vector
@@ -278,7 +278,7 @@ module GSL
     end
 
     def non_zero : Int32
-      LibGSL.gsl_spmatrix_nnz(@pointer)
+      Int32.new(LibGSL.gsl_spmatrix_nnz(@pointer))
     end
 
     def finalize
