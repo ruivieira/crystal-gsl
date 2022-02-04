@@ -1,17 +1,16 @@
-name: tests
+name: MacOS CI
 
 on: [ push, pull_request ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: oprypin/install-crystal@v1
         with:
           crystal: 1.0.0
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: sudo apt-get install libatlas-base-dev libgsl-dev
+        run: brew install gsl
       - run: shards install
       - run: crystal spec
-      - run: crystal tool format && git diff --exit-code
