@@ -1,0 +1,48 @@
+name: Windows CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: oprypin/install-crystal@v1.5.3
+        with:
+          crystal: nightly
+          shards: false
+      - uses: actions/checkout@v2
+      - name: Cache GSL binaries
+        id: cache-gsl
+        uses: actions/cache@v2
+        with:
+          path: |
+            gsl/dll/x64/Debug/gsl.dll
+            gsl/dll/x64/Debug/gsl.lib
+            gsl/dll/x64/Debug/cblas.dll
+            gsl/dll/x64/Debug/cblas.lib
+          key: x64-Debug-bbf6741a0759a2468c2aa40c501f9cf99b04b427
+      - name: Checkout GSL
+        if: steps.cache-gsl.outputs.cache-hit != 'true'
+        uses: actions/checkout@v2
+        with:
+          repository: BrianGladman/gsl
+          path: gsl
+          ref: bbf6741a0759a2468c2aa40c501f9cf99b04b427 # master @ 2022-02-01
+      - name: Add msbuild to PATH
+        if: steps.cache-gsl.outputs.cache-hit != 'true'
+        uses: microsoft/setup-msbuild@v1.1          
+      - name: compile GSL    
+        if: steps.cache-gsl.outputs.cache-hit != 'true'
+        run: |
+          cd gsl
+          cd build.vc
+          msbuild gslhdrs/gslhdrs.vcxproj /p:Configuration=Debug /p:Platform=x64
+          msbuild gsl.dll.sln /p:Configuration=Debug /p:Platform=x64
+      - name: copy GSL libraries
+        run: |
+          cd gsl/dll/x64/Debug
+          copy cblas.dll ../../../..
+          copy gsl.dll ../../../..
+          copy cblas.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
+          copy gsl.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
+      - run: crystal spec

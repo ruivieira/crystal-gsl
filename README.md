@@ -1,6 +1,8 @@
 # crystal-gsl
 
-[![tests](https://github.com/ruivieira/crystal-gsl/actions/workflows/main.yml/badge.svg)](https://github.com/ruivieira/crystal-gsl/actions/workflows/main.yml)
+[![Linux CI](https://github.com/ruivieira/crystal-gsl/actions/workflows/linux.yml/badge.svg)](https://github.com/ruivieira/crystal-gsl/actions/workflows/linux.yml)
+[![MacOS CI](https://github.com/ruivieira/crystal-gsl/actions/workflows/macos.yml/badge.svg)](https://github.com/ruivieira/crystal-gsl/actions/workflows/macos.yml)
+[![Windows CI](https://github.com/ruivieira/crystal-gsl/actions/workflows/windows.yml/badge.svg)](https://github.com/ruivieira/crystal-gsl/actions/workflows/windows.yml)
 
 GNU Scientific Library (GSL) binding for Crystal
 
