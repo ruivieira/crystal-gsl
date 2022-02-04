@@ -28,6 +28,13 @@ dependencies:
 - gsl
 - gsl-devel
 
+### MacOS
+
+- brew install gsl
+
+### Windows
+
+ - Recommended on [GSL website](https://www.gnu.org/software/gsl/extras/native_win_builds.html) way to get GSL on Windows is to build manually using .sln files from https://github.com/BrianGladman/gsl
 ## Usage
 
 ```crystal
