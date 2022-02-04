@@ -158,7 +158,6 @@ module GSL::ODE
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt
-
         @raw = LibGSL.gsl_odeiv2_driver_alloc_standard_new(
           @system.to_unsafe,
           step_algo.to_unsafe,

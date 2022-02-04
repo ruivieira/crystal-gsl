@@ -13,14 +13,10 @@ end
 
 describe GSL::ODE do
   it "integrates system without jacobian with natural step" do
-    p "1"
     sys = TestODE.new(10.0)
-    p "2"
-    ode = GSL::ODE::Driver.new(sys, 1e-3, epsabs: 1e-6)
-    p "3"
+    ode = GSL::ODE::Driver.new(sys, 1e-2, epsabs: 1e-6)
     y0 = [1, 0]
-    y, t = ode.evolve(y0, 0, 15.0)
-    p "4"
+    y, t = ode.evolve(y0, 0, 1.0)
     pp! y, t
   end
 end
