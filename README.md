@@ -79,3 +79,4 @@ Implementation list:
 
 - [ruivieira](https://github.com/ruivieira) Rui Vieira - creator, maintainer
 - [dylandy](https://github.com/dylandy) Dylandy Chang - developer, maintainer
+- [konovod](https://github.com/konovod) Andrey Konovod - developer
