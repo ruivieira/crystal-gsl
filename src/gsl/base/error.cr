@@ -5,4 +5,4 @@ class NonIdenticalHistograms < Exception
 end
 
 class IterationsLimitExceeded < Exception
-end 
+end
