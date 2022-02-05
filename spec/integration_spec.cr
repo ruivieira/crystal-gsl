@@ -66,12 +66,13 @@ describe GSL::Integration do
   end
 
   describe "qawc algorithm" do
-    pending "find Cauchy principal value for a singularity at finite point" do
-      f = ->(x : Float64) { 1.0 / x }
+    it "find Cauchy principal value for a singularity at finite point" do
+      f = ->(x : Float64) { 1.0 } # function is 1.0 / x
       result, eps = GSL::Integration.qawc(f, -1, 1, 0)
-      # f = ->(x : Float64) { 1.0/Math.sqrt((2 - x).abs) }
-      # result, eps = GSL::Integration.qawc(f, 1, 3, 2)
-      pp! result, eps
+      result.should be_close(0.0, 1e-9)
+      f = ->(x : Float64) { Math.sqrt((2 - x).abs) } # function is 1.0 / Math.sqrt((2 - x).abs)
+      result, eps = GSL::Integration.qawc(f, 1, 4, 2)
+      result.should be_close(2*Math.sqrt(2) - 2, 1e-9)
     end
   end
 
