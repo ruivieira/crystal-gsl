@@ -3,3 +3,6 @@ end
 
 class NonIdenticalHistograms < Exception
 end
+
+class IterationsLimitExceeded < Exception
+end 
