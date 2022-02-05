@@ -29,7 +29,7 @@ module GSL::Min
   # algorithm - minimization algorithm to be used
   # returns nil if number of iterations = max_iter is exceeded
   # returns {x_min, f_min} tuple if precision = eps achieved
-  def self.find_min?(x_lower : Float64, x_upper : Float64, eps : Float64, *,
+  def self.find_min?(x_lower : Float64, x_upper : Float64, eps : Float64 = 1e-9, *,
                      algorithm : GSL::Min::Type = GSL::Min::Type::Brent,
                      max_iter = 1000, guess = nil, &f : GSL::Function)
     raw = LibGSL.gsl_min_fminimizer_alloc(algorithm.to_unsafe)
