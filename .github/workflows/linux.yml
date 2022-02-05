@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: oprypin/install-crystal@v1
         with:
-          crystal: 1.0.0
+          crystal: latest
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: sudo apt-get install libatlas-base-dev libgsl-dev
