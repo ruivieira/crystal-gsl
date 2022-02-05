@@ -17,22 +17,30 @@ module GSL::Roots
         LibGSL.gsl_root_fsolver_brent
       end
     end
+
+    def to_s
+      LibGSL.gsl_root_fsolver_name(to_unsafe)
+    end
   end
 
   enum TypePolishing
     Newton
     Secant
     Steffenson
-  end
 
-  def to_unsafe
-    case self
-    in .newton?
-      LibGSL.gsl_root_fdfsolver_newton
-    in .secant?
-      LibGSL.gsl_root_fdfsolver_secant
-    in .steffenson?
-      LibGSL.gsl_root_fdfsolver_steffenson
+    def to_unsafe
+      case self
+      in .newton?
+        LibGSL.gsl_root_fdfsolver_newton
+      in .secant?
+        LibGSL.gsl_root_fdfsolver_secant
+      in .steffenson?
+        LibGSL.gsl_root_fdfsolver_steffenson
+      end
+    end
+
+    def to_s
+      LibGSL.gsl_root_fdfsolver_name(to_unsafe)
     end
   end
 
