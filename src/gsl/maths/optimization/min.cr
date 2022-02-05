@@ -9,6 +9,17 @@ module GSL::Min
     Brent
     QuadGolden
 
+    def to_unsafe
+      case self
+      in .golden_section?
+        LibGSL.gsl_min_fminimizer_goldensection
+      in .brent?
+        LibGSL.gsl_min_fminimizer_brent
+      in .quad_golden?
+        LibGSL.gsl_min_fminimizer_quad_golden
+      end
+    end
+
     def to_s
       String.new(LibGSL.gsl_min_fminimizer_name(to_unsafe))
     end
@@ -21,15 +32,7 @@ module GSL::Min
   def self.find_min?(x_lower : Float64, x_upper : Float64, eps : Float64, *,
                      algorithm : GSL::Min::Type = GSL::Min::Type::Brent,
                      max_iter = 1000, guess = nil, &f : GSL::Function)
-    algo = case algorithm
-           in .golden_section?
-             LibGSL.gsl_min_fminimizer_goldensection
-           in .brent?
-             LibGSL.gsl_min_fminimizer_brent
-           in .quad_golden?
-             LibGSL.gsl_min_fminimizer_quad_golden
-           end
-    raw = LibGSL.gsl_min_fminimizer_alloc(algo)
+    raw = LibGSL.gsl_min_fminimizer_alloc(algorithm.to_unsafe)
     function = GSL.wrap_function(f)
     if guess
       LibGSL.gsl_min_fminimizer_set(raw, pointerof(function), guess, x_lower, x_upper)
