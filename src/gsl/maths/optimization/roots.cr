@@ -42,15 +42,15 @@ module GSL::Roots
   # returns nil if number of iterations = max_iter is exceeded
   # returns root value if precision = eps achieved
   def self.find_root?(x_lower : Float64, x_upper : Float64, eps : Float64 = 1e-9, *,
-                      algorithm : GSL::Roots::Type = GSL::Min::TypeBracketing::BrentDekker,
+                      algorithm : GSL::Roots::TypeBracketing = GSL::Roots::TypeBracketing::BrentDekker,
                       max_iter = 1000, &f : GSL::Function)
-    raw = LibGSL.gsl_root_fsolver_alloc(algoritm.to_unsafe)
+    raw = LibGSL.gsl_root_fsolver_alloc(algorithm.to_unsafe)
     function = GSL.wrap_function(f)
     LibGSL.gsl_root_fsolver_set(raw, pointerof(function), x_lower, x_upper)
     max_iter.times do
       LibGSL.gsl_root_fsolver_iterate(raw)
-      if LibGSL::Code.new(LibGSL.gsl_root_test_interval(x_lower, x_upper, eps, 0.0)) == LibGSL::Code::GSL_SUCCESS
-        result = solver.root
+      if LibGSL::Code.new(LibGSL.gsl_root_test_interval(raw.value.x_lower, raw.value.x_upper, eps, 0.0)) == LibGSL::Code::GSL_SUCCESS
+        result = raw.value.root
         LibGSL.gsl_root_fsolver_free(raw)
         return result
       end
@@ -64,8 +64,8 @@ module GSL::Roots
   # `algorithm` - root bracketing algorithm to be used
   # raises IterationsLimitExceeded if number of iterations = max_iter is exceeded
   # returns root value if precision = eps achieved
-  def self.find_root(x_lower, x_upper, eps,
-                     algorithm : GSL::Roots::Type = GSL::Min::TypeBracketing::BrentDekker,
+  def self.find_root(x_lower : Float64, x_upper : Float64, eps : Float64 = 1e-9, *,
+                     algorithm : GSL::Roots::TypeBracketing = GSL::Roots::TypeBracketing::BrentDekker,
                      max_iter = 1000, &f : GSL::Function)
     find_root?(x_lower, x_upper, eps, algorithm: algorithm, max_iter: max_iter, &f) || raise IterationsLimitExceeded.new("roots bracketing didn't converge")
   end
