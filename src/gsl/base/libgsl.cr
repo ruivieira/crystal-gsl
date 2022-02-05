@@ -5112,6 +5112,7 @@ lib LibGSL
 
   fun gsl_root_fsolver_free(s : Gsl_root_fsolver*)
   fun gsl_root_fsolver_set(s : Gsl_root_fsolver*, f : Gsl_function*, x_lower : LibC::Double, x_upper : LibC::Double) : LibC::Int
+  @[Raises]
   fun gsl_root_fsolver_iterate(s : Gsl_root_fsolver*) : LibC::Int
   fun gsl_root_fsolver_name(s : Gsl_root_fsolver*) : LibC::Char*
   fun gsl_root_fsolver_root(s : Gsl_root_fsolver*) : LibC::Double
@@ -5134,6 +5135,7 @@ lib LibGSL
   end
 
   fun gsl_root_fdfsolver_set(s : Gsl_root_fdfsolver*, fdf : Gsl_function_fdf*, root : LibC::Double) : LibC::Int
+  @[Raises]
   fun gsl_root_fdfsolver_iterate(s : Gsl_root_fdfsolver*) : LibC::Int
   fun gsl_root_fdfsolver_free(s : Gsl_root_fdfsolver*)
   fun gsl_root_fdfsolver_name(s : Gsl_root_fdfsolver*) : LibC::Char*

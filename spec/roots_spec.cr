@@ -40,5 +40,13 @@ describe GSL do
         Math.cos(x) - 0.5
       end
     end
+
+    it "behaves correctly when function raises" do
+      expect_raises(ArgumentError) do
+        GSL::Roots.find_root(0, 3) do |x|
+          raise ArgumentError.new("incorrect call")
+        end
+      end
+    end
   end
 end
