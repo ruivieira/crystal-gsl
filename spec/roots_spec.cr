@@ -48,5 +48,30 @@ describe GSL do
         end
       end
     end
+
+    it "can polish root from initial guess" do
+      x = GSL::Roots.polish_root(5) do |x|
+        {x*x - 5, 2*x}
+      end
+      x.should be_close(Math.sqrt(5), 1e-9)
+    end
+
+    it "can polish root from initial guess inside a range" do
+      root = GSL::Roots.polish_root?(10, x_possible: (0.0..)) do |x|
+        {x*x*x - 125, 3*x*x}
+      end
+      root.not_nil!.should be_close 5, 1e-9
+      root = GSL::Roots.polish_root?(10, x_possible: (6.0..)) do |x|
+        {x*x*x - 125, 3*x*x}
+      end
+      root.should be_nil
+    end
+
+    it "Secant only use derivation in initial point" do
+      root = GSL::Roots.polish_root(10, algorithm: GSL::Roots::TypePolishing::Secant) do |x|
+        {x*x*x - 125, 3.0*10*10}
+      end
+      root.should be_close 5, 1e-9
+    end
   end
 end
