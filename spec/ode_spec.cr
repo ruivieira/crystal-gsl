@@ -16,7 +16,7 @@ describe GSL::ODE do
     sys = TestODE.new(10.0)
     ode = GSL::ODE::Driver.new(sys, 1e-2, epsabs: 1e-6)
     y0 = [1, 0]
-    y, t = ode.evolve(y0, 0, 1.0)
-    pp! y, t
+    y, t = ode.evolve(y0, 0, 10.1)
+    pp! y.last, t.last, t.size
   end
 end

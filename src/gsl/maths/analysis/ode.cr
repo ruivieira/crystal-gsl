@@ -132,17 +132,12 @@ module GSL::ODE
     property initial_step : Float64
 
     def initialize(@system, @initial_step, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, step_algo : Algorithm? = nil, a_y : Float64 = 0.0, a_dydt : Float64 = 1.0, scale_abs : Array(Float64)? = nil)
-      p "a"
       unless step_algo
         step_algo = @system.is_a?(JacobianSystem) ? Algorithm::MSBDF : Algorithm::MSADAMS
       end
-      p "b"
       raise ArgumentError.new("Algorithm #{step_algo} requires JacobianSystem") if step_algo.require_jacobian? && !@system.is_a?(JacobianSystem)
-      p "c"
       if scale_abs
-        p "d"
         raise ArgumentError.new("Scales size should match dimension of system") if scale_abs.size != @system.size
-        p "e"
         @raw = LibGSL.gsl_odeiv2_driver_alloc_scaled_new(
           @system.to_unsafe,
           step_algo.to_unsafe,
@@ -150,23 +145,14 @@ module GSL::ODE
           epsabs, epsrel,
           a_y, a_dydt,
           scale_abs.to_unsafe)
-        p "f"
       else
-        p "g"
-        pp! @system.to_unsafe,
-          step_algo.to_unsafe,
-          initial_step,
-          epsabs, epsrel,
-          a_y, a_dydt
         @raw = LibGSL.gsl_odeiv2_driver_alloc_standard_new(
           @system.to_unsafe,
           step_algo.to_unsafe,
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt)
-        p "h"
       end
-      p "i"
       @state = Slice(Float64).new(@system.size)
     end
 
