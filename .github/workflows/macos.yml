@@ -1,0 +1,16 @@
+name: MacOS CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: oprypin/install-crystal@v1
+        with:
+          crystal: 1.0.0
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: brew install gsl
+      - run: shards install
+      - run: crystal spec

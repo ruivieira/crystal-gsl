@@ -1,9 +1,6 @@
-name: tests
+name: Linux CI
 
-on:
-  push:
-    branches:
-      - "**"
+on: [ push, pull_request ]
 
 jobs:
   build:
