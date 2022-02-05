@@ -3869,6 +3869,7 @@ lib LibGSL
   fun gsl_min_fminimizer_free(s : Gsl_min_fminimizer*)
   fun gsl_min_fminimizer_set(s : Gsl_min_fminimizer*, f : Gsl_function*, x_minimum : LibC::Double, x_lower : LibC::Double, x_upper : LibC::Double) : LibC::Int
   fun gsl_min_fminimizer_set_with_values(s : Gsl_min_fminimizer*, f : Gsl_function*, x_minimum : LibC::Double, f_minimum : LibC::Double, x_lower : LibC::Double, f_lower : LibC::Double, x_upper : LibC::Double, f_upper : LibC::Double) : LibC::Int
+  @[Raises]
   fun gsl_min_fminimizer_iterate(s : Gsl_min_fminimizer*) : LibC::Int
   fun gsl_min_fminimizer_name(s : Gsl_min_fminimizer*) : LibC::Char*
   fun gsl_min_fminimizer_x_minimum(s : Gsl_min_fminimizer*) : LibC::Double
