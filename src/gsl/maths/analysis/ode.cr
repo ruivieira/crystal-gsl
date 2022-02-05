@@ -159,7 +159,7 @@ module GSL::ODE
     def apply(t0 : Float64, t1 : Float64, y : Array(Float64) | Slice(Float64))
       raise ArgumentError.new("State size should match dimension of system") unless y.size == @system.size
       y = y.to_unsafe.to_slice(y.size) unless y.is_a? Slice
-      LibGSL.gsl_odeiv2_driver_apply(@raw, t0, t1, y)
+      LibGSL.gsl_odeiv2_driver_apply(@raw, pointerof(t0), t1, y)
     end
 
     # high level API
@@ -170,10 +170,10 @@ module GSL::ODE
       @system.size.times do |i|
         @state[i] = y_initial[i]
       end
-      t0 = time_points[0]
+      t0 = time_points[0].to_f
       reset
       (1...time_points.size).each do |i|
-        t1 = time_points[i]
+        t1 = time_points[i].to_f
         apply(t0, t1, @state)
         yield(@state, t1)
         t0 = t1
