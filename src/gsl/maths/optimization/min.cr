@@ -27,14 +27,15 @@ module GSL::Min
 
   # High-level interface to minimizer. Finds minimum of function f between `x_lower` and `x_upper`.
   # `eps` - required absolute precision
-  # `algorithm` - minimization algorithm to be used
+  # `algorithm` - minimization algorithm to be used. By default either `Brent` (if `guess` is present) or `QuadGolden` (othrwise) is used.
   # `max_iter` - maximum number of function evaluations, used to stop iterating when solution doesn't converge
   # `guess` - initial guess of a root value that can speed up search. If present, f(guess) < f(x_lower) and f(guess) < f(x_upper) should hold.
   # returns nil if number of iterations = max_iter is exceeded
   # returns {x_min, f_min} tuple if precision = eps achieved
   def self.find_min?(x_lower : Float64, x_upper : Float64, eps : Float64 = 1e-9, *,
-                     algorithm : GSL::Min::Type = GSL::Min::Type::Brent,
+                     algorithm : GSL::Min::Type? = nil,
                      max_iter = 1000, guess = nil, &f : GSL::Function)
+    algorithm = guess ? GSL::Min::Type::Brent : GSL::Min::Type::QuadGolden
     raw = LibGSL.gsl_min_fminimizer_alloc(algorithm.to_unsafe)
     function = GSL.wrap_function(f)
     if guess
@@ -71,7 +72,7 @@ module GSL::Min
   # raises IterationsLimitExceeded if number of iterations = max_iter is exceeded
   # returns {x_min, f_min} tuple if precision = eps achieved
   def self.find_min(x_lower : Float64, x_upper : Float64, eps : Float64,
-                    algorithm : GSL::Min::Type = GSL::Min::Type::Brent,
+                    algorithm : GSL::Min::Type? = nil,
                     max_iter = 1000, guess = nil, &f : GSL::Function)
     find_min?(x_lower, x_upper, eps, algorithm: algorithm, max_iter: max_iter, guess: guess, &f) || raise IterationsLimitExceeded.new("find_min didn't converge")
   end
