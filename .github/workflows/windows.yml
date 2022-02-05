@@ -16,11 +16,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            gsl/dll/x64/Debug/gsl.dll
-            gsl/dll/x64/Debug/gsl.lib
-            gsl/dll/x64/Debug/cblas.dll
-            gsl/dll/x64/Debug/cblas.lib
-          key: x64-Debug-bbf6741a0759a2468c2aa40c501f9cf99b04b427
+            gsl/lib/x64/Debug/gsl.lib
+            gsl/lib/x64/Debug/cblas.lib
+          key: static-x64-Debug-bbf6741a0759a2468c2aa40c501f9cf99b04b427
       - name: Checkout GSL
         if: steps.cache-gsl.outputs.cache-hit != 'true'
         uses: actions/checkout@v2
@@ -37,12 +35,10 @@ jobs:
           cd gsl
           cd build.vc
           msbuild gslhdrs/gslhdrs.vcxproj /p:Configuration=Debug /p:Platform=x64
-          msbuild gsl.dll.sln /p:Configuration=Debug /p:Platform=x64
+          msbuild gsl.lib.sln /p:Configuration=Debug /p:Platform=x64
       - name: copy GSL libraries
         run: |
-          cd gsl/dll/x64/Debug
-          copy cblas.dll ../../../..
-          copy gsl.dll ../../../..
+          cd gsl/lib/x64/Debug
           copy cblas.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
           copy gsl.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
       - run: crystal spec
