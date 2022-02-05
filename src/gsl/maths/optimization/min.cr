@@ -25,8 +25,11 @@ module GSL::Min
     end
   end
 
-  # High-level interface to minimizer. Finds minimum of function f between x_lower and x_upper.
-  # algorithm - minimization algorithm to be used
+  # High-level interface to minimizer. Finds minimum of function f between `x_lower` and `x_upper`.
+  # `eps` - required absolute precision
+  # `algorithm` - minimization algorithm to be used
+  # `max_iter` - maximum number of function evaluations, used to stop iterating when solution doesn't converge
+  # `guess` - initial guess of a root value that can speed up search. If present, f(guess) < f(x_lower) and f(guess) < f(x_upper) should hold.
   # returns nil if number of iterations = max_iter is exceeded
   # returns {x_min, f_min} tuple if precision = eps achieved
   def self.find_min?(x_lower : Float64, x_upper : Float64, eps : Float64 = 1e-9, *,
@@ -60,8 +63,11 @@ module GSL::Min
     result
   end
 
-  # High-level interface to minimizer. Finds minimum of function f between x_lower and x_upper.
-  # algorithm - minimization algorithm to be used
+  # High-level interface to minimizer. Finds minimum of function f between `x_lower` and `x_upper`.
+  # `eps` - required absolute precision
+  # `algorithm` - minimization algorithm to be used
+  # `max_iter` - maximum number of function evaluations, used to stop iterating when solution doesn't converge
+  # `guess` - initial guess of a root value that can speed up search. If present, f(guess) < f(x_lower) and f(guess) < f(x_upper) should hold.
   # raises IterationsLimitExceeded if number of iterations = max_iter is exceeded
   # returns {x_min, f_min} tuple if precision = eps achieved
   def self.find_min(x_lower : Float64, x_upper : Float64, eps : Float64,
