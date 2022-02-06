@@ -190,7 +190,7 @@ module GSL::ODE
       t = t0
       reset
       while t < t1
-        t_next = {t0 + dt, t1}.min
+        t_next = {t + dt, t1}.min
         apply(t, t_next, @state)
         yield(@state, t_next)
         t = t_next
