@@ -29,11 +29,11 @@ module GSL::ODE
   abstract class JacobianSystem < System
     @@same_jacobian : (LibC::Double, LibC::Double*, LibC::Double*, LibC::Double*, Void* -> LibC::Int) = ->(t : LibC::Double, y : LibC::Double*, dfdt : LibC::Double*, dfdy : LibC::Double*, data : Void*) do
       sys = data.as(JacobianSystem)
-      sys.jacobian(t, y.to_slice(sys.size), dfdt.to_slice(sys.size), dfdy.to_slice(sys.size*sys.size))
+      sys.jacobian(t, y.to_slice(sys.size), dfdy.to_slice(sys.size*sys.size), dfdt.to_slice(sys.size))
       return 0
     end
 
-    abstract def jacobian(t : LibC::Double, y : Slice(LibC::Double), dfdt : Slice(LibC::Double), dfdy : Slice(LibC::Double))
+    abstract def jacobian(t : LibC::Double, y : Slice(LibC::Double), dfdy : Slice(LibC::Double), dfdt : Slice(LibC::Double))
 
     def initialize(size)
       super(size)
@@ -131,16 +131,16 @@ module GSL::ODE
 
     property initial_step : Float64
 
-    def initialize(@system, @initial_step, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, step_algo : Algorithm? = nil, a_y : Float64 = 0.0, a_dydt : Float64 = 1.0, scale_abs : Array(Float64)? = nil)
-      unless step_algo
-        step_algo = @system.is_a?(JacobianSystem) ? Algorithm::MSBDF : Algorithm::MSADAMS
+    def initialize(@system, @initial_step, epsabs : Float64 = 0.0, epsrel : Float64 = 0.0, algorithm : Algorithm? = nil, a_y : Float64 = 0.0, a_dydt : Float64 = 1.0, scale_abs : Array(Float64)? = nil)
+      unless algorithm
+        algorithm = @system.is_a?(JacobianSystem) ? Algorithm::MSBDF : Algorithm::MSADAMS
       end
-      raise ArgumentError.new("Algorithm #{step_algo} requires JacobianSystem") if step_algo.require_jacobian? && !@system.is_a?(JacobianSystem)
+      raise ArgumentError.new("Algorithm #{algorithm} requires JacobianSystem") if algorithm.require_jacobian? && !@system.is_a?(JacobianSystem)
       if scale_abs
         raise ArgumentError.new("Scales size should match dimension of system") if scale_abs.size != @system.size
         @raw = LibGSL.gsl_odeiv2_driver_alloc_scaled_new(
           @system.to_unsafe,
-          step_algo.to_unsafe,
+          algorithm.to_unsafe,
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt,
@@ -148,7 +148,7 @@ module GSL::ODE
       else
         @raw = LibGSL.gsl_odeiv2_driver_alloc_standard_new(
           @system.to_unsafe,
-          step_algo.to_unsafe,
+          algorithm.to_unsafe,
           initial_step,
           epsabs, epsrel,
           a_y, a_dydt)
