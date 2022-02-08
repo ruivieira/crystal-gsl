@@ -1,3 +1,7 @@
+# current
+
+* Change license to GPL3
+
 # pre-release
 
  * Support for `Permutation`s
