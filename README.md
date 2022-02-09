@@ -75,6 +75,9 @@ Implementation list:
   - Sparse and dense matrices
   - Histograms
   - Permutations
+- Optimization
+  - Scalar functions minimization
+  - Scalar functions root finding
 
 ## Contributing
 
