@@ -290,7 +290,10 @@ module GSL
     end
 
     def minmax
+      return [0.0, 0.0] if non_zero == 0
       LibGSL.gsl_spmatrix_minmax(@pointer, out min, out max)
+      min = 0.0 if min > 0.0
+      max = 0.0 if max < 0.0
       return [min, max]
     end
   end
