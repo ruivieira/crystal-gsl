@@ -287,6 +287,8 @@ lib LibGSL
   fun gsl_vector_div(a : Gsl_vector*, b : Gsl_vector*) : LibC::Int
   fun gsl_vector_scale(a : Gsl_vector*, x : LibC::Double) : LibC::Int
   fun gsl_vector_add_constant(a : Gsl_vector*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_axpby(alpha : LibC::Double, x : Gsl_vector*, beta : LibC::Double, y : Gsl_vector*) : LibC::Int
+  fun gsl_vector_sum(a : Gsl_vector*) : LibC::Double
   fun gsl_vector_equal(u : Gsl_vector*, v : Gsl_vector*) : LibC::Int
   fun gsl_vector_isnull(v : Gsl_vector*) : LibC::Int
   fun gsl_vector_ispos(v : Gsl_vector*) : LibC::Int
@@ -364,6 +366,7 @@ lib LibGSL
   fun gsl_vector_complex_fscanf(stream : File*, v : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_fprintf(stream : File*, v : Gsl_vector_complex*, format : LibC::Char*) : LibC::Int
   fun gsl_vector_complex_memcpy(dest : Gsl_vector_complex*, src : Gsl_vector_complex*) : LibC::Int
+  fun gsl_vector_complex_conj_memcpy(dest : Gsl_vector_complex*, src : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_reverse(v : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_swap(v : Gsl_vector_complex*, w : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_swap_elements(v : Gsl_vector_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
@@ -378,6 +381,7 @@ lib LibGSL
   fun gsl_vector_complex_div(a : Gsl_vector_complex*, b : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_scale(a : Gsl_vector_complex*, x : Gsl_complex) : LibC::Int
   fun gsl_vector_complex_add_constant(a : Gsl_vector_complex*, x : Gsl_complex) : LibC::Int
+  fun gsl_vector_complex_axpby(alpha : Gsl_complex, x : Gsl_vector_complex*, beta : Gsl_complex, y : Gsl_vector_complex*) : LibC::Int
   fun gsl_vector_complex_get(v : Gsl_vector_complex*, i : LibC::SizeT) : Gsl_complex
   fun gsl_vector_complex_set(v : Gsl_vector_complex*, i : LibC::SizeT, z : Gsl_complex)
   fun gsl_vector_complex_ptr(v : Gsl_vector_complex*, i : LibC::SizeT) : Gsl_complex*
@@ -1362,13 +1366,14 @@ lib LibGSL
   fun gsl_matrix_complex_fprintf(stream : File*, m : Gsl_matrix_complex*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_complex_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_swap(m1 : Gsl_matrix_complex*, m2 : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_matrix_complex_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_matrix_complex_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_swap_rows(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_swap_columns(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_swap_rowcol(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_transpose(m : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_transpose_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_matrix_complex_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_matrix_complex_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_matrix_complex_conjtrans_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_equal(a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_isnull(m : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_ispos(m : Gsl_matrix_complex*) : LibC::Int
@@ -1379,8 +1384,11 @@ lib LibGSL
   fun gsl_matrix_complex_mul_elements(a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_div_elements(a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_scale(a : Gsl_matrix_complex*, x : Gsl_complex) : LibC::Int
+  fun gsl_matrix_complex_scale_rows(a : Gsl_matrix_complex*, x : Gsl_vector_complex*) : LibC::Int
+  fun gsl_matrix_complex_scale_columns(a : Gsl_matrix_complex*, x : Gsl_vector_complex*) : LibC::Int
   fun gsl_matrix_complex_add_constant(a : Gsl_matrix_complex*, x : Gsl_complex) : LibC::Int
   fun gsl_matrix_complex_add_diagonal(a : Gsl_matrix_complex*, x : Gsl_complex) : LibC::Int
+  fun gsl_matrix_complex_conjugate(a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_get_row(v : Gsl_vector_complex*, m : Gsl_matrix_complex*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_get_col(v : Gsl_vector_complex*, m : Gsl_matrix_complex*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_set_row(m : Gsl_matrix_complex*, i : LibC::SizeT, v : Gsl_vector_complex*) : LibC::Int
@@ -1629,13 +1637,13 @@ lib LibGSL
   fun gsl_matrix_fprintf(stream : File*, m : Gsl_matrix*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_swap(m1 : Gsl_matrix*, m2 : Gsl_matrix*) : LibC::Int
-  fun gsl_matrix_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
+  fun gsl_matrix_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_swap_rows(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_swap_columns(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_swap_rowcol(m : Gsl_matrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_transpose(m : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_transpose_memcpy(dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
-  fun gsl_matrix_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
+  fun gsl_matrix_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix*, src : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_max(m : Gsl_matrix*) : LibC::Double
   fun gsl_matrix_min(m : Gsl_matrix*) : LibC::Double
   fun gsl_matrix_minmax(m : Gsl_matrix*, min_out : LibC::Double*, max_out : LibC::Double*)
@@ -1647,11 +1655,14 @@ lib LibGSL
   fun gsl_matrix_ispos(m : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_isneg(m : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_isnonneg(m : Gsl_matrix*) : LibC::Int
+  fun gsl_matrix_norm1(m : Gsl_matrix*) : LibC::Double
   fun gsl_matrix_add(a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_sub(a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_mul_elements(a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_div_elements(a : Gsl_matrix*, b : Gsl_matrix*) : LibC::Int
   fun gsl_matrix_scale(a : Gsl_matrix*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_scale_rows(a : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_matrix_scale_columns(a : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
   fun gsl_matrix_add_constant(a : Gsl_matrix*, x : LibC::Double) : LibC::Int
   fun gsl_matrix_add_diagonal(a : Gsl_matrix*, x : LibC::Double) : LibC::Int
   fun gsl_matrix_get_row(v : Gsl_vector*, m : Gsl_matrix*, i : LibC::SizeT) : LibC::Int
@@ -2677,32 +2688,182 @@ lib LibGSL
   fun gsl_bspline_alloc(k : LibC::SizeT, nbreak : LibC::SizeT) : Gsl_bspline_workspace*
 
   struct Gsl_bspline_workspace
-    k : LibC::SizeT
-    km1 : LibC::SizeT
-    l : LibC::SizeT
+    spline_order : LibC::SizeT
     nbreak : LibC::SizeT
-    n : LibC::SizeT
+    ncontrol : LibC::SizeT
     knots : Gsl_vector*
     deltal : Gsl_vector*
     deltar : Gsl_vector*
     b : Gsl_vector*
+    xtx : Gsl_matrix*
+    r : Gsl_matrix*
+    work : Gsl_vector*
     a : Gsl_matrix*
     d_b : Gsl_matrix*
+    icache : LibC::SizeT
   end
 
+  fun gsl_bspline_alloc_ncontrol(spline_order : LibC::SizeT, ncontrol : LibC::SizeT) : Gsl_bspline_workspace*
   fun gsl_bspline_free(w : Gsl_bspline_workspace*)
-  fun gsl_bspline_ncoeffs(w : Gsl_bspline_workspace*) : LibC::SizeT
+  fun gsl_bspline_ncontrol(w : Gsl_bspline_workspace*) : LibC::SizeT
   fun gsl_bspline_order(w : Gsl_bspline_workspace*) : LibC::SizeT
   fun gsl_bspline_nbreak(w : Gsl_bspline_workspace*) : LibC::SizeT
   fun gsl_bspline_breakpoint(i : LibC::SizeT, w : Gsl_bspline_workspace*) : LibC::Double
   fun gsl_bspline_greville_abscissa(i : LibC::SizeT, w : Gsl_bspline_workspace*) : LibC::Double
+  fun gsl_bspline_init_augment(breakpts : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_init_uniform(a : LibC::Double, b : LibC::Double, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_init_periodic(a : LibC::Double, b : LibC::Double, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_init(t : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_init_interp(x : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_col_interp(tau : Gsl_vector*, xb : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_proj_rhs(f : Gsl_function*, y : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_find_interval(x : LibC::Double, flag : LibC::Int*, w : Gsl_bspline_workspace*) : LibC::SizeT
+  fun gsl_bspline_calc(x : LibC::Double, c : Gsl_vector*, result : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_calc_deriv(x : LibC::Double, c : Gsl_vector*, nderiv : LibC::SizeT, result : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_vector_calc(x : LibC::Double, c : Gsl_matrix*, result : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_vector_calc_deriv(x : LibC::Double, c : Gsl_matrix*, nderiv : LibC::SizeT, result : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_eval_basis(x : LibC::Double, b : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_basis(x : LibC::Double, bk : Gsl_vector*, istart : LibC::SizeT*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_eval_deriv_basis(x : LibC::Double, nderiv : LibC::SizeT, d_b : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_basis_deriv(x : LibC::Double, nderiv : LibC::SizeT, d_b : Gsl_matrix*, istart : LibC::SizeT*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_init_greville(abscissae : Gsl_vector*, w : Gsl_bspline_workspace*, abserr : LibC::Double*) : LibC::Int
+  fun gsl_bspline_gram(nderiv : LibC::SizeT, g : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_gram_interval(a : LibC::Double, b : LibC::Double, nderiv : LibC::SizeT, g : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_oprod(nderiv : LibC::SizeT, x : LibC::Double, a : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_calc_integ(a : LibC::Double, b : LibC::Double, c : Gsl_vector*, result : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_basis_integ(a : LibC::Double, b : LibC::Double, bint : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_lssolve(x : Gsl_vector*, y : Gsl_vector*, c : Gsl_vector*, chisq : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_wlssolve(x : Gsl_vector*, y : Gsl_vector*, wts : Gsl_vector*, c : Gsl_vector*, chisq : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_lsnormal(x : Gsl_vector*, y : Gsl_vector*, wts : Gsl_vector*, x_ty : Gsl_vector*, xtx : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_lsnormalm(x : Gsl_vector*, y : Gsl_matrix*, wts : Gsl_vector*, xty : Gsl_matrix*, xtx : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_plssolve(x : Gsl_vector*, y : Gsl_vector*, c : Gsl_vector*, chisq : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_pwlssolve(x : Gsl_vector*, y : Gsl_vector*, wts : Gsl_vector*, c : Gsl_vector*, chisq : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_plsqr(x : Gsl_vector*, y : Gsl_vector*, wts : Gsl_vector*, r : Gsl_matrix*, q_ty : Gsl_vector*, rnorm : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_residuals(x : Gsl_vector*, y : Gsl_vector*, c : Gsl_vector*, r : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_covariance(xtx : Gsl_matrix*, cov : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_rcond(xtx : Gsl_matrix*, rcond : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_err(x : LibC::Double, nderiv : LibC::SizeT, cov : Gsl_matrix*, err : LibC::Double*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_ncoeffs(w : Gsl_bspline_workspace*) : LibC::SizeT
   fun gsl_bspline_knots(breakpts : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
   fun gsl_bspline_knots_uniform(a : LibC::Double, b : LibC::Double, w : Gsl_bspline_workspace*) : LibC::Int
-  fun gsl_bspline_knots_greville(abscissae : Gsl_vector*, w : Gsl_bspline_workspace*, abserr : LibC::Double*) : LibC::Int
   fun gsl_bspline_eval(x : LibC::Double, b : Gsl_vector*, w : Gsl_bspline_workspace*) : LibC::Int
-  fun gsl_bspline_eval_nonzero(x : LibC::Double, bk : Gsl_vector*, istart : LibC::SizeT*, iend : LibC::SizeT*, w : Gsl_bspline_workspace*) : LibC::Int
   fun gsl_bspline_deriv_eval(x : LibC::Double, nderiv : LibC::SizeT, d_b : Gsl_matrix*, w : Gsl_bspline_workspace*) : LibC::Int
-  fun gsl_bspline_deriv_eval_nonzero(x : LibC::Double, nderiv : LibC::SizeT, d_b : Gsl_matrix*, istart : LibC::SizeT*, iend : LibC::SizeT*, w : Gsl_bspline_workspace*) : LibC::Int
+  fun gsl_bspline_knots_greville(abscissae : Gsl_vector*, w : Gsl_bspline_workspace*, abserr : LibC::Double*) : LibC::Int
+
+  struct Gsl_bst_avl_node
+    avl_link : Gsl_bst_avl_node*[2]
+    avl_data : Void*
+    avl_balance : LibC::Char
+  end
+
+  struct Gsl_bst_rb_node
+    rb_link : Gsl_bst_rb_node*[2]
+    rb_data : Void*
+    rb_color : UInt8
+  end
+
+  struct Gsl_bst_type
+    name : LibC::Char*
+    node_size : LibC::SizeT
+    init : (Gsl_bst_allocator*, (Void*, Void*, Void* -> LibC::Int), Void*, Void* -> LibC::Int)
+    nodes : (Void* -> LibC::SizeT)
+    insert : (Void*, Void* -> Void)
+    find : (Void*, Void* -> Void)
+    remove : (Void*, Void* -> Void)
+    empty : (Void* -> LibC::Int)
+    trav_init : (Void*, Void* -> LibC::Int)
+    trav_first : (Void*, Void* -> Void)
+    trav_last : (Void*, Void* -> Void)
+    trav_find : (Void*, Void*, Void* -> Void*)
+    trav_insert : (Void*, Void*, Void* -> Void*)
+    trav_copy : (Void*, Void* -> Void)
+    trav_next : (Void* -> Void*)
+    trav_prev : (Void* -> Void*)
+    trav_cur : (Void* -> Void*)
+    trav_replace : (Void*, Void* -> Void)
+  end
+
+  struct Gsl_bst_allocator
+    alloc : (LibC::SizeT, Void* -> Void*)
+    free : (Void*, Void* -> Void)
+  end
+
+  fun gsl_bst_alloc(t : Gsl_bst_type*, allocator : Gsl_bst_allocator*, compare : (Void*, Void*, Void* -> LibC::Int), params : Void*) : Gsl_bst_workspace*
+
+  struct Gsl_bst_workspace
+    type : Gsl_bst_type*
+    table : Gsl_bst_workspace_table
+  end
+
+  union Gsl_bst_workspace_table
+    avl_table : Gsl_bst_avl_table
+    rb_table : Gsl_bst_rb_table
+  end
+
+  struct Gsl_bst_avl_table
+    avl_root : Gsl_bst_avl_node*
+    avl_compare : (Void*, Void*, Void* -> LibC::Int)
+    avl_param : Void*
+    avl_alloc : Gsl_bst_allocator*
+    avl_count : LibC::SizeT
+    avl_generation : LibC::ULong
+  end
+
+  struct Gsl_bst_rb_table
+    rb_root : Gsl_bst_rb_node*
+    rb_compare : (Void*, Void*, Void* -> LibC::Int)
+    rb_param : Void*
+    rb_alloc : Gsl_bst_allocator*
+    rb_count : LibC::SizeT
+    rb_generation : LibC::ULong
+  end
+
+  fun gsl_bst_free(w : Gsl_bst_workspace*)
+  fun gsl_bst_empty(w : Gsl_bst_workspace*) : LibC::Int
+  fun gsl_bst_insert(item : Void*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_find(item : Void*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_remove(item : Void*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_nodes(w : Gsl_bst_workspace*) : LibC::SizeT
+  fun gsl_bst_node_size(w : Gsl_bst_workspace*) : LibC::SizeT
+  fun gsl_bst_name(w : Gsl_bst_workspace*) : LibC::Char*
+  fun gsl_bst_trav_init(trav : Gsl_bst_trav*, w : Gsl_bst_workspace*) : LibC::Int
+
+  struct Gsl_bst_trav
+    type : Gsl_bst_type*
+    trav_data : Gsl_bst_trav_data
+  end
+
+  union Gsl_bst_trav_data
+    avl_trav : Gsl_bst_avl_traverser
+    rb_trav : Gsl_bst_rb_traverser
+  end
+
+  struct Gsl_bst_avl_traverser
+    avl_table : Gsl_bst_avl_table*
+    avl_node : Gsl_bst_avl_node*
+    avl_stack : Gsl_bst_avl_node*[32]
+    avl_height : LibC::SizeT
+    avl_generation : LibC::ULong
+  end
+
+  struct Gsl_bst_rb_traverser
+    rb_table : Gsl_bst_rb_table*
+    rb_node : Gsl_bst_rb_node*
+    rb_stack : Gsl_bst_rb_node*[48]
+    rb_height : LibC::SizeT
+    rb_generation : LibC::ULong
+  end
+
+  fun gsl_bst_trav_first(trav : Gsl_bst_trav*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_trav_last(trav : Gsl_bst_trav*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_trav_find(item : Void*, trav : Gsl_bst_trav*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_trav_insert(item : Void*, trav : Gsl_bst_trav*, w : Gsl_bst_workspace*) : Void*
+  fun gsl_bst_trav_copy(dest : Gsl_bst_trav*, src : Gsl_bst_trav*) : Void*
+  fun gsl_bst_trav_next(trav : Gsl_bst_trav*) : Void*
+  fun gsl_bst_trav_prev(trav : Gsl_bst_trav*) : Void*
+  fun gsl_bst_trav_cur(trav : Gsl_bst_trav*) : Void*
+  fun gsl_bst_trav_replace(trav : Gsl_bst_trav*, new_item : Void*) : Void*
+
   fun gsl_cdf_ugaussian_P(x : LibC::Double) : LibC::Double
   fun gsl_cdf_ugaussian_Q(x : LibC::Double) : LibC::Double
   fun gsl_cdf_ugaussian_Pinv(p : LibC::Double) : LibC::Double
@@ -3273,6 +3434,109 @@ lib LibGSL
   fun gsl_fft_halfcomplex_transform(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, wavetable : Gsl_fft_halfcomplex_wavetable*, work : Gsl_fft_real_workspace*) : LibC::Int
   fun gsl_fft_halfcomplex_unpack(halfcomplex_coefficient : LibC::Double*, complex_coefficient : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
   fun gsl_fft_halfcomplex_radix2_unpack(halfcomplex_coefficient : LibC::Double*, complex_coefficient : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Int
+
+  fun gsl_movstat_alloc(k : LibC::SizeT) : Gsl_movstat_workspace*
+
+  struct Gsl_movstat_workspace
+    h : LibC::SizeT
+    j : LibC::SizeT
+    k : LibC::SizeT
+    work : LibC::Double*
+    state : Void*
+    state_size : LibC::SizeT
+  end
+
+  fun gsl_movstat_alloc2(h : LibC::SizeT, j : LibC::SizeT) : Gsl_movstat_workspace*
+  fun gsl_movstat_alloc_with_size(accum_state_size : LibC::SizeT, h : LibC::SizeT, j : LibC::SizeT) : Gsl_movstat_workspace*
+  fun gsl_movstat_free(w : Gsl_movstat_workspace*)
+  fun gsl_movstat_apply_accum(endtype : Gsl_movstat_end_t, x : Gsl_vector*, accum : Gsl_movstat_accum*, accum_params : Void*, y : Gsl_vector*, z : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  enum Gsl_movstat_end_t
+    GSL_MOVSTAT_END_PADZERO  = 0
+    GSL_MOVSTAT_END_PADVALUE = 1
+    GSL_MOVSTAT_END_TRUNCATE = 2
+  end
+
+  struct Gsl_movstat_accum
+    size : (LibC::SizeT -> LibC::SizeT)
+    init : (LibC::SizeT, Void* -> LibC::Int)
+    insert : (LibC::Double, Void* -> LibC::Int)
+    delete_oldest : (Void* -> LibC::Int)
+    get : (Void*, LibC::Double*, Void* -> LibC::Int)
+  end
+
+  fun gsl_movstat_apply(endtype : Gsl_movstat_end_t, f : Gsl_movstat_function*, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+
+  struct Gsl_movstat_function
+    function : (LibC::SizeT, LibC::Double*, Void* -> LibC::Double)
+    params : Void*
+  end
+
+  fun gsl_movstat_fill(endtype : Gsl_movstat_end_t, x : Gsl_vector*, idx : LibC::SizeT, h : LibC::SizeT, j : LibC::SizeT, window : LibC::Double*) : LibC::SizeT
+  fun gsl_movstat_mean(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_variance(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_sd(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_median(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_min(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_max(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_minmax(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y_min : Gsl_vector*, y_max : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_mad0(endtype : Gsl_movstat_end_t, x : Gsl_vector*, xmedian : Gsl_vector*, xmad : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_mad(endtype : Gsl_movstat_end_t, x : Gsl_vector*, xmedian : Gsl_vector*, xmad : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_qqr(endtype : Gsl_movstat_end_t, x : Gsl_vector*, q : LibC::Double, xqqr : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_Sn(endtype : Gsl_movstat_end_t, x : Gsl_vector*, xscale : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_Qn(endtype : Gsl_movstat_end_t, x : Gsl_vector*, xscale : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_movstat_sum(endtype : Gsl_movstat_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_movstat_workspace*) : LibC::Int
+  fun gsl_filter_gaussian_alloc(k : LibC::SizeT) : Gsl_filter_gaussian_workspace*
+
+  struct Gsl_filter_gaussian_workspace
+    k : LibC::SizeT
+    kernel : LibC::Double*
+    movstat_workspace_p : Gsl_movstat_workspace*
+  end
+
+  fun gsl_filter_gaussian_free(w : Gsl_filter_gaussian_workspace*)
+  fun gsl_filter_gaussian(endtype : Gsl_filter_end_t, alpha : LibC::Double, order : LibC::SizeT, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_filter_gaussian_workspace*) : LibC::Int
+  enum Gsl_filter_end_t
+    GSL_FILTER_END_PADZERO  = 0
+    GSL_FILTER_END_PADVALUE = 1
+    GSL_FILTER_END_TRUNCATE = 2
+  end
+  fun gsl_filter_gaussian_kernel(alpha : LibC::Double, order : LibC::SizeT, normalize : LibC::Int, kernel : Gsl_vector*) : LibC::Int
+  fun gsl_filter_median_alloc(k : LibC::SizeT) : Gsl_filter_median_workspace*
+
+  struct Gsl_filter_median_workspace
+    movstat_workspace_p : Gsl_movstat_workspace*
+  end
+
+  fun gsl_filter_median_free(w : Gsl_filter_median_workspace*)
+  fun gsl_filter_median(endtype : Gsl_filter_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_filter_median_workspace*) : LibC::Int
+  fun gsl_filter_rmedian_alloc(k : LibC::SizeT) : Gsl_filter_rmedian_workspace*
+
+  struct Gsl_filter_rmedian_workspace
+    h : LibC::SizeT
+    k : LibC::SizeT
+    state : Void*
+    window : LibC::Double*
+    minmaxacc : Gsl_movstat_accum*
+    movstat_workspace_p : Gsl_movstat_workspace*
+  end
+
+  fun gsl_filter_rmedian_free(w : Gsl_filter_rmedian_workspace*)
+  fun gsl_filter_rmedian(x0 : Gsl_filter_end_t, x : Gsl_vector*, y : Gsl_vector*, w : Gsl_filter_rmedian_workspace*) : LibC::Int
+  fun gsl_filter_impulse_alloc(k : LibC::SizeT) : Gsl_filter_impulse_workspace*
+
+  struct Gsl_filter_impulse_workspace
+    movstat_workspace_p : Gsl_movstat_workspace*
+  end
+
+  fun gsl_filter_impulse_free(w : Gsl_filter_impulse_workspace*)
+  fun gsl_filter_impulse(endtype : Gsl_filter_end_t, scale_type : Gsl_filter_scale_t, t : LibC::Double, x : Gsl_vector*, y : Gsl_vector*, xmedian : Gsl_vector*, xsigma : Gsl_vector*, noutlier : LibC::SizeT*, ioutlier : Gsl_vector_int*, w : Gsl_filter_impulse_workspace*) : LibC::Int
+  enum Gsl_filter_scale_t
+    GSL_FILTER_SCALE_MAD = 0
+    GSL_FILTER_SCALE_IQR = 1
+    GSL_FILTER_SCALE_SN  = 2
+    GSL_FILTER_SCALE_QN  = 3
+  end
+
   fun gsl_fit_linear(x : LibC::Double*, xstride : LibC::SizeT, y : LibC::Double*, ystride : LibC::SizeT, n : LibC::SizeT, c0 : LibC::Double*, c1 : LibC::Double*, cov00 : LibC::Double*, cov01 : LibC::Double*, cov11 : LibC::Double*, sumsq : LibC::Double*) : LibC::Int
   fun gsl_fit_wlinear(x : LibC::Double*, xstride : LibC::SizeT, w : LibC::Double*, wstride : LibC::SizeT, y : LibC::Double*, ystride : LibC::SizeT, n : LibC::SizeT, c0 : LibC::Double*, c1 : LibC::Double*, cov00 : LibC::Double*, cov01 : LibC::Double*, cov11 : LibC::Double*, chisq : LibC::Double*) : LibC::Int
   fun gsl_fit_linear_est(x : LibC::Double, c0 : LibC::Double, c1 : LibC::Double, cov00 : LibC::Double, cov01 : LibC::Double, cov11 : LibC::Double, y : LibC::Double*, y_err : LibC::Double*) : LibC::Int
@@ -3560,6 +3824,17 @@ lib LibGSL
   fun gsl_integration_cquad_workspace_free(w : Gsl_integration_cquad_workspace*)
   fun gsl_integration_cquad(f : Gsl_function*, a : LibC::Double, b : LibC::Double, epsabs : LibC::Double, epsrel : LibC::Double, ws : Gsl_integration_cquad_workspace*, result : LibC::Double*, abserr : LibC::Double*, nevals : LibC::SizeT*) : LibC::Int
 
+  fun gsl_integration_romberg_alloc(n : LibC::SizeT) : Gsl_integration_romberg_workspace*
+
+  struct Gsl_integration_romberg_workspace
+    n : LibC::SizeT
+    work1 : LibC::Double*
+    work2 : LibC::Double*
+  end
+
+  fun gsl_integration_romberg_free(w : Gsl_integration_romberg_workspace*)
+  fun gsl_integration_romberg(f : Gsl_function*, a : LibC::Double, b : LibC::Double, epsabs : LibC::Double, epsrel : LibC::Double, result : LibC::Double*, neval : LibC::SizeT*, w : Gsl_integration_romberg_workspace*) : LibC::Int
+
   struct Gsl_integration_fixed_type
     check : (LibC::SizeT, Gsl_integration_fixed_params* -> LibC::Int)
     init : (LibC::SizeT, LibC::Double*, LibC::Double*, Gsl_integration_fixed_params* -> LibC::Int)
@@ -3593,6 +3868,20 @@ lib LibGSL
   fun gsl_integration_fixed_nodes(w : Gsl_integration_fixed_workspace*) : LibC::Double*
   fun gsl_integration_fixed_weights(w : Gsl_integration_fixed_workspace*) : LibC::Double*
   fun gsl_integration_fixed(func : Gsl_function*, result : LibC::Double*, w : Gsl_integration_fixed_workspace*) : LibC::Int
+  fun gsl_integration_lebedev_alloc(n : LibC::SizeT) : Gsl_integration_lebedev_workspace*
+
+  struct Gsl_integration_lebedev_workspace
+    n : LibC::SizeT
+    weights : LibC::Double*
+    x : LibC::Double*
+    y : LibC::Double*
+    z : LibC::Double*
+    theta : LibC::Double*
+    phi : LibC::Double*
+  end
+
+  fun gsl_integration_lebedev_free(w : Gsl_integration_lebedev_workspace*)
+  fun gsl_integration_lebedev_n(w : Gsl_integration_lebedev_workspace*) : LibC::SizeT
 
   struct Gsl_interp_type
     name : LibC::Char*
@@ -3680,6 +3969,7 @@ lib LibGSL
   fun gsl_interp2d_eval_extrap(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
   fun gsl_interp2d_eval_e(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
   fun gsl_interp2d_eval_e_extrap(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
+  fun gsl_interp2d_eval_extrap_e(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
   fun gsl_interp2d_eval_deriv_x(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
   fun gsl_interp2d_eval_deriv_x_e(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
   fun gsl_interp2d_eval_deriv_y(interp : Gsl_interp2d*, xarr : LibC::Double*, yarr : LibC::Double*, zarr : LibC::Double*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
@@ -3699,14 +3989,18 @@ lib LibGSL
   end
   fun gsl_linalg_exponential_ss(a : Gsl_matrix*, e_a : Gsl_matrix*, mode : Gsl_mode_t) : LibC::Int
   fun gsl_linalg_householder_transform(v : Gsl_vector*) : LibC::Double
+  fun gsl_linalg_householder_transform2(alpha : LibC::Double*, v : Gsl_vector*) : LibC::Double
   fun gsl_linalg_complex_householder_transform(v : Gsl_vector_complex*) : Gsl_complex
   fun gsl_linalg_householder_hm(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_householder_mh(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_householder_hv(tau : LibC::Double, v : Gsl_vector*, w : Gsl_vector*) : LibC::Int
-  fun gsl_linalg_householder_hm1(tau : LibC::Double, a : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_householder_left(tau : LibC::Double, v : Gsl_vector*, a : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_householder_right(tau : LibC::Double, v : Gsl_vector*, a : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_householder_hm1(tau : LibC::Double, a : Gsl_vector*) : LibC::Int
   fun gsl_linalg_complex_householder_hm(tau : Gsl_complex, v : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_complex_householder_mh(tau : Gsl_complex, v : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_complex_householder_hv(tau : Gsl_complex, v : Gsl_vector_complex*, w : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_householder_left(tau : Gsl_complex, v : Gsl_vector_complex*, a : Gsl_matrix_complex*, work : Gsl_vector_complex*) : LibC::Int
   fun gsl_linalg_hessenberg_decomp(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
   fun gsl_linalg_hessenberg_unpack(h : Gsl_matrix*, tau : Gsl_vector*, u : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_hessenberg_unpack_accum(h : Gsl_matrix*, tau : Gsl_vector*, u : Gsl_matrix*) : LibC::Int
@@ -3723,32 +4017,63 @@ lib LibGSL
   fun gsl_linalg_LU_svx(lu : Gsl_matrix*, p : Gsl_permutation*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LU_refine(a : Gsl_matrix*, lu : Gsl_matrix*, p : Gsl_permutation*, b : Gsl_vector*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LU_invert(lu : Gsl_matrix*, p : Gsl_permutation*, inverse : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_LU_invx(lu : Gsl_matrix*, p : Gsl_permutation*) : LibC::Int
   fun gsl_linalg_LU_det(lu : Gsl_matrix*, signum : LibC::Int) : LibC::Double
   fun gsl_linalg_LU_lndet(lu : Gsl_matrix*) : LibC::Double
   fun gsl_linalg_LU_sgndet(lu : Gsl_matrix*, signum : LibC::Int) : LibC::Int
+  fun gsl_linalg_LU_band_decomp(m : LibC::SizeT, lb : LibC::SizeT, ub : LibC::SizeT, ab : Gsl_matrix*, piv : Gsl_vector_uint*) : LibC::Int
+  fun gsl_linalg_LU_band_solve(lb : LibC::SizeT, ub : LibC::SizeT, lub : Gsl_matrix*, piv : Gsl_vector_uint*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_LU_band_svx(lb : LibC::SizeT, ub : LibC::SizeT, lub : Gsl_matrix*, piv : Gsl_vector_uint*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_LU_band_unpack(m : LibC::SizeT, lb : LibC::SizeT, ub : LibC::SizeT, lub : Gsl_matrix*, piv : Gsl_vector_uint*, l : Gsl_matrix*, u : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_complex_LU_decomp(a : Gsl_matrix_complex*, p : Gsl_permutation*, signum : LibC::Int*) : LibC::Int
   fun gsl_linalg_complex_LU_solve(lu : Gsl_matrix_complex*, p : Gsl_permutation*, b : Gsl_vector_complex*, x : Gsl_vector_complex*) : LibC::Int
   fun gsl_linalg_complex_LU_svx(lu : Gsl_matrix_complex*, p : Gsl_permutation*, x : Gsl_vector_complex*) : LibC::Int
   fun gsl_linalg_complex_LU_refine(a : Gsl_matrix_complex*, lu : Gsl_matrix_complex*, p : Gsl_permutation*, b : Gsl_vector_complex*, x : Gsl_vector_complex*, work : Gsl_vector_complex*) : LibC::Int
   fun gsl_linalg_complex_LU_invert(lu : Gsl_matrix_complex*, p : Gsl_permutation*, inverse : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_LU_invx(lu : Gsl_matrix_complex*, p : Gsl_permutation*) : LibC::Int
   fun gsl_linalg_complex_LU_det(lu : Gsl_matrix_complex*, signum : LibC::Int) : Gsl_complex
   fun gsl_linalg_complex_LU_lndet(lu : Gsl_matrix_complex*) : LibC::Double
   fun gsl_linalg_complex_LU_sgndet(lu : Gsl_matrix_complex*, signum : LibC::Int) : Gsl_complex
   fun gsl_linalg_QR_decomp(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_decomp_old(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_decomp_r(a : Gsl_matrix*, t : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QR_solve(qr : Gsl_matrix*, tau : Gsl_vector*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_solve_r(qr : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_svx(qr : Gsl_matrix*, tau : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_lssolve(qr : Gsl_matrix*, tau : Gsl_vector*, b : Gsl_vector*, x : Gsl_vector*, residual : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_lssolve_r(qr : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_lssolvem_r(qr : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_matrix*, x : Gsl_matrix*, work : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QR_QRsolve(q : Gsl_matrix*, r : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_Rsolve(qr : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_Rsvx(qr : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_update(q : Gsl_matrix*, r : Gsl_matrix*, w : Gsl_vector*, v : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_QTvec(qr : Gsl_matrix*, tau : Gsl_vector*, v : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_QTvec_r(qr : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_Qvec(qr : Gsl_matrix*, tau : Gsl_vector*, v : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QR_QTmat(qr : Gsl_matrix*, tau : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_QTmat_r(qr : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_matrix*, work : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QR_matQ(qr : Gsl_matrix*, tau : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QR_unpack(qr : Gsl_matrix*, tau : Gsl_vector*, q : Gsl_matrix*, r : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_unpack_r(qr : Gsl_matrix*, t : Gsl_matrix*, q : Gsl_matrix*, r : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_R_solve(r : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_R_svx(r : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_rcond(qr : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_complex_QR_decomp(a : Gsl_matrix_complex*, tau : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_decomp_r(a : Gsl_matrix_complex*, t : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_solve(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, b : Gsl_vector_complex*, x : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_solve_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, b : Gsl_vector_complex*, x : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_svx(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, x : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_lssolve(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, b : Gsl_vector_complex*, x : Gsl_vector_complex*, residual : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_lssolve_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, b : Gsl_vector_complex*, x : Gsl_vector_complex*, work : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_lssolvem_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, b : Gsl_matrix_complex*, x : Gsl_matrix_complex*, work : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_QHvec(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, v : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_QHvec_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, b : Gsl_vector_complex*, work : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_QHmat_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, b : Gsl_matrix_complex*, work : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_Qvec(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, v : Gsl_vector_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_unpack(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, q : Gsl_matrix_complex*, r : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_QR_unpack_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, q : Gsl_matrix_complex*, r : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_QR_band_decomp_L2(m : LibC::SizeT, p : LibC::SizeT, q : LibC::SizeT, ab : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_band_unpack_L2(p : LibC::SizeT, q : LibC::SizeT, qrb : Gsl_matrix*, tau : Gsl_vector*, q : Gsl_matrix*, r : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QRPT_decomp(a : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, signum : LibC::Int*, norm : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QRPT_decomp2(a : Gsl_matrix*, q : Gsl_matrix*, r : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, signum : LibC::Int*, norm : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QRPT_solve(qr : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
@@ -3761,6 +4086,21 @@ lib LibGSL
   fun gsl_linalg_QRPT_update(q : Gsl_matrix*, r : Gsl_matrix*, p : Gsl_permutation*, u : Gsl_vector*, v : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QRPT_rank(qr : Gsl_matrix*, tol : LibC::Double) : LibC::SizeT
   fun gsl_linalg_QRPT_rcond(qr : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UD_decomp(u : Gsl_matrix*, d : Gsl_vector*, y : Gsl_matrix*, t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_UD_lssolve(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UD_lssvx(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UD_QTvec(y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UR_decomp(s : Gsl_matrix*, a : Gsl_matrix*, t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_UR_lssolve(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UR_lssvx(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UR_QTvec(y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UU_decomp(u : Gsl_matrix*, s : Gsl_matrix*, t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_UU_lssolve(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UU_lssvx(r : Gsl_matrix*, y : Gsl_matrix*, t : Gsl_matrix*, x : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UU_QTvec(y : Gsl_matrix*, t : Gsl_matrix*, b : Gsl_vector*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QR_UZ_decomp(s : Gsl_matrix*, a : Gsl_matrix*, t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QL_decomp(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_QL_unpack(ql : Gsl_matrix*, tau : Gsl_vector*, q : Gsl_matrix*, l : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_COD_decomp(a : Gsl_matrix*, tau_q : Gsl_vector*, tau_z : Gsl_vector*, p : Gsl_permutation*, rank : LibC::SizeT*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_COD_decomp_e(a : Gsl_matrix*, tau_q : Gsl_vector*, tau_z : Gsl_vector*, p : Gsl_permutation*, tol : LibC::Double, rank : LibC::SizeT*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_COD_lssolve(qrzt : Gsl_matrix*, tau_q : Gsl_vector*, tau_z : Gsl_vector*, perm : Gsl_permutation*, rank : LibC::SizeT, b : Gsl_vector*, x : Gsl_vector*, residual : Gsl_vector*) : LibC::Int
@@ -3768,6 +4108,8 @@ lib LibGSL
   fun gsl_linalg_COD_unpack(qrzt : Gsl_matrix*, tau_q : Gsl_vector*, tau_z : Gsl_vector*, rank : LibC::SizeT, q : Gsl_matrix*, r : Gsl_matrix*, z : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_COD_matZ(qrzt : Gsl_matrix*, tau_z : Gsl_vector*, rank : LibC::SizeT, a : Gsl_matrix*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LQ_decomp(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_LQ_lssolve(lq : Gsl_matrix*, tau : Gsl_vector*, b : Gsl_vector*, x : Gsl_vector*, residual : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_LQ_QTvec(lq : Gsl_matrix*, tau : Gsl_vector*, v : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LQ_solve_T(lq : Gsl_matrix*, tau : Gsl_vector*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LQ_svx_T(lq : Gsl_matrix*, tau : Gsl_vector*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_LQ_lssolve_T(lq : Gsl_matrix*, tau : Gsl_vector*, b : Gsl_vector*, x : Gsl_vector*, residual : Gsl_vector*) : LibC::Int
@@ -3790,7 +4132,9 @@ lib LibGSL
   fun gsl_linalg_cholesky_decomp(a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_cholesky_decomp1(a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_cholesky_solve(cholesky : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_solve_mat(cholesky : Gsl_matrix*, b : Gsl_matrix*, x : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_cholesky_svx(cholesky : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_svx_mat(cholesky : Gsl_matrix*, x : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_cholesky_invert(cholesky : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_cholesky_decomp_unit(a : Gsl_matrix*, d : Gsl_vector*) : LibC::Int
   fun gsl_linalg_cholesky_scale(a : Gsl_matrix*, s : Gsl_vector*) : LibC::Int
@@ -3816,6 +4160,25 @@ lib LibGSL
   fun gsl_linalg_mcholesky_svx(ldlt : Gsl_matrix*, p : Gsl_permutation*, x : Gsl_vector*) : LibC::Int
   fun gsl_linalg_mcholesky_rcond(ldlt : Gsl_matrix*, p : Gsl_permutation*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_mcholesky_invert(ldlt : Gsl_matrix*, p : Gsl_permutation*, ainv : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_decomp(a : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_solve(llt : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_band_svx(llt : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_band_solvem(llt : Gsl_matrix*, b : Gsl_matrix*, x : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_svxm(llt : Gsl_matrix*, x : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_invert(llt : Gsl_matrix*, ainv : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_unpack(llt : Gsl_matrix*, l : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_cholesky_band_scale(a : Gsl_matrix*, s : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_band_scale_apply(a : Gsl_matrix*, s : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_cholesky_band_rcond(llt : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_decomp(a : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_ldlt_solve(ldlt : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_svx(ldlt : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_rcond(ldlt : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_band_decomp(a : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_ldlt_band_solve(ldlt : Gsl_matrix*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_band_svx(ldlt : Gsl_matrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_band_unpack(ldlt : Gsl_matrix*, l : Gsl_matrix*, d : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_ldlt_band_rcond(ldlt : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_symmtd_decomp(a : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
   fun gsl_linalg_symmtd_unpack(a : Gsl_matrix*, tau : Gsl_vector*, q : Gsl_matrix*, diag : Gsl_vector*, subdiag : Gsl_vector*) : LibC::Int
   fun gsl_linalg_symmtd_unpack_T(a : Gsl_matrix*, diag : Gsl_vector*, subdiag : Gsl_vector*) : LibC::Int
@@ -3835,6 +4198,7 @@ lib LibGSL
   fun gsl_linalg_balance_matrix(a : Gsl_matrix*, d : Gsl_vector*) : LibC::Int
   fun gsl_linalg_balance_accum(a : Gsl_matrix*, d : Gsl_vector*) : LibC::Int
   fun gsl_linalg_balance_columns(a : Gsl_matrix*, d : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_tri_rcond(uplo : CBLAS_UPLO_t, a : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_tri_upper_rcond(a : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_tri_lower_rcond(a : Gsl_matrix*, rcond : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_linalg_invnorm1(n : LibC::SizeT, ainvx : (CBLAS_TRANSPOSE_t, Gsl_vector*, Void* -> LibC::Int), params : Void*, ainvnorm : LibC::Double*, work : Gsl_vector*) : LibC::Int
@@ -3842,6 +4206,12 @@ lib LibGSL
   fun gsl_linalg_tri_lower_invert(t : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_tri_upper_unit_invert(t : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_tri_lower_unit_invert(t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_tri_invert(uplo : CBLAS_UPLO_t, diag : CBLAS_DIAG_t, t : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_complex_tri_invert(uplo : CBLAS_UPLO_t, diag : CBLAS_DIAG_t, t : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_tri_LTL(l : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_tri_UL(lu : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_complex_tri_LHL(l : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_linalg_complex_tri_UL(lu : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_givens(a : LibC::Double, b : LibC::Double, c : LibC::Double*, s : LibC::Double*)
   fun gsl_linalg_givens_gv(v : Gsl_vector*, i : LibC::SizeT, j : LibC::SizeT, c : LibC::Double, s : LibC::Double)
   fun gsl_message(message : LibC::Char*, file : LibC::Char*, line : LibC::Int, mask : LibC::UInt)
@@ -4061,6 +4431,8 @@ lib LibGSL
   fun gsl_multifit_linear_wgenform2(lqr : Gsl_matrix*, ltau : Gsl_vector*, x : Gsl_matrix*, w : Gsl_vector*, y : Gsl_vector*, cs : Gsl_vector*, m : Gsl_matrix*, c : Gsl_vector*, work : Gsl_multifit_linear_workspace*) : LibC::Int
   fun gsl_multifit_linear_lreg(smin : LibC::Double, smax : LibC::Double, reg_param : Gsl_vector*) : LibC::Int
   fun gsl_multifit_linear_lcurve(y : Gsl_vector*, reg_param : Gsl_vector*, rho : Gsl_vector*, eta : Gsl_vector*, work : Gsl_multifit_linear_workspace*) : LibC::Int
+  fun gsl_multifit_linear_lcurvature(y : Gsl_vector*, reg_param : Gsl_vector*, rho : Gsl_vector*, eta : Gsl_vector*, kappa : Gsl_vector*, work : Gsl_multifit_linear_workspace*) : LibC::Int
+  fun gsl_multifit_linear_lcurvature_menger(rho : Gsl_vector*, eta : Gsl_vector*, kappa : Gsl_vector*) : LibC::Int
   fun gsl_multifit_linear_lcorner(rho : Gsl_vector*, eta : Gsl_vector*, idx : LibC::SizeT*) : LibC::Int
   fun gsl_multifit_linear_lcorner2(reg_param : Gsl_vector*, eta : Gsl_vector*, idx : LibC::SizeT*) : LibC::Int
   fun gsl_multifit_linear_Lk(p : LibC::SizeT, k : LibC::SizeT, l : Gsl_matrix*) : LibC::Int
@@ -4362,6 +4734,8 @@ lib LibGSL
     solve : (LibC::Double, Gsl_vector*, LibC::Double*, LibC::Double*, Void* -> LibC::Int)
     rcond : (LibC::Double*, Void* -> LibC::Int)
     lcurve : (Gsl_vector*, Gsl_vector*, Gsl_vector*, Void* -> LibC::Int)
+    matrix_ptr : (Void* -> Gsl_matrix*)
+    rhs_ptr : (Void* -> Gsl_vector*)
     free : (Void* -> Void)
   end
 
@@ -4387,6 +4761,8 @@ lib LibGSL
   fun gsl_multilarge_linear_stdform2(lqr : Gsl_matrix*, ltau : Gsl_vector*, x : Gsl_matrix*, y : Gsl_vector*, xs : Gsl_matrix*, ys : Gsl_vector*, work : Gsl_multilarge_linear_workspace*) : LibC::Int
   fun gsl_multilarge_linear_genform1(l : Gsl_vector*, cs : Gsl_vector*, c : Gsl_vector*, work : Gsl_multilarge_linear_workspace*) : LibC::Int
   fun gsl_multilarge_linear_genform2(lqr : Gsl_matrix*, ltau : Gsl_vector*, cs : Gsl_vector*, c : Gsl_vector*, work : Gsl_multilarge_linear_workspace*) : LibC::Int
+  fun gsl_multilarge_linear_matrix_ptr(work : Gsl_multilarge_linear_workspace*) : Gsl_matrix*
+  fun gsl_multilarge_linear_rhs_ptr(work : Gsl_multilarge_linear_workspace*) : Gsl_vector*
   fun gsl_multilarge_nlinear_alloc(t : Gsl_multilarge_nlinear_type*, params : Gsl_multilarge_nlinear_parameters*, n : LibC::SizeT, p : LibC::SizeT) : Gsl_multilarge_nlinear_workspace*
 
   struct Gsl_multilarge_nlinear_type
@@ -5034,6 +5410,9 @@ lib LibGSL
   fun gsl_ran_multivariate_gaussian_pdf(x : Gsl_vector*, mu : Gsl_vector*, l : Gsl_matrix*, result : LibC::Double*, work : Gsl_vector*) : LibC::Int
   fun gsl_ran_multivariate_gaussian_mean(x : Gsl_matrix*, mu_hat : Gsl_vector*) : LibC::Int
   fun gsl_ran_multivariate_gaussian_vcov(x : Gsl_matrix*, sigma_hat : Gsl_matrix*) : LibC::Int
+  fun gsl_ran_wishart(r : Gsl_rng*, df : LibC::Double, l : Gsl_matrix*, result : Gsl_matrix*, work : Gsl_matrix*) : LibC::Int
+  fun gsl_ran_wishart_log_pdf(x : Gsl_matrix*, l_x : Gsl_matrix*, df : LibC::Double, l : Gsl_matrix*, result : LibC::Double*, work : Gsl_matrix*) : LibC::Int
+  fun gsl_ran_wishart_pdf(x : Gsl_matrix*, l_x : Gsl_matrix*, df : LibC::Double, l : Gsl_matrix*, result : LibC::Double*, work : Gsl_matrix*) : LibC::Int
   fun gsl_ran_landau(r : Gsl_rng*) : LibC::Double
   fun gsl_ran_landau_pdf(x : LibC::Double) : LibC::Double
   fun gsl_ran_geometric(r : Gsl_rng*, p : LibC::Double) : LibC::UInt
@@ -5523,24 +5902,26 @@ lib LibGSL
   fun gsl_sf_gegenpoly_array(nmax : LibC::Int, lambda : LibC::Double, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
   fun gsl_sf_hermite_prob_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_prob(n : LibC::Int, x : LibC::Double) : LibC::Double
-  fun gsl_sf_hermite_prob_der_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_hermite_prob_der(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
-  fun gsl_sf_hermite_phys_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_hermite_phys(n : LibC::Int, x : LibC::Double) : LibC::Double
-  fun gsl_sf_hermite_phys_der_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_hermite_phys_der(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_prob_deriv_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_prob_deriv(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite(n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_deriv_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_deriv(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
   fun gsl_sf_hermite_func_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_func(n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_func_fast_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_func_fast(n : LibC::Int, x : LibC::Double) : LibC::Double
   fun gsl_sf_hermite_prob_array(nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_hermite_prob_array_der(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_hermite_prob_der_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_prob_array_deriv(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_prob_deriv_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
   fun gsl_sf_hermite_prob_series_e(n : LibC::Int, x : LibC::Double, a : LibC::Double*, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_prob_series(n : LibC::Int, x : LibC::Double, a : LibC::Double*) : LibC::Double
-  fun gsl_sf_hermite_phys_array(nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_hermite_phys_array_der(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_hermite_phys_der_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_hermite_phys_series_e(n : LibC::Int, x : LibC::Double, a : LibC::Double*, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_hermite_phys_series(n : LibC::Int, x : LibC::Double, a : LibC::Double*) : LibC::Double
+  fun gsl_sf_hermite_array(nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_array_deriv(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_deriv_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_series_e(n : LibC::Int, x : LibC::Double, a : LibC::Double*, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_series(n : LibC::Int, x : LibC::Double, a : LibC::Double*) : LibC::Double
   fun gsl_sf_hermite_func_array(nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
   fun gsl_sf_hermite_func_series_e(n : LibC::Int, x : LibC::Double, a : LibC::Double*, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_func_series(n : LibC::Int, x : LibC::Double, a : LibC::Double*) : LibC::Double
@@ -5548,10 +5929,25 @@ lib LibGSL
   fun gsl_sf_hermite_func_der(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
   fun gsl_sf_hermite_prob_zero_e(n : LibC::Int, s : LibC::Int, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_prob_zero(n : LibC::Int, s : LibC::Int) : LibC::Double
-  fun gsl_sf_hermite_phys_zero_e(n : LibC::Int, s : LibC::Int, result : Gsl_sf_result*) : LibC::Int
-  fun gsl_sf_hermite_phys_zero(n : LibC::Int, s : LibC::Int) : LibC::Double
+  fun gsl_sf_hermite_zero_e(n : LibC::Int, s : LibC::Int, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_zero(n : LibC::Int, s : LibC::Int) : LibC::Double
   fun gsl_sf_hermite_func_zero_e(n : LibC::Int, s : LibC::Int, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hermite_func_zero(n : LibC::Int, s : LibC::Int) : LibC::Double
+  fun gsl_sf_hermite_phys_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_phys(n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_phys_der_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_phys_der(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_hermite_phys_array(nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_phys_series_e(n : LibC::Int, x : LibC::Double, a : LibC::Double*, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_phys_series(n : LibC::Int, x : LibC::Double, a : LibC::Double*) : LibC::Double
+  fun gsl_sf_hermite_phys_array_der(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_phys_der_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_phys_zero_e(n : LibC::Int, s : LibC::Int, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_phys_zero(n : LibC::Int, s : LibC::Int) : LibC::Double
+  fun gsl_sf_hermite_prob_array_der(m : LibC::Int, nmax : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_prob_der_array(mmax : LibC::Int, n : LibC::Int, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_hermite_prob_der_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_hermite_prob_der(m : LibC::Int, n : LibC::Int, x : LibC::Double) : LibC::Double
   fun gsl_sf_hyperg_0F1_e(c : LibC::Double, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_hyperg_0F1(c : LibC::Double, x : LibC::Double) : LibC::Double
   fun gsl_sf_hyperg_1F1_int_e(m : LibC::Int, n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
@@ -5630,25 +6026,33 @@ lib LibGSL
   fun gsl_sf_legendre_H3d_e(l : LibC::Int, lambda : LibC::Double, eta : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_legendre_H3d(l : LibC::Int, lambda : LibC::Double, eta : LibC::Double) : LibC::Double
   fun gsl_sf_legendre_H3d_array(lmax : LibC::Int, lambda : LibC::Double, eta : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_precompute(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, flags : LibC::SizeT, output_array : LibC::Double*) : LibC::Int
   enum Gsl_sf_legendre_t
     GSL_SF_LEGENDRE_SCHMIDT = 0
     GSL_SF_LEGENDRE_SPHARM  = 1
     GSL_SF_LEGENDRE_FULL    = 2
+    GSL_SF_LEGENDRE_FOURPI  = 4
     GSL_SF_LEGENDRE_NONE    = 3
   end
-  fun gsl_sf_legendre_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv_alt_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv_alt_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv2_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv2_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv2_alt_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
-  fun gsl_sf_legendre_deriv2_alt_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
   fun gsl_sf_legendre_array_n(lmax : LibC::SizeT) : LibC::SizeT
-  fun gsl_sf_legendre_array_index(l : LibC::SizeT, m : LibC::SizeT) : LibC::SizeT
+  fun gsl_sf_legendre_arrayx(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_alt_arrayx(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_arrayx(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_alt_arrayx(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_arrayx(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_alt_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_alt_array(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
   fun gsl_sf_legendre_nlm(lmax : LibC::SizeT) : LibC::SizeT
+  fun gsl_sf_legendre_array_index(l : LibC::SizeT, m : LibC::SizeT) : LibC::SizeT
+  fun gsl_sf_legendre_array_index_m(l : LibC::SizeT, m : LibC::SizeT, lmax : LibC::SizeT) : LibC::SizeT
+  fun gsl_sf_legendre_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv_alt_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
+  fun gsl_sf_legendre_deriv2_alt_array_e(norm : Gsl_sf_legendre_t, lmax : LibC::SizeT, x : LibC::Double, csphase : LibC::Double, result_array : LibC::Double*, result_deriv_array : LibC::Double*, result_deriv2_array : LibC::Double*) : LibC::Int
   fun gsl_sf_log_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_log(x : LibC::Double) : LibC::Double
   fun gsl_sf_log_abs_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
@@ -5715,6 +6119,10 @@ lib LibGSL
   fun gsl_sf_psi_1(x : LibC::Double) : LibC::Double
   fun gsl_sf_psi_n_e(n : LibC::Int, x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_psi_n(n : LibC::Int, x : LibC::Double) : LibC::Double
+  fun gsl_sf_sin_pi_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_sin_pi(x : LibC::Double) : LibC::Double
+  fun gsl_sf_cos_pi_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
+  fun gsl_sf_cos_pi(x : LibC::Double) : LibC::Double
   fun gsl_sf_synchrotron_1_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
   fun gsl_sf_synchrotron_1(x : LibC::Double) : LibC::Double
   fun gsl_sf_synchrotron_2_e(x : LibC::Double, result : Gsl_sf_result*) : LibC::Int
@@ -5942,50 +6350,70 @@ lib LibGSL
   fun gsl_sort_vector_uchar_largest_index(p : LibC::SizeT*, k : LibC::SizeT, v : Gsl_vector_uchar*) : LibC::Int
   fun gsl_spmatrix_alloc(n1 : LibC::SizeT, n2 : LibC::SizeT) : Gsl_spmatrix*
 
+  struct Gsl_spmatrix_pool_node
+    next : Gsl_spmatrix_pool_node*
+    block_ptr : Void*
+    free_slot : UInt8*
+  end
+
+  type Gsl_spmatrix_pool = Gsl_spmatrix_pool_node
+
+  union Gsl_spmatrix_work
+    work_void : Void*
+    work_int : LibC::Int*
+    work_atomic : LibC::Double*
+  end
+
   struct Gsl_spmatrix
     size1 : LibC::SizeT
     size2 : LibC::SizeT
-    i : LibC::SizeT*
+    i : LibC::Int*
     data : LibC::Double*
-    p : LibC::SizeT*
+    p : LibC::Int*
     nzmax : LibC::SizeT
     nz : LibC::SizeT
-    tree_data : Gsl_spmatrix_tree*
-    work : Void*
-    sptype : LibC::SizeT
+    tree : Gsl_bst_workspace*
+    pool : Gsl_spmatrix_pool*
+    node_size : LibC::SizeT
+    work : Gsl_spmatrix_work
+    sptype : LibC::Int
+    spflags : LibC::SizeT
   end
 
-  struct Gsl_spmatrix_tree
-    tree : Void*
-    node_array : Void*
-    n : LibC::SizeT
-  end
-
-  fun gsl_spmatrix_alloc_nzmax(n1 : LibC::SizeT, n2 : LibC::SizeT, nzmax : LibC::SizeT, flags : LibC::SizeT) : Gsl_spmatrix*
+  fun gsl_spmatrix_alloc_nzmax(n1 : LibC::SizeT, n2 : LibC::SizeT, nzmax : LibC::SizeT, sptype : LibC::Int) : Gsl_spmatrix*
   fun gsl_spmatrix_free(m : Gsl_spmatrix*)
   fun gsl_spmatrix_realloc(nzmax : LibC::SizeT, m : Gsl_spmatrix*) : LibC::Int
-  fun gsl_spmatrix_set_zero(m : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_nnz(m : Gsl_spmatrix*) : LibC::SizeT
-  fun gsl_spmatrix_compare_idx(ia : LibC::SizeT, ja : LibC::SizeT, ib : LibC::SizeT, jb : LibC::SizeT) : LibC::Int
+  fun gsl_spmatrix_type(m : Gsl_spmatrix*) : LibC::Char*
+  fun gsl_spmatrix_set_zero(m : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_tree_rebuild(m : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_csc(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_csr(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_compress(src : Gsl_spmatrix*, sptype : LibC::Int) : Gsl_spmatrix*
+  fun gsl_spmatrix_compcol(src : Gsl_spmatrix*) : Gsl_spmatrix*
+  fun gsl_spmatrix_ccs(src : Gsl_spmatrix*) : Gsl_spmatrix*
+  fun gsl_spmatrix_crs(src : Gsl_spmatrix*) : Gsl_spmatrix*
   fun gsl_spmatrix_memcpy(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : LibC::Int
-  fun gsl_spmatrix_get(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Double
-  fun gsl_spmatrix_set(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT, x : LibC::Double) : LibC::Int
-  fun gsl_spmatrix_ptr(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Double*
-  fun gsl_spmatrix_compcol(t : Gsl_spmatrix*) : Gsl_spmatrix*
-  fun gsl_spmatrix_ccs(t : Gsl_spmatrix*) : Gsl_spmatrix*
-  fun gsl_spmatrix_crs(t : Gsl_spmatrix*) : Gsl_spmatrix*
-  fun gsl_spmatrix_cumsum(n : LibC::SizeT, c : LibC::SizeT*)
   fun gsl_spmatrix_fprintf(stream : File*, m : Gsl_spmatrix*, format : LibC::Char*) : LibC::Int
   fun gsl_spmatrix_fscanf(stream : File*) : Gsl_spmatrix*
   fun gsl_spmatrix_fwrite(stream : File*, m : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_fread(stream : File*, m : Gsl_spmatrix*) : LibC::Int
-  fun gsl_spmatrix_scale(m : Gsl_spmatrix*, x : LibC::Double) : LibC::Int
+  fun gsl_spmatrix_get(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Double
+  fun gsl_spmatrix_set(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT, x : LibC::Double) : LibC::Int
+  fun gsl_spmatrix_ptr(m : Gsl_spmatrix*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Double*
   fun gsl_spmatrix_minmax(m : Gsl_spmatrix*, min_out : LibC::Double*, max_out : LibC::Double*) : LibC::Int
+  fun gsl_spmatrix_min_index(m : Gsl_spmatrix*, imin_out : LibC::SizeT*, jmin_out : LibC::SizeT*) : LibC::Int
+  fun gsl_spmatrix_scale(m : Gsl_spmatrix*, x : LibC::Double) : LibC::Int
+  fun gsl_spmatrix_scale_columns(m : Gsl_spmatrix*, x : Gsl_vector*) : LibC::Int
+  fun gsl_spmatrix_scale_rows(m : Gsl_spmatrix*, x : Gsl_vector*) : LibC::Int
   fun gsl_spmatrix_add(c : Gsl_spmatrix*, a : Gsl_spmatrix*, b : Gsl_spmatrix*) : LibC::Int
-  fun gsl_spmatrix_d2sp(s : Gsl_spmatrix*, a : Gsl_matrix*) : LibC::Int
+  fun gsl_spmatrix_dense_add(a : Gsl_matrix*, b : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_dense_sub(a : Gsl_matrix*, b : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_d2sp(t : Gsl_spmatrix*, a : Gsl_matrix*) : LibC::Int
   fun gsl_spmatrix_sp2d(a : Gsl_matrix*, s : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_add_to_dense(a : Gsl_matrix*, b : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_equal(a : Gsl_spmatrix*, b : Gsl_spmatrix*) : LibC::Int
+  fun gsl_spmatrix_norm1(a : Gsl_spmatrix*) : LibC::Double
   fun gsl_spmatrix_transpose(m : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_transpose2(m : Gsl_spmatrix*) : LibC::Int
   fun gsl_spmatrix_transpose_memcpy(dest : Gsl_spmatrix*, src : Gsl_spmatrix*) : LibC::Int
@@ -6026,6 +6454,8 @@ lib LibGSL
   fun gsl_spline2d_free(interp : Gsl_spline2d*)
   fun gsl_spline2d_eval(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
   fun gsl_spline2d_eval_e(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
+  fun gsl_spline2d_eval_extrap(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
+  fun gsl_spline2d_eval_extrap_e(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
   fun gsl_spline2d_eval_deriv_x(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
   fun gsl_spline2d_eval_deriv_x_e(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*, z : LibC::Double*) : LibC::Int
   fun gsl_spline2d_eval_deriv_y(interp : Gsl_spline2d*, x : LibC::Double, y : LibC::Double, xa : Gsl_interp_accel*, ya : Gsl_interp_accel*) : LibC::Double
@@ -6090,8 +6520,18 @@ lib LibGSL
   fun gsl_stats_char_max_index(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_char_min_index(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_char_minmax_index(min_index : LibC::SizeT*, max_index : LibC::SizeT*, data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT)
+  fun gsl_stats_char_select(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, k : LibC::SizeT) : LibC::Char
   fun gsl_stats_char_median_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_char_median(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_char_quantile_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, f : LibC::Double) : LibC::Double
+  fun gsl_stats_char_trmean_from_sorted_data(trim : LibC::Double, sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_char_gastwirth_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_char_mad0(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_char_mad(data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_char_Sn0_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Char*) : LibC::Char
+  fun gsl_stats_char_Sn_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Char*) : LibC::Double
+  fun gsl_stats_char_Qn0_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Char*, work_int : LibC::Int*) : LibC::Char
+  fun gsl_stats_char_Qn_from_sorted_data(sorted_data : LibC::Char*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Char*, work_int : LibC::Int*) : LibC::Double
   fun gsl_stats_mean(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_variance(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_sd(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
@@ -6136,8 +6576,18 @@ lib LibGSL
   fun gsl_stats_max_index(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_min_index(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_minmax_index(min_index : LibC::SizeT*, max_index : LibC::SizeT*, data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT)
+  fun gsl_stats_select(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, k : LibC::SizeT) : LibC::Double
   fun gsl_stats_median_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_median(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_quantile_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, f : LibC::Double) : LibC::Double
+  fun gsl_stats_trmean_from_sorted_data(trim : LibC::Double, sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_gastwirth_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_mad0(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_mad(data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_Sn0_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_Sn_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_Qn0_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*, work_int : LibC::Int*) : LibC::Double
+  fun gsl_stats_Qn_from_sorted_data(sorted_data : LibC::Double*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*, work_int : LibC::Int*) : LibC::Double
   fun gsl_stats_float_mean(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_float_variance(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_float_sd(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
@@ -6182,8 +6632,18 @@ lib LibGSL
   fun gsl_stats_float_max_index(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_float_min_index(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::SizeT
   fun gsl_stats_float_minmax_index(min_index : LibC::SizeT*, max_index : LibC::SizeT*, data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT)
+  fun gsl_stats_float_select(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, k : LibC::SizeT) : LibC::Float
   fun gsl_stats_float_median_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_float_median(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   fun gsl_stats_float_quantile_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, f : LibC::Double) : LibC::Double
+  fun gsl_stats_float_trmean_from_sorted_data(trim : LibC::Double, sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_float_gastwirth_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
+  fun gsl_stats_float_mad0(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_float_mad(data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Double*) : LibC::Double
+  fun gsl_stats_float_Sn0_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Float*) : LibC::Float
+  fun gsl_stats_float_Sn_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Float*) : LibC::Double
+  fun gsl_stats_float_Qn0_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Float*, work_int : LibC::Int*) : LibC::Float
+  fun gsl_stats_float_Qn_from_sorted_data(sorted_data : LibC::Float*, stride : LibC::SizeT, n : LibC::SizeT, work : LibC::Float*, work_int : LibC::Int*) : LibC::Double
   # fun gsl_stats_long_double_mean(data : LibC::LongDouble*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   # fun gsl_stats_long_double_variance(data : LibC::LongDouble*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
   # fun gsl_stats_long_double_sd(data : LibC::LongDouble*, stride : LibC::SizeT, n : LibC::SizeT) : LibC::Double
@@ -6543,6 +7003,21 @@ lib LibGSL
   $gsl_prec_root4_eps : LibC::Double*
   $gsl_prec_root5_eps : LibC::Double*
   $gsl_prec_root6_eps : LibC::Double*
+  $gsl_bst_avl : Gsl_bst_type*
+  $gsl_bst_rb : Gsl_bst_type*
+  $gsl_movstat_accum_mad : Gsl_movstat_accum*
+  $gsl_movstat_accum_max : Gsl_movstat_accum*
+  $gsl_movstat_accum_mean : Gsl_movstat_accum*
+  $gsl_movstat_accum_median : Gsl_movstat_accum*
+  $gsl_movstat_accum_min : Gsl_movstat_accum*
+  $gsl_movstat_accum_minmax : Gsl_movstat_accum*
+  $gsl_movstat_accum_sd : Gsl_movstat_accum*
+  $gsl_movstat_accum_Sn : Gsl_movstat_accum*
+  $gsl_movstat_accum_sum : Gsl_movstat_accum*
+  $gsl_movstat_accum_Qn : Gsl_movstat_accum*
+  $gsl_movstat_accum_qqr : Gsl_movstat_accum*
+  $gsl_movstat_accum_userfunc : Gsl_movstat_accum*
+  $gsl_movstat_accum_variance : Gsl_movstat_accum*
   $gsl_integration_fixed_legendre : Gsl_integration_fixed_type*
   $gsl_integration_fixed_chebyshev : Gsl_integration_fixed_type*
   $gsl_integration_fixed_gegenbauer : Gsl_integration_fixed_type*
@@ -6646,6 +7121,7 @@ lib LibGSL
   $gsl_multifit_nlinear_scale_marquardt : Gsl_multifit_nlinear_scale*
   $gsl_multifit_nlinear_scale_more : Gsl_multifit_nlinear_scale*
   $gsl_multifit_nlinear_solver_cholesky : Gsl_multifit_nlinear_solver*
+  $gsl_multifit_nlinear_solver_mcholesky : Gsl_multifit_nlinear_solver*
   $gsl_multifit_nlinear_solver_qr : Gsl_multifit_nlinear_solver*
   $gsl_multifit_nlinear_solver_svd : Gsl_multifit_nlinear_solver*
   $gsl_multifit_fdfsolver_lmsder : Gsl_multifit_fdfsolver_type*
@@ -6664,6 +7140,7 @@ lib LibGSL
   $gsl_multilarge_nlinear_scale_marquardt : Gsl_multilarge_nlinear_scale*
   $gsl_multilarge_nlinear_scale_more : Gsl_multilarge_nlinear_scale*
   $gsl_multilarge_nlinear_solver_cholesky : Gsl_multilarge_nlinear_solver*
+  $gsl_multilarge_nlinear_solver_mcholesky : Gsl_multilarge_nlinear_solver*
   $gsl_multilarge_nlinear_solver_none : Gsl_multilarge_nlinear_solver*
   $gsl_multimin_fdfminimizer_steepest_descent : Gsl_multimin_fdfminimizer_type*
   $gsl_multimin_fdfminimizer_conjugate_pr : Gsl_multimin_fdfminimizer_type*
