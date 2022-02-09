@@ -12,7 +12,7 @@ module GSL
     getter reason : String
     getter file : String
     getter line : Int32
-    getter gsl_errno : Int32
+    getter gsl_errno : LibGSL::Code
 
     def initialize(@reason, @file, @line, @gsl_errno)
       super("#{reason} at #{file}: #{line} (code is #{gsl_errno})")
@@ -21,7 +21,7 @@ module GSL
 
   private def self.update_error_handler
     handler = ->(reason : LibC::Char*, file : LibC::Char*, line : LibC::Int, gsl_errno : LibC::Int) : Nil do
-      raise GSL::Exception.new(String.new(reason), String.new(file), line, gsl_errno)
+      raise GSL::Exception.new(String.new(reason), String.new(file), line, LibGSL::Code.new(gsl_errno))
     end
     LibGSL.gsl_set_error_handler(handler)
   end
