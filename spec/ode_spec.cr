@@ -73,7 +73,7 @@ describe GSL::ODE do
       end
     end
   end
-  describe "integrates system with jacobian" do
+  pending "integrates system with jacobian" do
     it "with given time values" do
       sys = TestODEJacobian.new(10.0)
       ode = GSL::ODE::Driver.new(sys, 1e-2, epsabs: 1e-9, algorithm: GSL::ODE::Algorithm::MSBDF)
