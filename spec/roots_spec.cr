@@ -35,9 +35,11 @@ describe GSL do
       xm.should be_close(Math.sqrt(5), 1e-9)
     end
 
-    pending "raises when bracketing isn't possible" do
-      GSL::Roots.find_root(0, Math::PI*2) do |x|
-        Math.cos(x) - 0.5
+    it "raises when bracketing isn't possible" do
+      expect_raises(GSL::Exception) do
+        GSL::Roots.find_root(0, Math::PI*2) do |x|
+          Math.cos(x) - 0.5
+        end
       end
     end
 
