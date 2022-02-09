@@ -202,7 +202,7 @@ describe GSL::DenseMatrix do
       temp.shape.should eq({5, 5})
     end
   end
-  pending "#inverse" do
+  describe "#inverse" do
     it "should return the inverse of the input matrix" do
       tester = [
         [1.0, 0.6, 0.0],
@@ -214,7 +214,7 @@ describe GSL::DenseMatrix do
         [0.0, 2.0, -2.0],
         [0.0, -2.0, 3.0],
       ].to_matrix
-      tester.inverse.should eq target
+      tester.inverse.should be_close target, 1e-9
     end
   end
 end
