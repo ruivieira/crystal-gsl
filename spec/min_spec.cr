@@ -29,5 +29,13 @@ describe GSL do
       end
       xm.should be_close Math::PI, 1e-6
     end
+
+    it "works correctly when target function raises" do
+      expect_raises(Exception) do
+        GSL::Min.find_min(0, 6, 1e-6, guess: 2) do |x|
+          raise Exception.new("incorrect value")
+        end
+      end
+    end
   end
 end

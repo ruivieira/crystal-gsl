@@ -37,31 +37,34 @@ module GSL::Min
                      max_iter = 1000, guess = nil, &f : GSL::Function)
     algorithm = guess ? GSL::Min::Type::Brent : GSL::Min::Type::QuadGolden
     raw = LibGSL.gsl_min_fminimizer_alloc(algorithm.to_unsafe)
-    function = GSL.wrap_function(f)
-    if guess
-      LibGSL.gsl_min_fminimizer_set(raw, pointerof(function), guess, x_lower, x_upper)
-    else
-      f_lower = f.call(x_lower)
-      f_upper = f.call(x_upper)
-      x_min = x_lower
-      f_min = f_lower
-      # LibGSL.gsl_min_find_bracket(pointerof(function), pointerof(x_min), pointerof(f_min), pointerof(x_lower), pointerof(f_lower), pointerof(x_upper), pointerof(f_upper), max_iter//2)
-      result = GSL::Min.min_find_bracket(f, pointerof(x_min), pointerof(f_min), pointerof(x_lower), pointerof(f_lower), pointerof(x_upper), pointerof(f_upper), max_iter//2)
-      LibGSL.gsl_min_fminimizer_set_with_values(raw, pointerof(function),
-        x_min, f_min, x_lower, f_lower, x_upper, f_upper)
-    end
-    ok = false
-    max_iter.times do
-      LibGSL.gsl_min_fminimizer_iterate(raw)
-      if LibGSL::Code.new(LibGSL.gsl_min_test_interval(x_lower, x_upper, eps, 0.0)) == LibGSL::Code::GSL_SUCCESS
-        ok = true
-        break
+    begin
+      function = GSL.wrap_function(f)
+      if guess
+        LibGSL.gsl_min_fminimizer_set(raw, pointerof(function), guess, x_lower, x_upper)
+      else
+        f_lower = f.call(x_lower)
+        f_upper = f.call(x_upper)
+        x_min = x_lower
+        f_min = f_lower
+        # LibGSL.gsl_min_find_bracket(pointerof(function), pointerof(x_min), pointerof(f_min), pointerof(x_lower), pointerof(f_lower), pointerof(x_upper), pointerof(f_upper), max_iter//2)
+        result = GSL::Min.min_find_bracket(f, pointerof(x_min), pointerof(f_min), pointerof(x_lower), pointerof(f_lower), pointerof(x_upper), pointerof(f_upper), max_iter//2)
+        LibGSL.gsl_min_fminimizer_set_with_values(raw, pointerof(function),
+          x_min, f_min, x_lower, f_lower, x_upper, f_upper)
       end
+      ok = false
+      max_iter.times do
+        LibGSL.gsl_min_fminimizer_iterate(raw)
+        if LibGSL::Code.new(LibGSL.gsl_min_test_interval(x_lower, x_upper, eps, 0.0)) == LibGSL::Code::GSL_SUCCESS
+          ok = true
+          break
+        end
+      end
+      ok = ok || (raw.value.f_upper - raw.value.f_minimum < GSL_SQRT_DBL_EPSILON)
+      result = ok ? {raw.value.x_minimum, raw.value.f_minimum} : nil
+      result
+    ensure
+      LibGSL.gsl_min_fminimizer_free(raw)
     end
-    ok = ok || (raw.value.f_upper - raw.value.f_minimum < GSL_SQRT_DBL_EPSILON)
-    result = ok ? {raw.value.x_minimum, raw.value.f_minimum} : nil
-    LibGSL.gsl_min_fminimizer_free(raw)
-    result
   end
 
   # High-level interface to minimizer. Finds minimum of function f between `x_lower` and `x_upper`.
