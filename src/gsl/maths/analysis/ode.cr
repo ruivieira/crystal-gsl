@@ -27,7 +27,7 @@ module GSL::ODE
   end
 
   abstract class JacobianSystem < System
-    @@same_jacobian : (LibC::Double, LibC::Double*, LibC::Double*, LibC::Double*, Void* -> LibC::Int) = ->(t : LibC::Double, y : LibC::Double*, dfdt : LibC::Double*, dfdy : LibC::Double*, data : Void*) do
+    @@same_jacobian : (LibC::Double, LibC::Double*, LibC::Double*, LibC::Double*, Void* -> LibC::Int) = ->(t : LibC::Double, y : LibC::Double*, dfdy : LibC::Double*, dfdt : LibC::Double*, data : Void*) do
       sys = data.as(JacobianSystem)
       sys.jacobian(t, y.to_slice(sys.size), dfdy.to_slice(sys.size*sys.size), dfdt.to_slice(sys.size))
       return 0
