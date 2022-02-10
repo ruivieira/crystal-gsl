@@ -8,8 +8,10 @@ module GSL
       @coeffs = acoeffs.map(&.to_f)
     end
 
-    def deriv(n : Int32) : Poly
-      # TODO
+    def eval_derivs(x : Float64) : Array(Float64)
+      results = Array(Float64).new(coeffs.size, 0.0)
+      LibGSL.gsl_poly_eval_derivs(coeffs.to_unsafe, coeffs.size, x, results.to_unsafe, coeffs.size)
+      results
     end
 
     def eval(x : Float64) : Float64
@@ -39,7 +41,7 @@ module GSL
       end
     end
 
-    def solve_distinct(tolerance = 1e-3) : Array(Float64)
+    def solve_distinct(tolerance = 1e-9) : Array(Float64)
       if @coeffs.size < 5
         roots = solve
       else

@@ -62,15 +62,17 @@ describe GSL do
 
     it "can found distinct roots" do
       poly = GSL::Poly.new([1.0, -4.0, 6.0, -4.0, 1.0])
-      poly.solve_distinct.size.should eq 1
-      poly.solve_distinct[0].should be_close 1.0, 1e-3
+      roots = poly.solve_distinct(1e-3)
+      roots.size.should eq 1
+      roots[0].should be_close 1.0, 1e-3
 
       poly2 = GSL::Poly.new([25.0, -10.0, 1.0])
-      poly2.solve_distinct(1e-9).size.should eq 1
+      poly2.solve_distinct.size.should eq 1
       poly2.solve_distinct[0].should be_close 5.0, 1e-3
 
-      poly2 = GSL::Poly.new([24.999999, -10.0, 1.0])
-      poly2.solve_distinct(1e-9).size.should eq 2
+      poly2 = GSL::Poly.new([24.9999999, -10.0, 1.0])
+      poly2.solve_distinct.size.should eq 2
+      poly2.solve_distinct(1e-3).size.should eq 1
     end
   end
 end
