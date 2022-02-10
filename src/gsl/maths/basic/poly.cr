@@ -80,4 +80,50 @@ module GSL
       end
     end
   end
+
+  class PolyDD
+    getter dd : Slice(Float64)
+    getter xa : Slice(Float64)
+
+    private def initialize(*, @dd, @xa)
+    end
+
+    def size
+      @coeffs.size
+    end
+
+    def self.new(xa : Array(Float64), ya : Array(Float64))
+      unless xa.size == ya.size
+        raise ArgumentError.new("xa and ya should have same size (given #{xa.size}, #{ya.size})")
+      end
+      coeffs = Slice(Float64).new(xa.size)
+      LibGSL.gsl_poly_dd_init(coeffs, xa, ya, xa.size)
+      new(dd: coeffs, xa: xa.clone.to_unsafe.to_slice(xa.size))
+    end
+
+    def self.new_hermite(xa : Array(Float64), ya : Array(Float64), dya : Array(Float64))
+      unless xa.size == ya.size && xa.size == dya.size
+        raise ArgumentError.new("xa, ya and dya should have same size (given #{xa.size}, #{ya.size}, #{dya.size})")
+      end
+      #  gsl_poly_dd_hermite_init(double dd[], double za[], const double xa[], const double ya[], const double dya[], const size_t size)
+      n = xa.size
+      coeffs = Slice(Float64).new(n*2)
+      za = Slice(Float64).new(n*2)
+      LibGSL.gsl_poly_dd_hermite_init(coeffs, za, xa, ya, dya, n)
+      new(dd: coeffs, xa: za)
+    end
+
+    def eval(x)
+      LibGSL.gsl_poly_dd_eval(@dd, @xa, xa.size, x)
+    end
+
+    @workspace : Slice(Float64)? = nil
+
+    def to_taylor(xp)
+      c = Array(Float64).new(size, 0.0)
+      @workspace = Slice(Float64).new(size) unless @workspace
+      LibGSL.gsl_poly_dd_taylor(c, xp, @dd, @xa, size, @workspace.not_nil!)
+      c
+    end
+  end
 end
