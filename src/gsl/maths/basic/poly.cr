@@ -4,10 +4,12 @@ module GSL
   class Poly
     getter coeffs : Array(Float64)
 
-    def initialize(@coeffs)
+    def initialize(acoeffs)
+      @coeffs = acoeffs.map(&.to_f)
     end
 
     def deriv(n : Int32) : Poly
+      # TODO
     end
 
     def eval(x : Float64) : Float64
@@ -33,11 +35,21 @@ module GSL
         n = LibGSL.gsl_poly_solve_cubic(@coeffs[2]/@coeffs[3], @coeffs[1]/@coeffs[3], @coeffs[0]/@coeffs[3], out xx1, out xx2, out xx3)
         return [xx1, xx2, xx3][0...n]
       else
-        return solve_complex.select { |x| x.imag.abs < 1e-9 }.map(&.to_f)
+        return solve_complex.select { |x| x.imag.abs < 1e-9 }.map(&.real).sort
       end
     end
 
-    def solve_distinct(tolerance = 1e-9) : Array(Float64)
+    def solve_distinct(tolerance = 1e-3) : Array(Float64)
+      if @coeffs.size < 5
+        roots = solve
+      else
+        roots = solve_complex.select { |x| x.imag.abs < tolerance }.map(&.real).sort
+      end
+      results = [roots.first]
+      roots.each_cons_pair do |x_prev, x|
+        results << x if (x - x_prev).abs > tolerance
+      end
+      results
     end
 
     def solve_complex : Array(Complex)
