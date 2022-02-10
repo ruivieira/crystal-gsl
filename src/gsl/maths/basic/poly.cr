@@ -25,9 +25,9 @@ module GSL
     def solve : Array(Float64)
       case @coeffs.size
       when 0
-        raise ArgumentError.new("Polynom coeffitients are empty")
+        raise ArgumentError.new("Polynomial coefficients are empty")
       when 1
-        raise ArgumentError.new("Polynom have only 1 coeffitient")
+        raise ArgumentError.new("Polynomial have only 1 coefficient")
       when 2
         return [-@coeffs[0] / -@coeffs[1]]
       when 3
@@ -57,9 +57,9 @@ module GSL
     def solve_complex : Array(Complex)
       case @coeffs.size
       when 0
-        raise ArgumentError.new("Polynom coeffitients are empty")
+        raise ArgumentError.new("Polynomial coefficients are empty")
       when 1
-        raise ArgumentError.new("Polynom have only 1 coeffitient")
+        raise ArgumentError.new("Polynomial have only 1 coefficient")
       when 2
         return [Complex.new(-@coeffs[0] / -@coeffs[1])]
       when 3
