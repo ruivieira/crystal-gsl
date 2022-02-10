@@ -74,5 +74,10 @@ describe GSL do
       poly2.solve_distinct.size.should eq 2
       poly2.solve_distinct(1e-3).size.should eq 1
     end
+
+    it "evaluate derivs at point" do
+      poly = GSL::Poly.new([1.0, 2.0, 1.0]) # x^2+2x+1
+      poly.eval_derivs(0.1).should eq [1.21, 2.2, 2]
+    end
   end
 end
