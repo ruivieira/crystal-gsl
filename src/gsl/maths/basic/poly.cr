@@ -15,7 +15,7 @@ module GSL
     end
 
     def eval(x : Complex) : Complex
-      LibGSL.gsl_poly_complex_eval(coeffs.to_unsafe, coeffs.size, x)
+      Complex.from_gsl(LibGSL.gsl_poly_complex_eval(coeffs.to_unsafe, coeffs.size, x.to_gsl))
     end
 
     def solve : Array(Float64)
@@ -56,11 +56,9 @@ module GSL
         return [z1, z2, z3].map { |x| Complex.from_gsl(x) }
       else
         workspace = LibGSL.gsl_poly_complex_workspace_alloc(@coeffs.size)
-        p "1"
         begin
           results = Array(LibGSL::Gsl_complex).new(coeffs.size - 1, LibGSL::Gsl_complex.new)
           LibGSL.gsl_poly_complex_solve(coeffs.to_unsafe, coeffs.size, workspace, results.to_unsafe)
-          p "2"
           return results.map { |x| Complex.from_gsl(x) }
         ensure
           LibGSL.gsl_poly_complex_workspace_free(workspace)
