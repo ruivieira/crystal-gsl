@@ -89,7 +89,7 @@ module GSL
     end
 
     def size
-      @coeffs.size
+      @dd.size
     end
 
     def self.new(xa : Array(Float64), ya : Array(Float64))
@@ -123,7 +123,7 @@ module GSL
       c = Array(Float64).new(size, 0.0)
       @workspace = Slice(Float64).new(size) unless @workspace
       LibGSL.gsl_poly_dd_taylor(c, xp, @dd, @xa, size, @workspace.not_nil!)
-      c
+      Poly.new(c)
     end
   end
 end

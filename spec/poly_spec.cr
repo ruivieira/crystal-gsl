@@ -80,4 +80,31 @@ describe GSL do
       poly.eval_derivs(0.1).should eq [1.21, 2.2, 2]
     end
   end
+
+  describe GSL::PolyDD do
+    it "can be constructed from set of points" do
+      poly = GSL::PolyDD.new([1.0, 2.0, 3.0], [0.0, 1.0, 0.0])
+      poly.size.should eq 3
+      poly.xa.should eq Slice[1.0, 2.0, 3.0]
+      poly.dd.should eq Slice[0.0, 1.0, -1.0]
+    end
+    it "can be evaluated at given point" do
+      poly = GSL::PolyDD.new([1.0, 2.0, 3.0], [0.0, 1.0, 0.0])
+      poly.eval(1).should eq 0
+      poly.eval(0).should eq -3
+    end
+    it "can be constructed from hermite interpolation" do
+      poly = GSL::PolyDD.new_hermite([2.0, 3.0], [2.0**3, 3.0**3], [3.0*2**2, 3.0*3**2])
+      poly.size.should eq 4
+      poly.eval(0).should eq 0
+      poly.eval(5).should eq 125
+    end
+
+    it "#to_taylor returns taylor expansion" do
+      poly_dd = GSL::PolyDD.new_hermite([2.0, 3.0], [2.0**3, 3.0**3], [3.0*2**2, 3.0*3**2])
+      poly = poly_dd.to_taylor(5)
+      poly.eval(0).should eq 125
+      poly.eval(-1).should eq 64
+    end
+  end
 end
