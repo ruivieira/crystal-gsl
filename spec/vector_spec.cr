@@ -5,64 +5,64 @@ length_four_vector = [1, 2, 3, 4].to_vector
 describe GSL::Vector do
   describe "#+" do
     it "should add every element with input integer" do
-      (length_four_vector + 10).should eq (GSL::Vector.new [11.0, 12.0, 13.0, 14.0])
+      (length_four_vector + 10).should eq(GSL::Vector.new [11.0, 12.0, 13.0, 14.0])
     end
     it "should add every element with input float" do
-      (length_four_vector + 10.0).should eq (GSL::Vector.new [11.0, 12.0, 13.0, 14.0])
+      (length_four_vector + 10.0).should eq(GSL::Vector.new [11.0, 12.0, 13.0, 14.0])
     end
     it "should add two vectors together" do
-      (length_four_vector + [1, 2, 3, 4].to_vector).should eq (GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
+      (length_four_vector + [1, 2, 3, 4].to_vector).should eq(GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
     end
   end
   describe "#-" do
     it "should sub every element with input integer" do
-      (length_four_vector - 1).should eq (GSL::Vector.new [0.0, 1.0, 2.0, 3.0])
+      (length_four_vector - 1).should eq(GSL::Vector.new [0.0, 1.0, 2.0, 3.0])
     end
     it "should sub every element with input float" do
-      (length_four_vector - 1.0).should eq (GSL::Vector.new [0.0, 1.0, 2.0, 3.0])
+      (length_four_vector - 1.0).should eq(GSL::Vector.new [0.0, 1.0, 2.0, 3.0])
     end
     it "should sub two vectors together" do
-      (length_four_vector - [1, 2, 3, 4].to_vector).should eq (GSL::Vector.new [0.0, 0.0, 0.0, 0.0])
+      (length_four_vector - [1, 2, 3, 4].to_vector).should eq(GSL::Vector.new [0.0, 0.0, 0.0, 0.0])
     end
   end
   describe "#*" do
     it "should scale every element with input integer" do
-      (length_four_vector * 2).should eq (GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
+      (length_four_vector * 2).should eq(GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
     end
     it "should scale every element with input float" do
-      (length_four_vector * 2.0).should eq (GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
+      (length_four_vector * 2.0).should eq(GSL::Vector.new [2.0, 4.0, 6.0, 8.0])
     end
     it "should multiply two vectors together" do
-      (length_four_vector * [1, 2, 3, 4].to_vector).should eq (GSL::Vector.new [1.0, 4.0, 9.0, 16.0])
+      (length_four_vector * [1, 2, 3, 4].to_vector).should eq(GSL::Vector.new [1.0, 4.0, 9.0, 16.0])
     end
   end
   describe "#/" do
     it "should divide every element with input integer" do
-      (length_four_vector / 2).should eq (GSL::Vector.new [0.5, 1.0, 1.5, 2.0])
+      (length_four_vector / 2).should eq(GSL::Vector.new [0.5, 1.0, 1.5, 2.0])
     end
     it "should divide every element with input float" do
-      (length_four_vector / 2.0).should eq (GSL::Vector.new [0.5, 1.0, 1.5, 2.0])
+      (length_four_vector / 2.0).should eq(GSL::Vector.new [0.5, 1.0, 1.5, 2.0])
     end
     it "should divide two vectors together" do
-      (length_four_vector / [1, 2, 3, 4].to_vector).should eq (GSL::Vector.new [1.0, 1.0, 1.0, 1.0])
+      (length_four_vector / [1, 2, 3, 4].to_vector).should eq(GSL::Vector.new [1.0, 1.0, 1.0, 1.0])
     end
   end
   describe "#head" do
     it "should return first five data of a vector" do
-      length_ten_vector.head.should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
+      length_ten_vector.head.should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
     end
 
     it "should return it self if the data is not long enough" do
-      length_four_vector.head.should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0])
+      length_four_vector.head.should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0])
     end
   end
   describe "#tail" do
     it "should return last five data of a vector" do
-      length_ten_vector.tail.should eq (GSL::Vector.new [6.0, 7.0, 8.0, 9.0, 10.0])
+      length_ten_vector.tail.should eq(GSL::Vector.new [6.0, 7.0, 8.0, 9.0, 10.0])
     end
 
     it "should return it self if the data is not long enough" do
-      length_four_vector.tail.should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0])
+      length_four_vector.tail.should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0])
     end
   end
   describe "#first" do
@@ -85,10 +85,10 @@ describe GSL::Vector do
   end
   describe "#push" do
     it "should push data to the last of vector" do
-      (length_four_vector.push 5).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
+      (length_four_vector.push 5).should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
     end
     it "should push data to the last of vector" do
-      (length_four_vector << 5).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
+      (length_four_vector << 5).should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 5.0])
     end
   end
   describe "#includes?" do
@@ -107,7 +107,7 @@ describe GSL::Vector do
   end
   describe "#concat" do
     it "should concatenate two vectors together" do
-      (length_four_vector.concat length_ten_vector).should eq (GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+      (length_four_vector.concat length_ten_vector).should eq(GSL::Vector.new [1.0, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
     end
   end
   describe "#sort" do
@@ -117,12 +117,12 @@ describe GSL::Vector do
   end
   describe "#replace" do
     it "should replace itself by the input vector" do
-      ((GSL::Vector.new [1.0, 2.0, 3.0, 4.0]).replace(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])).should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+      ((GSL::Vector.new [1.0, 2.0, 3.0, 4.0]).replace(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])).should eq(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
     end
   end
   describe "#reverse" do
     it "should return a reversed vector" do
-      length_four_vector.reverse.should eq (GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
+      length_four_vector.reverse.should eq(GSL::Vector.new [4.0, 3.0, 2.0, 1.0])
     end
   end
   describe "#max" do
@@ -189,17 +189,17 @@ describe GSL::Vector do
   end
   describe "#set_zero" do
     it "should set all the values of this vector to zero" do
-      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_zero.should eq (GSL::Vector.new [0.0, 0.0, 0.0])
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_zero.should eq(GSL::Vector.new [0.0, 0.0, 0.0])
     end
   end
   describe "#set_all" do
     it "should set all the values of this vector to sepecific value" do
-      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_all(5).should eq (GSL::Vector.new [5.0, 5.0, 5.0])
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_all(5).should eq(GSL::Vector.new [5.0, 5.0, 5.0])
     end
   end
   describe "#set_bias" do
     it "should set all the values to zero except the chosen indexto one" do
-      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_basis(2).should eq (GSL::Vector.new [0.0, 0.0, 1.0])
+      (GSL::Vector.new [-1.0, -1.0, -1.0]).set_basis(2).should eq(GSL::Vector.new [0.0, 0.0, 1.0])
     end
   end
   describe "#mean" do
