@@ -24,8 +24,6 @@ module GSL
       end
     end
 
-    # abstract def ==(m : Matrix)
-
     abstract def row(r : Int32 | Symbol) : Vector
     abstract def column(c : Int32 | Symbol) : Vector
     abstract def get(row, column) : Float64
@@ -44,6 +42,11 @@ module GSL
 
     # alias to transpose
     abstract def t : Matrix
+
+    # returns maximum norm of matrix
+    def abs
+      minmax.map(&.abs).max
+    end
   end
 
   class DenseMatrix < Matrix
@@ -168,7 +171,8 @@ module GSL
     end
 
     def minmax
-      [LibGSL.gsl_matrix_min(@pointer), LibGSL.gsl_matrix_max(@pointer)]
+      LibGSL.gsl_matrix_minmax(@pointer, out min, out max)
+      return [min, max]
     end
 
     def max_index
@@ -283,6 +287,14 @@ module GSL
 
     def finalize
       LibGSL.gsl_spmatrix_free(@pointer)
+    end
+
+    def minmax
+      return [0.0, 0.0] if non_zero == 0
+      LibGSL.gsl_spmatrix_minmax(@pointer, out min, out max)
+      min = 0.0 if min > 0.0
+      max = 0.0 if max < 0.0
+      return [min, max]
     end
   end
 end
