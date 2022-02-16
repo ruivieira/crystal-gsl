@@ -4960,7 +4960,7 @@ lib LibGSL
 
   fun gsl_poly_complex_workspace_free(w : Gsl_poly_complex_workspace*)
   fun gsl_poly_complex_solve(a : LibC::Double*, n : LibC::SizeT, w : Gsl_poly_complex_workspace*, z : Gsl_complex_packed_ptr) : LibC::Int
-  alias Gsl_complex_packed_ptr = LibC::Double*
+  alias Gsl_complex_packed_ptr = Gsl_complex*
 
   struct Gsl_qrng_type
     name : LibC::Char*
