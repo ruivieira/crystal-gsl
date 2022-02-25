@@ -116,8 +116,10 @@ lib LibGSL
   # fun gsl_vector_long_double_sub(a : Gsl_vector_long_double*, b : Gsl_vector_long_double*) : LibC::Int
   # fun gsl_vector_long_double_mul(a : Gsl_vector_long_double*, b : Gsl_vector_long_double*) : LibC::Int
   # fun gsl_vector_long_double_div(a : Gsl_vector_long_double*, b : Gsl_vector_long_double*) : LibC::Int
-  # fun gsl_vector_long_double_scale(a : Gsl_vector_long_double*, x : LibC::Double) : LibC::Int
-  # fun gsl_vector_long_double_add_constant(a : Gsl_vector_long_double*, x : LibC::Double) : LibC::Int
+  # fun gsl_vector_long_double_scale(a : Gsl_vector_long_double*, x : LibC::LongDouble) : LibC::Int
+  # fun gsl_vector_long_double_add_constant(a : Gsl_vector_long_double*, x : LibC::LongDouble) : LibC::Int
+  # fun gsl_vector_long_double_axpby(alpha : LibC::LongDouble, x : Gsl_vector_long_double*, beta : LibC::LongDouble, y : Gsl_vector_long_double*) : LibC::Int
+  # fun gsl_vector_long_double_sum(a : Gsl_vector_long_double*) : LibC::LongDouble
   # fun gsl_vector_long_double_equal(u : Gsl_vector_long_double*, v : Gsl_vector_long_double*) : LibC::Int
   # fun gsl_vector_long_double_isnull(v : Gsl_vector_long_double*) : LibC::Int
   # fun gsl_vector_long_double_ispos(v : Gsl_vector_long_double*) : LibC::Int
@@ -195,6 +197,7 @@ lib LibGSL
   # fun gsl_vector_complex_long_double_fscanf(stream : File*, v : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_fprintf(stream : File*, v : Gsl_vector_complex_long_double*, format : LibC::Char*) : LibC::Int
   # fun gsl_vector_complex_long_double_memcpy(dest : Gsl_vector_complex_long_double*, src : Gsl_vector_complex_long_double*) : LibC::Int
+  # fun gsl_vector_complex_long_double_conj_memcpy(dest : Gsl_vector_complex_long_double*, src : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_reverse(v : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_swap(v : Gsl_vector_complex_long_double*, w : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_swap_elements(v : Gsl_vector_complex_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
@@ -209,6 +212,7 @@ lib LibGSL
   # fun gsl_vector_complex_long_double_div(a : Gsl_vector_complex_long_double*, b : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_scale(a : Gsl_vector_complex_long_double*, x : Gsl_complex_long_double) : LibC::Int
   # fun gsl_vector_complex_long_double_add_constant(a : Gsl_vector_complex_long_double*, x : Gsl_complex_long_double) : LibC::Int
+  # fun gsl_vector_complex_long_double_axpby(alpha : Gsl_complex_long_double, x : Gsl_vector_complex_long_double*, beta : Gsl_complex_long_double, y : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_vector_complex_long_double_get(v : Gsl_vector_complex_long_double*, i : LibC::SizeT) : Gsl_complex_long_double
   # fun gsl_vector_complex_long_double_set(v : Gsl_vector_complex_long_double*, i : LibC::SizeT, z : Gsl_complex_long_double)
   # fun gsl_vector_complex_long_double_ptr(v : Gsl_vector_complex_long_double*, i : LibC::SizeT) : Gsl_complex_long_double*
@@ -458,8 +462,10 @@ lib LibGSL
   fun gsl_vector_float_sub(a : Gsl_vector_float*, b : Gsl_vector_float*) : LibC::Int
   fun gsl_vector_float_mul(a : Gsl_vector_float*, b : Gsl_vector_float*) : LibC::Int
   fun gsl_vector_float_div(a : Gsl_vector_float*, b : Gsl_vector_float*) : LibC::Int
-  fun gsl_vector_float_scale(a : Gsl_vector_float*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_float_add_constant(a : Gsl_vector_float*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_float_scale(a : Gsl_vector_float*, x : LibC::Float) : LibC::Int
+  fun gsl_vector_float_add_constant(a : Gsl_vector_float*, x : LibC::Float) : LibC::Int
+  fun gsl_vector_float_axpby(alpha : LibC::Float, x : Gsl_vector_float*, beta : LibC::Float, y : Gsl_vector_float*) : LibC::Int
+  fun gsl_vector_float_sum(a : Gsl_vector_float*) : LibC::Float
   fun gsl_vector_float_equal(u : Gsl_vector_float*, v : Gsl_vector_float*) : LibC::Int
   fun gsl_vector_float_isnull(v : Gsl_vector_float*) : LibC::Int
   fun gsl_vector_float_ispos(v : Gsl_vector_float*) : LibC::Int
@@ -537,6 +543,7 @@ lib LibGSL
   fun gsl_vector_complex_float_fscanf(stream : File*, v : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_fprintf(stream : File*, v : Gsl_vector_complex_float*, format : LibC::Char*) : LibC::Int
   fun gsl_vector_complex_float_memcpy(dest : Gsl_vector_complex_float*, src : Gsl_vector_complex_float*) : LibC::Int
+  fun gsl_vector_complex_float_conj_memcpy(dest : Gsl_vector_complex_float*, src : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_reverse(v : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_swap(v : Gsl_vector_complex_float*, w : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_swap_elements(v : Gsl_vector_complex_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
@@ -551,6 +558,7 @@ lib LibGSL
   fun gsl_vector_complex_float_div(a : Gsl_vector_complex_float*, b : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_scale(a : Gsl_vector_complex_float*, x : Gsl_complex_float) : LibC::Int
   fun gsl_vector_complex_float_add_constant(a : Gsl_vector_complex_float*, x : Gsl_complex_float) : LibC::Int
+  fun gsl_vector_complex_float_axpby(alpha : Gsl_complex_float, x : Gsl_vector_complex_float*, beta : Gsl_complex_float, y : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_vector_complex_float_get(v : Gsl_vector_complex_float*, i : LibC::SizeT) : Gsl_complex_float
   fun gsl_vector_complex_float_set(v : Gsl_vector_complex_float*, i : LibC::SizeT, z : Gsl_complex_float)
   fun gsl_vector_complex_float_ptr(v : Gsl_vector_complex_float*, i : LibC::SizeT) : Gsl_complex_float
@@ -627,8 +635,10 @@ lib LibGSL
   fun gsl_vector_ulong_sub(a : Gsl_vector_ulong*, b : Gsl_vector_ulong*) : LibC::Int
   fun gsl_vector_ulong_mul(a : Gsl_vector_ulong*, b : Gsl_vector_ulong*) : LibC::Int
   fun gsl_vector_ulong_div(a : Gsl_vector_ulong*, b : Gsl_vector_ulong*) : LibC::Int
-  fun gsl_vector_ulong_scale(a : Gsl_vector_ulong*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_ulong_add_constant(a : Gsl_vector_ulong*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_ulong_scale(a : Gsl_vector_ulong*, x : LibC::ULong) : LibC::Int
+  fun gsl_vector_ulong_add_constant(a : Gsl_vector_ulong*, x : LibC::ULong) : LibC::Int
+  fun gsl_vector_ulong_axpby(alpha : LibC::ULong, x : Gsl_vector_ulong*, beta : LibC::ULong, y : Gsl_vector_ulong*) : LibC::Int
+  fun gsl_vector_ulong_sum(a : Gsl_vector_ulong*) : LibC::ULong
   fun gsl_vector_ulong_equal(u : Gsl_vector_ulong*, v : Gsl_vector_ulong*) : LibC::Int
   fun gsl_vector_ulong_isnull(v : Gsl_vector_ulong*) : LibC::Int
   fun gsl_vector_ulong_ispos(v : Gsl_vector_ulong*) : LibC::Int
@@ -712,6 +722,8 @@ lib LibGSL
   fun gsl_vector_long_div(a : Gsl_vector_long*, b : Gsl_vector_long*) : LibC::Int
   fun gsl_vector_long_scale(a : Gsl_vector_long*, x : LibC::Double) : LibC::Int
   fun gsl_vector_long_add_constant(a : Gsl_vector_long*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_long_axpby(alpha : LibC::Long, x : Gsl_vector_long*, beta : LibC::Long, y : Gsl_vector_long*) : LibC::Int
+  fun gsl_vector_long_sum(a : Gsl_vector_long*) : LibC::Long
   fun gsl_vector_long_equal(u : Gsl_vector_long*, v : Gsl_vector_long*) : LibC::Int
   fun gsl_vector_long_isnull(v : Gsl_vector_long*) : LibC::Int
   fun gsl_vector_long_ispos(v : Gsl_vector_long*) : LibC::Int
@@ -793,8 +805,10 @@ lib LibGSL
   fun gsl_vector_uint_sub(a : Gsl_vector_uint*, b : Gsl_vector_uint*) : LibC::Int
   fun gsl_vector_uint_mul(a : Gsl_vector_uint*, b : Gsl_vector_uint*) : LibC::Int
   fun gsl_vector_uint_div(a : Gsl_vector_uint*, b : Gsl_vector_uint*) : LibC::Int
-  fun gsl_vector_uint_scale(a : Gsl_vector_uint*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_uint_add_constant(a : Gsl_vector_uint*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_uint_scale(a : Gsl_vector_uint*, x : LibC::UInt) : LibC::Int
+  fun gsl_vector_uint_add_constant(a : Gsl_vector_uint*, x : LibC::UInt) : LibC::Int
+  fun gsl_vector_uint_axpby(alpha : LibC::UInt, x : Gsl_vector_uint*, beta : LibC::UInt, y : Gsl_vector_uint*) : LibC::Int
+  fun gsl_vector_uint_sum(a : Gsl_vector_uint*) : LibC::UInt
   fun gsl_vector_uint_equal(u : Gsl_vector_uint*, v : Gsl_vector_uint*) : LibC::Int
   fun gsl_vector_uint_isnull(v : Gsl_vector_uint*) : LibC::Int
   fun gsl_vector_uint_ispos(v : Gsl_vector_uint*) : LibC::Int
@@ -876,8 +890,10 @@ lib LibGSL
   fun gsl_vector_int_sub(a : Gsl_vector_int*, b : Gsl_vector_int*) : LibC::Int
   fun gsl_vector_int_mul(a : Gsl_vector_int*, b : Gsl_vector_int*) : LibC::Int
   fun gsl_vector_int_div(a : Gsl_vector_int*, b : Gsl_vector_int*) : LibC::Int
-  fun gsl_vector_int_scale(a : Gsl_vector_int*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_int_add_constant(a : Gsl_vector_int*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_int_scale(a : Gsl_vector_int*, x : LibC::Int) : LibC::Int
+  fun gsl_vector_int_add_constant(a : Gsl_vector_int*, x : LibC::Int) : LibC::Int
+  fun gsl_vector_int_axpby(alpha : LibC::Int, x : Gsl_vector_int*, beta : LibC::Int, y : Gsl_vector_int*) : LibC::Int
+  fun gsl_vector_int_sum(a : Gsl_vector_int*) : LibC::Int
   fun gsl_vector_int_equal(u : Gsl_vector_int*, v : Gsl_vector_int*) : LibC::Int
   fun gsl_vector_int_isnull(v : Gsl_vector_int*) : LibC::Int
   fun gsl_vector_int_ispos(v : Gsl_vector_int*) : LibC::Int
@@ -959,8 +975,10 @@ lib LibGSL
   fun gsl_vector_ushort_sub(a : Gsl_vector_ushort*, b : Gsl_vector_ushort*) : LibC::Int
   fun gsl_vector_ushort_mul(a : Gsl_vector_ushort*, b : Gsl_vector_ushort*) : LibC::Int
   fun gsl_vector_ushort_div(a : Gsl_vector_ushort*, b : Gsl_vector_ushort*) : LibC::Int
-  fun gsl_vector_ushort_scale(a : Gsl_vector_ushort*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_ushort_add_constant(a : Gsl_vector_ushort*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_ushort_scale(a : Gsl_vector_ushort*, x : LibC::UShort) : LibC::Int
+  fun gsl_vector_ushort_add_constant(a : Gsl_vector_ushort*, x : LibC::UShort) : LibC::Int
+  fun gsl_vector_ushort_axpby(alpha : LibC::UShort, x : Gsl_vector_ushort*, beta : LibC::UShort, y : Gsl_vector_ushort*) : LibC::Int
+  fun gsl_vector_ushort_sum(a : Gsl_vector_ushort*) : LibC::UShort
   fun gsl_vector_ushort_equal(u : Gsl_vector_ushort*, v : Gsl_vector_ushort*) : LibC::Int
   fun gsl_vector_ushort_isnull(v : Gsl_vector_ushort*) : LibC::Int
   fun gsl_vector_ushort_ispos(v : Gsl_vector_ushort*) : LibC::Int
@@ -1042,8 +1060,10 @@ lib LibGSL
   fun gsl_vector_short_sub(a : Gsl_vector_short*, b : Gsl_vector_short*) : LibC::Int
   fun gsl_vector_short_mul(a : Gsl_vector_short*, b : Gsl_vector_short*) : LibC::Int
   fun gsl_vector_short_div(a : Gsl_vector_short*, b : Gsl_vector_short*) : LibC::Int
-  fun gsl_vector_short_scale(a : Gsl_vector_short*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_short_add_constant(a : Gsl_vector_short*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_short_scale(a : Gsl_vector_short*, x : LibC::Short) : LibC::Int
+  fun gsl_vector_short_add_constant(a : Gsl_vector_short*, x : LibC::Short) : LibC::Int
+  fun gsl_vector_short_axpby(alpha : LibC::Short, x : Gsl_vector_short*, beta : LibC::Short, y : Gsl_vector_short*) : LibC::Int
+  fun gsl_vector_short_sum(a : Gsl_vector_short*) : LibC::Short
   fun gsl_vector_short_equal(u : Gsl_vector_short*, v : Gsl_vector_short*) : LibC::Int
   fun gsl_vector_short_isnull(v : Gsl_vector_short*) : LibC::Int
   fun gsl_vector_short_ispos(v : Gsl_vector_short*) : LibC::Int
@@ -1125,8 +1145,10 @@ lib LibGSL
   fun gsl_vector_uchar_sub(a : Gsl_vector_uchar*, b : Gsl_vector_uchar*) : LibC::Int
   fun gsl_vector_uchar_mul(a : Gsl_vector_uchar*, b : Gsl_vector_uchar*) : LibC::Int
   fun gsl_vector_uchar_div(a : Gsl_vector_uchar*, b : Gsl_vector_uchar*) : LibC::Int
-  fun gsl_vector_uchar_scale(a : Gsl_vector_uchar*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_uchar_add_constant(a : Gsl_vector_uchar*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_uchar_scale(a : Gsl_vector_uchar*, x : UInt8) : LibC::Int
+  fun gsl_vector_uchar_add_constant(a : Gsl_vector_uchar*, x : UInt8) : LibC::Int
+  fun gsl_vector_uchar_axpby(alpha : UInt8, x : Gsl_vector_uchar*, beta : UInt8, y : Gsl_vector_uchar*) : LibC::Int
+  fun gsl_vector_uchar_sum(a : Gsl_vector_uchar*) : UInt8
   fun gsl_vector_uchar_equal(u : Gsl_vector_uchar*, v : Gsl_vector_uchar*) : LibC::Int
   fun gsl_vector_uchar_isnull(v : Gsl_vector_uchar*) : LibC::Int
   fun gsl_vector_uchar_ispos(v : Gsl_vector_uchar*) : LibC::Int
@@ -1208,8 +1230,10 @@ lib LibGSL
   fun gsl_vector_char_sub(a : Gsl_vector_char*, b : Gsl_vector_char*) : LibC::Int
   fun gsl_vector_char_mul(a : Gsl_vector_char*, b : Gsl_vector_char*) : LibC::Int
   fun gsl_vector_char_div(a : Gsl_vector_char*, b : Gsl_vector_char*) : LibC::Int
-  fun gsl_vector_char_scale(a : Gsl_vector_char*, x : LibC::Double) : LibC::Int
-  fun gsl_vector_char_add_constant(a : Gsl_vector_char*, x : LibC::Double) : LibC::Int
+  fun gsl_vector_char_scale(a : Gsl_vector_char*, x : LibC::Char) : LibC::Int
+  fun gsl_vector_char_add_constant(a : Gsl_vector_char*, x : LibC::Char) : LibC::Int
+  fun gsl_vector_char_axpby(alpha : LibC::Char, x : Gsl_vector_char*, beta : LibC::Char, y : Gsl_vector_char*) : LibC::Int
+  fun gsl_vector_char_sum(a : Gsl_vector_char*) : LibC::Char
   fun gsl_vector_char_equal(u : Gsl_vector_char*, v : Gsl_vector_char*) : LibC::Int
   fun gsl_vector_char_isnull(v : Gsl_vector_char*) : LibC::Int
   fun gsl_vector_char_ispos(v : Gsl_vector_char*) : LibC::Int
@@ -1279,13 +1303,14 @@ lib LibGSL
   # fun gsl_matrix_complex_long_double_fprintf(stream : File*, m : Gsl_matrix_complex_long_double*, format : LibC::Char*) : LibC::Int
   # fun gsl_matrix_complex_long_double_memcpy(dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_swap(m1 : Gsl_matrix_complex_long_double*, m2 : Gsl_matrix_complex_long_double*) : LibC::Int
-  # fun gsl_matrix_complex_long_double_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
+  # fun gsl_matrix_complex_long_double_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_swap_rows(m : Gsl_matrix_complex_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_complex_long_double_swap_columns(m : Gsl_matrix_complex_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_complex_long_double_swap_rowcol(m : Gsl_matrix_complex_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_complex_long_double_transpose(m : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_transpose_memcpy(dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
-  # fun gsl_matrix_complex_long_double_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
+  # fun gsl_matrix_complex_long_double_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
+  # fun gsl_matrix_complex_long_double_conjtrans_memcpy(dest : Gsl_matrix_complex_long_double*, src : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_equal(a : Gsl_matrix_complex_long_double*, b : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_isnull(m : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_ispos(m : Gsl_matrix_complex_long_double*) : LibC::Int
@@ -1296,8 +1321,11 @@ lib LibGSL
   # fun gsl_matrix_complex_long_double_mul_elements(a : Gsl_matrix_complex_long_double*, b : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_div_elements(a : Gsl_matrix_complex_long_double*, b : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_scale(a : Gsl_matrix_complex_long_double*, x : Gsl_complex_long_double) : LibC::Int
+  # fun gsl_matrix_complex_long_double_scale_rows(a : Gsl_matrix_complex_long_double*, x : Gsl_vector_complex_long_double*) : LibC::Int
+  # fun gsl_matrix_complex_long_double_scale_columns(a : Gsl_matrix_complex_long_double*, x : Gsl_vector_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_add_constant(a : Gsl_matrix_complex_long_double*, x : Gsl_complex_long_double) : LibC::Int
   # fun gsl_matrix_complex_long_double_add_diagonal(a : Gsl_matrix_complex_long_double*, x : Gsl_complex_long_double) : LibC::Int
+  # fun gsl_matrix_complex_long_double_conjugate(a : Gsl_matrix_complex_long_double*) : LibC::Int
   # fun gsl_matrix_complex_long_double_get_row(v : Gsl_vector_complex_long_double*, m : Gsl_matrix_complex_long_double*, i : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_complex_long_double_get_col(v : Gsl_vector_complex_long_double*, m : Gsl_matrix_complex_long_double*, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_complex_long_double_set_row(m : Gsl_matrix_complex_long_double*, i : LibC::SizeT, v : Gsl_vector_complex_long_double*) : LibC::Int
@@ -1366,13 +1394,13 @@ lib LibGSL
   fun gsl_matrix_complex_fprintf(stream : File*, m : Gsl_matrix_complex*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_complex_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_swap(m1 : Gsl_matrix_complex*, m2 : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_matrix_complex_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_matrix_complex_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_swap_rows(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_swap_columns(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_swap_rowcol(m : Gsl_matrix_complex*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_transpose(m : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_transpose_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
-  fun gsl_matrix_complex_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : LibC::Int, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
+  fun gsl_matrix_complex_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_conjtrans_memcpy(dest : Gsl_matrix_complex*, src : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_equal(a : Gsl_matrix_complex*, b : Gsl_matrix_complex*) : LibC::Int
   fun gsl_matrix_complex_isnull(m : Gsl_matrix_complex*) : LibC::Int
@@ -1457,13 +1485,14 @@ lib LibGSL
   fun gsl_matrix_complex_float_fprintf(stream : File*, m : Gsl_matrix_complex_float*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_complex_float_memcpy(dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_swap(m1 : Gsl_matrix_complex_float*, m2 : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_matrix_complex_float_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_matrix_complex_float_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_swap_rows(m : Gsl_matrix_complex_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_float_swap_columns(m : Gsl_matrix_complex_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_float_swap_rowcol(m : Gsl_matrix_complex_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_float_transpose(m : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_transpose_memcpy(dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
-  fun gsl_matrix_complex_float_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_matrix_complex_float_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
+  fun gsl_matrix_complex_float_conjtrans_memcpy(dest : Gsl_matrix_complex_float*, src : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_equal(a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_isnull(m : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_ispos(m : Gsl_matrix_complex_float*) : LibC::Int
@@ -1474,8 +1503,11 @@ lib LibGSL
   fun gsl_matrix_complex_float_mul_elements(a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_div_elements(a : Gsl_matrix_complex_float*, b : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_scale(a : Gsl_matrix_complex_float*, x : Gsl_complex_float) : LibC::Int
+  fun gsl_matrix_complex_float_scale_rows(a : Gsl_matrix_complex_float*, x : Gsl_vector_complex_float*) : LibC::Int
+  fun gsl_matrix_complex_float_scale_columns(a : Gsl_matrix_complex_float*, x : Gsl_vector_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_add_constant(a : Gsl_matrix_complex_float*, x : Gsl_complex_float) : LibC::Int
   fun gsl_matrix_complex_float_add_diagonal(a : Gsl_matrix_complex_float*, x : Gsl_complex_float) : LibC::Int
+  fun gsl_matrix_complex_float_conjugate(a : Gsl_matrix_complex_float*) : LibC::Int
   fun gsl_matrix_complex_float_get_row(v : Gsl_vector_complex_float*, m : Gsl_matrix_complex_float*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_float_get_col(v : Gsl_vector_complex_float*, m : Gsl_matrix_complex_float*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_complex_float_set_row(m : Gsl_matrix_complex_float*, i : LibC::SizeT, v : Gsl_vector_complex_float*) : LibC::Int
@@ -1544,13 +1576,13 @@ lib LibGSL
   # fun gsl_matrix_long_double_fprintf(stream : File*, m : Gsl_matrix_long_double*, format : LibC::Char*) : LibC::Int
   # fun gsl_matrix_long_double_memcpy(dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_swap(m1 : Gsl_matrix_long_double*, m2 : Gsl_matrix_long_double*) : LibC::Int
-  # fun gsl_matrix_long_double_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
+  # fun gsl_matrix_long_double_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_swap_rows(m : Gsl_matrix_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_long_double_swap_columns(m : Gsl_matrix_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_long_double_swap_rowcol(m : Gsl_matrix_long_double*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_long_double_transpose(m : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_transpose_memcpy(dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
-  # fun gsl_matrix_long_double_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
+  # fun gsl_matrix_long_double_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_long_double*, src : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_max(m : Gsl_matrix_long_double*) : LibC::LongDouble
   # fun gsl_matrix_long_double_min(m : Gsl_matrix_long_double*) : LibC::LongDouble
   # fun gsl_matrix_long_double_minmax(m : Gsl_matrix_long_double*, min_out : LibC::LongDouble*, max_out : LibC::LongDouble*)
@@ -1562,13 +1594,16 @@ lib LibGSL
   # fun gsl_matrix_long_double_ispos(m : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_isneg(m : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_isnonneg(m : Gsl_matrix_long_double*) : LibC::Int
+  # fun gsl_matrix_long_double_norm1(m : Gsl_matrix_long_double*) : LibC::LongDouble
   # fun gsl_matrix_long_double_add(a : Gsl_matrix_long_double*, b : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_sub(a : Gsl_matrix_long_double*, b : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_mul_elements(a : Gsl_matrix_long_double*, b : Gsl_matrix_long_double*) : LibC::Int
   # fun gsl_matrix_long_double_div_elements(a : Gsl_matrix_long_double*, b : Gsl_matrix_long_double*) : LibC::Int
-  # fun gsl_matrix_long_double_scale(a : Gsl_matrix_long_double*, x : LibC::Double) : LibC::Int
-  # fun gsl_matrix_long_double_add_constant(a : Gsl_matrix_long_double*, x : LibC::Double) : LibC::Int
-  # fun gsl_matrix_long_double_add_diagonal(a : Gsl_matrix_long_double*, x : LibC::Double) : LibC::Int
+  # fun gsl_matrix_long_double_scale(a : Gsl_matrix_long_double*, x : LibC::LongDouble) : LibC::Int
+  # fun gsl_matrix_long_double_scale_rows(a : Gsl_matrix_long_double*, x : Gsl_vector_long_double*) : LibC::Int
+  # fun gsl_matrix_long_double_scale_columns(a : Gsl_matrix_long_double*, x : Gsl_vector_long_double*) : LibC::Int
+  # fun gsl_matrix_long_double_add_constant(a : Gsl_matrix_long_double*, x : LibC::LongDouble) : LibC::Int
+  # fun gsl_matrix_long_double_add_diagonal(a : Gsl_matrix_long_double*, x : LibC::LongDouble) : LibC::Int
   # fun gsl_matrix_long_double_get_row(v : Gsl_vector_long_double*, m : Gsl_matrix_long_double*, i : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_long_double_get_col(v : Gsl_vector_long_double*, m : Gsl_matrix_long_double*, j : LibC::SizeT) : LibC::Int
   # fun gsl_matrix_long_double_set_row(m : Gsl_matrix_long_double*, i : LibC::SizeT, v : Gsl_vector_long_double*) : LibC::Int
@@ -1733,13 +1768,13 @@ lib LibGSL
   fun gsl_matrix_float_fprintf(stream : File*, m : Gsl_matrix_float*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_float_memcpy(dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_swap(m1 : Gsl_matrix_float*, m2 : Gsl_matrix_float*) : LibC::Int
-  fun gsl_matrix_float_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
+  fun gsl_matrix_float_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_swap_rows(m : Gsl_matrix_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_float_swap_columns(m : Gsl_matrix_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_float_swap_rowcol(m : Gsl_matrix_float*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_float_transpose(m : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_transpose_memcpy(dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
-  fun gsl_matrix_float_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
+  fun gsl_matrix_float_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_float*, src : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_max(m : Gsl_matrix_float*) : LibC::Float
   fun gsl_matrix_float_min(m : Gsl_matrix_float*) : LibC::Float
   fun gsl_matrix_float_minmax(m : Gsl_matrix_float*, min_out : LibC::Float*, max_out : LibC::Float*)
@@ -1751,13 +1786,16 @@ lib LibGSL
   fun gsl_matrix_float_ispos(m : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_isneg(m : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_isnonneg(m : Gsl_matrix_float*) : LibC::Int
+  fun gsl_matrix_float_norm1(m : Gsl_matrix_float*) : LibC::Float
   fun gsl_matrix_float_add(a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_sub(a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_mul_elements(a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
   fun gsl_matrix_float_div_elements(a : Gsl_matrix_float*, b : Gsl_matrix_float*) : LibC::Int
-  fun gsl_matrix_float_scale(a : Gsl_matrix_float*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_float_add_constant(a : Gsl_matrix_float*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_float_add_diagonal(a : Gsl_matrix_float*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_float_scale(a : Gsl_matrix_float*, x : LibC::Float) : LibC::Int
+  fun gsl_matrix_float_scale_rows(a : Gsl_matrix_float*, x : Gsl_vector_float*) : LibC::Int
+  fun gsl_matrix_float_scale_columns(a : Gsl_matrix_float*, x : Gsl_vector_float*) : LibC::Int
+  fun gsl_matrix_float_add_constant(a : Gsl_matrix_float*, x : LibC::Float) : LibC::Int
+  fun gsl_matrix_float_add_diagonal(a : Gsl_matrix_float*, x : LibC::Float) : LibC::Int
   fun gsl_matrix_float_get_row(v : Gsl_vector_float*, m : Gsl_matrix_float*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_float_get_col(v : Gsl_vector_float*, m : Gsl_matrix_float*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_float_set_row(m : Gsl_matrix_float*, i : LibC::SizeT, v : Gsl_vector_float*) : LibC::Int
@@ -1826,13 +1864,13 @@ lib LibGSL
   fun gsl_matrix_ulong_fprintf(stream : File*, m : Gsl_matrix_ulong*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_ulong_memcpy(dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_swap(m1 : Gsl_matrix_ulong*, m2 : Gsl_matrix_ulong*) : LibC::Int
-  fun gsl_matrix_ulong_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
+  fun gsl_matrix_ulong_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_swap_rows(m : Gsl_matrix_ulong*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ulong_swap_columns(m : Gsl_matrix_ulong*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ulong_swap_rowcol(m : Gsl_matrix_ulong*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ulong_transpose(m : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_transpose_memcpy(dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
-  fun gsl_matrix_ulong_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
+  fun gsl_matrix_ulong_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_ulong*, src : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_max(m : Gsl_matrix_ulong*) : LibC::ULong
   fun gsl_matrix_ulong_min(m : Gsl_matrix_ulong*) : LibC::ULong
   fun gsl_matrix_ulong_minmax(m : Gsl_matrix_ulong*, min_out : LibC::ULong*, max_out : LibC::ULong*)
@@ -1844,13 +1882,16 @@ lib LibGSL
   fun gsl_matrix_ulong_ispos(m : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_isneg(m : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_isnonneg(m : Gsl_matrix_ulong*) : LibC::Int
+  fun gsl_matrix_ulong_norm1(m : Gsl_matrix_ulong*) : LibC::ULong
   fun gsl_matrix_ulong_add(a : Gsl_matrix_ulong*, b : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_sub(a : Gsl_matrix_ulong*, b : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_mul_elements(a : Gsl_matrix_ulong*, b : Gsl_matrix_ulong*) : LibC::Int
   fun gsl_matrix_ulong_div_elements(a : Gsl_matrix_ulong*, b : Gsl_matrix_ulong*) : LibC::Int
-  fun gsl_matrix_ulong_scale(a : Gsl_matrix_ulong*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_ulong_add_constant(a : Gsl_matrix_ulong*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_ulong_add_diagonal(a : Gsl_matrix_ulong*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_ulong_scale(a : Gsl_matrix_ulong*, x : LibC::ULong) : LibC::Int
+  fun gsl_matrix_ulong_scale_rows(a : Gsl_matrix_ulong*, x : Gsl_vector_ulong*) : LibC::Int
+  fun gsl_matrix_ulong_scale_columns(a : Gsl_matrix_ulong*, x : Gsl_vector_ulong*) : LibC::Int
+  fun gsl_matrix_ulong_add_constant(a : Gsl_matrix_ulong*, x : LibC::ULong) : LibC::Int
+  fun gsl_matrix_ulong_add_diagonal(a : Gsl_matrix_ulong*, x : LibC::ULong) : LibC::Int
   fun gsl_matrix_ulong_get_row(v : Gsl_vector_ulong*, m : Gsl_matrix_ulong*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ulong_get_col(v : Gsl_vector_ulong*, m : Gsl_matrix_ulong*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ulong_set_row(m : Gsl_matrix_ulong*, i : LibC::SizeT, v : Gsl_vector_ulong*) : LibC::Int
@@ -1919,13 +1960,13 @@ lib LibGSL
   fun gsl_matrix_long_fprintf(stream : File*, m : Gsl_matrix_long*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_long_memcpy(dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_swap(m1 : Gsl_matrix_long*, m2 : Gsl_matrix_long*) : LibC::Int
-  fun gsl_matrix_long_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
+  fun gsl_matrix_long_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_swap_rows(m : Gsl_matrix_long*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_long_swap_columns(m : Gsl_matrix_long*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_long_swap_rowcol(m : Gsl_matrix_long*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_long_transpose(m : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_transpose_memcpy(dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
-  fun gsl_matrix_long_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
+  fun gsl_matrix_long_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_long*, src : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_max(m : Gsl_matrix_long*) : LibC::Long
   fun gsl_matrix_long_min(m : Gsl_matrix_long*) : LibC::Long
   fun gsl_matrix_long_minmax(m : Gsl_matrix_long*, min_out : LibC::Long*, max_out : LibC::Long*)
@@ -1937,13 +1978,16 @@ lib LibGSL
   fun gsl_matrix_long_ispos(m : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_isneg(m : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_isnonneg(m : Gsl_matrix_long*) : LibC::Int
+  fun gsl_matrix_long_norm1(m : Gsl_matrix_long*) : LibC::Long
   fun gsl_matrix_long_add(a : Gsl_matrix_long*, b : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_sub(a : Gsl_matrix_long*, b : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_mul_elements(a : Gsl_matrix_long*, b : Gsl_matrix_long*) : LibC::Int
   fun gsl_matrix_long_div_elements(a : Gsl_matrix_long*, b : Gsl_matrix_long*) : LibC::Int
-  fun gsl_matrix_long_scale(a : Gsl_matrix_long*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_long_add_constant(a : Gsl_matrix_long*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_long_add_diagonal(a : Gsl_matrix_long*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_long_scale(a : Gsl_matrix_long*, x : LibC::Long) : LibC::Int
+  fun gsl_matrix_long_scale_rows(a : Gsl_matrix_long*, x : Gsl_vector_long*) : LibC::Int
+  fun gsl_matrix_long_scale_columns(a : Gsl_matrix_long*, x : Gsl_vector_long*) : LibC::Int
+  fun gsl_matrix_long_add_constant(a : Gsl_matrix_long*, x : LibC::Long) : LibC::Int
+  fun gsl_matrix_long_add_diagonal(a : Gsl_matrix_long*, x : LibC::Long) : LibC::Int
   fun gsl_matrix_long_get_row(v : Gsl_vector_long*, m : Gsl_matrix_long*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_long_get_col(v : Gsl_vector_long*, m : Gsl_matrix_long*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_long_set_row(m : Gsl_matrix_long*, i : LibC::SizeT, v : Gsl_vector_long*) : LibC::Int
@@ -2012,13 +2056,13 @@ lib LibGSL
   fun gsl_matrix_uint_fprintf(stream : File*, m : Gsl_matrix_uint*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_uint_memcpy(dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_swap(m1 : Gsl_matrix_uint*, m2 : Gsl_matrix_uint*) : LibC::Int
-  fun gsl_matrix_uint_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
+  fun gsl_matrix_uint_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_swap_rows(m : Gsl_matrix_uint*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uint_swap_columns(m : Gsl_matrix_uint*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uint_swap_rowcol(m : Gsl_matrix_uint*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uint_transpose(m : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_transpose_memcpy(dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
-  fun gsl_matrix_uint_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
+  fun gsl_matrix_uint_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_uint*, src : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_max(m : Gsl_matrix_uint*) : LibC::UInt
   fun gsl_matrix_uint_min(m : Gsl_matrix_uint*) : LibC::UInt
   fun gsl_matrix_uint_minmax(m : Gsl_matrix_uint*, min_out : LibC::UInt*, max_out : LibC::UInt*)
@@ -2030,13 +2074,16 @@ lib LibGSL
   fun gsl_matrix_uint_ispos(m : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_isneg(m : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_isnonneg(m : Gsl_matrix_uint*) : LibC::Int
+  fun gsl_matrix_uint_norm1(m : Gsl_matrix_uint*) : LibC::UInt
   fun gsl_matrix_uint_add(a : Gsl_matrix_uint*, b : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_sub(a : Gsl_matrix_uint*, b : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_mul_elements(a : Gsl_matrix_uint*, b : Gsl_matrix_uint*) : LibC::Int
   fun gsl_matrix_uint_div_elements(a : Gsl_matrix_uint*, b : Gsl_matrix_uint*) : LibC::Int
-  fun gsl_matrix_uint_scale(a : Gsl_matrix_uint*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_uint_add_constant(a : Gsl_matrix_uint*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_uint_add_diagonal(a : Gsl_matrix_uint*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_uint_scale(a : Gsl_matrix_uint*, x : LibC::UInt) : LibC::Int
+  fun gsl_matrix_uint_scale_rows(a : Gsl_matrix_uint*, x : Gsl_vector_uint*) : LibC::Int
+  fun gsl_matrix_uint_scale_columns(a : Gsl_matrix_uint*, x : Gsl_vector_uint*) : LibC::Int
+  fun gsl_matrix_uint_add_constant(a : Gsl_matrix_uint*, x : LibC::UInt) : LibC::Int
+  fun gsl_matrix_uint_add_diagonal(a : Gsl_matrix_uint*, x : LibC::UInt) : LibC::Int
   fun gsl_matrix_uint_get_row(v : Gsl_vector_uint*, m : Gsl_matrix_uint*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uint_get_col(v : Gsl_vector_uint*, m : Gsl_matrix_uint*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uint_set_row(m : Gsl_matrix_uint*, i : LibC::SizeT, v : Gsl_vector_uint*) : LibC::Int
@@ -2105,13 +2152,13 @@ lib LibGSL
   fun gsl_matrix_int_fprintf(stream : File*, m : Gsl_matrix_int*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_int_memcpy(dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_swap(m1 : Gsl_matrix_int*, m2 : Gsl_matrix_int*) : LibC::Int
-  fun gsl_matrix_int_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
+  fun gsl_matrix_int_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_swap_rows(m : Gsl_matrix_int*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_int_swap_columns(m : Gsl_matrix_int*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_int_swap_rowcol(m : Gsl_matrix_int*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_int_transpose(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_transpose_memcpy(dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
-  fun gsl_matrix_int_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
+  fun gsl_matrix_int_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_int*, src : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_max(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_min(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_minmax(m : Gsl_matrix_int*, min_out : LibC::Int*, max_out : LibC::Int*)
@@ -2123,13 +2170,16 @@ lib LibGSL
   fun gsl_matrix_int_ispos(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_isneg(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_isnonneg(m : Gsl_matrix_int*) : LibC::Int
+  fun gsl_matrix_int_norm1(m : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_add(a : Gsl_matrix_int*, b : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_sub(a : Gsl_matrix_int*, b : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_mul_elements(a : Gsl_matrix_int*, b : Gsl_matrix_int*) : LibC::Int
   fun gsl_matrix_int_div_elements(a : Gsl_matrix_int*, b : Gsl_matrix_int*) : LibC::Int
-  fun gsl_matrix_int_scale(a : Gsl_matrix_int*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_int_add_constant(a : Gsl_matrix_int*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_int_add_diagonal(a : Gsl_matrix_int*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_int_scale(a : Gsl_matrix_int*, x : LibC::Int) : LibC::Int
+  fun gsl_matrix_int_scale_rows(a : Gsl_matrix_int*, x : Gsl_vector_int*) : LibC::Int
+  fun gsl_matrix_int_scale_columns(a : Gsl_matrix_int*, x : Gsl_vector_int*) : LibC::Int
+  fun gsl_matrix_int_add_constant(a : Gsl_matrix_int*, x : LibC::Int) : LibC::Int
+  fun gsl_matrix_int_add_diagonal(a : Gsl_matrix_int*, x : LibC::Int) : LibC::Int
   fun gsl_matrix_int_get_row(v : Gsl_vector_int*, m : Gsl_matrix_int*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_int_get_col(v : Gsl_vector_int*, m : Gsl_matrix_int*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_int_set_row(m : Gsl_matrix_int*, i : LibC::SizeT, v : Gsl_vector_int*) : LibC::Int
@@ -2198,13 +2248,13 @@ lib LibGSL
   fun gsl_matrix_ushort_fprintf(stream : File*, m : Gsl_matrix_ushort*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_ushort_memcpy(dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_swap(m1 : Gsl_matrix_ushort*, m2 : Gsl_matrix_ushort*) : LibC::Int
-  fun gsl_matrix_ushort_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
+  fun gsl_matrix_ushort_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_swap_rows(m : Gsl_matrix_ushort*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ushort_swap_columns(m : Gsl_matrix_ushort*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ushort_swap_rowcol(m : Gsl_matrix_ushort*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ushort_transpose(m : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_transpose_memcpy(dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
-  fun gsl_matrix_ushort_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
+  fun gsl_matrix_ushort_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_ushort*, src : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_max(m : Gsl_matrix_ushort*) : LibC::UShort
   fun gsl_matrix_ushort_min(m : Gsl_matrix_ushort*) : LibC::UShort
   fun gsl_matrix_ushort_minmax(m : Gsl_matrix_ushort*, min_out : LibC::UShort*, max_out : LibC::UShort*)
@@ -2216,13 +2266,16 @@ lib LibGSL
   fun gsl_matrix_ushort_ispos(m : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_isneg(m : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_isnonneg(m : Gsl_matrix_ushort*) : LibC::Int
+  fun gsl_matrix_ushort_norm1(m : Gsl_matrix_ushort*) : LibC::UShort
   fun gsl_matrix_ushort_add(a : Gsl_matrix_ushort*, b : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_sub(a : Gsl_matrix_ushort*, b : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_mul_elements(a : Gsl_matrix_ushort*, b : Gsl_matrix_ushort*) : LibC::Int
   fun gsl_matrix_ushort_div_elements(a : Gsl_matrix_ushort*, b : Gsl_matrix_ushort*) : LibC::Int
-  fun gsl_matrix_ushort_scale(a : Gsl_matrix_ushort*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_ushort_add_constant(a : Gsl_matrix_ushort*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_ushort_add_diagonal(a : Gsl_matrix_ushort*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_ushort_scale(a : Gsl_matrix_ushort*, x : LibC::UShort) : LibC::Int
+  fun gsl_matrix_ushort_scale_rows(a : Gsl_matrix_ushort*, x : Gsl_vector_ushort*) : LibC::Int
+  fun gsl_matrix_ushort_scale_columns(a : Gsl_matrix_ushort*, x : Gsl_vector_ushort*) : LibC::Int
+  fun gsl_matrix_ushort_add_constant(a : Gsl_matrix_ushort*, x : LibC::UShort) : LibC::Int
+  fun gsl_matrix_ushort_add_diagonal(a : Gsl_matrix_ushort*, x : LibC::UShort) : LibC::Int
   fun gsl_matrix_ushort_get_row(v : Gsl_vector_ushort*, m : Gsl_matrix_ushort*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ushort_get_col(v : Gsl_vector_ushort*, m : Gsl_matrix_ushort*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_ushort_set_row(m : Gsl_matrix_ushort*, i : LibC::SizeT, v : Gsl_vector_ushort*) : LibC::Int
@@ -2291,13 +2344,13 @@ lib LibGSL
   fun gsl_matrix_short_fprintf(stream : File*, m : Gsl_matrix_short*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_short_memcpy(dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_swap(m1 : Gsl_matrix_short*, m2 : Gsl_matrix_short*) : LibC::Int
-  fun gsl_matrix_short_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
+  fun gsl_matrix_short_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_swap_rows(m : Gsl_matrix_short*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_short_swap_columns(m : Gsl_matrix_short*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_short_swap_rowcol(m : Gsl_matrix_short*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_short_transpose(m : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_transpose_memcpy(dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
-  fun gsl_matrix_short_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
+  fun gsl_matrix_short_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_short*, src : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_max(m : Gsl_matrix_short*) : LibC::Short
   fun gsl_matrix_short_min(m : Gsl_matrix_short*) : LibC::Short
   fun gsl_matrix_short_minmax(m : Gsl_matrix_short*, min_out : LibC::Short*, max_out : LibC::Short*)
@@ -2309,13 +2362,16 @@ lib LibGSL
   fun gsl_matrix_short_ispos(m : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_isneg(m : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_isnonneg(m : Gsl_matrix_short*) : LibC::Int
+  fun gsl_matrix_short_norm1(m : Gsl_matrix_short*) : LibC::Short
   fun gsl_matrix_short_add(a : Gsl_matrix_short*, b : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_sub(a : Gsl_matrix_short*, b : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_mul_elements(a : Gsl_matrix_short*, b : Gsl_matrix_short*) : LibC::Int
   fun gsl_matrix_short_div_elements(a : Gsl_matrix_short*, b : Gsl_matrix_short*) : LibC::Int
-  fun gsl_matrix_short_scale(a : Gsl_matrix_short*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_short_add_constant(a : Gsl_matrix_short*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_short_add_diagonal(a : Gsl_matrix_short*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_short_scale(a : Gsl_matrix_short*, x : LibC::Short) : LibC::Int
+  fun gsl_matrix_short_scale_rows(a : Gsl_matrix_short*, x : Gsl_vector_short*) : LibC::Int
+  fun gsl_matrix_short_scale_columns(a : Gsl_matrix_short*, x : Gsl_vector_short*) : LibC::Int
+  fun gsl_matrix_short_add_constant(a : Gsl_matrix_short*, x : LibC::Short) : LibC::Int
+  fun gsl_matrix_short_add_diagonal(a : Gsl_matrix_short*, x : LibC::Short) : LibC::Int
   fun gsl_matrix_short_get_row(v : Gsl_vector_short*, m : Gsl_matrix_short*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_short_get_col(v : Gsl_vector_short*, m : Gsl_matrix_short*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_short_set_row(m : Gsl_matrix_short*, i : LibC::SizeT, v : Gsl_vector_short*) : LibC::Int
@@ -2384,13 +2440,13 @@ lib LibGSL
   fun gsl_matrix_uchar_fprintf(stream : File*, m : Gsl_matrix_uchar*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_uchar_memcpy(dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_swap(m1 : Gsl_matrix_uchar*, m2 : Gsl_matrix_uchar*) : LibC::Int
-  fun gsl_matrix_uchar_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
+  fun gsl_matrix_uchar_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_swap_rows(m : Gsl_matrix_uchar*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uchar_swap_columns(m : Gsl_matrix_uchar*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uchar_swap_rowcol(m : Gsl_matrix_uchar*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uchar_transpose(m : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_transpose_memcpy(dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
-  fun gsl_matrix_uchar_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
+  fun gsl_matrix_uchar_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_uchar*, src : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_max(m : Gsl_matrix_uchar*) : UInt8
   fun gsl_matrix_uchar_min(m : Gsl_matrix_uchar*) : UInt8
   fun gsl_matrix_uchar_minmax(m : Gsl_matrix_uchar*, min_out : UInt8*, max_out : UInt8*)
@@ -2402,13 +2458,16 @@ lib LibGSL
   fun gsl_matrix_uchar_ispos(m : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_isneg(m : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_isnonneg(m : Gsl_matrix_uchar*) : LibC::Int
+  fun gsl_matrix_uchar_norm1(m : Gsl_matrix_uchar*) : UInt8
   fun gsl_matrix_uchar_add(a : Gsl_matrix_uchar*, b : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_sub(a : Gsl_matrix_uchar*, b : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_mul_elements(a : Gsl_matrix_uchar*, b : Gsl_matrix_uchar*) : LibC::Int
   fun gsl_matrix_uchar_div_elements(a : Gsl_matrix_uchar*, b : Gsl_matrix_uchar*) : LibC::Int
-  fun gsl_matrix_uchar_scale(a : Gsl_matrix_uchar*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_uchar_add_constant(a : Gsl_matrix_uchar*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_uchar_add_diagonal(a : Gsl_matrix_uchar*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_uchar_scale(a : Gsl_matrix_uchar*, x : UInt8) : LibC::Int
+  fun gsl_matrix_uchar_scale_rows(a : Gsl_matrix_uchar*, x : Gsl_vector_uchar*) : LibC::Int
+  fun gsl_matrix_uchar_scale_columns(a : Gsl_matrix_uchar*, x : Gsl_vector_uchar*) : LibC::Int
+  fun gsl_matrix_uchar_add_constant(a : Gsl_matrix_uchar*, x : UInt8) : LibC::Int
+  fun gsl_matrix_uchar_add_diagonal(a : Gsl_matrix_uchar*, x : UInt8) : LibC::Int
   fun gsl_matrix_uchar_get_row(v : Gsl_vector_uchar*, m : Gsl_matrix_uchar*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uchar_get_col(v : Gsl_vector_uchar*, m : Gsl_matrix_uchar*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_uchar_set_row(m : Gsl_matrix_uchar*, i : LibC::SizeT, v : Gsl_vector_uchar*) : LibC::Int
@@ -2477,13 +2536,13 @@ lib LibGSL
   fun gsl_matrix_char_fprintf(stream : File*, m : Gsl_matrix_char*, format : LibC::Char*) : LibC::Int
   fun gsl_matrix_char_memcpy(dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_swap(m1 : Gsl_matrix_char*, m2 : Gsl_matrix_char*) : LibC::Int
-  fun gsl_matrix_char_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
+  fun gsl_matrix_char_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_swap_rows(m : Gsl_matrix_char*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_char_swap_columns(m : Gsl_matrix_char*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_char_swap_rowcol(m : Gsl_matrix_char*, i : LibC::SizeT, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_char_transpose(m : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_transpose_memcpy(dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
-  fun gsl_matrix_char_transpose_tricpy(uplo_src : LibC::Char, copy_diag : LibC::Int, dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
+  fun gsl_matrix_char_transpose_tricpy(uplo_src : CBLAS_UPLO_t, copy_diag : CBLAS_DIAG_t, dest : Gsl_matrix_char*, src : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_max(m : Gsl_matrix_char*) : LibC::Char
   fun gsl_matrix_char_min(m : Gsl_matrix_char*) : LibC::Char
   fun gsl_matrix_char_minmax(m : Gsl_matrix_char*, min_out : LibC::Char*, max_out : LibC::Char*)
@@ -2495,13 +2554,16 @@ lib LibGSL
   fun gsl_matrix_char_ispos(m : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_isneg(m : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_isnonneg(m : Gsl_matrix_char*) : LibC::Int
+  fun gsl_matrix_char_norm1(m : Gsl_matrix_char*) : LibC::Char
   fun gsl_matrix_char_add(a : Gsl_matrix_char*, b : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_sub(a : Gsl_matrix_char*, b : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_mul_elements(a : Gsl_matrix_char*, b : Gsl_matrix_char*) : LibC::Int
   fun gsl_matrix_char_div_elements(a : Gsl_matrix_char*, b : Gsl_matrix_char*) : LibC::Int
-  fun gsl_matrix_char_scale(a : Gsl_matrix_char*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_char_add_constant(a : Gsl_matrix_char*, x : LibC::Double) : LibC::Int
-  fun gsl_matrix_char_add_diagonal(a : Gsl_matrix_char*, x : LibC::Double) : LibC::Int
+  fun gsl_matrix_char_scale(a : Gsl_matrix_char*, x : LibC::Char) : LibC::Int
+  fun gsl_matrix_char_scale_rows(a : Gsl_matrix_char*, x : Gsl_vector_char*) : LibC::Int
+  fun gsl_matrix_char_scale_columns(a : Gsl_matrix_char*, x : Gsl_vector_char*) : LibC::Int
+  fun gsl_matrix_char_add_constant(a : Gsl_matrix_char*, x : LibC::Char) : LibC::Int
+  fun gsl_matrix_char_add_diagonal(a : Gsl_matrix_char*, x : LibC::Char) : LibC::Int
   fun gsl_matrix_char_get_row(v : Gsl_vector_char*, m : Gsl_matrix_char*, i : LibC::SizeT) : LibC::Int
   fun gsl_matrix_char_get_col(v : Gsl_vector_char*, m : Gsl_matrix_char*, j : LibC::SizeT) : LibC::Int
   fun gsl_matrix_char_set_row(m : Gsl_matrix_char*, i : LibC::SizeT, v : Gsl_vector_char*) : LibC::Int
@@ -3994,9 +4056,9 @@ lib LibGSL
   fun gsl_linalg_householder_hm(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_householder_mh(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_householder_hv(tau : LibC::Double, v : Gsl_vector*, w : Gsl_vector*) : LibC::Int
-  fun gsl_linalg_householder_left(tau : LibC::Double, v : Gsl_vector*, a : Gsl_vector*, work : Gsl_vector*) : LibC::Int
-  fun gsl_linalg_householder_right(tau : LibC::Double, v : Gsl_vector*, a : Gsl_vector*, work : Gsl_vector*) : LibC::Int
-  fun gsl_linalg_householder_hm1(tau : LibC::Double, a : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_householder_left(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_householder_right(tau : LibC::Double, v : Gsl_vector*, a : Gsl_matrix*, work : Gsl_vector*) : LibC::Int
+  fun gsl_linalg_householder_hm1(tau : LibC::Double, a : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_complex_householder_hm(tau : Gsl_complex, v : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_complex_householder_mh(tau : Gsl_complex, v : Gsl_vector_complex*, a : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_complex_householder_hv(tau : Gsl_complex, v : Gsl_vector_complex*, w : Gsl_vector_complex*) : LibC::Int
