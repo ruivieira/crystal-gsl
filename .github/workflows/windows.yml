@@ -6,10 +6,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: oprypin/install-crystal@v1.5.3
-        with:
-          crystal: nightly
-          shards: false
+      - uses: oprypin/install-crystal@v1
       - uses: actions/checkout@v2
       - name: Cache GSL binaries
         id: cache-gsl
@@ -39,6 +36,6 @@ jobs:
       - name: copy GSL libraries
         run: |
           cd gsl/lib/x64/Debug
-          copy cblas.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
-          copy gsl.lib D:\a\_temp\crystal-nightly-false-undefined\bin\lib
+          copy cblas.lib D:\a\_temp\crystal-nightly-true-undefined\lib
+          copy gsl.lib D:\a\_temp\crystal-nightly-true-undefined\lib
       - run: crystal spec
