@@ -91,6 +91,23 @@ module GSL
         end
       end
     end
+
+    # compare coefficients with another polynomial
+    def ==(other : Poly)
+      other.coeffs == @coeffs
+    end
+
+    # differentiate polynomial
+    def diff
+      Poly.new(coeffs.skip(1).map_with_index { |x, i| x*(i + 1) })
+    end
+
+    # integrate polynomial
+    def integrate
+      c = coeffs.map_with_index { |x, i| x/(i + 1) }
+      c.unshift 0.0
+      Poly.new(c)
+    end
   end
 
   # PolyDD class represents divided difference representation of polinomial
