@@ -1,7 +1,7 @@
 require "./matrix.cr"
 
 module GSL
-  class Vector
+  struct Vector
     def each(&block : Float64 -> _)
       self.to_a.each &block
       self

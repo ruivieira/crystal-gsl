@@ -1,5 +1,5 @@
 module GSL
-  class Vector
+  struct Vector
     def frequencies
       self.to_a.group_by { |x| x }.map { |num, arr| [num, arr.size] }.to_h
     end

@@ -4135,7 +4135,7 @@ lib LibGSL
   fun gsl_linalg_complex_QR_unpack(qr : Gsl_matrix_complex*, tau : Gsl_vector_complex*, q : Gsl_matrix_complex*, r : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_complex_QR_unpack_r(qr : Gsl_matrix_complex*, t : Gsl_matrix_complex*, q : Gsl_matrix_complex*, r : Gsl_matrix_complex*) : LibC::Int
   fun gsl_linalg_QR_band_decomp_L2(m : LibC::SizeT, p : LibC::SizeT, q : LibC::SizeT, ab : Gsl_matrix*, tau : Gsl_vector*) : LibC::Int
-  fun gsl_linalg_QR_band_unpack_L2(p : LibC::SizeT, q : LibC::SizeT, qrb : Gsl_matrix*, tau : Gsl_vector*, q : Gsl_matrix*, r : Gsl_matrix*) : LibC::Int
+  fun gsl_linalg_QR_band_unpack_L2(p : LibC::SizeT, q : LibC::SizeT, qrb : Gsl_matrix*, tau : Gsl_vector*, qm : Gsl_matrix*, r : Gsl_matrix*) : LibC::Int
   fun gsl_linalg_QRPT_decomp(a : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, signum : LibC::Int*, norm : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QRPT_decomp2(a : Gsl_matrix*, q : Gsl_matrix*, r : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, signum : LibC::Int*, norm : Gsl_vector*) : LibC::Int
   fun gsl_linalg_QRPT_solve(qr : Gsl_matrix*, tau : Gsl_vector*, p : Gsl_permutation*, b : Gsl_vector*, x : Gsl_vector*) : LibC::Int
@@ -5019,7 +5019,7 @@ lib LibGSL
     params : Void*
   end
 
-  fun gsl_multiroot_fdjacobian(f : Gsl_multiroot_function*, x : Gsl_vector*, f : Gsl_vector*, epsrel : LibC::Double, jacobian : Gsl_matrix*) : LibC::Int
+  fun gsl_multiroot_fdjacobian(func : Gsl_multiroot_function*, x : Gsl_vector*, f : Gsl_vector*, epsrel : LibC::Double, jacobian : Gsl_matrix*) : LibC::Int
   fun gsl_multiroot_fsolver_alloc(t : Gsl_multiroot_fsolver_type*, n : LibC::SizeT) : Gsl_multiroot_fsolver*
 
   struct Gsl_multiroot_fsolver_type
@@ -5492,7 +5492,7 @@ lib LibGSL
   fun gsl_ran_lognormal_pdf(x : LibC::Double, zeta : LibC::Double, sigma : LibC::Double) : LibC::Double
   fun gsl_ran_logarithmic(r : Gsl_rng*, p : LibC::Double) : LibC::UInt
   fun gsl_ran_logarithmic_pdf(k : LibC::UInt, p : LibC::Double) : LibC::Double
-  fun gsl_ran_multinomial(r : Gsl_rng*, k : LibC::SizeT, n : LibC::UInt, p : LibC::Double*, n : LibC::UInt*)
+  fun gsl_ran_multinomial(r : Gsl_rng*, k : LibC::SizeT, n : LibC::UInt, p : LibC::Double*, nn : LibC::UInt*)
   fun gsl_ran_multinomial_pdf(k : LibC::SizeT, p : LibC::Double*, n : LibC::UInt*) : LibC::Double
   fun gsl_ran_multinomial_lnpdf(k : LibC::SizeT, p : LibC::Double*, n : LibC::UInt*) : LibC::Double
   fun gsl_ran_negative_binomial(r : Gsl_rng*, p : LibC::Double, n : LibC::Double) : LibC::UInt

@@ -1,5 +1,5 @@
 module GSL
-  class Vector
+  struct Vector
     def +(n : Int32 | Float64)
       temp = self.copy
       LibGSL.gsl_vector_add_constant(temp.pointer, n.to_f)

@@ -79,6 +79,17 @@ describe GSL do
       poly = GSL::Poly.new([1.0, 2.0, 1.0]) # x^2+2x+1
       poly.eval_derivs(0.1).should eq [1.21, 2.2, 2]
     end
+
+    it "#diff returns derivative of polynomial" do
+      poly = GSL::Poly.new([2.0, 1.0, 2.0, 1.0])         # x^3+2x^2+x+2
+      poly.diff.should eq GSL::Poly.new([1.0, 4.0, 3.0]) # 3*x^2+4x+1
+      poly.should eq GSL::Poly.new([2.0, 1.0, 2.0, 1.0])
+    end
+
+    it "#integrate returns integral of polynomial" do
+      poly = GSL::Poly.new([2.01, 1.0, 3.0, 1])                         # x^3+3x^2+x+2.01
+      poly.integrate.should eq GSL::Poly.new([0, 2.01, 0.5, 1.0, 0.25]) # x^4/4+x^3+x^2/2+2.01x
+    end
   end
 
   describe GSL::PolyDD do
