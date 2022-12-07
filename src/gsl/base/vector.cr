@@ -1,5 +1,5 @@
 module GSL
-  class Vector
+  struct Vector
     getter pointer
 
     def initialize(@size : Int32)

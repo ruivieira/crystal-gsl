@@ -63,4 +63,26 @@ module GSL
   def self.wrap_function(&function : FunctionFDF)
     wrap_function(function)
   end
+
+  alias MultiRootFunction = (Tuple(Vector, Vector))
+  alias MultiRootFunctionFDF = (Vector -> Tuple(Float64, DenseMatrix))
+
+  # def self.wrap_function(function : MultiRootFunction)
+  #   result = uninitialized LibGSL::Gsl_multiroot_function
+  #   if function.closure?
+  #     box = Box.box(function)
+  #     # (LibC::Double, Void* -> LibC::Double)
+  #     result.f = ->(x : Gsl_vector*, data : Void*, f : Gsl_vector*) do
+  #       Box(MultiRootFunction).unbox(data).call(x, f)
+  #     end
+  #     result.params = box # no need to keep reference to `box` as `result` holds it.
+  #   else
+  #     result.params = function.pointer
+  #     result.function = ->(x : Float64, data : Void*) do
+  #       Function.new(data, Pointer(Void).null).call(x)
+  #     end
+  #   end
+  #   result
+  # end
+
 end
